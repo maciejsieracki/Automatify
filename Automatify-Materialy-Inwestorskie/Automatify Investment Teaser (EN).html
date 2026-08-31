@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatify — Investment Teaser 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+doc-page:not(:defined){visibility:hidden}
+:root{
+--paper:#F8FAFD;--paper-2:#F0F4FA;--card:#FFFFFF;
+--ink:#0E2244;--ink-2:#1A2540;--muted:#6B7A8F;--muted-2:#8898B5;
+--rule:#D8E0EC;--rule-2:#E6ECF4;
+--lime:#C4E847;--lime-2:#A4C932;--limon:#7CB518;--lime-3:#5C7E1A;
+--teal:#1B7C99;--teal-2:#2EBED9;--teal-3:#0F5A73;
+--sans:"Manrope",-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+.page{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.4;display:flex;flex-direction:column;font-size:8.6pt}
+svg{display:block}
+b{font-weight:700}
+em{font-style:normal}
+
+.band{background:var(--ink);color:#fff;padding:6mm 11mm 5.5mm;flex:none}
+.band-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10mm}
+.band-logo{height:7.2mm;width:auto;display:block}
+.band-meta{text-align:right;font-size:7.6pt;color:rgba(255,255,255,.55);letter-spacing:.12em;text-transform:uppercase;font-weight:700;line-height:1.7}
+.band-meta .hi{color:var(--lime);display:block}
+.band h1{font-weight:800;font-size:16.5pt;letter-spacing:-.022em;line-height:1.08;margin-top:4.5mm;max-width:36ch}
+.band h1 i{font-style:normal;background:linear-gradient(95deg,#2EBED9,#C4E847);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.band .sub{font-size:8.6pt;color:rgba(248,250,253,.72);margin-top:2.4mm;max-width:78ch;line-height:1.55}
+.band .sub b{color:#fff}
+.band .taglines{display:flex;gap:6mm;flex-wrap:wrap;margin-top:3.2mm;padding-top:2.6mm;border-top:1px solid rgba(255,255,255,.14);font-size:8pt;letter-spacing:.02em}
+.band .taglines span{color:rgba(255,255,255,.62)}
+.band .taglines b{color:var(--lime)}
+.band .taglines .t2 b{color:var(--teal-2)}
+
+.body{padding:3.4mm 11mm 2mm;flex:1;display:flex;flex-direction:column;gap:1.8mm}
+.h{font-size:7pt;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:2.2mm;margin-bottom:1.4mm}
+.h::before{content:"";width:2.4mm;height:2.4mm;border-radius:50%;background:var(--lime-2);flex:none}
+.h.ro{color:var(--limon)}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:3.4mm}
+.split3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.2mm}
+
+.pillar{background:var(--card);border:1px solid var(--rule);border-radius:3mm;padding:3mm 3.4mm}
+.pillar-h{display:flex;align-items:baseline;justify-content:space-between;gap:3mm;padding-bottom:2mm;border-bottom:1px solid var(--rule-2)}
+.pillar-n{font-weight:800;font-size:11.5pt;letter-spacing:-.02em}
+.pillar-n.ag{color:var(--teal)}
+.pillar-n.ro{color:var(--limon)}
+.pillar-tag{font-size:7.2pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+.pillar-lede{font-size:8.2pt;color:var(--ink-2);margin-top:2.1mm;line-height:1.45}
+.pillar ul{list-style:none;margin-top:2.1mm;display:flex;flex-direction:column;gap:1.2mm}
+.pillar li{font-size:7.8pt;color:var(--muted);padding-left:3.8mm;position:relative;line-height:1.38}
+.pillar li::before{content:"";position:absolute;left:0;top:1.5mm;width:1.8mm;height:1.8mm;border-radius:50%;background:var(--teal-2)}
+.pillar.r li::before{background:var(--lime-2)}
+.pillar li b{color:var(--ink)}
+
+.bl{background:var(--paper-2);border:1px solid var(--rule);border-radius:3mm;padding:2.6mm 3.2mm}
+.bl-t{font-weight:800;font-size:8.4pt;letter-spacing:-.01em;margin-bottom:1.2mm}
+.bl p{font-size:7.5pt;color:var(--muted);line-height:1.34}
+.bl p b{color:var(--ink)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule);border-radius:3mm;overflow:hidden;background:var(--rule)}
+.stat{background:var(--card);padding:3mm 3.4mm}
+.stat-v{font-weight:800;font-size:11.5pt;letter-spacing:-.025em;color:var(--ink);line-height:1.1}
+.stat-v.t{color:var(--teal)}
+.stat-v.l{color:var(--limon)}
+.stat-l{font-size:7pt;color:var(--muted);margin-top:1.1mm;line-height:1.35}
+
+.raise{background:var(--ink);color:#fff;border-radius:3mm;padding:3.8mm 4.4mm;display:grid;grid-template-columns:auto 1fr;gap:6mm;align-items:center}
+.raise-l .lab{font-size:7.2pt;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.raise-l .amt{font-weight:800;font-size:18pt;letter-spacing:-.03em;line-height:1.05;margin-top:1mm;background:linear-gradient(95deg,#2EBED9,#C4E847);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.raise-l .when{font-size:8pt;color:rgba(255,255,255,.6);margin-top:1.4mm}
+.raise-r{display:flex;flex-direction:column;gap:2.6mm}
+.prog{height:4mm;border-radius:1.5mm;background:rgba(255,255,255,.12);overflow:hidden;display:flex}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,#2EBED9,#C4E847)}
+.prog-lab{display:flex;justify-content:space-between;font-size:8.2pt}
+.prog-lab .in b{color:var(--lime);font-size:10pt}
+.prog-lab .sk b{color:#fff;font-size:10pt}
+.prog-lab span{color:rgba(255,255,255,.6)}
+.raise-note{font-size:7.2pt;color:rgba(255,255,255,.5);line-height:1.4}
+
+table{width:100%;border-collapse:collapse;font-size:7.9pt}
+thead th{text-align:right;font-size:6.9pt;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:1.5mm 2.2mm;border-bottom:.6mm solid var(--ink);white-space:nowrap}
+thead th:first-child{text-align:left}
+tbody td{text-align:right;padding:1.15mm 2.2mm;border-bottom:.25mm solid var(--rule-2);font-variant-numeric:tabular-nums}
+tbody td:first-child{text-align:left;font-weight:600;width:38%;white-space:normal}
+tbody td:not(:first-child){white-space:nowrap}
+tr.hl{background:rgba(124,181,24,.12)}
+tr.hl td{font-weight:800;color:var(--ink)}
+td.neg{color:#C0392B}
+td.pos{color:var(--lime-3);font-weight:700}
+.tw{border:1px solid var(--rule);border-radius:3mm;background:var(--card);padding:.5mm 3.4mm 1mm}
+
+.rounds{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm;position:relative}
+.rnd{background:var(--card);border:1px solid var(--rule);border-radius:3mm;padding:2.4mm 2.8mm 2.6mm;position:relative;border-top:1.1mm solid var(--teal)}
+.rnd.now{border-top-color:var(--lime-2);box-shadow:0 2mm 5mm -3mm rgba(14,34,68,.28)}
+.rnd.b{border-top-color:var(--limon)}
+.rnd-w{font-size:7.2pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+.rnd-a{font-weight:800;font-size:10.2pt;letter-spacing:-.025em;margin-top:.8mm;color:var(--ink)}
+.rnd-n{font-size:8.2pt;color:var(--teal);font-weight:700;margin-top:.6mm}
+.rnd.b .rnd-n{color:var(--limon)}
+.rnd-d{font-size:6.8pt;color:var(--muted);margin-top:1mm;line-height:1.24}
+.rnd .flag{position:absolute;top:-1.1mm;right:3mm;transform:translateY(-100%);font-size:6.8pt;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--lime-3)}
+
+.exit{display:flex;align-items:center;gap:4mm;background:linear-gradient(100deg,rgba(46,190,217,.09),rgba(196,232,71,.14));border:1px solid var(--rule);border-radius:3mm;padding:2.2mm 4mm}
+.exit-lab{font-size:7.2pt;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-3);flex:none}
+.exit-items{display:flex;align-items:center;gap:5mm;flex:1}
+.exit-i .w{font-size:7.6pt;color:var(--muted);font-weight:700}
+.exit-i .v{font-weight:800;font-size:10.5pt;letter-spacing:-.02em}
+.exit-i.hero .v{color:var(--limon);font-size:13pt}
+.exit-ar{color:var(--rule);display:flex;align-items:center}
+
+.uof{display:flex;flex-direction:column;gap:1mm}
+.uof-r{display:grid;grid-template-columns:8mm 1fr 20mm;gap:2.6mm;align-items:center;font-size:7.6pt}
+.uof-p{font-weight:800;color:var(--ink);text-align:right}
+.uof-l{color:var(--muted)}
+.uof-l b{color:var(--ink)}
+.uof-b{height:2.2mm;border-radius:1.3mm;background:var(--rule-2);overflow:hidden}
+.uof-b i{display:block;height:100%;background:linear-gradient(90deg,#1B7C99,#7CB518)}
+
+.team{display:grid;grid-template-columns:1fr 1fr;gap:2mm}
+.tm{background:var(--card);border:1px solid var(--rule);border-radius:3mm;padding:2mm 2.6mm}
+.tm-n{font-weight:800;font-size:8.4pt;letter-spacing:-.01em}
+.tm-r{font-size:7.4pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-top:.5mm}
+.tm-d{font-size:7.2pt;color:var(--muted);margin-top:.9mm;line-height:1.22}
+
+.foot{background:var(--ink);color:#fff;padding:2.5mm 11mm;flex:none;display:flex;align-items:center;justify-content:space-between;gap:8mm}
+.foot-l .t{font-weight:800;font-size:11pt;letter-spacing:-.02em}
+.foot-l .t i{font-style:normal;color:var(--lime)}
+.foot-l .d{font-size:7.4pt;color:rgba(255,255,255,.6);margin-top:1.1mm;max-width:60ch;line-height:1.5}
+.foot-r{text-align:right;flex:none}
+.foot-r .m{font-weight:800;font-size:9.6pt;color:var(--lime)}
+.foot-r .w{font-size:7.4pt;color:rgba(255,255,255,.6);margin-top:.8mm}
+.foot-r .c{font-size:6.8pt;color:rgba(255,255,255,.35);margin-top:1.8mm;letter-spacing:.1em;text-transform:uppercase}
+
+.src{font-size:6.6pt;color:var(--muted-2);letter-spacing:.02em;line-height:1.4}
+.note{font-size:6.9pt;color:var(--muted);font-style:italic;line-height:1.35}
+sup.dec{color:#C0392B;font-size:.62em;font-weight:700;vertical-align:super;line-height:0}
+</style>
+</head>
+<body>
+
+<doc-page size="a4">
+
+<!-- ══════════════════ PAGE 1 ══════════════════ -->
+<section class="page" data-screen-label="01">
+  <div class="band">
+    <div class="band-top">
+      <img class="band-logo" src="logo-automatify-light.png" alt="Automatify">
+      <div class="band-meta">Investment Teaser<span class="hi">Pre-seed round 2026</span>Confidential</div>
+    </div>
+    <h1>A hub for AI agents and <i>humanoid robots</i> built for mid-sized companies</h1>
+    <p class="sub">Automatify replaces the expensive man-hour with a <b>robot-hour at a fraction of the cost</b> — one partner, one contract, both worlds of automation. Goal: the leading automation hub in Poland and CEE, IPO in 2031.</p>
+    <div class="taglines">
+      <span class="t2">replace workers with agents. <b>agentify it.</b></span>
+      <span>replace workers with robots. <b>robotify it.</b></span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div>
+      <div class="h">Problem</div>
+      <div class="split">
+        <div class="bl">
+          <div class="bl-t">SMEs have no way to adopt AI</div>
+          <p>Mid-sized companies lack both the team and the budget to implement AI on their own. Low automation levels put them at risk of <b>losing competitiveness</b> against firms already cutting labour costs. The market is fragmented — clients must stitch together multiple vendors.</p>
+        </div>
+        <div class="bl">
+          <div class="bl-t">A shrinking physical workforce</div>
+          <p>Poland will lose <b>4 million working-age people by 2040.</b> Robotics is the answer, yet <b>97% of SMEs</b> operate without a single physical robot — blocked by CAPEX, missing skills and the absence of an integrator serving smaller companies.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h">Solution — two pillars, one platform</div>
+      <div class="split">
+        <div class="pillar">
+          <div class="pillar-h"><span class="pillar-n ag">Agentify</span><span class="pillar-tag">Agents-as-a-Service</span></div>
+          <p class="pillar-lede">Agentify digital workers: AI agents and RPA bots (software licences) taking over repetitive back-office processes 24/7.</p>
+          <ul>
+            <li><b>Pay-as-you-Save</b> — no up-front fee: the PLN&nbsp;60k per-process implementation is repaid through the subscription over 4 years; subscription equals 10% of the savings generated</li>
+            <li>Marketplace of ready-made packages: 24/7 customer service, invoices→ERP, reporting, reconciliation</li>
+            <li>Robot-hour billing · Client Portal with live savings measurement</li>
+            <li>EBITDA break-even <b>2029</b> · EBITDA margin 2035 <b>~70%</b></li>
+          </ul>
+        </div>
+        <div class="pillar r">
+          <div class="pillar-h"><span class="pillar-n ro">Robotify</span><span class="pillar-tag">Robots-as-a-Service</span></div>
+          <p class="pillar-lede">Robotify physical robots: humanoids, cobots and AMRs — the client buys the robot, we bill its work like an employee.</p>
+          <ul>
+            <li><b>Humanoids</b> (Figure / 1X / Apptronik) for tasks that need human form: hospitality, healthcare, reception</li>
+            <li>Cobots and AMRs for manufacturing, packing and logistics</li>
+            <li>Robot CAPEX on the client’s side (EU / BGK grant or own budget) · software, integration and service on subscription · 99% SLA<sup class="dec">◆</sup> · 24-hour hot-swap<sup class="dec">◆</sup> · 36-month contracts<sup class="dec">◆</sup></li>
+            <li>EBITDA break-even <b>2029</b> · EBITDA margin 2035 <b>~77%</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h">Market</div>
+      <div class="stats">
+        <div class="stat"><div class="stat-v t">249,530</div><div class="stat-l">companies with 50–249 employees across the 32 roll-out countries — target market</div></div>
+        <div class="stat"><div class="stat-v">$60 trn</div><div class="stat-l">global payroll market — the pool to capture</div></div>
+        <div class="stat"><div class="stat-v l">$6.2 → 25bn</div><div class="stat-l">humanoid robot market 2025 → 2030 (32% CAGR)</div></div>
+        <div class="stat"><div class="stat-v l">$41.3bn</div><div class="stat-l">Robots-as-a-Service market by 2030</div></div>
+      </div>
+      <p class="src" style="margin-top:1.8mm;">Sources: Eurostat, Statistics Poland (GUS), Goldman Sachs Humanoid Robot Report, MarketsandMarkets, IFR World Robotics 2025.</p>
+    </div>
+
+    <div>
+      <div class="h">Competitive advantage</div>
+      <div class="split3">
+        <div class="bl"><div class="bl-t">All-in-one</div><p>One partner instead of many vendors — from a software agent to a humanoid robot, under a single contract and a single billing model.</p></div>
+        <div class="bl"><div class="bl-t">Risk-free model</div><p>The client pays nothing up front for an Agentify deployment — it is repaid out of the savings generated. The Robotify physical robot is bought by the client, while we deliver the software, integration and service on subscription. Incentives are fully aligned.</p></div>
+        <div class="bl"><div class="bl-t">Local + compliant</div><p>The Polish and CEE mid-market that global vendors do not serve. EU AI Act compliance as a barrier to entry.</p></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h">Active round</div>
+      <div class="raise">
+        <div class="raise-l">
+          <div class="lab">Pre-seed</div>
+          <div class="amt">€1m</div>
+          <div class="when">12-month runway · open until Q3 2026</div>
+        </div>
+        <div class="raise-r">
+          <div class="prog"><i style="width:40%;"></i></div>
+          <div class="prog-lab">
+            <span class="in"><b>€400k</b> already committed (40%)</span>
+            <span class="sk"><b>€600k</b> remaining (60%)</span>
+          </div>
+          <p class="raise-note">Structure: lead investor + business angels + grants (BGK / NCBR). Proceeds fund MVP1, first client deployments and RaaS pilots through to the Seed round.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ PAGE 2 ══════════════════ -->
+<section class="page" data-screen-label="02">
+  <div class="body" style="padding-top:7mm;gap:3.6mm;">
+
+    <div>
+      <div class="h">Financial projections — consolidated, PLN million</div>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Item</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th><th>2035</th></tr></thead>
+          <tbody>
+            <tr><td>Revenue</td><td>18.9</td><td>234.4</td><td>1,672.4</td><td>5,813.7</td><td>39,644.0</td></tr>
+            <tr class="hl"><td>EBITDA</td><td class="neg">−16.7</td><td class="pos">104.4</td><td class="pos">1,052.2</td><td class="pos">4,070.8</td><td class="pos">28,693.1</td></tr>
+            <tr><td>EBITDA margin</td><td class="neg">−89%</td><td>45%</td><td>63%</td><td>70%</td><td>72%</td></tr>
+            <tr><td>Active clients (Agentify)</td><td>57</td><td>598</td><td>3,112</td><td>6,376</td><td>31,677</td></tr>
+            <tr><td>Automated processes live (Agentify)</td><td>299</td><td>3,109</td><td>16,183</td><td>33,154</td><td>164,721</td></tr>
+            <tr><td>Clients (Robotify)</td><td>5</td><td>65</td><td>665</td><td>2,497</td><td>27,412</td></tr>
+            <tr><td>Physical robots deployed (Robotify)<span style="display:block;font-weight:400;font-size:6.6pt;color:var(--muted-2);letter-spacing:.02em;line-height:1.35;margin-top:.5mm">Robotify machines — global fleet, presentational basis; this is not the series the revenue in this table is derived from, and it must not be added to Agentify processes</span></td><td>197</td><td>2,625</td><td>16,408</td><td>58,775</td><td>535,919</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="split3" style="margin-top:2.6mm;">
+        <div class="bl"><div class="bl-t" style="color:var(--lime-3);">2029 — first EBITDA-positive year</div><p>Agentify and Robotify both turn positive in the same year — 2029 (+PLN&nbsp;101.9m and +PLN&nbsp;2.5m). The consolidated group is positive from 2029.</p></div>
+        <div class="bl"><div class="bl-t" style="color:var(--teal);">PLN 39.6bn revenue in 2035</div><p>EBITDA of PLN 28.7bn at a 72% margin — driven by the subscription model and platform leverage.</p></div>
+        <div class="bl"><div class="bl-t">Agentify: Poland 2027 → 34 countries by 2033</div><p>Robotify: Poland 2028 → 32 countries by 2034 — one year behind Agentify. Starting in Poland, then DACH and Scandinavia.</p></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h">Funding roadmap and exit</div>
+      <div class="rounds">
+        <div class="rnd now">
+          <span class="flag">now</span>
+          <div class="rnd-w">Pre-seed · 2026–27</div>
+          <div class="rnd-a">€1m<sup class="dec">◆</sup></div>
+          <div class="rnd-n">Validation + MVP1</div>
+          <p class="rnd-d">MVP1 framework and Client Portal, AI Hours Engine, first Agentify deployments, first RaaS pilots (Robotify). Model: 5 active clients (Agentify) — <b>March&nbsp;2028</b>.</p>
+        </div>
+        <div class="rnd">
+          <div class="rnd-w">Seed · 2027</div>
+          <div class="rnd-a">€2–4m<sup class="dec">◆</sup></div>
+          <div class="rnd-n">Poland roll-out · MVP2</div>
+          <p class="rnd-d">Marketplace with 20+ packages<sup class="dec">◆</sup> (Agentify). Model: 25 active clients (Agentify) — <b>August&nbsp;2028</b>; fleet of 10 physical robots (Robotify) — <b>2028</b>.</p>
+        </div>
+        <div class="rnd">
+          <div class="rnd-w">Round A · 2028</div>
+          <div class="rnd-a">€8–15m<sup class="dec">◆</sup></div>
+          <div class="rnd-n">EU expansion · MVP3</div>
+          <p class="rnd-d">Proprietary orchestrator, Scandinavia. Model: 125 active clients (Agentify) — <b>May&nbsp;2029</b>; 100 physical robots (Robotify) — <b>2029</b>.</p>
+        </div>
+        <div class="rnd b">
+          <div class="rnd-w">Round B · 2030</div>
+          <div class="rnd-a">amount to be decided<sup class="dec">◆</sup></div>
+          <div class="rnd-n">International scale</div>
+          <p class="rnd-d">Proprietary AI agents (own Agentify stack). Model: 1,000 active clients (Agentify) — <b>May&nbsp;2030</b>, 12 Agentify countries open; fleet of 1,000+ physical robots (Robotify) — <b>2030</b>, 7 Robotify countries.</p>
+        </div>
+      </div>
+      <div class="exit" style="margin-top:2.6mm;">
+        <span class="exit-lab">Exit</span>
+        <div class="exit-items">
+          <div class="exit-i"><div class="w">2030 / 2031<sup class="dec">◆</sup></div><div class="v">Pre-IPO</div></div>
+          <div class="exit-ar"><svg width="34" height="18" viewBox="0 0 34 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9h26"/><path d="M23 3l6 6-6 6"/></svg></div>
+          <div class="exit-i hero"><div class="w">2031<sup class="dec">◆</sup></div><div class="v">IPO</div></div>
+          <div class="exit-i" style="margin-left:auto;text-align:right;"><div class="w">Listing target</div><div class="v" style="font-size:10pt;">Public listing — exit for pre-seed investors</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h">Use of funds — €1m over 12 months</div>
+      <div class="uof">
+        <div class="uof-r"><span class="uof-p">70%</span><span class="uof-l"><b>R&amp;D and sales team</b> — CTO, dev team, sales, marketing</span><span class="uof-b"><i style="width:70%"></i></span></div>
+        <div class="uof-r"><span class="uof-p">12%</span><span class="uof-l"><b>Deployments + LLM tokens</b> — operating cost of first implementations</span><span class="uof-b"><i style="width:12%"></i></span></div>
+        <div class="uof-r"><span class="uof-p">5%</span><span class="uof-l"><b>Marketing &amp; GTM</b> — acquiring the first 20 active PoC clients (Agentify)<sup class="dec">◆</sup></span><span class="uof-b"><i style="width:5%"></i></span></div>
+        <div class="uof-r"><span class="uof-p">5%</span><span class="uof-l"><b>Tech infrastructure</b> — cloud, security, ISO 27001 (phase 1)</span><span class="uof-b"><i style="width:5%"></i></span></div>
+        <div class="uof-r"><span class="uof-p">4%</span><span class="uof-l"><b>Legal &amp; compliance</b> — EU AI Act, partner agreements, IP</span><span class="uof-b"><i style="width:4%"></i></span></div>
+        <div class="uof-r"><span class="uof-p">4%</span><span class="uof-l"><b>Reserve</b> — operating buffer and market opportunities</span><span class="uof-b"><i style="width:4%"></i></span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="h">Team</div>
+      <div class="team">
+        <div class="tm">
+          <div class="tm-n">Maciej Sieracki</div>
+          <div class="tm-r">Founder &amp; CEO</div>
+          <p class="tm-d">Founder and CEO of Naster S.A. Has run the company in the energy and renewables sector since 2010 — personally led sales, marketing, strategy and finance.</p>
+        </div>
+        <div class="tm">
+          <img src="logo-subeo.png" alt="Subeo" style="height:4.2mm;width:auto;display:block;margin-bottom:1.4mm;">
+          <div class="tm-r">Co-founder · delivery partner</div>
+          <p class="tm-d"><b>Co-founder of Automatify.</b> 250+ RPA and automation projects: Business Process Discovery, RPA (UiPath), AI agents, intelligent OCR.</p>
+        </div>
+        <div class="tm">
+          <div class="tm-n">Marcin Olszewski</div>
+          <div class="tm-r">Advisor · finance</div>
+          <p class="tm-d">24 years in CFO and CEO roles. 14 years as regional CFO and emerging-markets CEO at Fujitsu, 3 years as CEO of HP Inc. Poland.</p>
+        </div>
+        <div class="tm">
+          <div class="tm-n">Maciej Drabek</div>
+          <div class="tm-r">Advisor · M&amp;A</div>
+          <p class="tm-d">10+ years in investment banking and private equity. Led M&amp;A transactions and oversaw portfolio companies.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="note">Financial projections: consolidation of the Agentify and Robotify models, variant without process expansion, 2027–2035 window. Robotify clients are stated on the revenue-bearing basis (sum of 32 countries), consistent with the revenue in this table. The physical-robot fleet is a different quantity from clients and processes — we never add these series together. <b>◆</b> = a figure outside the financial models. The full model, assumptions and bibliography on request.</p>
+
+  </div>
+
+  <div class="foot">
+    <div class="foot-l">
+      <div class="t">Let's build the <i>automation hub</i> for the European mid-market</div>
+      <p class="d">The full pitch deck, financial model, assumptions supplement and due-diligence documents are shared on request.</p>
+    </div>
+    <div class="foot-r">
+      <div class="m">investors@automatify.work</div>
+      <div class="w">automatify.work</div>
+      <div class="c">Confidential · 2026</div>
+    </div>
+  </div>
+</section>
+
+</doc-page>
+
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#0E2244"/><text x="100" y="118" font-family="Manrope,Arial,sans-serif" font-size="76" font-weight="800" fill="#C4E847" text-anchor="middle">A</text></svg>
+</template>
+
+<script src="doc-page.js"></script>
+</body>
+</html>

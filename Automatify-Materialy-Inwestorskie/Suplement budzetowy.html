@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatify — Suplement do budżetu 2027–2035</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="automatify-docs.css">
+<style>
+:root{
+  --paper:#F8FAFD; --paper-2:#F0F4FA; --card:#FFFFFF;
+  --ink:#0E2244; --ink-2:#1A2540; --muted:#6B7A8F; --muted-2:#8898B5;
+  --rule:#D8E0EC; --rule-2:#E6ECF4;
+  --lime:#C4E847; --lime-2:#A4C932; --limon:#7CB518;
+  --teal:#1B7C99; --teal-2:#2EBED9; --teal-3:#0F5A73;
+  --sans:"Manrope",-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+svg{display:block;}
+a{color:var(--teal);}
+.container{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+.topbar{position:sticky;top:0;z-index:50;background:rgba(14,34,68,.92);backdrop-filter:saturate(150%) blur(12px);-webkit-backdrop-filter:saturate(150%) blur(12px);color:#fff;border-bottom:1px solid rgba(255,255,255,.1);}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;}
+.topbar .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:8px;}
+.topbar .back:hover{color:#fff;}
+.topbar .tt{font-size:12.5px;color:rgba(255,255,255,.55);letter-spacing:0.04em;}
+.topbar .actions{display:flex;gap:10px;}
+.tb-btn{font-family:var(--sans);font-weight:700;font-size:12.5px;padding:8px 16px;border-radius:8px;border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;}
+.tb-btn.p{background:var(--lime);color:var(--ink);}
+@media(max-width:640px){.topbar .tt{display:none;}}
+
+.hero{background:var(--ink);color:#fff;padding:clamp(48px,7vw,88px) 0;}
+.hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal-2);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
+.hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);}
+.hero h1{font-weight:800;font-size:clamp(32px,4.6vw,56px);line-height:1.04;letter-spacing:-0.025em;}
+.hero h1 em{font-style:normal;background:linear-gradient(95deg,#2EBED9,#C4E847);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:clamp(15px,1.5vw,18px);color:rgba(248,250,253,.7);max-width:72ch;margin-top:18px;line-height:1.6;}
+.hero p b{color:#fff;}
+.hero .meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:rgba(248,250,253,.6);}
+.hero .meta b{color:#fff;}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:18px;overflow:hidden;margin-top:-40px;position:relative;z-index:2;box-shadow:0 24px 50px -30px rgba(14,34,68,.5);}
+@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr;}}
+.kpi{background:var(--card);padding:26px 24px;}
+.kpi-v{font-weight:800;font-size:clamp(26px,3vw,34px);letter-spacing:-0.02em;background:linear-gradient(95deg,#1B7C99,#7CB518);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.kpi-l{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45;}
+
+.sec{padding:clamp(40px,5vw,64px) 0;border-top:1px solid var(--rule);}
+.sec:first-of-type{border-top:0;}
+.sec-h{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;}
+.sec-n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-weight:800;font-size:14px;margin-top:2px;}
+.sec-t{font-weight:800;font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.018em;line-height:1.16;}
+.sec-lead{font-size:15px;color:var(--muted);max-width:74ch;line-height:1.7;margin:2px 0 26px 48px;}
+@media(max-width:600px){.sec-lead{margin-left:0;}}
+.sub-h{font-weight:700;font-size:16px;color:var(--teal);margin:30px 0 14px;letter-spacing:-0.005em;}
+.sub-h.ro{color:var(--limon);}
+p.body{font-size:14.5px;color:var(--ink-2);line-height:1.75;max-width:76ch;margin-bottom:14px;}
+p.body b{color:var(--ink);}
+ul.pts{list-style:none;margin:6px 0 14px 0;}
+ul.pts li{font-size:14px;color:var(--ink-2);line-height:1.6;padding:7px 0 7px 26px;position:relative;border-top:1px solid var(--rule-2);}
+ul.pts li:first-child{border-top:0;}
+ul.pts li::before{content:"";position:absolute;left:4px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--teal-2);}
+ul.pts li b{color:var(--ink);}
+
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 6px;}
+.tbl thead th{text-align:right;font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);padding:10px 10px;border-bottom:2px solid var(--ink);white-space:normal;text-wrap:balance;}
+.tbl thead th:first-child{text-align:left;}
+.tbl tbody td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--rule-2);font-variant-numeric:tabular-nums;}
+.tbl tbody td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.tbl tbody tr:hover{background:var(--paper-2);}
+.tbl tr.hl{background:rgba(124,181,24,.10);}
+.tbl tr.hl td{font-weight:700;color:var(--ink);}
+.tbl td.neg{color:#C0392B;}
+.tbl td.pos{color:var(--limon);}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;padding:6px 18px;background:var(--card);}
+.tbl-cap{font-size:11.5px;color:var(--muted);line-height:1.55;margin:8px 2px 0;}
+
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:760px){.cards2{grid-template-columns:1fr;}}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 26px;}
+.card-h{font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);padding-bottom:13px;margin-bottom:4px;border-bottom:1px solid var(--rule);}
+.card-h.ro{color:var(--limon);}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:11px 0;border-top:1px solid var(--rule-2);font-size:13.5px;}
+.row:first-of-type{border-top:0;}
+.row .l{color:var(--muted);}
+.row .v{color:var(--ink);font-weight:700;text-align:right;white-space:nowrap;}
+
+.chart{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 26px;margin:8px 0;}
+.chart-t{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.legend{display:flex;gap:18px;font-size:12px;color:var(--muted);margin-bottom:10px;flex-wrap:wrap;}
+.legend span{display:inline-flex;align-items:center;gap:7px;}
+.legend i{width:12px;height:3px;border-radius:2px;display:inline-block;}
+
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px;}
+@media(max-width:760px){.maps{grid-template-columns:1fr;}}
+.mapcard{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:16px 18px;}
+.mapcard .mh{font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;}
+.mapcard img{width:100%;display:block;border-radius:8px;}
+
+.note{margin-top:18px;padding:16px 20px;background:var(--paper-2);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;font-size:13px;color:var(--muted);line-height:1.65;}
+.note b{color:var(--ink);}
+
+footer{background:var(--ink);color:rgba(255,255,255,.5);font-size:12px;padding:30px 0;text-align:center;margin-top:40px;}
+footer b{color:rgba(255,255,255,.8);}
+
+@media print{
+  .topbar{position:static;}
+  .sec{break-inside:avoid;}
+  .tbl-wrap,.chart,.card,.mapcard{break-inside:avoid;}
+}
+</style>
+</head>
+<body data-doc="suplement">
+
+<div class="topbar">
+  <div class="container">
+    <a class="back" href="Automatify Pitch.html#budzet">← Pitch deck · Budżet</a>
+    <span class="tt">Suplement do budżetu · model 2027–2035</span>
+    <div class="actions" style="display:flex;gap:12px;align-items:center;">
+      <span style="font-size:12px;font-weight:700;display:inline-flex;gap:7px;"><a href="Suplement budzetowy.html" style="color:var(--lime);text-decoration:none;">PL</a><a href="Suplement budzetowy (EN).html" style="color:rgba(255,255,255,.6);text-decoration:none;">EN</a></span>
+      <button class="tb-btn p" onclick="window.print()">Pobierz / Drukuj PDF</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>Dokument poufny · dla inwestorów</div>
+    <h1>Suplement <em>do budżetu</em><br>2027–2035</h1>
+    <p>Skonsolidowany model finansowy Automatify (Agentify + Robotify): rachunek wyników rok po roku, rozbicie na obie linie biznesowe, <b>struktura kosztów pierwszego roku działania każdego produktu</b>, ekspansja geograficzna oraz założenia modelu. <b>EBITDA-dodatnia od 2029</b>, marża EBITDA 72,4% w&nbsp;2035. Alokacja zysku Robotify od 2031: <b>40% R&amp;D / 60% zysk zatrzymany</b>.</p>
+    <div class="meta"><span>Model <b>skonsolidowany</b></span><span>Horyzont <b>2027–2035</b></span><span>Waluta <b>PLN</b></span><span>Wariant <b>bez ekspansji procesów</b></span><span>Stan na <b>2026-08-28</b></span></div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="kpis">
+    <div class="kpi"><div class="kpi-v">234,4</div><div class="kpi-l">Przychód hubu 2029 (mln PLN) · pierwszy rok EBITDA-dodatni</div></div>
+    <div class="kpi"><div class="kpi-v">39&nbsp;644</div><div class="kpi-l">Przychód hubu 2035 (mln PLN) · 39,6 mld</div></div>
+    <div class="kpi"><div class="kpi-v">28&nbsp;693</div><div class="kpi-l">EBITDA hubu 2035 (mln PLN) · marża 72,4%</div></div>
+    <div class="kpi"><div class="kpi-v">193–221</div><div class="kpi-l">Kapitał własny funduszu (mln PLN) · szczyt VIII&nbsp;2030</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 1 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">1</span><h2 class="sec-t">Model i przewaga</h2></div>
+    <p class="sec-lead">Dwa filary jednego hubu automatyzacji, rentowność od trzeciego roku i skala ogólnoeuropejska.</p>
+    <ul class="pts">
+      <li><b>Dwa filary.</b> <b>Agentify</b> — automatyzacja procesów w&nbsp;modelu <i>Pay-as-you-Save</i>: klient płaci abonament licencyjny, ratę wdrożenia i&nbsp;prowizję 10% od wypracowanej oszczędności. <b>Robotify</b> — serwis robotów fizycznych w&nbsp;abonamencie (<i>Robots-as-a-Service</i>), wchodzi rok po Agentify.</li>
+      <li><b>CAPEX robota ponosi klient.</b> Robotify nie kupuje maszyn na własny bilans i&nbsp;nie obiecuje klientowi zerowego nakładu — sprzedajemy serwis, nie sprzęt. Prognozy <b>nie zawierają</b> zwrotu z&nbsp;własnej floty; leasing bankowy floty pozostaje opcją w&nbsp;górę, nieuwzględnioną w&nbsp;liczbach.</li>
+      <li><b>Rentowność od 2029.</b> Hub jest EBITDA-dodatni od 2029 (<b>+104,4 mln zł</b>); marża EBITDA rośnie z&nbsp;44,5% (2029) do <b>72,4% (2035)</b>.</li>
+      <li><b>Skala ogólnoeuropejska.</b> Start w&nbsp;Polsce (2027), rollout Agentify do <b>34 krajów</b> do 2033; Robotify wchodzi na <b>32 rynki</b> do 2034, każdorazowo rok po Agentify.</li>
+      <li><b>Dźwignia operacyjna.</b> Koszty stałe to <b>94,5%</b> kosztów hubu w&nbsp;2027, <b>27,8%</b> w&nbsp;2029 i&nbsp;<b>2,0%</b> w&nbsp;2035 — baza kosztowa jest napędzana wolumenem, nie etatami centrali.</li>
+      <li><b>Alokacja zysku Robotify od 2031: 40% R&amp;D / 60% zysk zatrzymany.</b> Rezerwa CAPEX robotów została z&nbsp;modelu wycofana w&nbsp;całości.</li>
+      <li><b>Zapotrzebowanie na kapitał.</b> Kapitał własny funduszu <b>193,0 mln zł</b> (wariant A) albo <b>221,0 mln zł</b> (wariant B), szczyt w&nbsp;<b>VIII 2030</b>. Dno przepływów skumulowanych: <b>−2 071,8 mln zł</b> w&nbsp;XII&nbsp;2030 — od 2029 kapitał obrotowy przejmuje kredyt bankowy (6%).</li>
+    </ul>
+  </div>
+
+  <!-- 2 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">2</span><h2 class="sec-t">Wyniki skonsolidowane — Grupa</h2></div>
+    <p class="sec-lead">Agentify + Robotify łącznie. Dwa lata inwestycji (2027–2028), przełom rentowności w&nbsp;2029, skalowanie do 2035.</p>
+
+    <div class="chart">
+      <div class="chart-t">Przychód i EBITDA skonsolidowane (mln PLN)</div>
+      <div class="legend">
+        <span><i style="background:#A4C932;"></i>Przychód</span>
+        <span><i style="background:#1B7C99;"></i>EBITDA</span>
+      </div>
+      <svg viewBox="0 0 780 250" width="100%" role="img" aria-label="Przychód i EBITDA skonsolidowane">
+        <g stroke="#E6ECF4" stroke-width="1">
+          <line x1="52" y1="24" x2="772" y2="24"/><line x1="52" y1="89.3" x2="772" y2="89.3"/><line x1="52" y1="154.7" x2="772" y2="154.7"/><line x1="52" y1="220" x2="772" y2="220"/>
+        </g>
+        <g font-family="Manrope" font-size="10" fill="#8898B5">
+          <text x="46" y="27" text-anchor="end">45 mld</text><text x="46" y="92" text-anchor="end">30 mld</text><text x="46" y="158" text-anchor="end">15 mld</text><text x="46" y="223" text-anchor="end">0</text>
+        </g>
+        <defs><linearGradient id="rev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C4E847" stop-opacity="0.5"/><stop offset="1" stop-color="#C4E847" stop-opacity="0.04"/></linearGradient></defs>
+        <path d="M52 220.0 L196 219.9 L340 219.0 L484 212.7 L628 194.7 L772 47.3 L772 220 L52 220 Z" fill="url(#rev)"/>
+        <path d="M52 220.0 L196 219.9 L340 219.0 L484 212.7 L628 194.7 L772 47.3" fill="none" stroke="#A4C932" stroke-width="2.6"/>
+        <path d="M52 220.0 L196 220.1 L340 219.5 L484 215.4 L628 202.3 L772 95.0" fill="none" stroke="#1B7C99" stroke-width="2.2" stroke-dasharray="5 4"/>
+        <g fill="#5C7E1A"><circle cx="628" cy="194.7" r="3.5"/><circle cx="772" cy="47.3" r="4.5"/></g>
+        <g font-family="Manrope" font-size="10" fill="#6B7A8F" text-anchor="middle">
+          <text x="52" y="238">2027</text><text x="196" y="238">2028</text><text x="340" y="238">2029</text><text x="484" y="238">2030</text><text x="628" y="238">2031</text><text x="772" y="238">2035</text>
+        </g>
+      </svg>
+      <div class="note" style="margin-top:8px;">Lata 2032–2034 pominięte na osi dla czytelności (skok 2031&nbsp;→&nbsp;2035). Pełne wartości w&nbsp;tabeli poniżej.</div>
+    </div>
+
+    <div class="sub-h">Rachunek skonsolidowany rok po roku (mln PLN)</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pozycja</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th><th>2035</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>Przychód</td><td>0,7</td><td>18,9</td><td>234,4</td><td>1&nbsp;672,4</td><td>5&nbsp;813,7</td><td>39&nbsp;644,0</td></tr>
+          <tr class="hl"><td>EBITDA</td><td class="neg">−4,9</td><td class="neg">−16,7</td><td class="pos">104,4</td><td class="pos">1&nbsp;052,2</td><td class="pos">4&nbsp;070,8</td><td class="pos">28&nbsp;693,1</td></tr>
+          <tr><td>Marża EBITDA</td><td class="neg">−658,8%</td><td class="neg">−88,6%</td><td>44,5%</td><td>62,9%</td><td>70,0%</td><td>72,4%</td></tr>
+          <tr><td>Podatek CIT (19%)</td><td>0,0</td><td>0,0</td><td>19,8</td><td>199,9</td><td>716,8</td><td>4&nbsp;607,8</td></tr>
+          <tr><td>Zysk netto</td><td class="neg">−4,9</td><td class="neg">−16,7</td><td class="pos">84,6</td><td class="pos">852,3</td><td class="pos">3&nbsp;055,9</td><td class="pos">19&nbsp;643,8</td></tr>
+          <tr><td>Marża netto</td><td class="neg">−658,8%</td><td class="neg">−88,6%</td><td>36,1%</td><td>51,0%</td><td>52,6%</td><td>49,6%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">Hub = Agentify + Robotify, bez wiersza korekty: koszty centrali wspólnej są dzielone po połowie po obu stronach, więc suma jest prosta. EBITDA-dodatnia od 2029; pierwszy podatek CIT również w&nbsp;2029. 1&nbsp;000 mln PLN = 1 mld PLN.</p>
+  </div>
+
+  <!-- 3 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">3</span><h2 class="sec-t">Agentify — software (RPA + agenci AI)</h2></div>
+    <p class="sec-lead">Cyfrowa linia biznesowa w&nbsp;modelu Pay-as-you-Save. Silnik kohortowy per kraj, 34 rynki, wariant bez ekspansji procesów u&nbsp;istniejących klientów.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pozycja (mln PLN)</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th><th>2035</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>Przychód</td><td>0,7</td><td>18,3</td><td>213,5</td><td>1&nbsp;509,1</td><td>4&nbsp;818,6</td><td>25&nbsp;229,4</td></tr>
+          <tr class="hl"><td>EBITDA</td><td class="neg">−4,8</td><td class="neg">−12,9</td><td class="pos">102,0</td><td class="pos">949,7</td><td class="pos">3&nbsp;325,6</td><td class="pos">17&nbsp;589,3</td></tr>
+          <tr><td>Marża EBITDA</td><td class="neg">−638,7%</td><td class="neg">−70,4%</td><td>47,7%</td><td>62,9%</td><td>69,0%</td><td>69,7%</td></tr>
+          <tr><td>Podatek CIT (19%)</td><td>0,0</td><td>0,0</td><td>19,4</td><td>180,4</td><td>631,9</td><td>3&nbsp;342,0</td></tr>
+          <tr><td>Zysk netto</td><td class="neg">−4,8</td><td class="neg">−12,9</td><td class="pos">82,6</td><td class="pos">769,3</td><td class="pos">2&nbsp;693,8</td><td class="pos">14&nbsp;247,3</td></tr>
+          <tr><td>Klienci AKTYWNI Agentify (31.12)</td><td>3</td><td>57</td><td>598</td><td>3&nbsp;112</td><td>6&nbsp;376</td><td>31&nbsp;677</td></tr>
+          <tr><td>Procesy AKTYWNE Agentify (31.12)</td><td>17</td><td>299</td><td>3&nbsp;109</td><td>16&nbsp;183</td><td>33&nbsp;154</td><td>164&nbsp;721</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap"><b>Klient aktywny</b> = klient po churnie, z&nbsp;uruchomionym przychodem (dwa miesiące zwłoki od podpisu do pierwszej faktury). To jedyna obowiązująca definicja klienta w&nbsp;całym materiale. <b>Proces aktywny</b> to jednostka wolumenu Agentify — nie wolno jej sumować z&nbsp;maszynami Robotify. Klient ważony miksu 2-6-2 ma 5,2 procesu.</p>
+  </div>
+
+  <!-- 4 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">4</span><h2 class="sec-t">Robotify — roboty fizyczne (RaaS)</h2></div>
+    <p class="sec-lead">Linia fizyczna: klient kupuje robota, my serwisujemy go za abonament rozliczany od roboto-godzin. Wejście rok po Agentify, 32 rynki do 2034.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pozycja (mln PLN)</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th><th>2035</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>Przychód</td><td>0,0</td><td>0,5</td><td>20,9</td><td>163,2</td><td>995,1</td><td>14&nbsp;414,6</td></tr>
+          <tr class="hl"><td>EBITDA</td><td class="neg">−0,15</td><td class="neg">−3,8</td><td class="pos">2,5</td><td class="pos">102,4</td><td class="pos">745,2</td><td class="pos">11&nbsp;103,9</td></tr>
+          <tr><td>Marża EBITDA</td><td>—</td><td class="neg">−720,3%</td><td>11,8%</td><td>62,8%</td><td>74,9%</td><td>77,0%</td></tr>
+          <tr><td>R&amp;D humanoid (40% EBITDA, od 2031)</td><td>0,0</td><td>0,0</td><td>0,0</td><td>0,0</td><td>298,1</td><td>4&nbsp;441,5</td></tr>
+          <tr><td>Podatek CIT (19%)</td><td>0,0</td><td>0,0</td><td>0,5</td><td>19,5</td><td>84,9</td><td>1&nbsp;265,8</td></tr>
+          <tr><td>Zysk netto</td><td class="neg">−0,15</td><td class="neg">−3,8</td><td class="pos">2,0</td><td class="pos">83,0</td><td class="pos">362,1</td><td class="pos">5&nbsp;396,5</td></tr>
+          <tr><td>Klienci Robotify (31.12)</td><td>5</td><td>50</td><td>500</td><td>2&nbsp;500</td><td>8&nbsp;000</td><td>51&nbsp;035</td></tr>
+          <tr><td>Roboty fizyczne Robotify — flota (31.12)</td><td>13</td><td>197</td><td>2&nbsp;625</td><td>16&nbsp;408</td><td>58&nbsp;775</td><td>535&nbsp;919</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">Podstawa opodatkowania Robotify = EBITDA minus faktycznie wydane R&amp;D, stawka 19%. CAPEX maszyny ponosi klient, nie my. Flota robotów fizycznych to <b>inna wielkość niż procesy Agentify</b>; obu nie wolno sumować.</p>
+
+    <div class="note"><b>Zastrzeżenie — zasada cenowa Robotify.</b> <b>Nie sprzedajemy serwisu poniżej dwukrotności kosztu obsługi</b> w&nbsp;danym kraju. To świadoma polityka handlowa: wolimy nie podpisać kontraktu niż obsługiwać go poniżej progu opłacalności. W&nbsp;2029 rynek robotów jest jeszcze wczesny, floty są małe, a&nbsp;koszt gotowości serwisowej rozkłada się na niewiele maszyn — dlatego w&nbsp;Niemczech, Wielkiej Brytanii i&nbsp;Francji to właśnie ta zasada wyznacza <b>większość przychodu Robotify</b> i&nbsp;stoi za dodatnią EBITDA 2029. Efektywna cena wynosi tam 23–27 zł za roboto-godzinę wobec rynkowych 10–12 zł, więc jest to cena za dostępność serwisu, nie za wolumen. W&nbsp;kolejnych latach, gdy flota rośnie, cenę ustala rynek; w&nbsp;2027 i&nbsp;2028 zasada nie wiąże w&nbsp;żadnym kraju.</div>
+  </div>
+
+  <!-- 5 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">5</span><h2 class="sec-t">Struktura kosztów pierwszego roku działania</h2></div>
+    <p class="sec-lead">Pierwszy rok działania Agentify to 2027, Robotify — 2028 (w&nbsp;2027 Robotify nie ma jeszcze przychodu). Poniżej pełne rozbicie pozycja po pozycji, z&nbsp;podziałem na koszty zmienne i&nbsp;stałe oraz na koszty ludzi i&nbsp;pozostałe.</p>
+
+    <div class="note" style="margin-top:0;margin-bottom:22px;"><b>Co dzieli koszty na stałe i&nbsp;zmienne.</b> Pozycja jest <b>zmienna</b>, gdy rośnie razem ze sprzedażą — z&nbsp;liczbą procesów, nowych klientów, maszyn albo z&nbsp;przychodem. Jest <b>stała</b>, gdy wynika z&nbsp;samej obecności na rynku: kraj wchodzi z&nbsp;kompletnym zespołem i&nbsp;kompletem kosztów centrali, niezależnie od tego, ile w&nbsp;nim sprzedamy. Każdą pozycję sprawdziliśmy, przeskalowując plan sprzedaży o&nbsp;±50% i&nbsp;obserwując, czy koszt się poruszył. W&nbsp;2027 i&nbsp;2028 zespoły krajowe Agentify oraz serwis Robotify są jeszcze <b>kosztem stałym</b> — jedna osoba na rolę wystarcza na cały rynek — i&nbsp;zaczynają rosnąć wraz z&nbsp;wolumenem dopiero od 2029.</div>
+
+    <div class="sub-h">Agentify · 2027 — pierwszy rok działania (zł)</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pozycja</th><th>Co napędza koszt</th><th>Ludzie</th><th>Pozostałe</th><th>Razem 2027</th></tr></thead>
+        <tbody>
+          <tr><td>Licencja producenta</td><td>konsumpcja licencji × procesy</td><td>—</td><td>186&nbsp;345,45</td><td>186&nbsp;345,45</td></tr>
+          <tr><td>Maintenance partnera</td><td>procesy aktywne</td><td>—</td><td>68&nbsp;163,33</td><td>68&nbsp;163,33</td></tr>
+          <tr><td>Koszt pozyskania klienta (CAC)</td><td>nowi klienci</td><td>—</td><td>41&nbsp;150</td><td>41&nbsp;150</td></tr>
+          <tr><td>Overhead od przychodu (2,05%)</td><td>przychód</td><td>—</td><td>15&nbsp;307,60</td><td>15&nbsp;307,60</td></tr>
+          <tr class="hl"><td>KOSZTY ZMIENNE RAZEM</td><td>—</td><td>—</td><td>310&nbsp;966,38</td><td>310&nbsp;966,38</td></tr>
+          <tr><td>Role lokalne stałe — country manager, sprzedaż, marketing, operacje, administracja</td><td>liczba krajów (1)</td><td>1&nbsp;300&nbsp;000</td><td>—</td><td>1&nbsp;300&nbsp;000</td></tr>
+          <tr><td>Zespoły lokalne — delivery, customer success, ops</td><td>zespoły krajowe — pełna obsada od wejścia na rynek</td><td>800&nbsp;000</td><td>—</td><td>800&nbsp;000</td></tr>
+          <tr><td>Centrala — R&amp;D</td><td>poziom planowany</td><td>380&nbsp;000</td><td>—</td><td>380&nbsp;000</td></tr>
+          <tr><td>Centrala — zarząd</td><td>poziom wpisany</td><td>550&nbsp;000</td><td>—</td><td>550&nbsp;000</td></tr>
+          <tr><td>Centrala — administracja (G&amp;A)</td><td>poziom wpisany</td><td>680&nbsp;000</td><td>—</td><td>680&nbsp;000</td></tr>
+          <tr><td>Centrala — marketing i sprzedaż</td><td>poziom wpisany</td><td>760&nbsp;000</td><td>—</td><td>760&nbsp;000</td></tr>
+          <tr><td>Overhead stanowiska — etaty procesowe</td><td>etaty procesowe (3)</td><td>—</td><td>117&nbsp;000</td><td>117&nbsp;000</td></tr>
+          <tr><td>Overhead stanowiska — etaty krajowe i centrali</td><td>FTE stałe (12)</td><td>—</td><td>468&nbsp;000</td><td>468&nbsp;000</td></tr>
+          <tr><td>Overhead — baza usług profesjonalnych</td><td>stała</td><td>—</td><td>150&nbsp;000</td><td>150&nbsp;000</td></tr>
+          <tr class="hl"><td>KOSZTY STAŁE RAZEM</td><td>—</td><td>4&nbsp;470&nbsp;000</td><td>735&nbsp;000</td><td>5&nbsp;205&nbsp;000</td></tr>
+          <tr class="hl"><td>KOSZTY AGENTIFY 2027 RAZEM</td><td>—</td><td>4&nbsp;470&nbsp;000</td><td>1&nbsp;045&nbsp;966,38</td><td>5&nbsp;515&nbsp;966,38</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">Przychód Agentify 2027 = 746&nbsp;712,36 zł, koszty 5&nbsp;515&nbsp;966,38 zł, EBITDA −4&nbsp;769&nbsp;254,02 zł. Suma „ludzie" (4&nbsp;470&nbsp;000 zł) to <b>81,0% kosztów roku</b> i&nbsp;jest tożsama z&nbsp;podstawą, od której naliczany jest ESOP (10% płac = 447&nbsp;000 zł). ESOP jest kosztem niegotówkowym <b>poza EBITDA</b> i&nbsp;nie wchodzi do sum powyżej. <b>W&nbsp;pierwszym roku ponad dziewięć dziesiątych kosztów Agentify (94,4%) to koszty stałe</b> — zespół i&nbsp;centrala są gotowe, zanim pojawi się sprzedaż, więc rok 2027 kupuje zdolność operacyjną, a&nbsp;nie obsługę wolumenu; dźwignia operacyjna zaczyna działać od 2029, gdy koszty zespołów zaczynają rosnąć wraz z&nbsp;liczbą procesów.</p>
+
+    <div class="sub-h ro">Robotify · 2028 — pierwszy rok działania (zł)</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pozycja</th><th>Co napędza koszt</th><th>Ludzie</th><th>Pozostałe</th><th>Razem 2028</th></tr></thead>
+        <tbody>
+          <tr><td>Koszt serwisu — technicy, inżynierowie, logistyka</td><td>flota robotów</td><td>69&nbsp;496,82</td><td>—</td><td>69&nbsp;496,82</td></tr>
+          <tr><td>ESOP od płac serwisowych (niegotówkowy)</td><td>10% płac serwisowych</td><td>6&nbsp;949,68</td><td>—</td><td>6&nbsp;949,68</td></tr>
+          <tr><td>Koszt pozyskania klienta (CAC)</td><td>nowi klienci</td><td>—</td><td>18&nbsp;750</td><td>18&nbsp;750</td></tr>
+          <tr><td>Connectivity (łączność maszyn)</td><td>flota robotów</td><td>—</td><td>56&nbsp;115,09</td><td>56&nbsp;115,09</td></tr>
+          <tr><td>Overhead od przychodu (2,05%)</td><td>przychód</td><td>—</td><td>10&nbsp;819,43</td><td>10&nbsp;819,43</td></tr>
+          <tr class="hl"><td>KOSZTY ZMIENNE RAZEM</td><td>—</td><td>76&nbsp;446,50</td><td>85&nbsp;684,52</td><td>162&nbsp;131,02</td></tr>
+          <tr><td>Role lokalne stałe — country manager, dyrektorzy, administracja</td><td>liczba krajów (1)</td><td>60&nbsp;000</td><td>—</td><td>60&nbsp;000</td></tr>
+          <tr><td>Centrala — R&amp;D / platforma</td><td>poziom wpisany</td><td>560&nbsp;000</td><td>—</td><td>560&nbsp;000</td></tr>
+          <tr><td>Centrala — administracja (G&amp;A)</td><td>poziom wpisany</td><td>775&nbsp;000</td><td>—</td><td>775&nbsp;000</td></tr>
+          <tr><td>Centrala — marketing i sprzedaż</td><td>poziom wpisany</td><td>1&nbsp;025&nbsp;000</td><td>—</td><td>1&nbsp;025&nbsp;000</td></tr>
+          <tr><td>Zarząd (CEO / CFO / COO / CTO)</td><td>poziom wpisany</td><td>700&nbsp;000</td><td>—</td><td>700&nbsp;000</td></tr>
+          <tr><td>Overhead stanowiska — etaty serwisowe</td><td>etaty serwisowe (4)</td><td>—</td><td>156&nbsp;000</td><td>156&nbsp;000</td></tr>
+          <tr><td>Overhead stanowiska — etaty krajowe i centrali</td><td>FTE stałe (11)</td><td>—</td><td>429&nbsp;000</td><td>429&nbsp;000</td></tr>
+          <tr><td>Overhead — baza usług profesjonalnych</td><td>stała</td><td>—</td><td>150&nbsp;000</td><td>150&nbsp;000</td></tr>
+          <tr class="hl"><td>KOSZTY STAŁE RAZEM</td><td>—</td><td>3&nbsp;120&nbsp;000</td><td>735&nbsp;000</td><td>3&nbsp;855&nbsp;000</td></tr>
+          <tr class="hl"><td>KOSZTY ROBOTIFY 2028 RAZEM</td><td>—</td><td>3&nbsp;196&nbsp;446,50</td><td>820&nbsp;684,52</td><td>4&nbsp;017&nbsp;131,02</td></tr>
+          <tr><td>ESOP od płac stałych (niegotówkowy, poza sumami wyżej)</td><td>10% płac stałych</td><td>312&nbsp;000</td><td>—</td><td>312&nbsp;000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">Przychód Robotify 2028 = 527&nbsp;777,25 zł (wyłącznie Polska), koszty w&nbsp;rachunku 4&nbsp;329&nbsp;131,02 zł łącznie z&nbsp;ESOP, EBITDA −3&nbsp;801&nbsp;353,77 zł. Suma „ludzie" bez ESOP od płac stałych to 3&nbsp;196&nbsp;446,50 zł, czyli <b>79,6% kosztów roku</b>; z&nbsp;ESOP od płac stałych — 3&nbsp;508&nbsp;446,50 zł. <b>Konwencja ESOP:</b> po stronie Agentify ESOP stoi poza EBITDA, po stronie Robotify wchodzi do kosztów. Dlatego ESOP od płac stałych pokazujemy w&nbsp;osobnym wierszu pod sumami, a&nbsp;nie w&nbsp;nich.</p>
+
+    <div class="sub-h">Co z tego wynika — jedna liczba na produkt</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pierwszy rok działania</th><th>Koszty zmienne</th><th>Koszty stałe</th><th>Udział kosztów stałych</th><th>Koszty ludzi</th><th>Udział kosztów ludzi</th></tr></thead>
+        <tbody>
+          <tr><td>Agentify · 2027</td><td>310&nbsp;966,38</td><td>5&nbsp;205&nbsp;000</td><td>94,4%</td><td>4&nbsp;470&nbsp;000</td><td>81,0%</td></tr>
+          <tr><td>Robotify · 2028</td><td>162&nbsp;131,02</td><td>3&nbsp;855&nbsp;000</td><td>96,0%</td><td>3&nbsp;196&nbsp;446,50</td><td>79,6%</td></tr>
+          <tr class="hl"><td>Hub · 2027 (Agentify + baza Robotify)</td><td>310&nbsp;966,38</td><td>5&nbsp;355&nbsp;000</td><td>94,5%</td><td>4&nbsp;470&nbsp;000</td><td>78,9%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">W&nbsp;pierwszym roku każdego produktu <b>cztery piąte kosztów to ludzie</b>, a&nbsp;ponad dziewięć dziesiątych kosztów jest stałych — pierwszy rok kupuje zdolność operacyjną, nie obsługę wolumenu. Relacja odwraca się do 2029, gdy koszty stałe stanowią już tylko 27,8% kosztów hubu. Wiersz hubu 2027 zawiera 150&nbsp;000 zł bazy usług profesjonalnych Robotify — jedyną pozycję tej spółki przed startem sprzedaży.</p>
+
+    <div class="sub-h">Stanowiska i etaty — 2027 i 2028</div>
+    <p class="tbl-cap" style="margin:-4px 2px 16px;">Rozpisanie stanowisko po stanowisku — nazwy stanowisk, etaty, stawki i&nbsp;koszty, kraj po kraju, dla obu produktów i&nbsp;dla centrali — niesie osobny dokument: <b>Aneks kadrowy 2027–2028</b> (<i>Automatify Aneks Kadrowy.html</i>). Suplement zostaje na liczbach zbiorczych.</p>
+
+    <div class="sub-h">Etaty razem — produkt i hub</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Rok</th><th>Pozycja</th><th>Agentify</th><th>Robotify</th><th>Hub</th></tr></thead>
+        <tbody>
+          <tr><td>2027</td><td>Etaty (FTE)</td><td>15</td><td>0</td><td>15</td></tr>
+          <tr class="hl"><td>2027</td><td>Koszt ludzi (zł)</td><td>4&nbsp;470&nbsp;000</td><td>0</td><td>4&nbsp;470&nbsp;000</td></tr>
+          <tr><td>2028</td><td>Etaty (FTE)</td><td>43</td><td>15</td><td>36 lokalnie + 21 centrali</td></tr>
+          <tr class="hl"><td>2028</td><td>Koszt ludzi (zł)</td><td>23&nbsp;172&nbsp;366,67</td><td>3&nbsp;189&nbsp;496,82</td><td>26&nbsp;361&nbsp;863,48</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap"><b>Konwencja przyjęta w&nbsp;tym wierszu:</b> „koszt ludzi” to <b>płace bez programu pracowniczego (ESOP) — po obu stronach jednakowo</b>, żeby obie kolumny mierzyły to samo. Koszt ludzi osobno: Agentify 4&nbsp;470&nbsp;000&nbsp;zł (2027) i&nbsp;23&nbsp;172&nbsp;366,67&nbsp;zł (2028); Robotify 0&nbsp;zł (2027) i&nbsp;3&nbsp;189&nbsp;496,82&nbsp;zł (2028) — dokładnie te same wartości, które rozpisuje stanowisko po stanowisku aneks kadrowy. Wiersz hubu 2028 jest ich sumą: <b>26&nbsp;361&nbsp;863,48&nbsp;zł</b>. Program pracowniczy stoi <b>poza</b> tą sumą po obu stronach: Agentify 2&nbsp;317&nbsp;236,67&nbsp;zł, Robotify 6&nbsp;949,68&nbsp;zł od płac serwisowych i&nbsp;312&nbsp;000&nbsp;zł od płac stałych (razem 318&nbsp;949,68&nbsp;zł). <b>Etaty hubu 2028.</b> Admin w&nbsp;Polsce pracuje po połowie etatu dla każdego filaru i&nbsp;jest wykazany po obu stronach, dlatego obsada lokalna hubu w&nbsp;2028 liczy <b>36 osób</b> — 32 Agentify plus 5 Robotify, przy jednej osobie wspólnej. Koszt tego stanowiska dzieli się po połowie i&nbsp;sumuje do jednej pełnej pensji, 120&nbsp;000&nbsp;zł.</p>
+
+  </div>
+
+  <!-- 6 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">6</span><h2 class="sec-t">Ekspansja geograficzna — rok po roku</h2></div>
+    <p class="sec-lead">Start w&nbsp;Polsce. Agentify wchodzi na 34 rynki do 2033, Robotify na 32 rynki do 2034 — na każdy z&nbsp;nich rok po Agentify.</p>
+
+    <div class="cards2">
+      <div class="card">
+        <div class="card-h">Agentify · kolejność wejść</div>
+        <div class="row"><span class="l">2027</span><span class="v">Polska <small style="color:var(--muted);font-weight:600;">(1)</small></span></div>
+        <div class="row"><span class="l">2028</span><span class="v">DE, GB, FR <small style="color:var(--muted);font-weight:600;">(3)</small></span></div>
+        <div class="row"><span class="l">2029</span><span class="v">IT, ES, NL <small style="color:var(--muted);font-weight:600;">(3)</small></span></div>
+        <div class="row"><span class="l">2030</span><span class="v">SE, CZ, RO, BE, AT <small style="color:var(--muted);font-weight:600;">(5)</small></span></div>
+        <div class="row"><span class="l">2031</span><span class="v">CH, PT, DK, HU, FI <small style="color:var(--muted);font-weight:600;">(5)</small></span></div>
+        <div class="row"><span class="l">2032</span><span class="v">+8 krajów</span></div>
+        <div class="row"><span class="l">2033</span><span class="v">+9 krajów · razem 34</span></div>
+      </div>
+      <div class="card">
+        <div class="card-h ro">Robotify · rok po Agentify</div>
+        <div class="row"><span class="l">2028</span><span class="v">Polska <small style="color:var(--muted);font-weight:600;">(1)</small></span></div>
+        <div class="row"><span class="l">2029</span><span class="v">DE, GB, FR <small style="color:var(--muted);font-weight:600;">(3)</small></span></div>
+        <div class="row"><span class="l">2030</span><span class="v">IT, ES, NL <small style="color:var(--muted);font-weight:600;">(3)</small></span></div>
+        <div class="row"><span class="l">2031</span><span class="v">SE, CZ, RO, BE, AT <small style="color:var(--muted);font-weight:600;">(5)</small></span></div>
+        <div class="row"><span class="l">2032</span><span class="v">CH, PT, DK, HU, FI <small style="color:var(--muted);font-weight:600;">(5)</small></span></div>
+        <div class="row"><span class="l">2033</span><span class="v">+6 krajów</span></div>
+        <div class="row"><span class="l">2034</span><span class="v">+9 krajów · razem 32</span></div>
+      </div>
+    </div>
+
+    <div class="sub-h">Mapy wejść na rynki (kolor = rok wejścia)</div>
+    <div class="maps">
+      <div class="mapcard">
+        <div class="mh" style="color:var(--teal);">Agentify</div>
+        <img src="maps/agentify-expansion.svg" alt="Mapa ekspansji Agentify">
+      </div>
+      <div class="mapcard">
+        <div class="mh" style="color:var(--limon);">Robotify</div>
+        <img src="maps/robotify-expansion.svg" alt="Mapa ekspansji Robotify">
+      </div>
+    </div>
+    <p class="tbl-cap">Agentify wchodzi do <b>34 krajów</b>, Robotify do <b>32</b>. Robotify nie wchodzi do Turcji i&nbsp;Serbii, obecnych po stronie Agentify.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">7</span><h2 class="sec-t">Założenia modelu</h2></div>
+    <p class="sec-lead">Kluczowe parametry stojące za projekcją. Wszystkie są parametrami sterującymi projekcji, nie opisem — zmiana parametru przelicza cały wynik.</p>
+    <div class="cards2">
+      <div class="card">
+        <div class="card-h">Agentify · software</div>
+        <div class="row"><span class="l">Model przychodu</span><span class="v">licencja + rata wdrożenia + 10% oszczędności</span></div>
+        <div class="row"><span class="l">Wartość godziny pracy (Polska)</span><span class="v">60 zł × mnożnik kraju</span></div>
+        <div class="row"><span class="l">Waloryzacja przychodów i kosztów</span><span class="v">0% / rok</span></div>
+        <div class="row"><span class="l">Wdrożenie — cena / nasz koszt</span><span class="v">60&nbsp;000 / 55&nbsp;000 zł na PROCES</span></div>
+        <div class="row"><span class="l">Okres spłaty wdrożenia</span><span class="v">4 lata</span></div>
+        <div class="row"><span class="l">Churn roczny</span><span class="v">5%</span></div>
+        <div class="row"><span class="l">Procesy / klient ważony (miks 2-6-2)</span><span class="v">5,2</span></div>
+        <div class="row"><span class="l">Ekspansja procesów u istniejących</span><span class="v">WYŁĄCZONA</span></div>
+      </div>
+      <div class="card">
+        <div class="card-h ro">Robotify · roboty fizyczne</div>
+        <div class="row"><span class="l">Model przychodu</span><span class="v">abonament serwisowy od roboto-godzin</span></div>
+        <div class="row"><span class="l">CAPEX robota</span><span class="v">ponosi klient</span></div>
+        <div class="row"><span class="l">Godzin / robot / rok</span><span class="v">7&nbsp;000</span></div>
+        <div class="row"><span class="l">Stawka serwisowa (Polska)</span><span class="v">4,07 zł / robot-h</span></div>
+        <div class="row"><span class="l">Spadek stawki</span><span class="v">−5% / rok</span></div>
+        <div class="row"><span class="l">Churn roczny</span><span class="v">5%</span></div>
+        <div class="row"><span class="l">FTE na 1 robota</span><span class="v">3,5</span></div>
+        <div class="row"><span class="l">Alokacja zysku od 2031</span><span class="v">40% R&amp;D / 60% zysk zatrzymany</span></div>
+      </div>
+    </div>
+    <div class="note"><b>Grupa.</b> Wariant obowiązujący: <b>bez ekspansji procesów</b> u&nbsp;istniejących klientów. Koszty centrali wspólnej dzielone <b>50/50</b> między filary od 2028, więc hub liczy je raz. Podatek CIT 19% po obu stronach, podstawa = EBITDA minus faktycznie wydane R&amp;D; podatek jest wpięty w&nbsp;rachunek przepływów i&nbsp;płacony zaliczkami miesięcznymi. CAPEX maszyny ponosi klient; projekcje <b>nie zawierają</b> zwrotu z&nbsp;własnej floty robotów — własna flota pozostaje opcją w&nbsp;górę ponad podane liczby.</div>
+  </div>
+
+  <!-- 8 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">8</span><h2 class="sec-t">Architektura grupy — jak łączą się filary</h2></div>
+    <p class="sec-lead">Automatify to spółka-matka z&nbsp;dwoma filarami. Poziom grupy = prosta suma obu, bez wiersza korekty: koszt osoby pracującej dla obu produktów jest z&nbsp;góry dzielony po połowie.</p>
+    <div class="cards2">
+      <div class="card">
+        <div class="card-h">Centrala wspólna vs osobna</div>
+        <div class="row"><span class="l">Role wspólne z Robotify</span><span class="v">dzielone 0,5 / 0,5 od 2028</span></div>
+        <div class="row"><span class="l">Marketing &amp; sprzedaż, G&amp;A</span><span class="v">wspólne · po połowie</span></div>
+        <div class="row"><span class="l">R&amp;D</span><span class="v">osobne per filar</span></div>
+        <div class="row"><span class="l">Zarząd</span><span class="v">osobny per filar</span></div>
+        <div class="row"><span class="l">Wejście Robotify</span><span class="v">1 rok po Agentify</span></div>
+      </div>
+      <div class="card">
+        <div class="card-h">Alokacja zysku 40 / 60 + CIT</div>
+        <div class="row"><span class="l">R&amp;D humanoid (Robotify, od 2031)</span><span class="v">40% EBITDA</span></div>
+        <div class="row"><span class="l">Zysk zatrzymany</span><span class="v">60% EBITDA</span></div>
+        <div class="row"><span class="l">Rezerwa CAPEX robotów</span><span class="v">WYCOFANA</span></div>
+        <div class="row"><span class="l">Podstawa opodatkowania</span><span class="v">EBITDA − wydane R&amp;D</span></div>
+        <div class="row"><span class="l">CIT · pierwszy rok podatku</span><span class="v">19% · 2029 po obu stronach</span></div>
+      </div>
+    </div>
+
+    <div class="note"><b>Zastrzeżenie — założenie podatkowe.</b> Projekcje zakładają stawkę <b>19%</b> i&nbsp;odliczenie wydatków na badania od podstawy opodatkowania; potwierdzenie u&nbsp;doradcy podatkowego jest w&nbsp;toku.</div>
+  </div>
+
+  <!-- 9 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">9</span><h2 class="sec-t">Skonsolidowany P&amp;L — wiersz po wierszu</h2></div>
+    <p class="sec-lead">Od przychodu do zysku netto, wartości RAZEM (Agentify + Robotify), mln PLN. Podział kosztów na zmienne i&nbsp;stałe według tego samego kryterium, co w&nbsp;sekcji 5.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pozycja (mln PLN) — RAZEM</th><th>2027</th><th>2029</th><th>2031</th><th>2035</th></tr></thead>
+        <tbody>
+          <tr><td>Przychód</td><td>0,7</td><td>234,4</td><td>5&nbsp;813,7</td><td>39&nbsp;644,0</td></tr>
+          <tr><td>− Koszty zmienne</td><td>0,3</td><td>93,0</td><td>1&nbsp;655,5</td><td>10&nbsp;726,8</td></tr>
+          <tr><td>= Marża po kosztach zmiennych</td><td>0,4</td><td>141,4</td><td>4&nbsp;158,2</td><td>28&nbsp;917,2</td></tr>
+          <tr><td>− Koszty stałe</td><td>5,4</td><td>35,8</td><td>84,5</td><td>215,0</td></tr>
+          <tr><td>− ESOP Robotify (niegotówkowy)</td><td>0,0</td><td>1,2</td><td>2,9</td><td>9,0</td></tr>
+          <tr class="hl"><td>= EBITDA</td><td class="neg">−4,9</td><td class="pos">104,4</td><td class="pos">4&nbsp;070,8</td><td class="pos">28&nbsp;693,1</td></tr>
+          <tr><td>− R&amp;D humanoid Robotify (40% jego EBITDA, od 2031)</td><td>0,0</td><td>0,0</td><td>−298,1</td><td>−4&nbsp;441,5</td></tr>
+          <tr><td>= Zysk przed podatkiem</td><td class="neg">−4,9</td><td>104,4</td><td>3&nbsp;772,7</td><td>24&nbsp;251,6</td></tr>
+          <tr><td>− CIT 19%</td><td>0,0</td><td>−19,8</td><td>−716,8</td><td>−4&nbsp;607,8</td></tr>
+          <tr class="hl"><td>= Zysk netto</td><td class="neg">−4,9</td><td class="pos">84,6</td><td class="pos">3&nbsp;055,9</td><td class="pos">19&nbsp;643,8</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">Wiersz ESOP stoi osobno, bo oba filary traktują go inaczej: po stronie Agentify ESOP jest poza EBITDA (2029: 3,7 mln zł; 2035: 28,8 mln zł i&nbsp;nie ma go w&nbsp;żadnym wierszu wyżej), po stronie Robotify wchodzi do kosztów. Ujednolicenie tej konwencji planujemy przy zamknięciu konsolidacji grupy.</p>
+
+    <div class="sub-h">Rozbicie na filary — kto wnosi ile (mln PLN)</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>mln PLN</th><th>AGF 2029</th><th>RBF 2029</th><th>RAZEM 2029</th><th>AGF 2035</th><th>RBF 2035</th><th>RAZEM 2035</th></tr></thead>
+        <tbody>
+          <tr><td>Przychód</td><td>213,5</td><td>20,9</td><td>234,4</td><td>25&nbsp;229,4</td><td>14&nbsp;414,6</td><td>39&nbsp;644,0</td></tr>
+          <tr><td>EBITDA</td><td>102,0</td><td>2,5</td><td>104,4</td><td>17&nbsp;589,3</td><td>11&nbsp;103,9</td><td>28&nbsp;693,1</td></tr>
+          <tr class="hl"><td>Zysk netto</td><td>82,6</td><td>2,0</td><td>84,6</td><td>14&nbsp;247,3</td><td>5&nbsp;396,5</td><td>19&nbsp;643,8</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">Agentify jest motorem skali i&nbsp;marży w&nbsp;całym oknie; Robotify dokłada się realnie od 2030 i&nbsp;przyspiesza po 2031, gdy flota przekracza 58 tys. maszyn. Wkład Robotify w&nbsp;EBITDA hubu 2029 (2,5 mln zł) wynika z&nbsp;zasady cenowej opisanej w&nbsp;sekcji 4. AGF = Agentify, RBF = Robotify.</p>
+  </div>
+
+  <!-- 10 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">10</span><h2 class="sec-t">Próg przetrwania — koszty przy zerowej sprzedaży</h2></div>
+    <p class="sec-lead">Koszty, które nie zależą od wolumenu sprzedaży — role lokalne stałe, centrala, overhead stanowiskowy. To kwota, którą grupa finansuje nawet przy zerowym przychodzie.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>mln PLN</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>Koszty stałe hubu (próg przetrwania)</td><td>5,4</td><td>28,7</td><td>35,8</td><td>58,4</td><td>84,5</td></tr>
+          <tr><td>Koszty zmienne hubu (dla porównania)</td><td>0,3</td><td>6,6</td><td>93,0</td><td>559,9</td><td>1&nbsp;655,5</td></tr>
+          <tr><td>Udział kosztów stałych</td><td>94,5%</td><td>81,3%</td><td>27,8%</td><td>9,4%</td><td>4,9%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">Sprawdziliśmy tę klasyfikację, przeskalowując plan sprzedaży o&nbsp;±50%: żadna z&nbsp;pozycji zaliczonych do stałych w&nbsp;latach 2027–2029 się nie poruszyła; od 2030 jedynym wyjątkiem są etaty kierownicze zespołów operacyjnych (Team Lead Agentify, Service Lead Robotify), liczone od wielkości zespołu — 1,9% bloku stałego w&nbsp;2030 i&nbsp;w&nbsp;2031. Kwoty nie zawierają ESOP (niegotówkowy). Wzrost progu 2027&nbsp;→&nbsp;2031 wynika z&nbsp;rolloutu — każdy nowy kraj dokłada stały zespół zarządczy, niezależnie od sprzedaży w&nbsp;tym kraju.</p>
+  </div>
+
+  <!-- 11 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">11</span><h2 class="sec-t">Agentify — szczegóły modelu</h2></div>
+    <p class="sec-lead">Silnik kohortowy per kraj (34 rynki), liczony na siatce miesięcznej 2026-01…2045-12. Model buduje przychód z&nbsp;podpisów, procesów, cen i&nbsp;churnu — nie z&nbsp;ekstrapolacji.</p>
+
+    <div class="sub-h">Drabina wolumenu — od podpisu do procesu</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Etap</th><th>Wartość</th><th>Opis</th></tr></thead>
+        <tbody>
+          <tr><td>Podpisy 2027–2035</td><td>38&nbsp;726</td><td>umowy zawarte łącznie, przed churnem (plan wolumenowy per kraj)</td></tr>
+          <tr class="hl"><td>Klienci AKTYWNI 31.12.2035</td><td>31&nbsp;677</td><td>po churnie 5%/rok i po dwumiesięcznej zwłoce do pierwszej faktury</td></tr>
+          <tr><td>Procesy AKTYWNE 31.12.2035</td><td>164&nbsp;721</td><td>klient ważony = 5,2 procesu; jednostka wolumenu Agentify</td></tr>
+          <tr><td>Zautomatyzowane etaty 31.12.2035</td><td>~773 tys.</td><td>4,69 etatu na proces — to skala oszczędności po stronie klientów</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">Model Agentify nie zawiera warstwy TAM/SAM — startuje od planu podpisów per kraj, a&nbsp;nie od udziału w&nbsp;rynku. Lejek rynkowy jest policzony po stronie Robotify (sekcja 12).</p>
+
+    <div class="cards2" style="margin-top:14px;">
+      <div class="card">
+        <div class="card-h">Parametry jednostkowe</div>
+        <div class="row"><span class="l">Miks klientów 2-6-2</span><span class="v">1 / 5 / 10 procesów</span></div>
+        <div class="row"><span class="l">Automatyzowalność (pes./real./opt.)</span><span class="v">50% / 70% / 90%</span></div>
+        <div class="row"><span class="l">Wartość godziny pracy (PL)</span><span class="v">60 zł</span></div>
+        <div class="row"><span class="l">Wdrożenie / proces</span><span class="v">60&nbsp;000 zł</span></div>
+        <div class="row"><span class="l">Licencja producenta — nominał</span><span class="v">43&nbsp;000 zł / rok</span></div>
+        <div class="row"><span class="l">Maintenance</span><span class="v">20% wdrożenia</span></div>
+        <div class="row"><span class="l">Prowizja od oszczędności</span><span class="v">10%</span></div>
+        <div class="row"><span class="l">Zaut. etaty / klient ważony</span><span class="v">24,4</span></div>
+      </div>
+      <div class="card">
+        <div class="card-h">Wolumen i koszty</div>
+        <div class="row"><span class="l">Procesy aktywne (2027/31/35)</span><span class="v">17 → 33&nbsp;154 → 164&nbsp;721</span></div>
+        <div class="row"><span class="l">Koszty zmienne (2027/31/35)</span><span class="v">0,3 → 1&nbsp;440,7 → 7&nbsp;525,3 mln</span></div>
+        <div class="row"><span class="l">Koszty stałe (2027/31/35)</span><span class="v">5,2 → 52,3 → 114,8 mln</span></div>
+        <div class="row"><span class="l">Koszty lokalne 2035</span><span class="v">250,1 mln</span></div>
+        <div class="row"><span class="l">CAC — koszt pozyskania 2035</span><span class="v">81,9 mln</span></div>
+        <div class="row"><span class="l">Overhead 2035</span><span class="v">534,8 mln</span></div>
+        <div class="row"><span class="l">FTE łącznie (2027/31/35)</span><span class="v">15 → 229 → 611</span></div>
+        <div class="row"><span class="l">ESOP 2035 (poza EBITDA)</span><span class="v">28,8 mln</span></div>
+      </div>
+    </div>
+
+    <div class="sub-h">Największe rynki Agentify — podpisy narastająco</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Kraj</th><th>Rok wejścia</th><th>Mnożnik płac vs PL</th><th>Podpisy 2027–2035</th></tr></thead>
+        <tbody>
+          <tr><td>Niemcy</td><td>2028</td><td>3,03</td><td>9&nbsp;385</td></tr>
+          <tr><td>Wlk. Brytania</td><td>2028</td><td>2,60</td><td>5&nbsp;757</td></tr>
+          <tr><td>Francja</td><td>2028</td><td>3,00</td><td>4&nbsp;710</td></tr>
+          <tr><td>Polska</td><td>2027</td><td>1,00</td><td>3&nbsp;811</td></tr>
+          <tr><td>Włochy</td><td>2029</td><td>2,17</td><td>3&nbsp;090</td></tr>
+          <tr><td>Hiszpania</td><td>2029</td><td>1,78</td><td>2&nbsp;596</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">Podpisy to umowy zawarte, przed churnem — nie liczba klientów aktywnych. Mnożnik płac kraju napędza jednocześnie koszty lokalne i&nbsp;wartość oszczędności klienta, więc rynki drogie są jednocześnie droższe w&nbsp;obsłudze i&nbsp;bardziej dochodowe.</p>
+  </div>
+
+  <!-- 12 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">12</span><h2 class="sec-t">Robotify — szczegóły modelu (RaaS)</h2></div>
+    <p class="sec-lead">Roboty fizyczne jako usługa. Klient płaci CAPEX maszyny, my serwisujemy ją za abonament rozliczany od roboto-godzin. Silnik liczy 32 kraje osobno.</p>
+
+    <div class="sub-h ro">Lejek rynku — MŚP w Europie</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Etap</th><th>Wartość</th><th>Opis</th></tr></thead>
+        <tbody>
+          <tr><td>TAM</td><td>104,0 mln</td><td>pracowników fizycznych w&nbsp;całej gospodarce Europy (154,1 mln zatrudnionych × intensywność pracy fizycznej)</td></tr>
+          <tr><td>SAM</td><td>282&nbsp;530</td><td>firm MŚP 50–249 osób; 19,4 mln pracowników fizycznych</td></tr>
+          <tr class="hl"><td>SOM 2035</td><td>51&nbsp;035</td><td>klientów Robotify = 18,1% firm MŚP (sufit 20%, osiągany w&nbsp;2037)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-h">Jednostkowa ekonomika serwisu — test 1&nbsp;000 robotów</div>
+    <div class="cards2">
+      <div class="card">
+        <div class="card-h ro">Przychód i koszt / 1 000 robotów</div>
+        <div class="row"><span class="l">Stawka serwisowa (test CE)</span><span class="v">5 PLN / robot-h</span></div>
+        <div class="row"><span class="l">Roboto-godziny / rok</span><span class="v">7&nbsp;000 / robot</span></div>
+        <div class="row"><span class="l">Przychód / 1 000</span><span class="v">35,0 mln PLN</span></div>
+        <div class="row"><span class="l">Obsada</span><span class="v">26,4 FTE / 1 000</span></div>
+        <div class="row"><span class="l">Koszt obsady (CE)</span><span class="v">3,6 mln (10,2%)</span></div>
+      </div>
+      <div class="card">
+        <div class="card-h ro">Marża i flota</div>
+        <div class="row"><span class="l">Marża brutto (CE)</span><span class="v">89,8%</span></div>
+        <div class="row"><span class="l">Marża brutto (blend EU)</span><span class="v">85,4%</span></div>
+        <div class="row"><span class="l">Roboty / klient (2027 → 2035)</span><span class="v">2,63 → 10,50</span></div>
+        <div class="row"><span class="l">Flota robotów fizycznych 2035</span><span class="v">535&nbsp;919</span></div>
+        <div class="row"><span class="l">Przychód / robota 2035</span><span class="v">26,9 tys. PLN</span></div>
+      </div>
+    </div>
+    <p class="tbl-cap">Test 1&nbsp;000 robotów liczy się na stawce 5 zł/robot-h dla Europy Środkowej. W&nbsp;pełnym modelu stawka jest ustawiana per kraj (Polska 4,07 zł, Niemcy 12,36 zł, Szwajcaria — najwyżej) i&nbsp;spada o&nbsp;5% rocznie. Marża w&nbsp;teście to marża <b>przed</b> connectivity, platformą, G&amp;A, marketingiem i&nbsp;CAC.</p>
+
+    <div class="sub-h ro">Kontrybucja per kraj 2035 (mln PLN)</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Kraj</th><th>Przychód 2035</th><th>Kontrybucja 2035</th></tr></thead>
+        <tbody>
+          <tr><td>Niemcy</td><td>3&nbsp;537,7</td><td>2&nbsp;892,9</td></tr>
+          <tr><td>Francja</td><td>1&nbsp;832,7</td><td>1&nbsp;497,8</td></tr>
+          <tr><td>Włochy</td><td>1&nbsp;150,4</td><td>949,3</td></tr>
+          <tr><td>Holandia</td><td>952,2</td><td>785,6</td></tr>
+          <tr><td>Hiszpania</td><td>807,1</td><td>665,5</td></tr>
+          <tr><td>Polska</td><td>415,0</td><td>334,4</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-h ro">Alokacja zysku Robotify (od 2031, mln PLN)</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pozycja</th><th>2031</th><th>2035</th><th>Skumul. 2031–2035</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>EBITDA</td><td>745,2</td><td>11&nbsp;103,9</td><td>26&nbsp;519,8</td></tr>
+          <tr><td>R&amp;D humanoid (40%)</td><td>298,1</td><td>4&nbsp;441,5</td><td>10&nbsp;607,9</td></tr>
+          <tr><td>Zysk zatrzymany (60%) = podstawa opodatkowania</td><td>447,1</td><td>6&nbsp;662,3</td><td>15&nbsp;911,9</td></tr>
+          <tr><td>Podatek CIT (19%)</td><td>84,9</td><td>1&nbsp;265,8</td><td>3&nbsp;023,3</td></tr>
+          <tr class="hl"><td>Zysk netto</td><td>362,1</td><td>5&nbsp;396,5</td><td>12&nbsp;888,6</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap">Rezerwa CAPEX robotów została wycofana z&nbsp;modelu w&nbsp;całości: CAPEX maszyny ponosi klient, więc nie było zakupu, który rezerwa miałaby finansować. Odłożenie gotówki nie jest kosztem uzyskania przychodu — nakład na badania i&nbsp;rozwój jest. Koszt pracy (PLN/h) w&nbsp;modelu: Polska 58 (referencja), Niemcy 176, Francja 174, Szwajcaria 224; najniżej Bułgaria 40 i&nbsp;Rumunia 47.</p>
+  </div>
+
+  <!-- 13 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">13</span><h2 class="sec-t">Słownik pojęć</h2></div>
+    <p class="sec-lead">Kluczowe pojęcia używane w&nbsp;modelu budżetowym. Każda liczba jednostkowa w&nbsp;materiale ma dwie etykiety: <b>czego</b> dotyczy i&nbsp;<b>czyja</b> jest.</p>
+    <div class="cards2">
+      <div class="card">
+        <div class="row"><span class="l" style="min-width:0;font-weight:700;color:var(--ink);">Klient AKTYWNY</span></div>
+        <div class="row" style="border-top:0;padding-top:0;"><span class="l">Klient po churnie, z&nbsp;uruchomionym przychodem. Jedyna obowiązująca definicja klienta. Nie mylić z&nbsp;liczbą podpisów narastająco ani z&nbsp;nośnikiem kosztowym, który startuje wcześniej — od podpisu umowy, nie od pierwszej faktury.</span></div>
+        <div class="row"><span class="l" style="min-width:0;font-weight:700;color:var(--ink);">Proces aktywny · robot fizyczny</span></div>
+        <div class="row" style="border-top:0;padding-top:0;"><span class="l">Proces aktywny = jednostka wolumenu Agentify (software). Robot fizyczny = maszyna we flocie Robotify. To dwie różne rzeczy i&nbsp;<b>nie wolno ich sumować</b>, mimo zbliżonych rzędów wielkości.</span></div>
+        <div class="row"><span class="l" style="min-width:0;font-weight:700;color:var(--ink);">Koszty zmienne vs stałe</span></div>
+        <div class="row" style="border-top:0;padding-top:0;"><span class="l">Zmienne rosną z&nbsp;wolumenem (procesy, klienci, flota, przychód); stałe wynikają z&nbsp;samej obecności na rynku — z&nbsp;liczby krajów albo z&nbsp;planowanego poziomu. Klasyfikację sprawdzamy, przeskalowując plan sprzedaży o&nbsp;±50%.</span></div>
+        <div class="row"><span class="l" style="min-width:0;font-weight:700;color:var(--ink);">EBITDA · próg przetrwania</span></div>
+        <div class="row" style="border-top:0;padding-top:0;"><span class="l">Zysk operacyjny przed amortyzacją, odsetkami i&nbsp;podatkiem. Próg przetrwania = koszty stałe, czyli to, co grupa płaci przy zerowej sprzedaży.</span></div>
+      </div>
+      <div class="card">
+        <div class="row"><span class="l" style="min-width:0;font-weight:700;color:var(--ink);">Pay-as-you-Save / RaaS</span></div>
+        <div class="row" style="border-top:0;padding-top:0;"><span class="l">Agentify: klient płaci z&nbsp;oszczędności — licencja, rata wdrożenia i&nbsp;prowizja 10% od oszczędności netto. Robotify: <b>klient kupuje robota</b>, my sprzedajemy serwis w&nbsp;abonamencie rozliczanym od roboto-godzin.</span></div>
+        <div class="row"><span class="l" style="min-width:0;font-weight:700;color:var(--ink);">Zasada cenowa Robotify</span></div>
+        <div class="row" style="border-top:0;padding-top:0;"><span class="l">Nie sprzedajemy serwisu poniżej dwukrotności kosztu obsługi kraju. W&nbsp;2029 ta zasada wyznacza większość przychodu Robotify — patrz zastrzeżenie w&nbsp;sekcji 4.</span></div>
+        <div class="row"><span class="l" style="min-width:0;font-weight:700;color:var(--ink);">Mnożnik kosztu pracy kraju</span></div>
+        <div class="row" style="border-top:0;padding-top:0;"><span class="l">Koszt pracy w&nbsp;kraju vs Polska (PL = 1,00; DE = 3,03). Napędza jednocześnie koszty lokalne, stawkę serwisową Robotify i&nbsp;wartość oszczędności klienta Agentify.</span></div>
+        <div class="row"><span class="l" style="min-width:0;font-weight:700;color:var(--ink);">Alokacja zysku · ESOP</span></div>
+        <div class="row" style="border-top:0;padding-top:0;"><span class="l">Alokacja: od 2031 EBITDA Robotify dzieli się na 40% R&amp;D humanoid i&nbsp;60% zysk zatrzymany; CAPEX maszyny ponosi klient. ESOP = pula opcji pracowniczych, 10% płac, koszt niegotówkowy.</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <b>AUTOMATIFY</b> © 2026 &nbsp;·&nbsp; Suplement do budżetu · model skonsolidowany 2027–2035 &nbsp;·&nbsp; Dokument poufny — dla inwestorów &nbsp;·&nbsp; Dane w&nbsp;PLN &nbsp;·&nbsp; Źródło: skonsolidowany model finansowy Automatify · stan 2026-08-28
+</footer>
+
+<script src="automatify-docs.js"></script>
+</body>
+</html>

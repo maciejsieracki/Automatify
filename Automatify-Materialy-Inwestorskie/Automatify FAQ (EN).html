@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatify — Investor FAQ · twenty questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="automatify-docs.css">
+<style>
+:root{
+  --paper:#F8FAFD; --paper-2:#F0F4FA; --card:#FFFFFF;
+  --ink:#0E2244; --ink-2:#1A2540; --muted:#6B7A8F; --muted-2:#8898B5;
+  --rule:#D8E0EC; --rule-2:#E6ECF4;
+  --lime:#C4E847; --lime-2:#A4C932; --limon:#7CB518;
+  --teal:#1B7C99; --teal-2:#2EBED9; --teal-3:#0F5A73;
+  --sans:"Manrope",-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+svg{display:block;}
+a{color:var(--teal);}
+.container{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+.topbar{position:sticky;top:0;z-index:50;background:rgba(14,34,68,.92);backdrop-filter:saturate(150%) blur(12px);-webkit-backdrop-filter:saturate(150%) blur(12px);color:#fff;border-bottom:1px solid rgba(255,255,255,.1);}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;}
+.topbar .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:8px;}
+.topbar .back:hover{color:#fff;}
+.topbar .tt{font-size:12.5px;color:rgba(255,255,255,.55);letter-spacing:0.04em;}
+.topbar .actions{display:flex;gap:10px;align-items:center;}
+.tb-btn{font-family:var(--sans);font-weight:700;font-size:12.5px;padding:8px 16px;border-radius:8px;border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;}
+.tb-btn.p{background:var(--lime);color:var(--ink);}
+@media(max-width:640px){.topbar .tt{display:none;}}
+
+.hero{background:var(--ink);color:#fff;padding:clamp(48px,7vw,88px) 0;}
+.hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal-2);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
+.hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);}
+.hero h1{font-weight:800;font-size:clamp(32px,4.6vw,56px);line-height:1.04;letter-spacing:-0.025em;}
+.hero h1 em{font-style:normal;background:linear-gradient(95deg,#2EBED9,#C4E847);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:clamp(15px,1.5vw,18px);color:rgba(248,250,253,.7);max-width:72ch;margin-top:18px;line-height:1.6;}
+.hero p b{color:#fff;}
+.hero .meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:rgba(248,250,253,.6);}
+.hero .meta b{color:#fff;}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:18px;overflow:hidden;margin-top:-40px;position:relative;z-index:2;box-shadow:0 24px 50px -30px rgba(14,34,68,.5);}
+@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr;}}
+.kpi{background:var(--card);padding:26px 24px;}
+.kpi-v{font-weight:800;font-size:clamp(26px,3vw,34px);letter-spacing:-0.02em;background:linear-gradient(95deg,#1B7C99,#7CB518);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.kpi-l{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45;}
+
+.sec{padding:clamp(36px,4.4vw,58px) 0;border-top:1px solid var(--rule);}
+.sec:first-of-type{border-top:0;}
+.sec-h{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;}
+.sec-n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-weight:800;font-size:14px;margin-top:2px;}
+.sec-t{font-weight:800;font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.018em;line-height:1.16;}
+.sec-lead{font-size:15px;color:var(--muted);max-width:74ch;line-height:1.7;margin:2px 0 22px 48px;}
+@media(max-width:600px){.sec-lead{margin-left:0;}}
+p.body{font-size:14.5px;color:var(--ink-2);line-height:1.75;max-width:76ch;margin-bottom:14px;}
+p.body b{color:var(--ink);}
+ul.pts{list-style:none;margin:6px 0 14px 0;}
+ul.pts li{font-size:14px;color:var(--ink-2);line-height:1.6;padding:7px 0 7px 26px;position:relative;border-top:1px solid var(--rule-2);}
+ul.pts li:first-child{border-top:0;}
+ul.pts li::before{content:"";position:absolute;left:4px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--teal-2);}
+ul.pts li b{color:var(--ink);}
+
+.qa{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:22px 26px;margin:14px 0;}
+.qa.hard{border-left:3px solid var(--limon);}
+.q{display:flex;gap:12px;align-items:flex-start;}
+.q-n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-weight:800;font-size:12.5px;margin-top:1px;}
+.q-t{font-weight:800;font-size:16.5px;line-height:1.36;letter-spacing:-0.01em;color:var(--ink);}
+.a{font-size:14.5px;color:var(--ink-2);line-height:1.78;margin:12px 0 0 40px;max-width:84ch;}
+.a b{color:var(--ink);}
+.src{margin:11px 0 0 40px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--rule-2);padding-top:9px;line-height:1.6;}
+.src b{color:var(--teal);font-weight:700;}
+.tag{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--limon);border:1px solid rgba(124,181,24,.45);border-radius:999px;padding:3px 9px;margin-left:9px;vertical-align:2px;white-space:nowrap;}
+@media(max-width:600px){.a,.src{margin-left:0;}}
+
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 6px;}
+.tbl thead th{text-align:right;font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);padding:10px 10px;border-bottom:2px solid var(--ink);white-space:normal;text-wrap:balance;}
+.tbl thead th:first-child{text-align:left;}
+.tbl tbody td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--rule-2);font-variant-numeric:tabular-nums;}
+.tbl tbody td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.tbl tbody tr:hover{background:var(--paper-2);}
+.tbl tr.hl{background:rgba(124,181,24,.10);}
+.tbl tr.hl td{font-weight:700;color:var(--ink);}
+.tbl td.neg{color:#C0392B;}
+.tbl td.pos{color:var(--limon);}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;padding:6px 18px;background:var(--card);}
+
+.note{margin-top:18px;padding:16px 20px;background:var(--paper-2);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;font-size:13px;color:var(--muted);line-height:1.65;}
+.note b{color:var(--ink);}
+
+footer{background:var(--ink);color:rgba(255,255,255,.5);font-size:12px;padding:30px 0;text-align:center;margin-top:40px;}
+footer b{color:rgba(255,255,255,.8);}
+
+@media print{
+  .topbar{position:static;}
+  .sec,.qa{break-inside:avoid;}
+  .tbl-wrap{break-inside:avoid;}
+}
+</style>
+</head>
+<body data-doc="faq">
+
+<div class="topbar">
+  <div class="container">
+    <a class="back" href="Automatify Pitch (EN).html#top">← Pitch deck</a>
+    <span class="tt">Investor FAQ · twenty questions</span>
+    <div class="actions">
+      <span style="font-size:12px;font-weight:700;display:inline-flex;gap:7px;"><a href="Automatify FAQ.html" style="color:rgba(255,255,255,.6);text-decoration:none;">PL</a><a href="Automatify FAQ (EN).html" style="color:var(--lime);text-decoration:none;">EN</a></span>
+      <button class="tb-btn p" onclick="window.print()">Download / Print PDF</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>Confidential — for investors</div>
+    <h1>FAQ — twenty questions <em>an investor will ask</em></h1>
+    <p>The questions follow the pitch deck section by section, grouped into eight areas. <b>Every answer rests on a figure from the financial model</b>. <b>Six of the questions are uncomfortable</b>, and we answer them head-on, not the way they would sound better. A document that names its own weak points is stronger than one that hides them.</p>
+    <div class="meta"><span>Questions <b>20</b></span><span>Areas <b>8</b></span><span>Currency <b>PLN</b></span><span>Variant <b>no process expansion</b></span><span>As of <b>2026-08-29</b></span></div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="kpis">
+    <div class="kpi"><div class="kpi-v">193–221</div><div class="kpi-l">Fund equity required (PLN m) · peak Aug&nbsp;2030</div></div>
+    <div class="kpi"><div class="kpi-v">104.4</div><div class="kpi-l">Group EBITDA 2029 (PLN m) · first positive year</div></div>
+    <div class="kpi"><div class="kpi-v">20 / 20</div><div class="kpi-l">Answers backed by a figure from the model</div></div>
+    <div class="kpi"><div class="kpi-v">6</div><div class="kpi-l">Uncomfortable questions — asked and answered head-on</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 1 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">1</span><h2 class="sec-t">Market, problem and timing</h2></div>
+    <p class="sec-lead">Deck sections 02–05B and 13: the SME problem, AI and robotics barriers, TAM/SAM/SOM, market potential, timing.</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">1</span><span class="q-t">TAM is 250k companies, SAM 70k, SOM 14,274 — and you plan 3,112 clients. How do you know it is exactly that many?</span></div>
+      <div class="a">That figure is not a market share typed in from the top — it comes out of a cohort engine that counts signings country by country and subtracts 5% annual churn. At 31 Dec 2030 the model produces <b>16,183 active processes</b>, which at 5.2 processes per weighted client gives <b>3,112 active clients</b> — that is <b>1.2% of the 250,000-company TAM</b>. The ramp is explicit and can be challenged year by year: 5 signings in 2027, 78.7 in 2028, 773.9 in 2029, 3,435.0 in 2030. We are not claiming the market is easy — we are claiming our plan takes one hundredth of it.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">2</span><span class="q-t">Why now, and not in two years, when robots and language models will be cheaper?</span></div>
+      <div class="a">The "now" argument is deliberately <b>not priced into the numbers</b> — and that is its strongest feature. The model indexes neither revenue nor costs, and the Robotify service rate <b>falls 5% a year</b>, so a cheaper-technology scenario already works against our revenue rather than for it. What does give a timing edge is the rollout: Poland 2027, then 34 markets by 2033, with Robotify entering each one a year after Agentify. Whoever enters a country second meets a client who already has a 48-month implementation repayment signed with us.</div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">2</span><h2 class="sec-t">Business model and billing</h2></div>
+    <p class="sec-lead">Deck sections 07 (all-in-one hub), 07.7 and 07.8 (Pay-as-you-Save), 08.9 and 08.10 (RaaS).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">3</span><span class="q-t">You say "no upfront implementation fee". So who finances it, and when does it come back?</span></div>
+      <div class="a">We finance it, in full and upfront — and it is the largest cash item in the entire model. Implementation costs the client <b>PLN 60,000 per process</b> and costs us <b>PLN 55,000</b> paid to the implementation firm in the month of signature; it returns as an instalment over 48 months, with a recovery of <b>97.2%</b>. The year 2030 alone means an implementation outflow of <b>PLN 1,837,964,017</b> against revenue of PLN 1,509,140,785 — that is where the whole working-capital need comes from. The client advance is currently set to <b>zero</b> and is the strongest lever we have on the working-capital need; we assume none is collected, so any advance negotiated in practice works in the investor's favour.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">4</span><span class="q-t">How much of your revenue is subscription, and how much a commission that depends on the client accepting the saving?</span></div>
+      <div class="a">Less than half is genuinely subscription. Agentify revenue for 2030 (PLN 1,509,140,785) splits into a licence of <b>PLN 425,488,719</b> and maintenance of <b>PLN 164,716,549</b> — together <b>39.1%</b> — an implementation instalment of PLN 205,895,687 (13.6%), and a 10% commission on net savings of <b>PLN 713,039,830</b>, i.e. <b>47.2%</b>. The commission is the highest-quality revenue as long as the saving is measured by the agent's working-time counter, and the most exposed if a client challenges that measure. The model carries <b>no</b> provision for a dispute over how savings are measured.</div>
+    </div>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">5</span><span class="q-t">You call Robotify "Robots-as-a-Service", but the client pays the CAPEX. Where is the return on your own fleet?<span class="tag">uncomfortable</span></span></div>
+      <div class="a">Nowhere — and we say so plainly rather than hoping nobody asks. "as-a-Service" applies to the robot's <b>work</b>, not to ownership of the machine: we sell servicing billed per robot-hour, and the client buys the machine. <b>The projections contain no return from an own robot fleet</b> — not a zloty of robot capital expenditure and not a zloty of return on it. The fleet of <b>16,408</b> machines at end-2030 is client-owned equipment that we service, not an asset on our balance sheet; financing an own fleet through bank leasing remains an upside option, not included in any figure in this material.</div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">3</span><h2 class="sec-t">Product and technology</h2></div>
+    <p class="sec-lead">Deck sections 07.1–07.5 (framework, stack, UiPath + Automatify Core, Subeo, marketplace, EU AI Act) and 08.1–08.3 (humanoid and non-humanoid stacks).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">6</span><span class="q-t">UiPath does the execution. What happens to your margin if UiPath changes terms?</span></div>
+      <div class="a">This is a real exposure and it can be priced to the zloty. Vendor licence plus partner maintenance is the <b>entire variable cost of Agentify</b> — <b>PLN 61,867,688 in 2029</b>, i.e. <b>29.0% of that year's revenue</b>. The model assumes a vendor discount of 10/20/30% depending on client segment and <b>assumes no improvement in any year</b>; the absence of indexation cuts both ways here. A 10% UiPath price rise costs us <b>PLN 6.2m of 2029 EBITDA</b>; the move to our own orchestrator, which the roadmap sets for 2027, is in the numbers neither as a cost nor as a saving.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">7</span><span class="q-t">Marketplace, boxed packages, the EU AI Act as a moat — how much of that is in the forecast?</span></div>
+      <div class="a">Zero zlotys. Revenue in the model has exactly <b>four lines</b> — licence, maintenance, implementation instalment and commission — and none of them is marketplace package sales or an EU AI Act compliance premium. Implementation costs <b>PLN 60,000 per process</b> whether the package is off the shelf or built from scratch, so the model does not even assume that a "boxed" 7–14 day rollout is cheaper than a bespoke one. We describe these advantages as qualitative and <b>unpriced</b> — precisely so that nobody looks for them in the numbers and finds an empty space.</div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">4</span><h2 class="sec-t">Competition</h2></div>
+    <p class="sec-lead">Deck sections 06 (no all-in hub exists), 07.45 (Agentify competitors), 08.4 (Robotify competitors), 08.5 (robot cost curve).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">8</span><span class="q-t">How do you know a client will pay EUR 30–80k for a robot when competitors offer leasing and RaaS with no capital outlay?</span></div>
+      <div class="a">We do not know it from market research and we do not pretend to — it is <b>a deliberate choice of ours</b>, conservative on our own balance sheet. The client funds the machine from an EU/BGK grant or its own capital budget, and we take off its hands what is expensive otherwise: integration, 24/7 servicing and technology risk with a 24-hour hot-swap. Had we bought the robots ourselves, at <b>16,408</b> machines by end-2030 we would be talking about billions of zlotys of outlay that we are not asking for in this round — we are asking for <b>PLN 193,044,228</b>. The sales risk stays with us and it is real: if the market demanded vendor-side equipment financing, the Robotify model would need rebuilding, not adjusting.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">9</span><span class="q-t">UiPath and Microsoft will move down into the SME segment. What defends your price then?</span></div>
+      <div class="a">Not the technology — <b>what we bill on</b>. A weighted client saves <b>PLN 2,635,200 a year</b> (24.4 automated FTE × 1,800 h × PLN 60/h) and pays us <b>PLN 626,612</b>, i.e. <b>23.8% of its own saving</b>; a per-seat licence cannot reproduce that ratio because it does not know the client's cost base. The model also assumes that <b>prices fall</b>: the Robotify service rate by 5% a year, and revenue and costs are not indexed at all. Price pressure is therefore already partly in the numbers; what is not is an entrant willing to absorb a negative implementation margin for several years.</div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">5</span><h2 class="sec-t">Clients, sales and delivery</h2></div>
+    <p class="sec-lead">Deck sections 05 (ICP), 07.6 and 08.8 (the 7-step process), 09 (roadmap), 09.5 (partner channel), 10 (traction).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">10</span><span class="q-t">Four deployments and twelve MoUs is not traction. What supports 774 signings in 2029?</span></div>
+      <div class="a">It is not traction, and that is what we call it — it is <b>validation of the billing model</b>, not proof of demand at scale. The ramp is explicit: <b>5</b> signings in 2027, <b>78.7</b> in 2028, <b>773.9</b> in 2029, <b>3,435.0</b> in 2030, and the 2028→2029 step (<b>9.8×</b>) comes from entering DACH and five further markets, not from acceleration in Poland. It is the single strongest assumption in the whole model, which is why we recalculated what happens if it is twice too high — see question 13. If an investor wants to challenge one number in this material, this is the one.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">11</span><span class="q-t">The ICP says 50–249 employees, yet your weighted client has 24.4 automated FTE. Who do you really sell to, and who delivers it?</span></div>
+      <div class="a">The deck label is too narrow and we know it. The weighted client is <b>5.2 processes and 24.4 automated FTE</b>, and in the 2-6-2 mix every fifth client is "optimistic" — <b>10 processes × 10 FTE</b>, i.e. a company with a back office of several hundred people. We buy delivery externally at <b>PLN 55,000 per process</b>, and that cost <b>does not fall with scale</b> in any year of the model. The technology partner network from deck section 09.5 carries neither revenue nor savings in the budget — delivery capacity is bought, not built, so every zloty from the channel would be above plan.</div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">6</span><h2 class="sec-t">Results, costs and sensitivity</h2></div>
+    <p class="sec-lead">Deck sections 09 (roadmap, 2030 targets) and 11 (budget 2027–2035, projection per product).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">12</span><span class="q-t">You show 16,183 licences and 16,408 robots. Is that the same fleet counted twice?</span></div>
+      <div class="a">No — they are two different things in two different companies, coincidentally similar in size. <b>16,183</b> is Agentify active processes at 31 Dec 2030, i.e. RPA licences and AI agents at work; <b>16,408</b> is physical machines serviced by Robotify on the same date. There are also two kinds of client: <b>3,112</b> active Agentify clients and <b>2,500</b> Robotify clients. We never add these two series together and we ask that nobody else does — they are two different businesses measured on two different scales.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">13</span><span class="q-t">What happens if sales run half as fast?</span></div>
+      <div class="a">We recalculated it instead of estimating: Agentify client inflow scaled <b>×0.5</b> across the whole 2026–2040 horizon, with the entire model recomputed from scratch. Revenue 2029 falls from 213,542,690 to <b>PLN 106,771,345</b>, Agentify EBITDA 2029 from 101,952,098 to <b>PLN 33,082,593</b> — 2029 is <b>still EBITDA-positive</b>, and the group (Robotify untouched) delivers <b>+PLN 35,536,643</b> instead of +104,406,149. The capital request <b>falls</b> from 193,044,228 to <b>PLN 141,516,121</b> (−26.7%), the peak shifts from August to <b>September 2030</b>, and the cash-flow trough is half as deep: −1,088,699,832 instead of −PLN 2,071,763,351. Slower sales do not kill this company — they reduce the return on it, because less capital works for a smaller result.</div>
+    </div>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">14</span><span class="q-t">Where is the operating leverage if the first year is almost entirely fixed cost?<span class="tag">uncomfortable</span></span></div>
+      <div class="a">There is none in the first year — and we say so plainly. In 2027 fixed costs are <b>PLN 5,355,000 out of PLN 5,665,966</b> of group cost, i.e. <b>94.5%</b>. The reason is operational, not accounting: every country enters with a full team from day one, so as long as one person covers an entire market the cost does not grow with volume. The fixed share falls to <b>27.8% in 2029</b> and <b>2.0% in 2035</b> — leverage only starts in the third year. The practical conclusion for an investor: the 2027–2028 loss (group EBITDA <b>−4,919,254</b> and <b>−PLN 16,716,480</b>) is largely committed regardless of how much we sell.</div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">7</span><h2 class="sec-t">Round, capital and exit</h2></div>
+    <p class="sec-lead">Deck sections 11a (capital request, month of the peak) and 12 (round plan from pre-seed to Round B).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">15</span><span class="q-t">Why are you asking for 193m when 2029 EBITDA is 104m?</span></div>
+      <div class="a">Because EBITDA is not cash, and the difference is client implementation financing. We pay <b>PLN 55,000 per process in the month of signature</b> and recover it as an instalment over 48 months — in 2030 alone the implementation outflow is <b>PLN 1,837,964,017</b> against revenue of PLN 1,509,140,785, which drives the cumulative cash-flow trough to <b>−PLN 2,071,763,351</b> in December 2030. <b>PLN 193,044,228 is not the whole hole — it is the part covered by fund equity</b>; from 2029 working capital is taken over by a bank facility at 6%. After 2030 the fund tranche is <b>zero</b> in both variants, so the request closes within four years.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">16</span><span class="q-t">Why does the peak requirement fall in August 2030 and not earlier?</span></div>
+      <div class="a">Because two maxima overlap in mid-2030. Client inflow is at its highest then — <b>3,435.0 signings in 2030</b> against 773.9 in 2029 — so implementation outflow peaks; at the same time CIT instalments start, with <b>PLN 167,023,796</b> paid in cash during 2030. The peak is a plateau, not a spike: July 2030 <b>178,017,629</b>, August <b>193,044,228</b>, September <b>190,973,288</b>, October <b>PLN 167,960,720</b>. From September 2030 the instalment stream from the 2029 cohort exceeds new outflow and the requirement never returns to the peak — which is why tranches after 2030 are zero in both variants.</div>
+    </div>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">17</span><span class="q-t">How much of that 193m is tax, and how much is real development?<span class="tag">uncomfortable</span></span></div>
+      <div class="a">Tax is the larger part, and we would rather say it ourselves. By the peak month (August 2030) the model pays <b>PLN 124,631,524</b> of CIT in cash, which is <b>64.6% of the PLN 193,044,228 request</b> and <b>78.7% of the development-capital peak (PLN 158,283,690)</b> — we give both figures with a named base, because without one they are mistaken for each other. Before the tax block was wired into the cash-flow statement, the same model showed <b>PLN 79,917,460</b>; the difference of <b>PLN 113,126,768</b> is tax and nothing else. The rest of the request, about <b>PLN 68.4m</b>, is fixed central and country cost plus the 2027–2028 operating loss; implementation working capital sits outside this amount and is bank-financed from 2029.</div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">8</span><h2 class="sec-t">Risks, and what we found ourselves</h2></div>
+    <p class="sec-lead">Three items absent from the deck because we raise them ourselves. Each has a real effect on the result, and each goes to the investor together with its explanation.</p>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">18</span><span class="q-t">Robotify shows +2.45m EBITDA in 2029. How much of that is sales and how much is your pricing rule?<span class="tag">uncomfortable</span></span></div>
+      <div class="a">Mostly it is our pricing rule, and we say so plainly. <b>We do not sell servicing below twice the cost of serving</b> a given country — we would rather not sign a contract than service it below the point where it pays. In 2029 the robot market is still early, fleets are small and the cost of service readiness spreads across few machines, so in Germany, the UK and France it is this rule that sets <b>most of Robotify revenue</b> (PLN 20,851,385) and stands behind the <b>+PLN 2,454,050 EBITDA</b> result. In later years, as the fleet grows, the market sets the price. Read it this way: Robotify's 2029 profitability comes from pricing discipline, not from sales volume.</div>
+    </div>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">19</span><span class="q-t">What if a tax adviser rejects the R&amp;D deduction?<span class="tag">uncomfortable</span></span></div>
+      <div class="a">Then profit after 2031 drops by two billion, and the capital request does not change by a single zloty. The model computes the Robotify CIT base as EBITDA minus R&amp;D actually spent — <b>40% of EBITDA from 2031</b>. Without the deduction, Robotify CIT for 2031–2035 rises from <b>PLN 3,023,259,169</b> to <b>PLN 5,038,765,281</b> (<b>+PLN 2,015,506,113</b>), and cumulative net profit falls from 12,888,631,193 to PLN 10,873,125,081 (−15.6%). The effect on the peak capital requirement is <b>PLN 0</b>: the deduction does not operate before 2031 and the peak falls in August 2030, so CIT for 2029 and 2030 is identical to the grosz in both variants. <b>Confirmation of the deduction with a tax adviser is in progress</b> — it is the most important open assumption in the projections and we are not hiding it from investors.</div>
+    </div>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">20</span><span class="q-t">Does the 193m cover Robotify, or Agentify only?<span class="tag">uncomfortable</span></span></div>
+      <div class="a">Agentify only — and we say so plainly. The capital ask is computed on Agentify's monthly cash statement, because that is where the exact month of the deepest cash position is visible. Robotify's own requirement is two orders of magnitude smaller and we give it as a range: the lower end is the deepest point of cumulative EBITDA, <b>−PLN 3,951,354</b> at 31 Dec 2028 (<b>2.05%</b> of the request), the upper end is the same point with the service price set purely by the market, <b>−PLN 9,415,175</b> (<b>4.9%</b>). Robotify is planned on an annual basis, which is why we give a range rather than a single figure; even its upper end sits inside the ask with room to spare.</div>
+    </div>
+  </div>
+
+  <!-- closing -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">✓</span><h2 class="sec-t">How to read this document</h2></div>
+    <p class="sec-lead">The rules the answers were written under — stated so that they can be checked, not merely read.</p>
+    <ul class="pts">
+      <li><b>Every figure has a source.</b> All of them come from the Automatify consolidated financial model. There is no figure in this document without one.</li>
+      <li><b>Every figure was recalculated, not copied.</b> As of 2026-08-29.</li>
+      <li><b>Every percentage names its base.</b> The same tax amount is 64.6% of the capital request and 78.7% of the development-capital peak — without a stated base both figures mislead.</li>
+      <li><b>Items below 2% impact are omitted deliberately.</b> A budget is an approximation; an issue that does not move the result by two per cent is not a subject for an investor conversation.</li>
+      <li><b>Three things are not in the numbers and we do not pretend otherwise:</b> return from an own robot fleet, marketplace revenue and an EU AI Act compliance premium, and savings from the technology partner network. All three are upside options.</li>
+      <li><b>Two things remain open:</b> the choice between variant A (PLN 193,044,228) and variant B (PLN 220,982,427) of the capital request — it depends on the bank's entry terms — and confirmation of the R&amp;D deduction by a tax adviser.</li>
+    </ul>
+    <div class="note"><b>Numerical basis.</b> The Automatify consolidated financial model, variant <b>no process expansion</b>, as of 2026-08-29. Full year-by-year income statement: <a href="Suplement budzetowy (EN).html">Budget supplement 2027–2035</a>.</div>
+  </div>
+
+</div>
+
+<footer>
+  <b>AUTOMATIFY</b> © 2026 &nbsp;·&nbsp; Investor FAQ · twenty questions and answers &nbsp;·&nbsp; Confidential — for investors &nbsp;·&nbsp; Figures in PLN &nbsp;·&nbsp; Source: Automatify consolidated financial model · as of 2026-08-29
+</footer>
+
+<script src="automatify-docs.js"></script>
+</body>
+</html>

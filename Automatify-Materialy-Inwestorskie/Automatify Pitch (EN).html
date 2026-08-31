@@ -1,0 +1,2776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatify — Pitch Deck 2026 · Pre-seed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="automatify-styles.css">
+<style>
+  /* Hide pitch content until gate is unlocked */
+  body[data-locked="true"] main,
+  body[data-locked="true"] nav.top,
+  body[data-locked="true"] footer.bottom { display: none !important; }
+</style>
+<style>
+/* ── Spójność stylu z stroną główną: Robotify limonkowy + neutralny Hub ── */
+:root{ --lime-3:#7CB518; }
+.tag-robotify{ color:#7CB518; }
+.tag-agentify{ color:#1B7C99; }
+[data-product="robotify"]{ --p-accent:#7CB518; --p-accent-alt:#7CB518; --accent:#7CB518; }
+[data-product="robotify"] .h1 em,[data-product="robotify"] .h2 em,[data-product="robotify"] .h3 em{ color:#7CB518; -webkit-text-fill-color:#7CB518; background:none; }
+.hub-col.agentify, .hub-col.robotify{ background: var(--card); }
+.hub-center{ background: var(--card); color: var(--ink); }
+.hub-center-label{ color: var(--muted); }
+.hub-center-name, .hub-center-name em{ background: linear-gradient(95deg,#1B7C99 0%,#2EBED9 45%,#7CA80F 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; font-weight:800; }
+.hub-col.robotify .hub-col-name{ color:#7CB518; }
+.hub-col.robotify li::before{ color:#7CB518; }
+</style>
+<style>
+/* Rozjaśnienie sekcji treściowych decku (bannery produktów zostają ciemne) */
+#manifest,#agentify-core,.case,.kpi{ background:var(--paper-2)!important; color:var(--ink)!important; }
+.case .h2,.kpi .h2,#agentify-core .h2{ color:var(--ink)!important; }
+.case .lead,.kpi .lead,#agentify-core .lead{ color:var(--muted)!important; }
+.case-flow-item,.fala,.cta-tile,.case-insight,.case-chart,.case-side,.capalloc{ background:var(--card)!important; border-color:var(--rule)!important; }
+.case-cell-v,.case-flow-title,.fala-title,.cta-tile-t,.case-chart-title,.case-insight-title{ color:var(--ink)!important; }
+.case-cell-l,.case-cell-u,.case-flow-desc,.fala-desc,.cta-tile-d,.case-insight-desc,.capalloc-head{ color:var(--muted)!important; }
+.rmap[style*="repeat(7"]{ grid-template-columns:repeat(7,minmax(150px,1fr))!important; overflow-x:auto; }
+</style>
+</head>
+<body data-locked="true">
+
+<!-- Bundler thumbnail — splash shown while standalone HTML unpacks -->
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#0E2244"/>
+        <stop offset="100%" stop-color="#081835"/>
+      </linearGradient>
+      <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#2EBED9"/>
+        <stop offset="100%" stop-color="#C4E847"/>
+      </linearGradient>
+    </defs>
+    <rect width="100" height="100" rx="14" fill="url(#bg)"/>
+    <text x="50" y="48" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="22" fill="url(#lg)">A</text>
+    <text x="50" y="48" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="22" fill="#2EBED9" opacity="0.55">A</text>
+    <text x="50" y="68" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="700" font-size="6" fill="#fff" letter-spacing="2">PITCH</text>
+  </svg>
+</template>
+
+<!-- ════════════════════════ PASSWORD GATE ════════════════════════ -->
+<div class="gate-overlay" id="gateOverlay">
+  <div class="gate-card">
+    <img src="logo-automatify-full.png" alt="Automatify" class="gate-logo">
+    <div class="gate-eyebrow">Investor section</div>
+    <h1 class="gate-title">Access the <em>pitch deck</em></h1>
+    <p class="gate-sub">The full investor materials: market, product, billing model, roadmap, budget, and the pre-seed offer. <b style="color:var(--ink);">Enter the password</b> provided by the Automatify team.</p>
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <label class="gate-label" for="gatePass">Access password</label>
+      <input class="gate-input" id="gatePass" type="password" placeholder="••••••••••" autocomplete="off" spellcheck="false" autofocus>
+      <div class="gate-error" id="gateError">&nbsp;</div>
+      <button class="gate-submit" type="submit">Unlock section <span class="arr">→</span></button>
+    </form>
+    <div class="gate-footer">
+      <span>Maciej Sieracki · Founder &amp; CEO</span>
+      <a href="index (EN).html">← Back to homepage</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Check if already unlocked this session
+  if (sessionStorage.getItem('automatify_inv_unlocked') === '1') {
+    document.body.removeAttribute('data-locked');
+    document.getElementById('gateOverlay').style.display = 'none';
+  }
+
+  document.getElementById('gateForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = document.getElementById('gatePass');
+    const err   = document.getElementById('gateError');
+    const val   = input.value.trim().toLowerCase();
+    // Password set per user request
+    if (val === 'investor2026') {
+      sessionStorage.setItem('automatify_inv_unlocked', '1');
+      document.body.removeAttribute('data-locked');
+      const overlay = document.getElementById('gateOverlay');
+      overlay.style.transition = 'opacity .35s ease';
+      overlay.style.opacity = '0';
+      setTimeout(() => { overlay.style.display = 'none'; }, 350);
+    } else {
+      input.classList.remove('shake');
+      void input.offsetWidth; // restart animation
+      input.classList.add('shake');
+      err.textContent = 'Incorrect password. Please contact the Automatify team.';
+      input.select();
+    }
+  });
+</script>
+
+<!-- ════════════════════════ NAV ════════════════════════ -->
+<nav class="top">
+  <div class="container">
+    <a class="brand" href="#top">
+      <img src="logo-automatify-light.png" alt="Automatify" class="brand-logo" style="height:30px;width:auto;display:block;">
+    </a>
+    <div class="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#rynek">Market</a>
+      <a href="#agentify">Agentify</a>
+      <a href="#robotify">Robotify</a>
+      <a href="#budzet">Budget</a>
+      <a href="#kapital" class="nav-secondary">Capital ask</a>
+      <a href="#kontakt">Book a meeting</a>
+      <a href="index (EN).html" class="nav-back" style="color:var(--ink);font-weight:600;">←&nbsp;<span class="nav-back-txt">Homepage</span></a>
+    </div>
+    <a href="Automatify Pitch.html" style="margin-right:14px;font-size:13px;font-weight:700;color:var(--muted);text-decoration:none;">PL</a><a href="Automatify Pitch (EN).html" class="nav-investors">Investors</a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ════════════════════════ HERO ════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow hero-eyebrow"><span class="dot"></span>Pitch Deck · 2026 · Pre-seed round</div>
+        <h1 class="h1 hero-title">
+          <span class="tag-agentify">Agentify</span> + <span class="tag-robotify">Robotify</span><br>
+          The <em>AI agents and robots</em> hub for mid-sized companies.
+        </h1>
+        <p class="lead hero-sub">One partner. Full deployment. <b>You pay only on savings.</b> A hub of ready-made AI/RPA solutions and physical robots — in one contract, one invoice, one interface.</p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn btn-primary">Join the pre-seed round <span class="arr">→</span></a>
+          <a href="#problem" class="btn btn-ghost">View the deck</a>
+        </div>
+        <div class="hero-meta">
+          <span><b>Pre-seed</b> · PLN 6,802,820</span>
+          <span class="sep">·</span>
+          <span>Runway 12 months</span>
+          <span class="sep">·</span>
+          <span>Open until Q3 2026</span>
+        </div>
+      </div>
+      <aside>
+        <div class="toc">
+          <div class="toc-label">Contents</div>
+          <div class="toc-list">
+            <a class="toc-item" href="#projekt"><span class="toc-num">01</span><span class="toc-name">About</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#problem"><span class="toc-num">02</span><span class="toc-name">Problem</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#wyzwania-ai"><span class="toc-num">03</span><span class="toc-name">AI challenges</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#wyzwania-robot"><span class="toc-num">04</span><span class="toc-name">Robotics challenges</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#rynek"><span class="toc-num">05</span><span class="toc-name">Market &amp; ICP</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#konkurencja"><span class="toc-num">06</span><span class="toc-name">Competition</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#agentify"><span class="toc-num">07</span><span class="toc-name">Agentify — AI agents</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#robotify"><span class="toc-num">08</span><span class="toc-name">Robotify — robots</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#roadmapa"><span class="toc-num">09</span><span class="toc-name">Roadmap</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#trakcja"><span class="toc-num">10</span><span class="toc-name">Traction</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#budzet"><span class="toc-num">11</span><span class="toc-name">Budget</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#kapital"><span class="toc-num">11a</span><span class="toc-name">Capital ask</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#oferta"><span class="toc-num">12</span><span class="toc-name">Investment offer</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#timing"><span class="toc-num">13</span><span class="toc-name">Why now</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="#kontakt"><span class="toc-num">14</span><span class="toc-name">Team &amp; contact</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="Suplement budzetowy (EN).html" target="_blank"><span class="toc-num">↗</span><span class="toc-name">Budget supplement — separate document</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="Automatify Aneks Kadrowy (EN).html" target="_blank"><span class="toc-num">↗</span><span class="toc-name">Headcount annex — separate document</span><span class="toc-arr">→</span></a>
+            <a class="toc-item" href="Automatify FAQ (EN).html" target="_blank"><span class="toc-num">↗</span><span class="toc-name">Investor FAQ — separate document</span><span class="toc-arr">→</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ OPENING NOTE ════════════════════════ -->
+<section class="opening">
+  <div class="container">
+    <p class="opening-q">Mid-sized companies don't have the time, budget, or team to roll out AI and robots piece by piece. Automatify unites the digital and physical worlds in a single hub — billed on outcomes.</p>
+    <div class="opening-attr">Investment thesis · pre-seed 2026</div>
+  </div>
+</section>
+
+<!-- ════════════════════════ O PROJEKCIE ════════════════════════ -->
+<section id="projekt">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>01 · About</div>
+      <h2 class="h2 reveal">Automatify Hub — <em>one partner, two products</em></h2>
+      <p class="lead reveal">A hub of ready-made AI/RPA solutions and physical robots + full deployment + outcome-based billing. <b>Agentify</b> handles the digital world, <b>Robotify</b> the physical one. The client sees one contract and one invoice.</p>
+    </div>
+    <div class="hub-diagram reveal">
+      <div class="hub-col agentify">
+        <div class="hub-col-head">
+          <div>
+            <div class="hub-col-tag">Digital world</div>
+            <div class="hub-col-name">Agentify</div>
+          </div>
+        </div>
+        <p class="hub-col-lede">Agents-as-a-Service. AI agents for cognitive tasks + UiPath RPA robots.</p>
+        <ul>
+          <li>AI agents: customer support, decisions, summaries</li>
+          <li>UiPath RPA: invoices, reports, integrations</li>
+          <li>Chatbots, OCR, classification, extraction</li>
+          <li>Marketplace of 50+ ready-made boxed packages</li>
+        </ul>
+      </div>
+      <div class="hub-center">
+        <div>
+          <div class="hub-center-label">Automatify</div>
+          <div class="hub-center-name"><em>HUB</em></div>
+          <div class="hub-center-label">one contract</div>
+        </div>
+      </div>
+      <div class="hub-col robotify">
+        <div class="hub-col-head">
+          <div>
+            <div class="hub-col-tag">Physical world</div>
+            <div class="hub-col-name">Robotify</div>
+          </div>
+        </div>
+        <p class="hub-col-lede">Robots-as-a-Service. Humanoid and specialized robots: the client buys the robot, we deliver the software, integration, service and AI Hours on subscription.</p>
+        <ul>
+          <li>Humanoids: Figure, Apptronik, 1X</li>
+          <li>Cobots, AMR, AGV — specialized tasks</li>
+          <li>Logistics, production, hospitality, healthcare</li>
+          <li>Robot-hour billing regardless of form factor</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hub-foot reveal">
+      <b>One hub · one contract · one invoice · one interface.</b> The client doesn't assemble the tool stack — they buy a business outcome.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ MANIFEST MARKI ════════════════════════ -->
+<section id="manifest" style="background:var(--paper-2);padding:clamp(72px,8vw,120px) 0;">
+  <div class="container">
+    <div style="font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(27,42,71,0.55);margin-bottom:36px;" class="reveal">— Brand manifesto</div>
+    <h2 class="reveal" style="font-family:var(--sans);font-weight:800;font-size:clamp(40px,6vw,96px);line-height:1.05;letter-spacing:-0.03em;color:var(--ink);margin:0 0 40px;max-width:18ch;">
+      We automate the<br>
+      repeatable — so that<br>
+      people can do<br>
+      <span style="background:linear-gradient(95deg, #2EBED9 0%, #96B82E 60%, #C4E847 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;">the irreplaceable.</span>
+    </h2>
+    <p class="reveal" style="font-size:clamp(17px,1.5vw,22px);line-height:1.55;color:rgba(27,42,71,0.7);max-width:76ch;">
+      Automatify designs systems that take over routine work — from operations to data analysis. We believe well-designed automation <b style="color:var(--ink);font-weight:700;">doesn't replace work. It frees it.</b>
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════ PROBLEM ════════════════════════ -->
+<section id="problem" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>02 · Problem</div>
+      <h2 class="h2 reveal">Mid-sized firms <em>are losing the efficiency battle</em></h2>
+      <p class="lead reveal">The problems run in two directions: no digitization of office processes (a job for agents) and no hands for physical work (a job for robots). Classic vendors target the Fortune 500 — the SME segment is dramatically underserved.</p>
+    </div>
+    <div class="cards-grid reveal" style="grid-template-columns:repeat(4,1fr);">
+      <div class="card">
+        <div class="card-num">01.</div>
+        <h3 class="h3 card-title">No awareness or process map</h3>
+        <p class="card-desc">SMEs don't know what can be automated or which processes are candidates. No mapped-out processes, no in-house AI team. <b>Zero entry point.</b></p>
+      </div>
+      <div class="card">
+        <div class="card-num">02.</div>
+        <h3 class="h3 card-title">High deployment costs</h3>
+        <p class="card-desc">Classic AI/RPA deployments: <b>€24k–118k upfront</b>. Physical robots: <b>$35k–150k CAPEX</b>. A mid-sized company has neither the budget nor the appetite for risk without guaranteed ROI.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03.</div>
+        <h3 class="h3 card-title">A fragmented vendor market</h3>
+        <p class="card-desc">The client assembles RPA, OCR, chatbot, integrator, robot vendor, safety, and service alone. <b>No single partner</b> is accountable for the business outcome — only for one module.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">04.</div>
+        <h3 class="h3 card-title">No hands for physical work</h3>
+        <p class="card-desc">Demographics + labor emigration. SMEs can't find warehouse, production, or hospitality staff. <b>A physical robot is the only scalable labor resource from 2026 on.</b></p>
+      </div>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:32px;">
+      <b>The cost of inaction.</b> One office FTE ≈ <b>€55k/yr</b> · one warehouse operator ≈ <b>€22k/yr</b>. Every non-automated process is burned budget.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ WYZWANIA AI ════════════════════════ -->
+<section id="wyzwania-ai">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>03 · AI challenges</div>
+      <h2 class="h2 reveal">Artificial intelligence: <em>why SMEs fall behind</em></h2>
+      <p class="lead reveal">The global labor market is worth <b>over $60 trillion</b> (Business Insider), with <b>$18 trillion</b> in the U.S. economy alone — the scale of the market Agentify can address. Goldman Sachs: <b>300M jobs</b> worldwide exposed to automation. <b>78%</b> of large enterprises already use AI — but among SMEs it's <b>just 15%</b>. Five barriers block entry.</p>
+    </div>
+    <div class="stat-cards reveal">
+      <div class="stat-card">
+        <div class="stat-card-val"><em>65%</em></div>
+        <div class="stat-card-l">No AI expertise</div>
+        <p class="stat-card-d">The SME has no one on the team who understands AI. The lack of an in-house CTO/CDO blocks even pilots.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>€24–118</em>k</div>
+        <div class="stat-card-l">Deployment cost</div>
+        <p class="stat-card-d">Enterprise vendors target the Fortune 500. AI pilot from €12k, full deployment €47–118k + maintenance.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>40%</em></div>
+        <div class="stat-card-l">Skills needing change</div>
+        <p class="stat-card-d">WEF: by 2027, 40% of current workforce skills will need updating.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val">19% → <em>79%</em></div>
+        <div class="stat-card-l">Legal AI in 2 years</div>
+        <p class="stat-card-d">AI adoption in legal grew 4× in 24 months. A similar pattern in HR, finance, and support.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>35 mln EUR</em></div>
+        <div class="stat-card-l">EU AI Act penalties</div>
+        <p class="stat-card-d">Or 7% of turnover. Every company using AI must ensure compliance — an added barrier for SMEs.</p>
+      </div>
+      <div class="stat-card" style="background:var(--p-tint);">
+        <div class="stat-card-val" style="color:var(--p-accent);">Agentify</div>
+        <div class="stat-card-l" style="color:var(--p-accent);">The opportunity — it solves everything</div>
+        <p class="stat-card-d">Ready-made AI agents + RPA, deployed in weeks, on subscription. No need to build an AI team. <b>Compliance included. ROI from month 1.</b></p>
+      </div>
+    </div>
+    <p class="body-md reveal" style="margin-top:18px;color:var(--muted-2);font-size:12px;letter-spacing:0.04em;">Sources: Goldman Sachs (2024), WEF Future of Jobs 2025, Thomson Reuters AI Survey 2024, EU AI Act</p>
+  </div>
+</section>
+
+<!-- ════════════════════════ WYZWANIA ROBOTYKA ════════════════════════ -->
+<section id="wyzwania-robot" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>04 · Robotics challenges</div>
+      <h2 class="h2 reveal">Physical robotization: <em>the entry barrier and the window of opportunity</em></h2>
+      <p class="lead reveal">The humanoid-robot market: from <b>$6.2B (2025)</b> to <b>$25B (2030)</b>. But <b>97% of SMEs</b> still have no robot at all. The cost curve mirrors solar panels — falling 40% a year.</p>
+    </div>
+    <div class="stat-cards reveal">
+      <div class="stat-card">
+        <div class="stat-card-val"><em>$20–150</em>k</div>
+        <div class="stat-card-l">Robot cost (USD)</div>
+        <p class="stat-card-d">Tesla Optimus target: $20–25k. Plus service, integration, training. CAPEX blocks SMEs. <b>The Robotify fix: the robot is bought by the client (EU / BGK grant or own capex budget), while the robot’s work — software, integration, service and AI Hours — is billed on subscription.</b></p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val">38M → <em>34M</em></div>
+        <div class="stat-card-l">Poland demographics 2040</div>
+        <p class="stat-card-d">Poland will lose 4M working-age people by 2040. A robot is the only scalable answer to the demographic crisis.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val">1 physical robot = <em>3,5 FTE</em></div>
+        <div class="stat-card-l">Works 24/7 · Robotify parameter</div>
+        <p class="stat-card-d">A humanoid robot works 24/7 with no breaks, vacation, or sick leave. Operating cost falls from $10/h to under $1/h within 5 years.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>1 mln</em></div>
+        <div class="stat-card-l">Robots at Amazon</div>
+        <p class="stat-card-d">The world's largest robot operator. Enterprise leads — but SMEs have no access. <b>Robotify opens this market to mid-sized firms.</b></p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val">Figure 02: <em>56</em></div>
+        <div class="stat-card-l">Degrees of freedom</div>
+        <p class="stat-card-d">Humanoid robots have reached mechanical maturity. Figure, Apptronik, 1X — all targeting commercialization in 2026–2027. <b>The window is opening now.</b></p>
+      </div>
+      <div class="stat-card" style="background:var(--p-tint);">
+        <div class="stat-card-val" style="color:var(--p-accent);">Robotify</div>
+        <div class="stat-card-l" style="color:var(--p-accent);">The opportunity — RaaS for SMEs</div>
+        <p class="stat-card-d">A physical-robot hub on a RaaS model. Service, safety, integration. <b>The client buys the robot; we carry the technology risk — selection, integration, service and hot-swap. Plug &amp; work.</b></p>
+      </div>
+    </div>
+    <p class="body-md reveal" style="margin-top:18px;color:var(--muted-2);font-size:12px;letter-spacing:0.04em;">Sources: Goldman Sachs, IFR World Robotics 2025, Tesla AI Day, Figure Robotics, Statistics Poland demographic forecast</p>
+  </div>
+</section>
+
+<!-- ════════════════════════ RYNEK ════════════════════════ -->
+<section id="rynek">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>05 · Market</div>
+      <h2 class="h2 reveal">Who buys — <em>mid-sized service and manufacturing firms</em></h2>
+      <p class="lead reveal"><b>Sweet spot:</b> 50–249 employees, heavy back office or a production line, limited IT budget. The decision sits with the COO, CFO, and head of operations. Trigger: rising wages, labor shortages, margin pressure.</p>
+    </div>
+
+    <h3 class="h3 reveal" style="margin-bottom:18px;">Client profile (ICP)</h3>
+    <div class="icp reveal">
+      <div class="icp-row"><div class="icp-l">Size</div><div class="icp-v">50–249 employees</div></div>
+      <div class="icp-row"><div class="icp-l">Revenue</div><div class="icp-v">€5–47M</div></div>
+      <div class="icp-row"><div class="icp-l">Industry</div><div class="icp-v">B2B services, e-com, logistics, manufacturing</div></div>
+      <div class="icp-row"><div class="icp-l">Geography</div><div class="icp-v">PL (start), CE (2027), EU (2028+)</div></div>
+      <div class="icp-row"><div class="icp-l">Decision</div><div class="icp-v">COO / CFO / Head of Operations</div></div>
+      <div class="icp-row"><div class="icp-l">Trigger</div><div class="icp-v">Wages, labor shortages, margin pressure</div></div>
+    </div>
+
+    <h3 class="h3 reveal" style="margin:48px 0 18px;">Market size — TAM / SAM / SOM</h3>
+    <div class="tam-tree reveal">
+      <div class="tam-cell">
+        <div class="tam-tag">TAM</div>
+        <div class="tam-v"><em>250,000</em></div>
+        <div class="tam-l">EU firms of 50–249 emp.</div>
+        <p class="tam-d">Total Addressable Market — all mid-sized firms in the European Union. Source: Eurostat.</p>
+      </div>
+      <div class="tam-cell">
+        <div class="tam-tag">SAM</div>
+        <div class="tam-v"><em>70,000</em></div>
+        <div class="tam-l">firms — serviceable market</div>
+        <p class="tam-d">Serviceable Addressable Market — Poland + DACH + Czechia + Slovakia + Hungary.</p>
+      </div>
+      <div class="tam-cell som">
+        <div class="tam-tag">SOM</div>
+        <div class="tam-v"><em>14,274</em></div>
+        <div class="tam-l">firms — Automatify target</div>
+        <p class="tam-d">Serviceable Obtainable Market — Poland, 3 years, a realistic Automatify target.</p>
+        <div class="tam-sub">
+          <div><b>11,200</b><span>Agentify · 4.5% of SAM</span></div>
+          <div><b>3,074</b><span>Robotify · 1.2% of SAM</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hub-foot reveal">
+      <b>Agentify SOM &gt; Robotify SOM</b> because digital workers mean a lower entry barrier and shorter deployment (2–4 wks). Physical robots require a site assessment, safety, and process integration (12–20 wks).
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ POTENCJAŁ RYNKU AI ════════════════════════ -->
+<section style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>05A · AI market potential</div>
+      <h2 class="h2 reveal">The AI market for SMEs — <em>global growth, local opportunity</em></h2>
+      <p class="lead reveal">The AI market is growing at a <b>37% CAGR</b>. But 78% of companies deploying AI are large enterprises. <b>The SME segment is dramatically underserved.</b></p>
+    </div>
+    <div class="stat-cards reveal" data-product="agentify">
+      <div class="stat-card">
+        <div class="stat-card-val"><em>$184</em> mld</div>
+        <div class="stat-card-l">Global AI market 2025</div>
+        <p class="stat-card-d">37.3% CAGR to 2030 — the fastest-growing enterprise-tech segment.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>78%</em></div>
+        <div class="stat-card-l">Of large enterprises use AI</div>
+        <p class="stat-card-d">vs just <b>15% of SMEs</b>. The gap between enterprise and mid-market is dramatic.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>300 mln</em></div>
+        <div class="stat-card-l">Jobs exposed</div>
+        <p class="stat-card-d">Goldman Sachs: automation will reach 300M jobs worldwide by 2035.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>$47,6</em> mld</div>
+        <div class="stat-card-l">AI chatbot market 2030</div>
+        <p class="stat-card-d">From $5.4B in 2023, 24% CAGR. At the heart of Agentify's offering.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>$13,7</em> mld</div>
+        <div class="stat-card-l">RPA market 2030</div>
+        <p class="stat-card-d">From $2.7B in 2023, 26% CAGR. Agentify's execution layer (UiPath).</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>$8,4</em> mld</div>
+        <div class="stat-card-l">OCR/IDP market 2030</div>
+        <p class="stat-card-d">Document extraction, 22% CAGR. Key to back-office automation.</p>
+      </div>
+    </div>
+    <div class="hub-foot reveal" data-product="agentify">
+      <b>Agentify's position.</b> Agentify operates at the intersection of three segments: AI chatbots ($47.6B) + RPA ($13.7B) + IDP ($8.4B). <b>Combined TAM of our use cases: ~$70B in 2030.</b> Sweet spot: SMEs of 50–249 employees in PL and CE, where AI penetration is under 15%.
+    </div>
+    <p class="body-md reveal" style="margin-top:14px;color:var(--muted-2);font-size:12px;letter-spacing:0.04em;">Sources: Grand View Research, Mordor Intelligence, Goldman Sachs, Precedence Research 2024–2025</p>
+  </div>
+</section>
+
+<!-- ════════════════════════ POTENCJAŁ RYNKU ROBOTYKA ════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>05B · Robotics market potential</div>
+      <h2 class="h2 reveal">The robotics market — <em>a humanoid and RaaS boom</em></h2>
+      <p class="lead reveal">The humanoid robot has moved from the lab to the factory. Unit cost is falling <b>40% a year</b>. <b>The window for integrators: 2026–2028.</b></p>
+    </div>
+    <div class="stat-cards reveal" data-product="robotify">
+      <div class="stat-card">
+        <div class="stat-card-val">$6,2 → <em>$25</em> mld</div>
+        <div class="stat-card-l">Humanoid market 2025→2030</div>
+        <p class="stat-card-d">32% CAGR. The fastest-growing robotics segment in history.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>$54,8</em> mld</div>
+        <div class="stat-card-l">Industrial robots 2030</div>
+        <p class="stat-card-d">Cobots, AMR, AGV — the segment where Robotify earns from day one.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>$41,3</em> mld</div>
+        <div class="stat-card-l">Robot-as-a-Service market</div>
+        <p class="stat-card-d">21% CAGR to 2030. <b>Exactly the segment Robotify targets.</b></p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val">20–25 tys. <em>USD</em></div>
+        <div class="stat-card-l">Tesla Optimus target</div>
+        <p class="stat-card-d">vs $150k+ today for a humanoid. The price of a car — a humanoid within SME reach.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>&lt; $1/h</em></div>
+        <div class="stat-card-l">Robot operating cost 2030</div>
+        <p class="stat-card-d">$8–12/h today. The drop is driven by scale and cheaper components.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val"><em>1 mln+</em></div>
+        <div class="stat-card-l">Robots at Amazon</div>
+        <p class="stat-card-d">The world's largest operator. Enterprise leads — Robotify opens this market to SMEs.</p>
+      </div>
+    </div>
+    <div class="hub-foot reveal" data-product="robotify">
+      <b>Robotify's position.</b> Robotify targets the RaaS segment (<b>$41.3B by 2030</b>) for SMEs. A hub of humanoids + cobots + AMRs with full service. <b>The first integrator in CE</b> to offer physical robots on a subscription model with safety, service, and process integration included.
+    </div>
+    <p class="body-md reveal" style="margin-top:14px;color:var(--muted-2);font-size:12px;letter-spacing:0.04em;">Sources: IFR, MarketsandMarkets, Goldman Sachs Humanoid Robot Report 2024, Tesla AI Day 2025</p>
+  </div>
+</section>
+
+<!-- ════════════════════════ KONKURENCJA OVERVIEW ════════════════════════ -->
+<section id="konkurencja" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>06 · Competition</div>
+      <h2 class="h2 reveal">No <em>such all-in hub</em> exists yet for SMEs</h2>
+      <p class="lead reveal">Every competitor covers one field. <b>Automatify combines AI agents, RPA, and physical robots</b> in a single contract with outcome-based billing.</p>
+    </div>
+    <div class="cards-grid reveal" style="grid-template-columns:repeat(4,1fr);">
+      <div class="card">
+        <div class="card-num">i.</div>
+        <h3 class="h3 card-title">Enterprise</h3>
+        <p class="card-desc">UiPath, ServiceNow target the Fortune 500 — price and complexity out of SME reach.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">ii.</div>
+        <h3 class="h3 card-title">Single-tool</h3>
+        <p class="card-desc">Chatbot, OCR, RPA, robot — each separate. The client must integrate it all alone.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">iii.</div>
+        <h3 class="h3 card-title">No full service</h3>
+        <p class="card-desc">The vendor sells a tool, not accountability for the business outcome. No success-based model.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">iv.</div>
+        <h3 class="h3 card-title">No AI + RPA + robots</h3>
+        <p class="card-desc">Competitors separate the digital world from the physical. No one bills both on one contract.</p>
+      </div>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:32px;">
+      <b>The key observation.</b> No all-in hub for SMEs exists. Competition by product: details for <a href="#agentify-konkurencja" style="color:var(--p-accent);font-weight:600;">Agentify</a> and <a href="#robotify-konkurencja" style="color:var(--p-accent);font-weight:600;">Robotify</a> later in this deck.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROZWIĄZANIE ════════════════════════ -->
+<section id="rozwiazanie">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>06.5 · Solution</div>
+      <h2 class="h2 reveal">An all-in-one hub — <em>one partner, full deployment</em></h2>
+      <p class="lead reveal">Four concrete answers to the SME problem: <b>no awareness, no expertise, no budget, no hands for work</b>. Each part of our model addresses one specific problem.</p>
+    </div>
+    <div class="cards-grid reveal" style="grid-template-columns:repeat(2,1fr);">
+      <div class="card">
+        <div class="card-num">Answer 01</div>
+        <h3 class="h3 card-title">Discovery workshop + ROI in 2 weeks</h3>
+        <p class="card-desc">A <span style="white-space:nowrap;">4–8 h</span> workshop surfaces concrete processes to automate. <b>A process map and ROI calculator delivered within 2 weeks</b> of the meeting. No commitment — if we find no potential, we stop.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">Answer 02</div>
+        <h3 class="h3 card-title">One partner — full deployment</h3>
+        <p class="card-desc">The client doesn't worry about technology or vendor selection. <b>Automatify selects, integrates, and operates</b> AI agents, RPA robots, cobots, and AMRs — all under one contract and one invoice.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">Answer 03</div>
+        <h3 class="h3 card-title">Deployment with no upfront fee — success fee</h3>
+        <p class="card-desc">The client <b>pays no upfront deployment fee</b> — the deployment cost is spread over time and repaid through the subscription, not waived. Subscription charges begin only once we deliver savings. Automatify's and the client's interests are aligned — a model dramatically different from implementation firms.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">Answer 04</div>
+        <h3 class="h3 card-title">RaaS — the robot’s work on subscription</h3>
+        <p class="card-desc">A physical robot billed like an employee — <b>a fixed monthly fee</b> or robot-hour billing. The client buys the hardware; integration, service, 24-hour hot-swap and software — included in the subscription.</p>
+      </div>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:32px;">
+      <b>The key investor insight.</b> We solve 4 SME problems <b>at once</b>. Competitors solve 1, sometimes 2. That's a structural advantage you can't close by hiring one engineer.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · PRODUCT BANNER ════════════════════════ -->
+<section id="agentify" data-product="agentify">
+  <div class="container">
+    <div class="product-banner is-agentify">
+      <div class="product-banner-grid">
+        <div>
+          <div class="product-banner-sidetag">Product 1 · Agents-as-a-Service</div>
+          <div class="product-banner-name">Agentify <em>+</em></div>
+          <p class="product-banner-sub">AI agents + UiPath RPA robots. Cognitive automation for customer support, documents, and back-office processes. <b style="color:var(--ink);">A marketplace of 50+ boxed packages</b> — live in 2–4 weeks.</p>
+        </div>
+        <aside class="product-banner-toc">
+          <div class="product-banner-toc-l">In this section</div>
+          <div class="product-banner-toc-list">
+            <a class="product-banner-toc-item" href="#agentify-intro"><span>01</span>Introduction</a>
+            <a class="product-banner-toc-item" href="#agentify-framework"><span>02</span>Agentify framework</a>
+            <a class="product-banner-toc-item" href="#agentify-uipath"><span>03</span>UiPath + Automatify Core</a>
+            <a class="product-banner-toc-item" href="#agentify-partner"><span>04</span>Co-founder &amp; delivery partner</a>
+            <a class="product-banner-toc-item" href="#agentify-konkurencja"><span>05</span>Agentify competition</a>
+            <a class="product-banner-toc-item" href="#agentify-marketplace"><span>06</span>Package marketplace</a>
+            <a class="product-banner-toc-item" href="#agentify-eu"><span>07</span>EU AI Act as a moat</a>
+            <a class="product-banner-toc-item" href="#agentify-proces"><span>08</span>Client service process</a>
+            <a class="product-banner-toc-item" href="#agentify-model"><span>09</span>Billing model</a>
+            <a class="product-banner-toc-item" href="#agentify-przyklad"><span>10</span>Billing example</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · INTRO ════════════════════════ -->
+<section id="agentify-intro" data-product="agentify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-agentify">Agentify</span> · 07 · Introduction</div>
+      <h2 class="h2 reveal">Digital workers <em>24/7</em></h2>
+      <p class="lead reveal">AI agents understand context, make decisions, and communicate with people. RPA robots run repetitive processes with no errors or breaks. <b>One platform, one robot-hour billing.</b></p>
+    </div>
+    <div class="cards-grid reveal" style="grid-template-columns:repeat(3,1fr);">
+      <div class="card">
+        <div class="card-num">01.</div>
+        <h3 class="h3 card-title">24/7 customer support</h3>
+        <p class="card-desc">AI chatbots with access to the knowledge base, CRM, and client history. <b>Escalation to a human only when needed.</b></p>
+      </div>
+      <div class="card">
+        <div class="card-num">02.</div>
+        <h3 class="h3 card-title">Document extraction</h3>
+        <p class="card-desc">Invoices, contracts, emails. <b>OCR + LLM</b> = data ready to enter, at 95–98% accuracy.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03.</div>
+        <h3 class="h3 card-title">Lead qualification</h3>
+        <p class="card-desc">The agent works the form, asks follow-ups, classifies, and hands off to sales with a note.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">04.</div>
+        <h3 class="h3 card-title">HR and onboarding</h3>
+        <p class="card-desc">CV pre-screening, answering employee questions, automatic document generation.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">05.</div>
+        <h3 class="h3 card-title">Order processing</h3>
+        <p class="card-desc">Email → validation → ERP. Handling time cut by <b>65%</b>, <b>95%</b> of manual errors eliminated.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">06.</div>
+        <h3 class="h3 card-title">Reports and reconciliations</h3>
+        <p class="card-desc">Pull from N sources, validate, format, and distribute daily at the same time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ════════════════════════ AGENTIFY · FRAMEWORK ════════════════════════ -->
+<section id="agentify-framework" data-product="agentify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-agentify">Agentify</span> · 07.2 · Framework</div>
+      <h2 class="h2 reveal">Agentify stack — <span style="color:#1B7C99;-webkit-text-fill-color:#1B7C99;font-weight:800;">UiPath</span> + n8n dziś, <span style="color:#1B7C99;-webkit-text-fill-color:#1B7C99;font-weight:800;">własny orkiestrator jutro</span></h2>
+      <p class="lead reveal">Our framework binds LLMs, memory, tools, and context into a coherent agent. <b>Under the hood today: UiPath + n8n.</b> <b>Series A plan (MVP3): our own orchestrator built on LangGraph</b> — full control of the execution layer, our own IP, vendor independence.</p>
+    </div>
+
+    <div class="tech-grid">
+      <div class="reveal">
+        <h3 class="h3" style="margin-bottom:18px;">What does the <span class="tag-agentify">Agentify framework</span> add?</h3>
+        <p class="body-md" style="margin-bottom:24px;">The framework is the code layer that lets an LLM act on its own: plan steps, use tools (API, database, calculator), remember context, and make decisions. An LLM alone only generates text — <b>the framework turns it into an agent</b> that does the work.</p>
+        <div class="stack-row">
+          <div class="stack-letter">M</div>
+          <div>
+            <h4 class="h4 stack-title">Multi-tenant</h4>
+            <p class="stack-desc">Each client in an isolated context. Full GDPR compliance, EU-only data residency.</p>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-letter">P</div>
+          <div>
+            <h4 class="h4 stack-title">Memory layer</h4>
+            <p class="stack-desc">A vector store on client data (pgvector). Persistent context memory across sessions.</p>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-letter">T</div>
+          <div>
+            <h4 class="h4 stack-title">Tool registry</h4>
+            <p class="stack-desc">Standardized connectors to the client's ERP / CRM / API. Plug-and-play for the integrator.</p>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-letter">R</div>
+          <div>
+            <h4 class="h4 stack-title">Per-task routing</h4>
+            <p class="stack-desc">Model choice by context: GPT-4o, Claude, Mistral. Cost/quality optimization.</p>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-letter">O</div>
+          <div>
+            <h4 class="h4 stack-title">Observability</h4>
+            <p class="stack-desc">An audit of every decision + cost tracking + SLA. <b>The client sees what, when, and at what cost.</b></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal d2">
+        <h3 class="h3" style="margin-bottom:18px;">UiPath + n8n <span style="color:var(--muted);font-size:0.6em;font-weight:600;letter-spacing:0.04em;">— FOUNDATION</span></h3>
+        <p class="body-md" style="margin-bottom:24px;">Two pillars of the execution layer in MVP1/MVP2. <b>UiPath</b> — a proven enterprise layer for RPA processes, AI Computer Vision, integration with legacy systems without an API, and SLA monitoring. <b>n8n</b> — an open-source, self-hosted AI-workflow orchestrator with 400+ API integrations. Together they cover the full spectrum: from enterprise-grade RPA to lightweight AI agents. <b>Series A (MVP3):</b> migration to our own orchestrator built on LangGraph.</p>
+        <p class="body-md" style="display:none;">state graphs: each node = an agent step (e.g. "check CRM," "send email"), each edge = a transition condition. <b>Production-ready</b>: cycles, checkpointing, human-in-the-loop.</p>
+        <div class="biz-block">
+          <div class="biz-block-title">— Why UiPath + n8n</div>
+          <div class="biz-point"><b>Enterprise + agile at once</b> — UiPath for production tasks, n8n for fast automations.</div>
+          <div class="biz-point"><b>500+ UiPath connectors + 400+ n8n integrations</b> — practically every client system is covered.</div>
+          <div class="biz-point"><b>AI Computer Vision (UiPath)</b> — operating legacy systems without an API, at the screen level.</div>
+          <div class="biz-point"><b>Self-hosted n8n + EU-only data residency</b> — full GDPR compliance, zero data transfer outside the EU.</div>
+          <div class="biz-point"><b>Human-in-the-loop</b> — a stop point for client approval on high-risk decisions.</div>
+        </div>
+        <div class="footnote">AI models: <b>OpenAI · Anthropic · Mistral</b> — chosen per use case. Memory: pgvector / Pinecone. Security: multi-tenant, audit, EU-only data residency. <b>Long-term vision:</b> in MVP3 (Series A) we build our own agent orchestrator on <b>LangGraph</b> — our own IP, multi-tenant, observability, removing the UiPath dependency.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · STACK OVERVIEW (4 warstwy) ════════════════════════ -->
+<section id="agentify-stack" data-product="agentify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-agentify">Agentify</span> · 07.25 · Four-layer stack</div>
+      <h2 class="h2 reveal">The architecture in one slide — <em>four layers, one product</em></h2>
+      <p class="lead reveal">We don't reinvent the wheel. Each layer has a clear job and a proven provider. <b>The client doesn't see this complexity</b> — they see one Client Portal and one invoice.</p>
+    </div>
+    <div class="partners reveal">
+      <div class="partners-head">
+        <div>
+          <div class="partners-title">Four layers, one product</div>
+        </div>
+        <p class="partners-sub">UiPath orchestrates enterprise processes. n8n builds AI agents in lightweight workflows. LLMs provide the cognitive layer. Robot vendors provide physical execution. <b style="color:var(--ink);">Automatify Core ties it all into one billing system and one interface.</b></p>
+      </div>
+      <div class="partners-grid" style="grid-template-columns:repeat(4, 1fr);">
+        <div class="partner">
+          <div class="partner-mark">Ui<em>Path</em></div>
+          <div class="partner-role">Execution + governance</div>
+          <p class="partner-d">A proven enterprise layer. Process Mining, Task Mining, Robots + Orchestrator. <b style="color:var(--ink);">500+ connectors</b> to ERP, CRM, email.</p>
+        </div>
+        <div class="partner">
+          <div class="partner-mark">n<em>8n</em></div>
+          <div class="partner-role">AI agent workflows</div>
+          <p class="partner-d">Open-source, self-hosted. <b style="color:var(--ink);">400+ API integrations</b>. Multi-agent, memory, human-in-the-loop. Our own Agentify framework layer at Series A (MVP3).</p>
+        </div>
+        <div class="partner">
+          <div class="partner-mark"><em>LLM</em>·y</div>
+          <div class="partner-role">Cognitive layer</div>
+          <p class="partner-d">OpenAI · Anthropic · Mistral · open-source. <b style="color:var(--ink);">Model-agnostic</b>, chosen per task. Zero vendor lock-in.</p>
+        </div>
+        <div class="partner">
+          <div class="partner-mark"><em>UR</em> · MiR</div>
+          <div class="partner-role">Physical robots</div>
+          <p class="partner-d">Universal Robots (cobots), MiR / AutoStore (AMR), partnerships with humanoid OEMs (Figure / 1X / Apptronik) from 2027.</p>
+        </div>
+      </div>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:24px;">
+      <b>Strategic advantage:</b> layers 1–3 are interchangeable, layer 4 scalable through the network effect of OEM partnerships. <b>Automatify Core</b> (billing + Client Portal + deployment procedures) is our IP.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · UIPATH + CORE ════════════════════════ -->
+<section id="agentify-uipath" data-product="agentify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-agentify">Agentify</span> · 07.3 · UiPath + Core</div>
+      <h2 class="h2 reveal">UiPath + Automatify Core — <em>execution + the client layer</em></h2>
+      <p class="lead reveal">The proven enterprise layer <b>UiPath</b> does the work. <b>Automatify Core</b> ties together billing, the client, and deployment. The client sees one interface and one invoice.</p>
+    </div>
+
+    <div class="two-col" style="margin-top:8px;">
+      <div>
+        <div class="col-head">
+          <div class="eyebrow reveal"><span class="dot"></span>UiPath</div>
+          <span class="col-tag">— execution</span>
+        </div>
+        <h3 class="h3 reveal" style="margin-bottom:24px;">Enterprise partnership — RPA + AI Automation</h3>
+        <div class="list-rows reveal">
+          <div class="list-row">
+            <div class="list-row-num">01</div>
+            <div>
+              <h4 class="h4 list-row-title">Process Mining</h4>
+              <p class="list-row-desc">Discovering processes to automate from the client's system logs.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">02</div>
+            <div>
+              <h4 class="h4 list-row-title">Task Mining</h4>
+              <p class="list-row-desc">Mapping employee tasks from the desktop — what actually takes time.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">03</div>
+            <div>
+              <h4 class="h4 list-row-title">Robots + Orchestrator</h4>
+              <p class="list-row-desc">Attended / unattended automation + real-time SLA monitoring.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">04</div>
+            <div>
+              <h4 class="h4 list-row-title">AI Computer Vision</h4>
+              <p class="list-row-desc">OCR + understanding legacy-system screens. Automation with no API.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">05</div>
+            <div>
+              <h4 class="h4 list-row-title">ROI calculator</h4>
+              <p class="list-row-desc">UiPath Automation Hub: estimating hours → EUR before deployment starts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="col-head">
+          <div class="eyebrow reveal"><span class="dot"></span>Automatify Core</div>
+          <span class="col-tag">— the client layer</span>
+        </div>
+        <h3 class="h3 reveal" style="margin-bottom:24px;">Our layer — billing, client, deployment</h3>
+        <div class="list-rows reveal">
+          <div class="list-row">
+            <div class="list-row-num">01</div>
+            <div>
+              <h4 class="h4 list-row-title">AI Hours Engine</h4>
+              <p class="list-row-desc">A meter of every agent's and robot's working time — the basis of billing.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">02</div>
+            <div>
+              <h4 class="h4 list-row-title">Client Portal</h4>
+              <p class="list-row-desc">The client dashboard: savings, alerts, reports — in real time.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">03</div>
+            <div>
+              <h4 class="h4 list-row-title">Admin Panel</h4>
+              <p class="list-row-desc">Deployment, support, monitoring, and invoicing on our side.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">04</div>
+            <div>
+              <h4 class="h4 list-row-title">Fast Onboarding</h4>
+              <p class="list-row-desc">Live at the client within <b>30 days</b> of signing.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">05</div>
+            <div>
+              <h4 class="h4 list-row-title">Boxed-package library</h4>
+              <p class="list-row-desc">Ready-made deployment modules — a package live in <b>7–14 days</b> of the offer (MVP 2).</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="hub-foot reveal" style="margin-top:32px;">
+      <b>Integration.</b> UiPath executes, the Agentify framework understands, Automatify Core orchestrates — <b>the client sees one interface and one invoice.</b>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · AUTOMATIFY CORE (dedykowany slajd) ════════════════════════ -->
+<section id="agentify-core" data-product="agentify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal" style="color:rgba(27,42,71,.55);"><span class="dot" style="background:linear-gradient(135deg,#2EBED9 0%,#2EBED9 100%);"></span><span class="tag-agentify" style="color:#2EBED9;">Agentify</span> · 07.35 · Automatify Core</div>
+      <h2 class="h2 reveal" style="color:var(--ink);">Automatify Core — <em style="background:linear-gradient(95deg,#2EBED9 0%,#2EBED9 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-style:normal;font-weight:800;">this is more than an integrator</em></h2>
+      <p class="lead reveal" style="color:rgba(27,42,71,.7);max-width:74ch;">UiPath, n8n, GPT-4, Claude — anyone can buy them tomorrow. <b style="color:var(--ink);">Automatify Core is the reason the company has value</b>, not just a license balance sheet. A proprietary software layer that binds three external technology blocks into one product for the client — our IP, which you can't buy and can't bypass.</p>
+    </div>
+
+    <div class="case-flow reveal" style="grid-template-columns:repeat(5,1fr);">
+      <div class="case-flow-item">
+        <div class="case-flow-num">01 · Measure</div>
+        <div class="case-flow-title">AI Hours Engine</div>
+        <p class="case-flow-desc">An engine counting every agent's and robot's working hours. <b style="color:#2EBED9;">The basis of billing</b> — the client pays for robot-hours used, not for licenses. Without it there's no Pay-as-you-Go or Pay-as-you-Save.</p>
+      </div>
+      <div class="case-flow-item">
+        <div class="case-flow-num">02 · Client</div>
+        <div class="case-flow-title">Client Portal</div>
+        <p class="case-flow-desc">The client interface: <b style="color:#2EBED9;">which processes are running, how many robot-hours they used, how much money they saved</b>, SLA alerts, monthly reports. The client sees savings, not raw logs.</p>
+      </div>
+      <div class="case-flow-item">
+        <div class="case-flow-num">03 · Operations</div>
+        <div class="case-flow-title">Admin Panel</div>
+        <p class="case-flow-desc">Automatify's internal interface: deployment, monitoring, support, invoicing. <b style="color:#2EBED9;">What the client and partner never see</b> — our operational tool.</p>
+      </div>
+      <div class="case-flow-item">
+        <div class="case-flow-num">04 · Playbook</div>
+        <div class="case-flow-title">Procedures + library</div>
+        <p class="case-flow-desc">A standard 7-step process, offer templates, an ROI calculator, ready configurations for 8 use cases. <b style="color:#2EBED9;">The technology partner gets a ready-made playbook</b>.</p>
+      </div>
+      <div class="case-flow-item" style="background:linear-gradient(135deg,rgba(46,190,217,0.18),rgba(46,190,217,0.14));border-right:0;">
+        <div class="case-flow-num" style="color:#2EBED9;">05 · Money</div>
+        <div class="case-flow-title">Billing layer</div>
+        <p class="case-flow-desc">Integrates the meter (AI Hours Engine) with the invoicing system. <b style="color:var(--ink);">Supports both billing models, partner commissions, and success fees.</b></p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(27,42,71,.12);border-bottom:1px solid rgba(27,42,71,.12);margin-top:32px;" class="reveal">
+      <div style="padding:28px 32px 32px;border-right:1px solid rgba(27,42,71,.10);">
+        <div style="font-family:var(--sans);font-weight:800;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#2EBED9;margin-bottom:14px;">Moat 01 · Time and cost to rebuild</div>
+        <div style="font-family:var(--sans);font-weight:800;font-size:32px;letter-spacing:-0.022em;color:var(--ink);margin-bottom:10px;">12–18 mies.</div>
+        <p style="font-size:13.5px;color:rgba(27,42,71,.6);line-height:1.6;">of engineering work a competitor would need to build this from scratch. With our pre-seed = impossible to catch in the 2026–2028 market window.</p>
+      </div>
+      <div style="padding:28px 32px 32px;border-right:1px solid rgba(27,42,71,.10);">
+        <div style="font-family:var(--sans);font-weight:800;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#2EBED9;margin-bottom:14px;">Moat 02 · Network effect</div>
+        <div style="font-family:var(--sans);font-weight:800;font-size:32px;letter-spacing:-0.022em;color:var(--ink);margin-bottom:10px;">N × N</div>
+        <p style="font-size:13.5px;color:rgba(27,42,71,.6);line-height:1.6;">The more deployments, the better the procedure library, the more accurate the ROI calculator, the smoother partner onboarding. <b style="color:var(--ink);">Each client improves the product for the next.</b></p>
+      </div>
+      <div style="padding:28px 32px 32px;">
+        <div style="font-family:var(--sans);font-weight:800;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;background:linear-gradient(95deg,#2EBED9,#2EBED9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin-bottom:14px;">Moat 03 · Vendor-agnostic</div>
+        <div style="font-family:var(--sans);font-weight:800;font-size:32px;letter-spacing:-0.022em;color:var(--ink);margin-bottom:10px;">Zero lock-in</div>
+        <p style="font-size:13.5px;color:rgba(27,42,71,.6);line-height:1.6;">We swap UiPath for n8n for our own orchestrator (Series A) <b style="color:var(--ink);">without losing clients</b>. The client sees the Client Portal — underneath it can be anything.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;padding:24px 32px;background:linear-gradient(95deg,rgba(46,190,217,0.10),rgba(46,190,217,0.08));border:1px solid rgba(46,190,217,0.20);border-radius:14px;" class="reveal">
+      <div style="font-family:var(--sans);font-weight:800;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#2EBED9;margin-bottom:10px;">— Bottom line for the investor</div>
+      <p style="font-size:15.5px;line-height:1.7;color:var(--ink);max-width:84ch;">
+        <b style="color:#2EBED9;">Without Automatify Core we're an integrator</b> — commoditized, 15–25% margin, a low exit valuation.<br>
+        <b style="color:#2EBED9;">With Automatify Core we're a platform</b> — scalable, 60–80% enterprise-SaaS margin, a multiple-times valuation.<br>
+        <b>The PLN 6,802,820 pre-seed funds building Core in 12 months.</b> It's the one investment that can't be made later.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · CO-FOUNDER &amp; DELIVERY PARTNER (SUBEO) ════════════════════════ -->
+<section id="agentify-partner" data-product="agentify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-agentify">Agentify</span> · 07.4 · Co-founder &amp; delivery partner</div>
+      <h2 class="h2 reveal">Subeo — <em>250+ RPA deployments already delivered</em></h2>
+      <p class="lead reveal">Agentify does not start from zero. <b>Subeo is both a&nbsp;co-founder of Automatify and our delivery partner</b> — a&nbsp;Polish team with a&nbsp;documented automation portfolio for mid-sized and large companies. Delivery capability is <b>owned by the company from day one</b> rather than bought on the market.</p>
+    </div>
+
+    <div class="reveal" style="display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;background:var(--card);border:1px solid var(--rule);border-radius:18px;padding:26px 32px;margin-bottom:22px;">
+      <img src="logo-subeo.png" alt="Subeo — Business Automation" style="height:40px;width:auto;display:block;">
+      <div style="display:flex;gap:40px;flex-wrap:wrap;">
+        <div><div style="font-weight:800;font-size:26px;letter-spacing:-.02em;color:var(--teal);">250+</div><div style="font-size:12.5px;color:var(--muted);">RPA and automation projects</div></div>
+        <div><div style="font-weight:800;font-size:26px;letter-spacing:-.02em;color:var(--ink);">4</div><div style="font-size:12.5px;color:var(--muted);">competencies: Discovery · RPA · AI · OCR</div></div>
+        <div><div style="font-weight:800;font-size:26px;letter-spacing:-.02em;color:var(--ink);">End-to-end</div><div style="font-size:12.5px;color:var(--muted);">from process diagnosis to maintenance</div></div>
+      </div>
+    </div>
+
+    <div class="tech-cards reveal" style="grid-template-columns:repeat(4,1fr);">
+      <div class="tcard">
+        <div class="tcard-n" style="color:var(--teal);">Business Process Discovery</div>
+        <div class="tcard-t">Diagnosis before technology</div>
+        <div class="tcard-st">Proprietary methodology</div>
+        <p class="tcard-d">AS-IS / TO-BE mapping, potential and feasibility assessment, initiative prioritisation, risk map, business case and roadmap. <b>Clients avoid investing in random automations.</b></p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n" style="color:var(--teal);">RPA and UiPath</div>
+        <div class="tcard-t">Digital workers inside systems</div>
+        <div class="tcard-st">Architecture · development · QA</div>
+        <p class="tcard-d">Robot architecture, development, testing, orchestration and quality standards. System log-ins, data handling, document and report generation, mailbox processing.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n" style="color:var(--teal);">AI agents and Microsoft</div>
+        <div class="tcard-t">Context, language, exceptions</div>
+        <div class="tcard-st">M365 · permission control</div>
+        <p class="tcard-d">Agent roles with a&nbsp;defined scope and accountability: context analysis, content classification, summarisation, exception handling and user communication.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n" style="color:var(--teal);">Intelligent OCR</div>
+        <div class="tcard-t">From document to data</div>
+        <div class="tcard-st">Document Understanding</div>
+        <p class="tcard-d">Read → classify → interpret → act. Invoices, contracts, forms, applications, e-mail attachments and scans. Data extraction with human-in-the-loop exception handling.</p>
+      </div>
+    </div>
+
+    <h3 class="h3 reveal" style="margin:36px 0 16px;">Automation areas already delivered</h3>
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:16px;overflow:hidden;">
+      <div style="background:var(--card);padding:20px 22px;"><div style="font-weight:800;font-size:14px;margin-bottom:6px;">Accounting &amp; finance</div><div style="font-size:12.5px;color:var(--muted);line-height:1.5;">Invoices, payments, bank statements, reports, reconciliations and data control.</div></div>
+      <div style="background:var(--card);padding:20px 22px;"><div style="font-weight:800;font-size:14px;margin-bottom:6px;">HR &amp; payroll</div><div style="font-size:12.5px;color:var(--muted);line-height:1.5;">Employee documents, applications, onboarding, HR data.</div></div>
+      <div style="background:var(--card);padding:20px 22px;"><div style="font-weight:800;font-size:14px;margin-bottom:6px;">Administration &amp; back office</div><div style="font-size:12.5px;color:var(--muted);line-height:1.5;">Document flow, registers, correspondence, deadline tracking.</div></div>
+      <div style="background:var(--card);padding:20px 22px;"><div style="font-weight:800;font-size:14px;margin-bottom:6px;">Procurement &amp; orders</div><div style="font-size:12.5px;color:var(--muted);line-height:1.5;">Orders, confirmations, supplier data, fulfilment status.</div></div>
+      <div style="background:var(--card);padding:20px 22px;"><div style="font-weight:800;font-size:14px;margin-bottom:6px;">Claims &amp; tickets</div><div style="font-size:12.5px;color:var(--muted);line-height:1.5;">Classification, registration, responses, escalations, reporting.</div></div>
+    </div>
+
+    <div class="hub-foot reveal" style="margin-top:28px;">
+      <b>What this means for the investor.</b> As a&nbsp;<b>co-founder</b>, Subeo contributes <b>a documented 250+ deployments</b>, an established delivery team and the UiPath and Microsoft ecosystems — with an ownership stake, not on a&nbsp;contractor basis. Automatify does not need to build delivery capability from scratch — <b>execution risk in the pre-seed round is materially lower</b>, and capital goes into Automatify Core and sales rather than learning the craft.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · KONKURENCJA ════════════════════════ -->
+<section id="agentify-konkurencja" data-product="agentify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-agentify">Agentify</span> · 07.45 · Competition</div>
+      <h2 class="h2 reveal">Competition in <em>AI agents for SMEs</em></h2>
+      <p class="lead reveal">Global players target enterprise. Local competitors build custom — expensive and slow. <b>Agentify combines boxed packages + success billing + AI&nbsp;+&nbsp;RPA</b> in one contract.</p>
+    </div>
+    <div class="comp-table reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Targeting</th>
+            <th>Billing model</th>
+            <th>AI + RPA?</th>
+            <th>Deployment</th>
+            <th>Pricing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>UiPath</td><td>Enterprise (1000+)</td><td>Per-seat licenses</td><td>RPA only</td><td>3–6 mo</td><td>&gt; €118k</td></tr>
+          <tr><td>Microsoft Copilot Studio</td><td>Enterprise, MS-stack</td><td>Per-user license</td><td>AI yes, RPA no</td><td>Custom</td><td>Medium</td></tr>
+          <tr><td>Automation Anywhere</td><td>Enterprise</td><td>Per-bot subscription</td><td>RPA + AI add-on</td><td>3–6 mo</td><td>High</td></tr>
+          <tr><td>PaidAI / Botpress</td><td>Long-tail SMB</td><td>SaaS per-msg</td><td>Chatbot only</td><td>DIY</td><td>Low</td></tr>
+          <tr><td>Netguru / IBM Polska</td><td>Mid-market PL</td><td>Time &amp; material</td><td>Custom</td><td>6–12 mo</td><td>Project-based</td></tr>
+          <tr class="us"><td>Agentify</td><td>SMEs 50–249</td><td>Pay-as-you-Save · success</td><td>Yes (AI + RPA)</td><td>2–4 wks boxed</td><td>On savings</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:24px;">
+      <b>Agentify's edge.</b> The only player with <b>boxed packages + success-based billing + AI&nbsp;+&nbsp;RPA together + local SLA and support.</b> <b>2–4 weeks</b> from lead to a working agent.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · MARKETPLACE ════════════════════════ -->
+<section id="agentify-marketplace" data-product="agentify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-agentify">Agentify</span> · MVP2 plan · Package marketplace</div>
+      <h2 class="h2 reveal">A marketplace of <em>"boxed" automations</em></h2>
+      <p class="lead reveal">An MVP2 (Seed) plan: the client picks a ready-made package from the library and we tailor it in <b>2–4 weeks</b>. Base configuration with <b>no upfront fee</b> — the deployment cost is spread across the subscription, with no outcome guarantee. <b>Roadmap: 50+ packages by end of 2027</b>.</p>
+    </div>
+    <div class="pkg-grid reveal">
+      <div class="pkg"><div class="pkg-tier pro">Pro · 5k rbh</div><div class="pkg-name">24/7 Service desk</div><div class="pkg-desc">AI chatbot + live chat with escalation to a human.</div></div>
+      <div class="pkg"><div class="pkg-tier">Starter · 1k rbh</div><div class="pkg-name">Invoices → ERP</div><div class="pkg-desc">OCR + RPA + data validation. Automatic import.</div></div>
+      <div class="pkg"><div class="pkg-tier">Starter · 1k rbh</div><div class="pkg-name">Lead qualification</div><div class="pkg-desc">Web → CRM + AI scoring + sales prioritization.</div></div>
+      <div class="pkg"><div class="pkg-tier">Starter · 1k rbh</div><div class="pkg-name">Management reports</div><div class="pkg-desc">Multi-source → PDF + daily distribution.</div></div>
+      <div class="pkg"><div class="pkg-tier pro">Pro · 5k rbh</div><div class="pkg-name">HR onboarding</div><div class="pkg-desc">Documents + Q&amp;A + checklists for new hires.</div></div>
+      <div class="pkg"><div class="pkg-tier pro">Pro · 5k rbh</div><div class="pkg-name">Systems integration</div><div class="pkg-desc">ERP ↔ CRM ↔ Excel ↔ API. Full flow automation.</div></div>
+      <div class="pkg"><div class="pkg-tier">Starter · 1k rbh</div><div class="pkg-name">Reconciliation</div><div class="pkg-desc">Bank ↔ ERP, automatic accounting close.</div></div>
+      <div class="pkg"><div class="pkg-tier pro">Pro · 5k rbh</div><div class="pkg-name">Compliance &amp; audit</div><div class="pkg-desc">Change monitoring, logs, EU AI Act compliance alerts.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · EU AI ACT ════════════════════════ -->
+<section id="agentify-eu" data-product="agentify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-agentify">Agentify</span> · 07.5 · EU AI Act</div>
+      <h2 class="h2 reveal">EU AI Act: <em>threat or advantage</em>?</h2>
+      <p class="lead reveal">The new AI regulations are an added compliance cost for companies — but for Agentify they're <b>built-in value and a barrier to entry for competitors.</b></p>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="col-head">
+          <div class="eyebrow reveal"><span class="dot"></span>What the EU AI Act changes</div>
+          <span class="col-tag">— risk</span>
+        </div>
+        <div class="list-rows reveal">
+          <div class="list-row">
+            <div class="list-row-num">01</div>
+            <div>
+              <h4 class="h4 list-row-title">Fines up to €35M / 7% of turnover</h4>
+              <p class="list-row-desc">For violating prohibited AI practices. For SMEs — an existential risk.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">02</div>
+            <div>
+              <h4 class="h4 list-row-title">Transparency obligation</h4>
+              <p class="list-row-desc">Every AI system must disclose that it is AI. Documentation, audit, monitoring.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">03</div>
+            <div>
+              <h4 class="h4 list-row-title">Mandatory risk assessment</h4>
+              <p class="list-row-desc">HR, credit scoring, recruitment systems = high-risk classification with requirements.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">04</div>
+            <div>
+              <h4 class="h4 list-row-title">Documentation and audit</h4>
+              <p class="list-row-desc">Decision logs, training data, bias monitoring — ready for inspection.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">05</div>
+            <div>
+              <h4 class="h4 list-row-title">Deadline 2025–2027</h4>
+              <p class="list-row-desc">A phased rollout. <b>Prohibited practices already apply.</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col-head">
+          <div class="eyebrow reveal"><span class="dot"></span>How <span class="tag-agentify">Agentify</span> uses it</div>
+          <span class="col-tag">— advantage</span>
+        </div>
+        <div class="list-rows reveal">
+          <div class="list-row">
+            <div class="list-row-num">01</div>
+            <div>
+              <h4 class="h4 list-row-title">Compliance included</h4>
+              <p class="list-row-desc">The client doesn't build a compliance system — <b>they get it in the subscription.</b></p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">02</div>
+            <div>
+              <h4 class="h4 list-row-title">EU-only hosting</h4>
+              <p class="list-row-desc">Data in GDPR-compliant infrastructure, with no transfer to the U.S.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">03</div>
+            <div>
+              <h4 class="h4 list-row-title">Built-in audit trail</h4>
+              <p class="list-row-desc">Every agent decision is logged, ready for a regulator's inspection.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">04</div>
+            <div>
+              <h4 class="h4 list-row-title">Human-in-the-loop</h4>
+              <p class="list-row-desc">Automatic escalation to a human for high-risk decisions.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">05</div>
+            <div>
+              <h4 class="h4 list-row-title">A barrier to entry for competitors</h4>
+              <p class="list-row-desc">Compliance costs money — <b>SMEs need a partner, not DIY.</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:32px;">
+      <b>The EU AI Act isn't a cost — it's a moat.</b> Agentify sells compliance as a feature, not a problem.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · PROCES ════════════════════════ -->
+<section id="agentify-proces" data-product="agentify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-agentify">Agentify</span> · 07.6 · Client service</div>
+      <h2 class="h2 reveal">From lead <em>to a working agent</em> — 7 steps</h2>
+      <p class="lead reveal">One path: discovery → design → build → go-live → scale. <b>4–6 weeks on average</b> for a boxed package. Discovery is based on Task Mining and Process Mining — we estimate so precisely that both billing models come out at very similar values.</p>
+    </div>
+    <div class="rmap reveal" style="grid-template-columns:repeat(7,1fr);">
+      <div class="rmap-phase">
+        <div class="rmap-y">1</div>
+        <div class="rmap-l">Lead</div>
+        <div class="rmap-items"><div class="rmap-item">Outbound</div><div class="rmap-item">Referrals</div><div class="rmap-item">Hub</div><div class="rmap-item">Partners</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2</div>
+        <div class="rmap-l">Discovery</div>
+        <div class="rmap-items"><div class="rmap-item">Workshop <span style="white-space:nowrap;">4–8 h</span></div><div class="rmap-item">Process map</div><div class="rmap-item">ROI calculator</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">3</div>
+        <div class="rmap-l">Proposal</div>
+        <div class="rmap-items"><div class="rmap-item">Boxed package</div><div class="rmap-item">or custom</div><div class="rmap-item">Partner selection</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">4</div>
+        <div class="rmap-l">Build</div>
+        <div class="rmap-items"><div class="rmap-item">Discovery</div><div class="rmap-item">Design + Build</div><div class="rmap-item">Test + Go-live</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">5</div>
+        <div class="rmap-l">Onboarding</div>
+        <div class="rmap-items"><div class="rmap-item">Dashboard</div><div class="rmap-item">Training</div><div class="rmap-item">Alerts + SLA</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">6</div>
+        <div class="rmap-l">Billing</div>
+        <div class="rmap-items"><div class="rmap-item">Pay-as-you-Save</div><div class="rmap-item">or Pay-as-you-Go</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">7</div>
+        <div class="rmap-l">Scale</div>
+        <div class="rmap-items"><div class="rmap-item">More processes</div><div class="rmap-item">Account mgmt</div><div class="rmap-item">NPS</div></div>
+      </div>
+    </div>
+
+    <div class="billing-cols reveal">
+      <div class="bill">
+        <div class="bill-name">Pay-as-you-Save · step 6</div>
+        <div class="bill-title">You pay a % of the savings</div>
+        <div class="bill-when">Discovery + baseline audit → deployment with <b>no upfront fee</b> for the client (cost spread across the subscription) → savings measured after 30 days → invoice a % of savings.</div>
+      </div>
+      <div class="bill">
+        <div class="bill-name">Pay-as-you-Go · step 6</div>
+        <div class="bill-title">You pay for robot-hours used</div>
+        <div class="bill-when">Deployment quote (10% markup) + robot-hour package selection → meter switched on → monthly invoicing for actual usage.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · MODEL ROZLICZENIOWY ════════════════════════ -->
+<section id="agentify-model" data-product="agentify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-agentify">Agentify</span> · 07.7 · Billing model</div>
+      <h2 class="h2 reveal">Two billing paths — <em>fit any situation</em></h2>
+      <p class="lead reveal">The client picks the model, not the other way around. <b>We only earn when the client does.</b> Robot-hour rate today: €4.7. By 2035: under €1.2. Three revenue layers: subscription 60–70%, expansion 20–30%, value-share 10–15% at a 90%+ margin.</p>
+    </div>
+    <div class="billing-cols reveal">
+      <div class="bill">
+        <div class="bill-name">Pay-as-you-Save</div>
+        <div class="bill-title">You pay a % of the savings</div>
+        <div class="bill-when">For existing processes — <b>where we know the cost base.</b></div>
+        <div class="bill-points">
+          <div class="bill-point">Deployment with <b>no upfront fee</b> — the cost is spread and repaid through the subscription (48 instalments / 4 years)</div>
+          <div class="bill-point">We measure <b>real savings</b> (robot-hours × rate × 12 months)</div>
+          <div class="bill-point">Subscription = <b>10% of net savings</b> — after licence, maintenance and deployment instalment</div>
+          <div class="bill-point">Deployment repaid over <b>48 months</b> — predictable MRR</div>
+          <div class="bill-point">Ideal for: invoices, reports, service desk, integrations</div>
+        </div>
+      </div>
+      <div class="bill">
+        <div class="bill-name">Pay-as-you-Go</div>
+        <div class="bill-title">You pay for robot-hours used</div>
+        <div class="bill-when">For new processes — <b>where there is no reference cost base.</b></div>
+        <div class="bill-points">
+          <div class="bill-point">Robot-hour rate: <b>€4.7 (2026), under €1.2 (2035)</b></div>
+          <div class="bill-point">The client pays for <b>actual usage</b> — an agent-time meter</div>
+          <div class="bill-point">Deployment billed separately (10% markup for the partner)</div>
+          <div class="bill-point">Packages: <b>Starter 1k / Pro 5k / Enterprise 20k</b> AI-agent / RPA-bot hours per month</div>
+          <div class="bill-point">Ideal for: new projects, experiments, expansions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ AGENTIFY · PRZYKŁAD ════════════════════════ -->
+<section id="agentify-przyklad" data-product="agentify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="case">
+      <div class="section-head" style="margin-bottom:8px;">
+        <div class="eyebrow reveal" style="color:var(--p-accent-2);opacity:1;"><span class="dot"></span><span style="color:var(--ink);font-weight:700;">Agentify</span> · 07.8 · Przykład rozliczenia</div>
+        <h2 class="h2 reveal">Pay-as-you-Save — <em style="color:#1B7C99;-webkit-text-fill-color:#1B7C99;background:none;">a mid-sized services company</em></h2>
+        <p class="lead reveal" style="color:rgba(27,42,71,.65);">Model weighted client: 5.2 processes, 24.4 automated FTEs × 1,800 h/yr × PLN 60/h — step by step. <b style="color:var(--ink);">Client after 4 repayment years: +PLN 8.0m net in pocket.</b></p>
+      </div>
+
+      <div class="case-result">
+        <div class="case-cell">
+          <div class="case-cell-l">Automated FTEs</div>
+          <div class="case-cell-v">24.4</div>
+          <div class="case-cell-u">FTEs per weighted client (5.2 processes)</div>
+        </div>
+        <div class="case-cell">
+          <div class="case-cell-l">Client savings</div>
+          <div class="case-cell-v accent">2,635,200</div>
+          <div class="case-cell-u">PLN/yr = 24.4 FTEs × 1,800 h × PLN 60</div>
+        </div>
+        <div class="case-cell">
+          <div class="case-cell-l">Paid to Automatify</div>
+          <div class="case-cell-v">626,612</div>
+          <div class="case-cell-u">PLN/yr = 263,035.30 licence + 62,400 maint. + 78,000 instalment + 223,176.47 commission</div>
+        </div>
+      </div>
+
+      <div class="case-main">
+        <div class="case-chart" style="display:flex;flex-direction:column;justify-content:center;">
+          <div class="case-chart-head" style="border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:12px;margin-bottom:18px;">
+            <span class="case-chart-title">— What the client actually pays over the 48-month deployment repayment</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+            <div>
+              <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(27,42,71,.5);margin-bottom:8px;">Deployment</div>
+              <div style="font-family:var(--sans);font-weight:800;font-size:36px;color:var(--ink);letter-spacing:-0.022em;">312,000 <span style="font-size:0.45em;color:rgba(27,42,71,.5);">PLN</span></div>
+              <div style="font-size:13px;color:rgba(27,42,71,.55);margin-top:8px;line-height:1.55;">PLN 60,000 × 5.2 processes. No upfront fee — repaid in 48 instalments of PLN 6,500/month.</div>
+            </div>
+            <div>
+              <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(27,42,71,.5);margin-bottom:8px;">Total per month</div>
+              <div style="font-family:var(--sans);font-weight:800;font-size:36px;color:var(--p-accent-2);letter-spacing:-0.022em;">52,218 <span style="font-size:0.45em;color:rgba(27,42,71,.5);">PLN/month</span></div>
+              <div style="font-size:13px;color:rgba(27,42,71,.55);margin-top:8px;line-height:1.55;">Licence, maintenance, deployment instalment and 10% commission on net savings. The client keeps <b style="color:var(--ink);">PLN 2,008,588/yr</b>.</div>
+            </div>
+          </div>
+        </div>
+        <div class="case-side">
+          <div class="case-insight" style="border-left:2px solid var(--p-accent-2);">
+            <div class="case-insight-title">Net result after 4 years</div>
+            <div class="case-insight-val">+PLN 8.0m</div>
+            <p class="case-insight-desc">The client's net savings after paying Automatify and repaying the deployment.</p>
+          </div>
+          <div class="case-insight">
+            <div class="case-insight-title">Scalability</div>
+            <p class="case-insight-desc">The client has 4 repayment years to add more processes. <b style="color:var(--ink);">Each new one = pure MRR growth</b> with no new deployment cost.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · PRODUCT BANNER ════════════════════════ -->
+<section id="robotify" data-product="robotify">
+  <div class="container">
+    <div class="product-banner is-robotify">
+      <div class="product-banner-grid">
+        <div>
+          <div class="product-banner-sidetag">Product 2 · Robots-as-a-Service</div>
+          <div class="product-banner-name">Robotify <em>+</em></div>
+          <p class="product-banner-sub">Humanoid and specialized robots. Logistics, production, hospitality, healthcare. <b style="color:var(--ink);">Robot-hour billing regardless of form factor</b> — in one hub with Agentify.</p>
+        </div>
+        <aside class="product-banner-toc">
+          <div class="product-banner-toc-l">In this section</div>
+          <div class="product-banner-toc-list">
+            <a class="product-banner-toc-item" href="#robotify-intro"><span>01</span>Introduction</a>
+            <a class="product-banner-toc-item" href="#robotify-humanoid"><span>02</span>Humanoid technologies</a>
+            <a class="product-banner-toc-item" href="#robotify-niehumanoid"><span>03</span>Non-humanoid technologies</a>
+            <a class="product-banner-toc-item" href="#robotify-konkurencja"><span>04</span>Robotify competition</a>
+            <a class="product-banner-toc-item" href="#robotify-koszt"><span>05</span>Robot cost curve</a>
+            <a class="product-banner-toc-item" href="#robotify-polska"><span>06</span>Poland — demographics</a>
+            <a class="product-banner-toc-item" href="#robotify-zastosowania"><span>07</span>Industry use cases</a>
+            <a class="product-banner-toc-item" href="#robotify-proces"><span>08</span>Deployment process</a>
+            <a class="product-banner-toc-item" href="#robotify-model"><span>09</span>Billing model</a>
+            <a class="product-banner-toc-item" href="#robotify-przyklad"><span>10</span>Billing example</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · INTRO ════════════════════════ -->
+<section id="robotify-intro" data-product="robotify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-robotify">Robotify</span> · 08 · Introduction</div>
+      <h2 class="h2 reveal">Physical robots — <em>robot-hour billing</em></h2>
+      <p class="lead reveal">Automatify's second pillar: robots doing work in the physical world. <b>The same contracts, the same billing</b> — in one hub with Agentify.</p>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="col-head">
+          <div class="eyebrow reveal"><span class="dot"></span>Humanoid robots</div>
+          <span class="col-tag">— general-purpose</span>
+        </div>
+        <h3 class="h3 reveal" style="margin-bottom:16px;">A general-purpose form — they learn human tasks</h3>
+        <p class="body-md reveal" style="margin-bottom:18px;">For tasks requiring dexterity, mobility, and human interaction in an environment designed for people.</p>
+        <div class="spec-row reveal">
+          <div class="spec-cell"><div class="spec-cell-v">1.7 m</div><div class="spec-cell-l">height</div></div>
+          <div class="spec-cell"><div class="spec-cell-v">20 kg</div><div class="spec-cell-l">payload, 1 arm</div></div>
+          <div class="spec-cell"><div class="spec-cell-v">8 h</div><div class="spec-cell-l">per charge</div></div>
+        </div>
+        <div class="biz-block reveal" style="margin-top:24px;">
+          <div class="biz-block-title">— Reference models</div>
+          <div class="biz-point">Figure 02, Apptronik Apollo, 1X NEO, Unitree H1</div>
+          <div class="biz-point"><b>Use cases:</b> hospitality, reception, meal service, senior assistance</div>
+          <div class="biz-point"><b>Pricing 2026–2028:</b> $35–80k/unit, falling to ~$20k by 2030</div>
+        </div>
+      </div>
+      <div>
+        <div class="col-head">
+          <div class="eyebrow reveal"><span class="dot"></span>Non-humanoid robots</div>
+          <span class="col-tag">— specialized</span>
+        </div>
+        <h3 class="h3 reveal" style="margin-bottom:16px;">Specialized — optimal for the task</h3>
+        <p class="body-md reveal" style="margin-bottom:18px;">For heavy, repetitive work requiring high precision or endurance — where a humanoid form is overkill.</p>
+        <div class="spec-row reveal">
+          <div class="spec-cell"><div class="spec-cell-v">AMR</div><div class="spec-cell-l">mobile (logistics)</div></div>
+          <div class="spec-cell"><div class="spec-cell-v">Cobot</div><div class="spec-cell-l">manipulation</div></div>
+          <div class="spec-cell"><div class="spec-cell-v">AGV</div><div class="spec-cell-l">heavy transport</div></div>
+        </div>
+        <div class="biz-block reveal" style="margin-top:24px;">
+          <div class="biz-block-title">— Modele referencyjne</div>
+          <div class="biz-point">Boston Dynamics Stretch, MiR / AutoStore AMR, UR / Doosan cobots, Locus</div>
+          <div class="biz-point"><b>Use cases:</b> warehouse (picking, transport), production (assembly, QA)</div>
+          <div class="biz-point"><b>Pricing:</b> $15–120k depending on specialization</div>
+        </div>
+      </div>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:32px;">
+      <b>One hub, one contract.</b> From a software agent to a humanoid robot — billing in robot-hours, <b>regardless of form factor</b>.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · TECH HUMANOIDALNE ════════════════════════ -->
+<section id="robotify-humanoid" data-product="robotify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-robotify">Robotify</span> · 08.2 · Humanoid technologies</div>
+      <h2 class="h2 reveal">The humanoid stack — <em>a general-purpose form, human tasks</em></h2>
+      <p class="lead reveal">The stack for humanoid robots: <b>scene perception, VLM reasoning, motion planning, safety</b> in human environments.</p>
+    </div>
+    <div class="tech-cards reveal">
+      <div class="tcard">
+        <div class="tcard-n">01.</div>
+        <div class="tcard-t">Vision-Language Models</div>
+        <div class="tcard-st">High-level reasoning</div>
+        <p class="tcard-d">VLMs as the decision layer (GPT-4V, Claude, OpenVLA, RT-2). Translating natural-language commands into action sequences. <b>Self-correction</b>: the robot sees its errors and adjusts the plan.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n">02.</div>
+        <div class="tcard-t">Whole-body Control</div>
+        <div class="tcard-st">Locomotion + balance</div>
+        <p class="tcard-d">Reinforcement learning + MPC for bipedal gait. Stability on stairs, uneven surfaces, and around people. <b>8 hours of work per charge.</b></p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n">03.</div>
+        <div class="tcard-t">Imitation Learning</div>
+        <div class="tcard-st">Learning by demonstration</div>
+        <p class="tcard-d">The robot learns new tasks from <b>5–20 human demonstrations</b> (teleoperation or VR). Used by Figure, 1X, and Apptronik to scale without programming.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n">04.</div>
+        <div class="tcard-t">Human-Robot Interaction</div>
+        <div class="tcard-st">Safety + UX</div>
+        <p class="tcard-d">ISO 13482 (assistive robots). Force-limited operation: collaboration without fencing. Speech, gestures, eye-tracking — <b>human-like interaction</b> for hospitality and care.</p>
+      </div>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:24px;">
+      <b>Humanoids</b> — where the task needs a human form: hospitality, healthcare, reception, senior assistance.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · TECH NIEHUMANOIDALNE ════════════════════════ -->
+<section id="robotify-niehumanoid" data-product="robotify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-robotify">Robotify</span> · 08.3 · Non-humanoid technologies</div>
+      <h2 class="h2 reveal">The non-humanoid stack — <em>specialized, precise</em></h2>
+      <p class="lead reveal">The stack for cobots, AMRs, AGVs, and specialized manipulators: <b>industrial perception, navigation, manipulation, production-line integration.</b></p>
+    </div>
+    <div class="tech-cards reveal">
+      <div class="tcard">
+        <div class="tcard-n">01.</div>
+        <div class="tcard-t">Computer Vision</div>
+        <div class="tcard-st">Detection + quality</div>
+        <p class="tcard-d">YOLOv8, RT-DETR — recognizing pallets, parcels, defects. SAM 2.0 for semantic segmentation. <b>Packing, quality control, returns sorting.</b></p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n">02.</div>
+        <div class="tcard-t">SLAM + Nav2</div>
+        <div class="tcard-st">Autonomous mobility</div>
+        <p class="tcard-d">ORB-SLAM3 + LIO-SAM for infrastructure-free localization. Nav2 (ROS 2) — global and local path planning. Mecanum / swerve drive: <b>full freedom in tight warehouses.</b></p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n">03.</div>
+        <div class="tcard-t">Precision manipulation</div>
+        <div class="tcard-st">Chwytaki + force-feedback</div>
+        <p class="tcard-d">Adaptive grippers (Robotiq, Schunk) + learning by demonstration. MoveIt 2 + RRT* — real-time trajectory planning. <b>Force-torque: the robot "feels" resistance and force.</b></p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n">04.</div>
+        <div class="tcard-t">Edge AI + Integracja</div>
+        <div class="tcard-st">Latency + ROS 2</div>
+        <p class="tcard-d">NVIDIA Jetson Orin / AGX — <b>&lt; 50 ms</b> inference. Quantization 70B → 8B on the edge with no quality loss. ROS 2 ↔ UiPath Orchestrator ↔ Automatify Core — robot-hour billing.</p>
+      </div>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:24px;">
+      <b>Non-humanoids</b> — where throughput matters: logistics, production, packing, quality control.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · KONKURENCJA ════════════════════════ -->
+<section id="robotify-konkurencja" data-product="robotify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-robotify">Robotify</span> · 08.4 · Competition</div>
+      <h2 class="h2 reveal">Competition in <em>physical robots for SMEs</em></h2>
+      <p class="lead reveal">Robot makers sell hardware. Integrators build bespoke projects. <b>Automatify rents the robot's work — by the hour.</b></p>
+    </div>
+    <div class="comp-table reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Offering</th>
+            <th>Model</th>
+            <th>Targeting</th>
+            <th>Deployment</th>
+            <th>Client CAPEX</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Boston Dynamics</td><td>Stretch (pallets), Spot (inspection)</td><td>Hardware sales</td><td>No local sales</td><td>6–12 mo</td><td>$70–150k</td></tr>
+          <tr><td>Universal Robots</td><td>Cobots — via integrators</td><td>Hardware + license</td><td>Yes (distributor)</td><td>3–6 mo</td><td>€30–80k</td></tr>
+          <tr><td>MiR / Mobile Industrial</td><td>Warehouse AMRs</td><td>Sales + service</td><td>Yes (distributor)</td><td>2–4 mo</td><td>€40–90k</td></tr>
+          <tr><td>Local integrators</td><td>Integrators in CE</td><td>Time &amp; material</td><td>Mid-market</td><td>6–12 mo</td><td>Project €47k+</td></tr>
+          <tr><td>Figure / 1X / Apptronik</td><td>Humanoids (early stage)</td><td>B2B, pilots</td><td>No local sales</td><td>6–18 mo</td><td>$35–80k</td></tr>
+          <tr class="us"><td>Robotify</td><td>Robot-as-a-Service (RaaS)</td><td>Subscription €/month</td><td>SMEs</td><td>30-day pilot</td><td>Robot purchase — EU / BGK grant or client budget</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:24px;">
+      <b>Robotify's edge.</b> The only RaaS offer for SMEs. The client funds the robot (EU / BGK grant or own capex budget); we take the integration project and the technology risk off their hands. A 30-day pilot. 24-hour robot hot-swap. Software + integration + service + AI Hours in one billing.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · KRZYWA KOSZTU ════════════════════════ -->
+<section id="robotify-koszt" data-product="robotify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-robotify">Robotify</span> · 08.5 · Cost curve</div>
+      <h2 class="h2 reveal">Robot cost is falling <em>like solar</em></h2>
+      <p class="lead reveal">The humanoid-robot cost curve mirrors solar panels: a <b>40% annual decline</b>. By 2030 a robot work-hour is <b>&lt; $1</b>. The inflection point is NOW.</p>
+    </div>
+    <h3 class="h3 reveal" style="margin-bottom:18px;">Humanoid price (USD)</h3>
+    <div class="rmap reveal" style="grid-template-columns:repeat(5,1fr);">
+      <div class="rmap-phase">
+        <div class="rmap-y">2020</div>
+        <div class="rmap-l">$150k+</div>
+        <p class="body-sm" style="margin-top:8px;">Lab prototype.</p>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2023</div>
+        <div class="rmap-l">$80–100k</div>
+        <p class="body-sm" style="margin-top:8px;">First pilot deployments.</p>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2025</div>
+        <div class="rmap-l">$30–50k</div>
+        <p class="body-sm" style="margin-top:8px;">Commercialization — Figure, Apptronik.</p>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2027</div>
+        <div class="rmap-l">$20–25k</div>
+        <p class="body-sm" style="margin-top:8px;">Tesla Optimus — mass production.</p>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2030</div>
+        <div class="rmap-l">$10–15k</div>
+        <p class="body-sm" style="margin-top:8px;">The price of a car. <b>SME penetration.</b></p>
+      </div>
+    </div>
+
+    <h3 class="h3 reveal" style="margin:48px 0 18px;">Cost-per-work-hour comparison</h3>
+    <div class="stat-cards reveal" style="grid-template-columns:repeat(4,1fr);">
+      <div class="stat-card">
+        <div class="stat-card-val">€8–11 <em>/h</em></div>
+        <div class="stat-card-l">Worker (CE)</div>
+        <p class="stat-card-d">Employer cost with payroll taxes and benefits.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val">$8–12<em>/h</em></div>
+        <div class="stat-card-l">Robot 2025</div>
+        <p class="stat-card-d">Including service and depreciation.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val">$3–5<em>/h</em></div>
+        <div class="stat-card-l">Robot 2027</div>
+        <p class="stat-card-d">Scale + cheaper components.</p>
+      </div>
+      <div class="stat-card" style="background:var(--p-tint);">
+        <div class="stat-card-val" style="color:var(--p-accent);">&lt; $1<em>/h</em></div>
+        <div class="stat-card-l" style="color:var(--p-accent);">Robot 2030</div>
+        <p class="stat-card-d">Tesla-grade mass production.</p>
+      </div>
+    </div>
+    <p class="body-md reveal" style="margin-top:18px;color:var(--muted-2);font-size:12px;letter-spacing:0.04em;">Sources: Goldman Sachs Humanoid Report, Tesla AI Day, ARK Invest Big Ideas 2025</p>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · POLSKA / DEMOGRAFIA ════════════════════════ -->
+<section id="robotify-polska" data-product="robotify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-robotify">Robotify</span> · 08.6 · Poland</div>
+      <h2 class="h2 reveal">Poland — <em>the epicenter of Europe's</em> demographic crisis</h2>
+      <p class="lead reveal">Poland is losing <b>4 million working-age people</b> by 2040. This creates the <b>largest demand for robotization</b> in the CE region.</p>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="col-head">
+          <div class="eyebrow reveal"><span class="dot"></span>Demographic crisis</div>
+          <span class="col-tag">— demand</span>
+        </div>
+        <div class="stat-cards reveal" style="grid-template-columns:1fr 1fr;">
+          <div class="stat-card"><div class="stat-card-val">38M → <em>34M</em></div><div class="stat-card-l">Poland population 2040</div><p class="stat-card-d">A decline of 4M working-age people.</p></div>
+          <div class="stat-card"><div class="stat-card-val"><em>300k</em>/yr</div><div class="stat-card-l">Net emigration</div><p class="stat-card-d">Skilled workers leaving for Western Europe.</p></div>
+          <div class="stat-card"><div class="stat-card-val"><em>2.1×</em></div><div class="stat-card-l">65+ growth in 20 years</div><p class="stat-card-d">The fastest-aging society in the EU.</p></div>
+          <div class="stat-card"><div class="stat-card-val"><em>62%</em></div><div class="stat-card-l">Of firms report labor shortages</div><p class="stat-card-d">Difficulty recruiting physical workers.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="col-head">
+          <div class="eyebrow reveal"><span class="dot"></span>The opportunity for <span class="tag-robotify">Robotify</span></div>
+          <span class="col-tag">— answer</span>
+        </div>
+        <div class="list-rows reveal">
+          <div class="list-row">
+            <div class="list-row-num">01</div>
+            <div>
+              <h4 class="h4 list-row-title">69k SMEs in Poland</h4>
+              <p class="list-row-desc">Firms of 50–249 employees — <b>our core market.</b></p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">02</div>
+            <div>
+              <h4 class="h4 list-row-title">Logistics + production</h4>
+              <p class="list-row-desc">The biggest shortages: warehouses, assembly lines, sorting.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">03</div>
+            <div>
+              <h4 class="h4 list-row-title">Purchase funding + subscription for the work</h4>
+              <p class="list-row-desc">SMEs can't afford $50k+ in one go. An EU / BGK grant closes the robot purchase, and the robot's work is billed on subscription — <b>€1.2k/month.</b></p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">04</div>
+            <div>
+              <h4 class="h4 list-row-title">No competition in the region</h4>
+              <p class="list-row-desc">Zero firms offering humanoid RaaS for SMEs in the CE region.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">05</div>
+            <div>
+              <h4 class="h4 list-row-title">First-mover advantage</h4>
+              <p class="list-row-desc">2026–2027 = the window to build a client network before the wave.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:32px;">
+      <b>Poland needs 500k robots within a decade.</b> Robotify will be the hub that delivers them.
+    </div>
+    <p class="body-md reveal" style="margin-top:14px;color:var(--muted-2);font-size:12px;letter-spacing:0.04em;">Sources: Statistics Poland demographic forecast 2023, Eurostat, PARP SME Report 2024</p>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · ZASTOSOWANIA ════════════════════════ -->
+<section id="robotify-zastosowania" data-product="robotify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-robotify">Robotify</span> · 08.7 · Use cases</div>
+      <h2 class="h2 reveal">Robot use cases <em>by industry</em></h2>
+      <p class="lead reveal">Concrete use cases, robot-type selection, and potential ROI for mid-sized firms in CE and the EU. <b>Robot choice = a function of the process, not fashion</b>: a humanoid only when the task needs a human form. Mostly: cobots + AMR.</p>
+    </div>
+    <div class="tech-cards reveal" style="grid-template-columns:repeat(2,1fr);">
+      <div class="tcard">
+        <div class="tcard-n">Logistics and warehouses</div>
+        <div class="tcard-t">Pick &amp; pack, transport, sorting</div>
+        <div class="tcard-st">AMR + cobot picking</div>
+        <p class="tcard-d"><b>Tasks:</b> pick &amp; pack, inter-zone transport, inventory, returns sorting.<br><br><b>ROI:</b> 60–80% packing-cycle reduction, ROI &lt; 18 months.<br><br><b>Clients:</b> DTC e-commerce, 3PL, retail back-office.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n">Production and assembly</div>
+        <div class="tcard-t">Assembly, QA, palletizing</div>
+        <div class="tcard-st">Cobots + vision AI</div>
+        <p class="tcard-d"><b>Tasks:</b> precision assembly, quality control, final packing, palletizing.<br><br><b>ROI:</b> 40–60% throughput increase, 30–50% defect reduction.<br><br><b>Clients:</b> SME manufacturing: electronics, cosmetics, food processing.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n">Hospitality and service</div>
+        <div class="tcard-t">Reception, delivery, cleaning</div>
+        <div class="tcard-st">Humanoid + AMR</div>
+        <p class="tcard-d"><b>Tasks:</b> 24/7 reception, delivering meals and towels, night cleaning, concierge.<br><br><b>ROI:</b> night-shift coverage with no headcount cost, NPS +15 pts.<br><br><b>Clients:</b> hotel chains of 50+ rooms, restaurants, casinos.</p>
+      </div>
+      <div class="tcard">
+        <div class="tcard-n">Healthcare and care</div>
+        <div class="tcard-t">Senior assistance, medication transport</div>
+        <div class="tcard-st">Humanoid + transport</div>
+        <p class="tcard-d"><b>Tasks:</b> senior assistance (medication reminders), transporting meds/samples on the ward.<br><br><b>ROI:</b> relieving nurses by 2–3 h/shift, fewer errors.<br><br><b>Clients:</b> care homes, private clinics, district hospitals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · PROCES ════════════════════════ -->
+<section id="robotify-proces" data-product="robotify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-robotify">Robotify</span> · 08.8 · Deployment process</div>
+      <h2 class="h2 reveal">From assessment <em>to deployment</em> — 7 steps</h2>
+      <p class="lead reveal">The physical-robot deployment cycle: <b>12–20 weeks</b> with a safety assessment, ROS 2 integration, and 24/7 service. 24-hour robot hot-swap.</p>
+    </div>
+    <div class="rmap reveal" style="grid-template-columns:repeat(7,1fr);">
+      <div class="rmap-phase">
+        <div class="rmap-y">1</div>
+        <div class="rmap-l">Lead</div>
+        <div class="rmap-items"><div class="rmap-item">Use-case</div><div class="rmap-item">Budżet</div><div class="rmap-item">Timeline</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2</div>
+        <div class="rmap-l">Site assessment</div>
+        <div class="rmap-items"><div class="rmap-item">Engineer visit</div><div class="rmap-item">Measurements</div><div class="rmap-item">Safety audit</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">3</div>
+        <div class="rmap-l">30-day pilot</div>
+        <div class="rmap-items"><div class="rmap-item">Robot rental</div><div class="rmap-item">Test 1 process</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">4</div>
+        <div class="rmap-l">Contract</div>
+        <div class="rmap-items"><div class="rmap-item">RaaS 36 mo</div><div class="rmap-item">SLA + service</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">5</div>
+        <div class="rmap-l">Deployment</div>
+        <div class="rmap-items"><div class="rmap-item">Delivery</div><div class="rmap-item">ROS 2 integration</div><div class="rmap-item">Operator training</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">6</div>
+        <div class="rmap-l">Billing</div>
+        <div class="rmap-items"><div class="rmap-item">Robot-hours</div><div class="rmap-item">or flat fee</div></div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">7</div>
+        <div class="rmap-l">24/7 monitoring</div>
+        <div class="rmap-items"><div class="rmap-item">Telemetry</div><div class="rmap-item">Failure prediction</div><div class="rmap-item">Hot-swap</div></div>
+      </div>
+    </div>
+
+    <div class="billing-cols reveal">
+      <div class="bill">
+        <div class="bill-name">RaaS — step 6</div>
+        <div class="bill-title">Subscription for the robot’s work</div>
+        <div class="bill-when">A fixed monthly fee or physical-robot-hour billing. Integration, service, hot-swap, software updates and AI Hours — all included in the 36-month subscription. The robot remains the client’s property.</div>
+      </div>
+      <div class="bill">
+        <div class="bill-name">Base model — step 6</div>
+        <div class="bill-title">The client buys the robot (CAPEX)</div>
+        <div class="bill-when">The client buys the hardware (CAPEX); Automatify provides software, integration, service, and AI Hours on an SLA basis. For clients with EU grant funding or their own capex budget.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · MODEL ROZLICZENIOWY ════════════════════════ -->
+<section id="robotify-model" data-product="robotify">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span><span class="tag-robotify">Robotify</span> · 08.9 · Billing model</div>
+      <h2 class="h2 reveal">Robots-as-a-Service — <em>the robot’s work billed like an operator cost</em></h2>
+      <p class="lead reveal">A physical robot billed like a shift worker. <b>The robot CAPEX sits with the client; Automatify bills the robot’s work.</b> The robot-hour rate ≈ <b>30–50% of an operator's cost</b> — break-even in 6–14 months.</p>
+    </div>
+    <div class="billing-cols reveal">
+      <div class="bill">
+        <div class="bill-name">RaaS · subscription</div>
+        <div class="bill-title">A fixed monthly fee</div>
+        <div class="bill-when">All-in-one: software + integration + service + AI Hours for the client’s robot.</div>
+        <div class="bill-points">
+          <div class="bill-point"><b>6-axis cobot:</b> €1,064–1,655/mo (vs ~€1,773 operator)</div>
+          <div class="bill-point"><b>Warehouse AMR:</b> €1,418–2,128/mo (vs 2 shift operators)</div>
+          <div class="bill-point"><b>Humanoid (2027+):</b> €2,837–4,255/mo + value-share</div>
+          <div class="bill-point"><b>36-month</b> contract, <b>99% SLA, 24-hour hot-swap</b></div>
+          <div class="bill-point"><b>Robot CAPEX on the client's side</b> — EU / BGK grant or own capex budget</div>
+        </div>
+      </div>
+      <div class="bill">
+        <div class="bill-name">Pay-per-robot-hour</div>
+        <div class="bill-title">You pay for actual hours</div>
+        <div class="bill-when">For seasonal tasks, peak load, and pilots.</div>
+        <div class="bill-points">
+          <div class="bill-point"><b>Rate:</b> €8–13 / robot-h (cobot, 2026)</div>
+          <div class="bill-point">Falling to <b>~€6</b> by 2030 (scale + depreciation)</div>
+          <div class="bill-point"><b>Monthly minimum:</b> 200 physical-robot-h (you don't tie up the fleet)</div>
+          <div class="bill-point">Ideal: e-commerce peak season, events, pilots</div>
+          <div class="bill-point">Migrate to RaaS at any time <b>with no penalty</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROBOTIFY · PRZYKŁAD ════════════════════════ -->
+<section id="robotify-przyklad" data-product="robotify" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="case">
+      <div class="section-head" style="margin-bottom:8px;">
+        <div class="eyebrow reveal" style="color:var(--p-accent-2);opacity:1;"><span class="dot"></span><span style="color:var(--ink);font-weight:700;">Robotify</span> · 08.10 · Przykład rozliczenia</div>
+        <h2 class="h2 reveal">RaaS — <em>an e-commerce 3PL warehouse</em></h2>
+        <p class="lead reveal" style="color:rgba(27,42,71,.65);">AMR + cobot on the packing line. 2 shifts × 8 h × 22 days. Previously: 4 operators. <b style="color:var(--ink);">Client after 3 years: +€123k net.</b></p>
+      </div>
+
+      <div class="case-result">
+        <div class="case-cell">
+          <div class="case-cell-l">Baseline 2024</div>
+          <div class="case-cell-v">€85.1k</div>
+          <div class="case-cell-u">per year · 4 operators + extras</div>
+        </div>
+        <div class="case-cell">
+          <div class="case-cell-l">RaaS cobot + AMR</div>
+          <div class="case-cell-v">€43.9k</div>
+          <div class="case-cell-u">per year · Automatify subscription</div>
+        </div>
+        <div class="case-cell">
+          <div class="case-cell-l">Savings</div>
+          <div class="case-cell-v accent">€41.1k</div>
+          <div class="case-cell-u">per year = 48% cost reduction</div>
+        </div>
+      </div>
+
+      <div class="case-main">
+        <div class="case-chart" style="display:flex;flex-direction:column;justify-content:center;">
+          <div class="case-chart-head" style="border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:12px;margin-bottom:18px;">
+            <span class="case-chart-title">— What the client actually pays over a 36-month RaaS contract</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr;gap:18px;">
+            <div>
+              <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(27,42,71,.5);margin-bottom:8px;">RaaS subscription · monthly</div>
+              <div style="font-family:var(--sans);font-weight:800;font-size:48px;color:var(--ink);letter-spacing:-0.022em;line-height:1;">€3,664 <span style="font-size:0.45em;color:rgba(27,42,71,.5);">/month</span></div>
+              <div style="font-size:13px;color:rgba(27,42,71,.55);margin-top:10px;line-height:1.6;">AMR (€1,536) + cobot (€1,655) + integration (€355) + 24/7 service + AI Hours.</div>
+            </div>
+            <div style="padding-top:18px;border-top:1px solid rgba(27,42,71,.1);">
+              <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(27,42,71,.5);margin-bottom:8px;">Operational impact</div>
+              <div style="font-family:var(--sans);font-weight:800;font-size:36px;color:var(--p-accent-2);letter-spacing:-0.022em;line-height:1;">+85% throughput</div>
+              <div style="font-size:13px;color:rgba(27,42,71,.55);margin-top:10px;line-height:1.6;"><b style="color:var(--ink);">0 safety incidents, 99.3% SLA, 14-month payback</b> (vs 36+ for outright purchase).</div>
+            </div>
+          </div>
+        </div>
+        <div class="case-side">
+          <div class="case-insight" style="border-left:2px solid var(--p-accent-2);">
+            <div class="case-insight-title">Net result after 3 years</div>
+            <div class="case-insight-val">+€123k</div>
+            <p class="case-insight-desc">Net savings + <b style="color:var(--ink);">scaling the line with no new headcount</b>.</p>
+          </div>
+          <div class="case-insight">
+            <div class="case-insight-title">No technology risk</div>
+            <p class="case-insight-desc">24-hour hot-swap. If a robot fails, we provide a replacement. <b style="color:var(--ink);">The client bears no technology risk — replacement is guaranteed by the SLA.</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ ROADMAPA ════════════════════════ -->
+<section id="roadmapa">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>09 · Roadmap</div>
+      <h2 class="h2 reveal">Roadmap <em>Agentify + Robotify</em></h2>
+      <p class="lead reveal">The digital product (Agentify) enters faster — a lower barrier, a shorter deployment. Robotify needs a longer setup: site assessment + service.</p>
+    </div>
+
+    <h3 class="h3 reveal" style="margin-bottom:18px;"><span class="tag-agentify">Agentify</span> — from MVP to EU commercialization</h3>
+    <div class="rmap reveal" data-product="agentify">
+      <div class="rmap-phase">
+        <div class="rmap-y">Q3–Q4 2026</div>
+        <div class="rmap-l">Validation</div>
+        <div class="rmap-items">
+          <div class="rmap-item">Agentify market research (60+ interviews)</div>
+          <div class="rmap-item">5 test deployments of AI agents (Agentify)</div>
+          <div class="rmap-item">Tech-partner agreements (UiPath, LangChain)</div>
+          <div class="rmap-item">Pre-seed deck (now)</div>
+        </div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2027</div>
+        <div class="rmap-l">MVP + Framework</div>
+        <div class="rmap-items">
+          <div class="rmap-item">Agentify framework prototype: UiPath + n8n</div>
+          <div class="rmap-item">Migration to our own orchestrator (LangGraph)</div>
+          <div class="rmap-item">Team: CTO, PM, 2× dev, UI/UX</div>
+          <div class="rmap-item">MVP at 3–5 test partners (Agentify)</div>
+          <div class="rmap-item">AI Hours Engine + Client Portal</div>
+        </div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2028</div>
+        <div class="rmap-l">MVP2 · PL commercialization</div>
+        <div class="rmap-items">
+          <div class="rmap-item">Multi-tenant cloud SaaS</div>
+          <div class="rmap-item">57 active Agentify clients at end-2028</div>
+          <div class="rmap-item">Marketplace of 20+ boxed packages</div>
+          <div class="rmap-item">ISO 27001 (faza 1)</div>
+        </div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2029</div>
+        <div class="rmap-l">MVP3 · EU scaling</div>
+        <div class="rmap-items">
+          <div class="rmap-item">351 active Agentify clients in PL at end-2029</div>
+          <div class="rmap-item">EN, DE localization</div>
+          <div class="rmap-item">DACH entry — 111 active Agentify clients at end-2029</div>
+        </div>
+      </div>
+    </div>
+    <div class="hub-foot reveal" data-product="agentify" style="margin-top:20px;">
+      <b>Agentify 2030 goal:</b> a thousand active Agentify clients reached in May 2030, <b>3,112 active at year-end</b> (626 in PL, 1,113 in DACH), <b>PLN 1,509M annual revenue</b> from digital workers.
+    </div>
+
+    <h3 class="h3 reveal" style="margin:48px 0 18px;"><span class="tag-robotify">Robotify</span> — from pilots to a humanoid fleet</h3>
+    <div class="rmap reveal" data-product="robotify">
+      <div class="rmap-phase">
+        <div class="rmap-y">Q1–Q4 2027</div>
+        <div class="rmap-l">Distribution + pilots</div>
+        <div class="rmap-items">
+          <div class="rmap-item">Distribution agreements: UR, MiR, AutoStore</div>
+          <div class="rmap-item">3 physical-robot pilots (cobot / AMR) in PL — Robotify</div>
+          <div class="rmap-item">Automatify Core adapted for ROS 2</div>
+          <div class="rmap-item">First site-assessment methodology</div>
+        </div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2028</div>
+        <div class="rmap-l">RaaS in PL</div>
+        <div class="rmap-items">
+          <div class="rmap-item">197 physical robots in the Robotify fleet at end-2028 (cobot + AMR)</div>
+          <div class="rmap-item">50 active Robotify clients at end-2028</div>
+          <div class="rmap-item">24-hour hot-swap supply chain</div>
+          <div class="rmap-item">Service contracts with UR</div>
+        </div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2029</div>
+        <div class="rmap-l">Humanoids + scale</div>
+        <div class="rmap-items">
+          <div class="rmap-item">Partnership with 1 humanoid OEM (Figure / 1X)</div>
+          <div class="rmap-item">5 Robotify humanoids in hospitality + healthcare</div>
+          <div class="rmap-item">2,625 physical robots in the Robotify fleet at end-2029</div>
+          <div class="rmap-item">ROS 2 ↔ UiPath Orchestrator integration</div>
+        </div>
+      </div>
+      <div class="rmap-phase">
+        <div class="rmap-y">2030–2031</div>
+        <div class="rmap-l">International fleet</div>
+        <div class="rmap-items">
+          <div class="rmap-item">16,408 physical robots in the Robotify fleet at end-2030 · 58,775 at end-2031</div>
+          <div class="rmap-item">DACH + Nordics entry</div>
+          <div class="rmap-item">Our own pilot platform + AI</div>
+        </div>
+      </div>
+    </div>
+    <div class="hub-foot reveal" data-product="robotify" style="margin-top:20px;">
+      <b>Robotify 2030 goal:</b> 16,408 physical robots in the fleet, 2,500 active SME clients (Robotify), <b>PLN 163M annual revenue</b> from robot-hours.
+    </div>
+    <div class="reveal" style="margin-top:36px;padding:28px 34px;border-radius:18px;background:linear-gradient(120deg,rgba(46,190,217,.10),rgba(196,232,71,.13));border:1px solid var(--rule);display:flex;align-items:center;gap:34px;flex-wrap:wrap;">
+      <div style="font-weight:800;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal-3);">2030 goal</div>
+      <div style="display:flex;gap:44px;flex-wrap:wrap;">
+        <div><div style="font-weight:800;font-size:30px;letter-spacing:-0.02em;color:var(--ink);">3,112</div><div style="font-size:13px;color:var(--muted);">active Agentify clients at end-2030 · 12 European markets</div></div>
+        <div><div style="font-weight:800;font-size:30px;letter-spacing:-0.02em;color:#7CB518;">16,408</div><div style="font-size:13px;color:var(--muted);">physical robots in the Robotify fleet at end-2030</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ PARTNER CHANNEL (skalowanie) ════════════════════════ -->
+<section id="partner-channel" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>09.5 · Partner channel — Series A (MVP3)</div>
+      <h2 class="h2 reveal">Partner channel — <em>the Series A scaling plan</em></h2>
+      <p class="lead reveal"><b>What we plan to launch at MVP3 / Series A:</b> Agentify doesn't scale by hiring 100 deployment engineers. It scales through a channel of technology partners to whom Automatify sells the process, the client, and the billing system. <b>Pre-seed:</b> validating the model on our own deployments. <b>Series A:</b> launching the full technology-partner network.</p>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="col-head">
+          <div class="eyebrow reveal"><span class="dot"></span>The technology partner's problem</div>
+          <span class="col-tag">— their pain</span>
+        </div>
+        <div class="list-rows reveal">
+          <div class="list-row">
+            <div class="list-row-num">01</div>
+            <div>
+              <h4 class="h4 list-row-title">Hard to reach customers</h4>
+              <p class="list-row-desc">Great technology, but no in-house sales or B2B network.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">02</div>
+            <div>
+              <h4 class="h4 list-row-title">No AI deployment know-how</h4>
+              <p class="list-row-desc">The vendor knows its technology but lacks procedures to deploy it at an SME.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">03</div>
+            <div>
+              <h4 class="h4 list-row-title">No standardized process</h4>
+              <p class="list-row-desc">Every deployment looks different — bad quotes, delays, problems at every stage.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">04</div>
+            <div>
+              <h4 class="h4 list-row-title">Insolvent clients</h4>
+              <p class="list-row-desc">Late payments, insolvency — the partner acts as the bank.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col-head">
+          <div class="eyebrow reveal"><span class="dot"></span>What the partner gets from Automatify</div>
+          <span class="col-tag">— value</span>
+        </div>
+        <div class="list-rows reveal">
+          <div class="list-row">
+            <div class="list-row-num">01</div>
+            <div>
+              <h4 class="h4 list-row-title">Built-in prospecting + sales</h4>
+              <p class="list-row-desc">Automatify's sales network delivers B2B leads. <b>The partner focuses only on the technology.</b></p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">02</div>
+            <div>
+              <h4 class="h4 list-row-title">Training + documentation</h4>
+              <p class="list-row-desc">Courses, AI best practice, a deployment library. The partner learns the process in 2 weeks.</p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">03</div>
+            <div>
+              <h4 class="h4 list-row-title">A standardized 7-step process</h4>
+              <p class="list-row-desc">A project-oversight system, ROI calculator, ready-made quote templates. <b>Predictable margins.</b></p>
+            </div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-num">04</div>
+            <div>
+              <h4 class="h4 list-row-title">Client vetting + on-time payments</h4>
+              <p class="list-row-desc">Automatify checks creditworthiness and absorbs payment risk. The partner is paid within 30 days.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hub-foot reveal" style="margin-top:32px;">
+      <b>Why this works for the investor.</b> The partner channel launches at <b>Series A (MVP3)</b>. Each new technology partner in the network adds Automatify deployment capacity <b>without adding headcount cost</b>. Network effect: 10 partners = 10× capacity at the fixed cost of the Automatify Core structure. Pre-seed funds model validation — Series A funds channel scale.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ TRAKCJA ════════════════════════ -->
+<section id="trakcja" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>10 · Traction</div>
+      <h2 class="h2 reveal">First deployments + partnerships = <em>validation</em></h2>
+      <p class="lead reveal"><b>2 deployments of AI agents / RPA bots (Agentify)</b> + <b>2 physical-robot deployments (Robotify)</b>. Each case closed with a subscription or a scope expansion. <b>€165k+ in total savings already in the portfolio</b>.</p>
+    </div>
+    <div class="trakcja-grid reveal">
+      <div class="trak" data-product="agentify">
+        <div class="trak-sector">B2B services · <span style="color:#1B7C99;">Agentify</span></div>
+        <div class="trak-title">Document extraction</div>
+        <p class="trak-desc">OCR + AI for invoices and contracts. 5× faster, 98% accuracy.</p>
+        <div class="trak-val"><em>€24–28k</em></div>
+        <div class="trak-val-l">annual savings</div>
+      </div>
+      <div class="trak" data-product="agentify">
+        <div class="trak-sector">E-commerce · <span style="color:#1B7C99;">Agentify</span></div>
+        <div class="trak-title">AI chatbot for support</div>
+        <p class="trak-desc">24/7 inquiry handling + CRM/RPA. −50% call-center, 85% automated.</p>
+        <div class="trak-val"><em>€28–35k</em></div>
+        <div class="trak-val-l">annual savings</div>
+      </div>
+      <div class="trak" data-product="robotify">
+        <div class="trak-sector">Light industry · <span style="color:#7CB518;">Robotify</span></div>
+        <div class="trak-title">Packing cobot · 5 physical robots at the client</div>
+        <p class="trak-desc">5 cobots at the client (serviced by Robotify) run 24/7 (battery swaps instead of sleep) → replacing 10 operators across 2 shifts.</p>
+        <div class="trak-val"><em>€83k</em></div>
+        <div class="trak-val-l">annual savings</div>
+      </div>
+      <div class="trak" data-product="robotify">
+        <div class="trak-sector">Logistics · <span style="color:#7CB518;">Robotify</span></div>
+        <div class="trak-title">AMR pick &amp; pack · 5 physical robots at the client</div>
+        <p class="trak-desc">5 AMRs at the client (serviced by Robotify) run 24/7 (battery swaps instead of sleep) → replacing 10 warehouse operators.</p>
+        <div class="trak-val"><em>€35k</em></div>
+        <div class="trak-val-l">annual savings</div>
+      </div>
+    </div>
+    <div class="trakcja-totals reveal">
+      <div class="trak-total"><div class="trak-total-v"><em>€165k+</em></div><div class="trak-total-l">total client savings</div></div>
+      <div class="trak-total"><div class="trak-total-v"><em>4</em></div><div class="trak-total-l">closed deployments (hub: Agentify + Robotify)</div></div>
+      <div class="trak-total"><div class="trak-total-v"><em>12</em></div><div class="trak-total-l">partner MoUs (hub)</div></div>
+      <div class="trak-total"><div class="trak-total-v">Enterprise</div><div class="trak-total-l">strategic partnerships: automation vendors + humanoid makers</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ BUDŻET ════════════════════════ -->
+<section id="budzet">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>11 · Budget</div>
+      <h2 class="h2 reveal">Budget 2027–2035 and the <em>pre-seed round plan</em></h2>
+      <p class="lead reveal">Projection <b>per product</b> (Agentify and Robotify separately), PLN&nbsp;m. <b>EBITDA-positive from 2029</b> in both products. Robotify profit allocation: <b>40% R&amp;D / 60% retained profit</b>. 19% CIT on both sides.</p>
+    </div>
+    <div class="reveal" style="margin-top:14px;padding:20px 24px;border-radius:14px;background:var(--paper-2);border:1px solid var(--rule);font-size:13.5px;color:var(--muted);line-height:1.6;">
+      <b style="color:var(--ink);">Why we show each product separately.</b> Agentify and Robotify are two companies with their own income statements and their own growth rates. We present them <b style="color:var(--ink);">side by side rather than as a single sum</b>, so it is clear what each pillar contributes; shared head-office costs are split evenly between them.
+    </div>
+    <div class="budget-kpis reveal">
+      <div class="budget-kpi"><div class="budget-kpi-v"><em>PLN 1,509m</em></div><div class="budget-kpi-l">Agentify revenue 2030</div></div>
+      <div class="budget-kpi"><div class="budget-kpi-v"><em>PLN 163m</em></div><div class="budget-kpi-l">Robotify revenue 2030</div></div>
+      <div class="budget-kpi"><div class="budget-kpi-v"><em>2029</em></div><div class="budget-kpi-l">first EBITDA-positive year in both products</div></div>
+    </div>
+
+    <style>
+    #budzet .bud-grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:14px;}
+    @media(max-width:760px){#budzet .bud-grid2{grid-template-columns:1fr;}}
+    #budzet .bud-card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 26px;}
+    #budzet .bud-card-h{font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;padding-bottom:14px;margin-bottom:4px;border-bottom:1px solid var(--rule);}
+    #budzet .bud-card-h.ag{color:var(--teal);}
+    #budzet .bud-card-h.ro{color:#7CB518;}
+    #budzet .bud-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:11px 0;border-top:1px solid var(--rule-2);font-size:13.5px;min-width:0;}
+    #budzet .bud-row:first-of-type{border-top:0;}
+    #budzet .bud-row .l{color:var(--muted);}
+    #budzet .bud-row .v{color:var(--ink);font-weight:700;text-align:right;white-space:nowrap;min-width:0;}
+    #budzet .bud-row .v small{display:block;font-weight:600;color:var(--muted);font-size:11.5px;white-space:normal;text-wrap:pretty;}
+    </style>
+
+    <div class="capalloc-head reveal" style="margin-top:40px;">— Model assumptions</div>
+    <div class="bud-grid2 reveal">
+      <div class="bud-card">
+        <div class="bud-card-h ag">Market &amp; adoption</div>
+        <div class="bud-row"><span class="l">TAM — EU firms (50–249 emp.)</span><span class="v">250,000</span></div>
+        <div class="bud-row"><span class="l">TAM — PL firms (50–249 emp.)</span><span class="v">15,200</span></div>
+        <div class="bud-row"><span class="l">Penetration 2035</span><span class="v">EU 23% · PL 76%</span></div>
+        <div class="bud-row"><span class="l">Labor cost (2026)</span><span class="v">PL 60 · country multipliers 0.38–4.09 <small>PLN/h</small></span></div>
+        <div class="bud-row"><span class="l">Annual churn</span><span class="v">5%</span></div>
+        <div class="bud-row"><span class="l">CAC (CE → rest of EU)</span><span class="v">PL 5.0 · rest 4.5–9.7 <small>PLN k</small></span></div>
+      </div>
+      <div class="bud-card">
+        <div class="bud-card-h ro">Business units</div>
+        <div class="bud-row"><span class="l">Agentify — model</span><span class="v">Pay-as-you-Save <small>SaaS</small></span></div>
+        <div class="bud-row"><span class="l">Agentify — 2035 EBITDA margin / break-even</span><span class="v">~70% · 2029</span></div>
+        <div class="bud-row"><span class="l">Robotify — model</span><span class="v">Robots-as-a-Service</span></div>
+        <div class="bud-row"><span class="l">Robotify — 2035 EBITDA margin / break-even</span><span class="v">~77% · 2029</span></div>
+        <div class="bud-row"><span class="l">Profit allocation</span><span class="v">40 / 60 <small>R&amp;D / retained profit</small></span></div>
+        <div class="bud-row"><span class="l">Expansion</span><span class="v">PL 2027 → ~34 countries by 2033</span></div>
+      </div>
+    </div>
+
+    <div class="capalloc-head reveal" style="margin-top:36px;">— Agentify · software (RPA + AI agents), PLN m</div>
+    <div class="budget-table reveal" style="margin-top:14px;">
+      <table>
+        <thead><tr><th>Item</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th><th>2035</th></tr></thead>
+        <tbody>
+          <tr><td>Revenue</td><td>18.3</td><td>213.5</td><td>1,509.1</td><td>4,818.6</td><td>25,229.4</td></tr>
+          <tr class="highlight"><td>EBITDA</td><td>(12.9)</td><td>102.0</td><td>949.7</td><td>3,325.6</td><td>17,589.3</td></tr>
+          <tr><td>Net profit (after 19% CIT)</td><td>(12.9)</td><td>82.6</td><td>769.3</td><td>2,693.8</td><td>14,247.3</td></tr>
+          <tr><td>Active clients (Agentify)</td><td>57</td><td>598</td><td>3,112</td><td>6,376</td><td>31,677</td></tr>
+          <tr><td>Active processes = RPA licences deployed (Agentify)</td><td>299</td><td>3,109</td><td>16,183</td><td>33,154</td><td>164,721</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="capalloc-head reveal" style="margin-top:28px;">— Robotify · physical robots (RaaS), PLN m</div>
+    <div class="budget-table reveal" style="margin-top:14px;">
+      <table>
+        <thead><tr><th>Item</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th><th>2035</th></tr></thead>
+        <tbody>
+          <tr><td>Revenue</td><td>0.5</td><td>20.9</td><td>163.2</td><td>995.1</td><td>14,414.6</td></tr>
+          <tr class="highlight"><td>EBITDA</td><td>(3.8)</td><td>2.5</td><td>102.4</td><td>745.2</td><td>11,103.9</td></tr>
+          <tr><td>Net profit (after 19% CIT)</td><td>(3.8)</td><td>2.0</td><td>83.0</td><td>362.1</td><td>5,396.5</td></tr>
+          <tr><td>Active clients (Robotify)</td><td>50</td><td>500</td><td>2,500</td><td>8,000</td><td>51,035</td></tr>
+          <tr><td>Physical robots deployed (Robotify)</td><td>197</td><td>2,625</td><td>16,408</td><td>58,775</td><td>535,919</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="capalloc-head reveal" style="margin-top:36px;">— Geographic expansion · PL 2027 → ~34 European countries by 2033 (color = entry year)</div>
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px;">
+      <div style="background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:16px 18px;">
+        <div style="font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;">Agentify</div>
+        <img src="maps/agentify-expansion-en.svg" alt="Agentify expansion map" style="width:100%;display:block;border-radius:8px;">
+      </div>
+      <div style="background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:16px 18px;">
+        <div style="font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#7CB518;margin-bottom:10px;">Robotify · ~1 year after Agentify</div>
+        <img src="maps/robotify-expansion-en.svg" alt="Robotify expansion map" style="width:100%;display:block;border-radius:8px;">
+      </div>
+    </div>
+
+    <div class="capalloc reveal">
+      <div class="capalloc-head">— Use of the 2027 tranche · PLN 6,802,820 (12 months)</div>
+      <div class="capalloc-rows">
+        <div class="capalloc-row">
+          <div class="capalloc-pct">70%</div>
+          <div><b style="color:var(--ink);">R&amp;D team + sales</b> · CTO, dev team, sales, marketing — the foundation of product and revenue.</div>
+          <div class="capalloc-bar"><i style="width:70%;"></i></div>
+        </div>
+        <div class="capalloc-row">
+          <div class="capalloc-pct">12%</div>
+          <div><b style="color:var(--ink);">Deployments + LLM tokens</b> · operating cost of the first deployments + AI model fees.</div>
+          <div class="capalloc-bar"><i style="width:12%;"></i></div>
+        </div>
+        <div class="capalloc-row">
+          <div class="capalloc-pct">5%</div>
+          <div><b style="color:var(--ink);">Marketing &amp; GTM</b> · winning the first 10 hub clients in 2027 (5 Agentify + 5 Robotify), content marketing, industry events.</div>
+          <div class="capalloc-bar"><i style="width:5%;"></i></div>
+        </div>
+        <div class="capalloc-row">
+          <div class="capalloc-pct">5%</div>
+          <div><b style="color:var(--ink);">Tech infra</b> · cloud, security, monitoring, ISO 27001 (phase 1).</div>
+          <div class="capalloc-bar"><i style="width:5%;"></i></div>
+        </div>
+        <div class="capalloc-row">
+          <div class="capalloc-pct">4%</div>
+          <div><b style="color:var(--ink);">Legal &amp; compliance</b> · EU AI Act compliance, partner agreements, intellectual property.</div>
+          <div class="capalloc-bar"><i style="width:4%;"></i></div>
+        </div>
+        <div class="capalloc-row">
+          <div class="capalloc-pct">4%</div>
+          <div><b style="color:var(--ink);">Reserve</b> · a buffer for unforeseen costs and market opportunities.</div>
+          <div class="capalloc-bar"><i style="width:4%;"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="Suplement budzetowy (EN).html" class="reveal" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:32px;padding:26px 30px;background:var(--card);border:1px solid var(--rule);border-radius:18px;text-decoration:none;box-shadow:0 10px 30px -22px rgba(14,34,68,.35);transition:border-color .15s,transform .15s;">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <div style="flex:none;width:46px;height:46px;border-radius:12px;background:var(--ink);color:var(--lime);display:grid;place-items:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:800;font-size:17px;color:var(--ink);letter-spacing:-0.01em;">Budget supplement — full model 2027–2035</div>
+          <div style="font-size:13.5px;color:var(--muted);margin-top:3px;">Model and edge · consolidated P&amp;L · Agentify and Robotify detail · geographic expansion with maps · model assumptions · glossary. All on a separate page (print to PDF).</div>
+        </div>
+      </div>
+      <span style="flex:none;display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;background:var(--lime);color:var(--ink);font-weight:700;font-size:14px;">Open the supplement <span style="font-size:1.05em;">→</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════════ PROŚBA O KAPITAŁ ════════════════════════ -->
+<style>
+#kapital .kap-grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:14px;}
+/* tranche chart */
+#kapital .tranche-chart{margin-top:14px;background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:22px 26px 18px;}
+#kapital .tc-legend{display:flex;align-items:center;gap:20px;font-size:12.5px;color:var(--muted);margin-bottom:18px;flex-wrap:wrap;}
+#kapital .tc-legend span{display:inline-flex;align-items:center;gap:8px;}
+#kapital .tc-legend i{width:13px;height:13px;border-radius:3px;display:inline-block;}
+#kapital .tc-legend i.a{background:#1B7C99;}
+#kapital .tc-legend i.b{background:#7CB518;}
+#kapital .tc-scale{margin-left:auto;color:var(--muted-2,#8898B5);font-size:11.5px;}
+#kapital .tc-plot{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:end;height:190px;border-bottom:2px solid var(--ink);}
+#kapital .tc-year{display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-width:0;}
+#kapital .tc-bars{display:flex;align-items:flex-end;justify-content:center;gap:6px;height:100%;}
+#kapital .tc-bar{position:relative;flex:1;max-width:34px;border-radius:4px 4px 0 0;min-height:3px;}
+#kapital .tc-bar.a{background:linear-gradient(180deg,#2EBED9,#1B7C99);}
+#kapital .tc-bar.b{background:linear-gradient(180deg,#C4E847,#7CB518);}
+#kapital .tc-bar span{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:800;color:var(--ink);white-space:nowrap;}
+#kapital .tc-zero{align-self:flex-end;font-size:12px;font-weight:700;color:var(--muted-2,#8898B5);padding-bottom:2px;}
+#kapital .tc-lab{text-align:center;font-size:12.5px;font-weight:700;color:var(--ink);padding-top:9px;}
+#kapital .tc-year.zero .tc-lab{color:var(--muted);}
+#kapital .tc-foot{margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.55;}
+#kapital .tc-foot b{color:var(--ink);}
+/* stronger frame for the number investors reach for first */
+#kapital .budget-kpis{background:var(--ink);border:0;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px -28px rgba(14,34,68,.75);}
+#kapital .budget-kpi{background:transparent;border-left:1px solid rgba(255,255,255,.12);padding:26px 28px;}
+#kapital .budget-kpi:first-child{border-left:0;}
+#kapital .budget-kpi-v em{background:linear-gradient(95deg,#2EBED9,#C4E847);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-style:normal;}
+#kapital .budget-kpi-l{color:rgba(248,250,253,.62);}
+@media(max-width:760px){#kapital .kap-grid2{grid-template-columns:1fr;}}
+#kapital .kap-card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 26px;}
+#kapital .kap-card.hero{border-color:#1B7C99;box-shadow:0 0 0 1px #1B7C99 inset,0 12px 28px -20px rgba(27,124,153,.6);}
+#kapital .kap-card-h{font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--rule);color:#1B7C99;}
+#kapital .kap-card-h.ro{color:#7CB518;}
+#kapital .kap-big{font-weight:800;font-size:clamp(30px,3.6vw,42px);letter-spacing:-0.025em;line-height:1.05;color:var(--ink);}
+#kapital .kap-when{display:inline-block;margin-top:10px;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:5px 11px;border-radius:7px;background:var(--paper-2);color:var(--ink);}
+#kapital .kap-d{font-size:13.5px;color:var(--muted);line-height:1.6;margin-top:14px;}
+#kapital .kap-cell{font-family:ui-monospace,Menlo,monospace;font-size:0.88em;background:var(--paper-2);padding:1px 6px;border-radius:4px;color:var(--ink);white-space:nowrap;}
+#kapital .kap-note{margin-top:16px;padding:20px 24px;border-radius:14px;background:var(--paper-2);border:1px solid var(--rule);font-size:13.5px;color:var(--muted);line-height:1.65;}
+#kapital .kap-note b{color:var(--ink);}
+#kapital .kap-warn{margin-top:16px;padding:22px 26px;border-radius:14px;background:var(--card);border:1px solid var(--rule);border-left:4px solid #C4E847;font-size:13.5px;color:var(--muted);line-height:1.65;}
+#kapital .kap-warn b{color:var(--ink);}
+#kapital .kap-warn ul{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:11px;}
+#kapital .kap-warn li{padding-left:18px;position:relative;}
+#kapital .kap-warn li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:#7CB518;}
+</style>
+<section id="kapital">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>11a · Capital ask</div>
+      <h2 class="h2 reveal">How much capital and&nbsp;<em>in which month</em> the peak falls</h2>
+      <p class="lead reveal">An investor must have funding secured for the <b>liquidity gap in the month it peaks</b>, not on a yearly average. Below: the fund's maximum equity, the tranche schedule, the trough of cumulative cash flow and the split into two streams. All figures come from the Automatify consolidated financial model · as of 2026-08-28.</p>
+    </div>
+
+    <div class="budget-kpis reveal">
+      <div class="budget-kpi"><div class="budget-kpi-v"><em>PLN 193.0m</em></div><div class="budget-kpi-l">max fund equity, scenario A</div></div>
+      <div class="budget-kpi"><div class="budget-kpi-v"><em>PLN 221.0m</em></div><div class="budget-kpi-l">max fund equity, scenario B</div></div>
+      <div class="budget-kpi"><div class="budget-kpi-v"><em>Aug 2030</em></div><div class="budget-kpi-l">month of the peak — August 2030, identical in both scenarios</div></div>
+    </div>
+
+    <div class="capalloc-head reveal" style="margin-top:40px;">— Maximum fund equity · two scenarios for the bank's entry</div>
+    <div class="kap-grid2 reveal">
+      <div class="kap-card hero">
+        <div class="kap-card-h">Scenario A — the bank refinances the whole balance</div>
+        <div class="kap-big">PLN 193,044,228</div>
+        <div class="kap-when">peak: Aug 2030</div>
+        <div class="kap-d">The bank entering in 2029 refinances <b style="color:var(--ink);">the entire working-capital balance accrued earlier</b>, so the fund recovers the working capital it advanced.</div>
+      </div>
+      <div class="kap-card">
+        <div class="kap-card-h ro">Scenario B — the bank funds new increments only</div>
+        <div class="kap-big">PLN 220,982,427</div>
+        <div class="kap-when">peak: Aug 2030</div>
+        <div class="kap-d">The bank funds <b style="color:var(--ink);">new increments only</b> after entry, and the balance accrued to 31.12.2028 stays with the fund. The difference between the scenarios concerns <b style="color:var(--ink);">PLN 31,042,444</b>.</div>
+      </div>
+    </div>
+    <div class="kap-note reveal"><b>The difference between the scenarios in one sentence.</b> Scenario A assumes the bank refinances the working-capital balance accrued before it enters, scenario B — that it funds new increments only. <b>We state both scenarios and do not settle between them in this document:</b> scenario A requires <b>PLN 193,044,228</b>, scenario B — <b>PLN 220,982,427</b>, peaking in <b>Aug 2030</b> in both. Which one applies depends on the bank's entry terms and is settled in discussion with the fund. <b>This is the only capital ask in the entire document</b> — section <a href="#oferta">12</a> breaks exactly the same amount into four tranches; it does not add a second one.</div>
+
+    <div class="capalloc-head reveal" style="margin-top:36px;">— Equity tranche schedule · year by year, PLN</div>
+    <div class="tranche-chart reveal">
+      <div class="tc-legend"><span><i class="a"></i>Scenario A</span><span><i class="b"></i>Scenario B</span><span class="tc-scale">scale to PLN 100m</span></div>
+      <div class="tc-plot">
+        <div class="tc-year"><div class="tc-bars"><div class="tc-bar a" style="height:6.8%"><span>6.8</span></div><div class="tc-bar b" style="height:6.8%"><span>6.8</span></div></div><div class="tc-lab">2027</div></div>
+        <div class="tc-year"><div class="tc-bars"><div class="tc-bar a" style="height:56.1%"><span>55.9</span></div><div class="tc-bar b" style="height:56.1%"><span>55.9</span></div></div><div class="tc-lab">2028</div></div>
+        <div class="tc-year"><div class="tc-bars"><div class="tc-bar a" style="height:30.7%"><span>30.6</span></div><div class="tc-bar b" style="height:60.0%"><span>59.8</span></div></div><div class="tc-lab">2029</div></div>
+        <div class="tc-year"><div class="tc-bars"><div class="tc-bar a" style="height:100%"><span>99.7</span></div><div class="tc-bar b" style="height:98.8%"><span>98.4</span></div></div><div class="tc-lab">2030</div></div>
+        <div class="tc-year zero"><div class="tc-bars"><div class="tc-zero">0</div></div><div class="tc-lab">2031+</div></div>
+      </div>
+      <div class="tc-foot">Figures in PLN m. The funding peak falls in <b>2030</b>; from 2031 the tranche is zero in both scenarios.</div>
+    </div>
+    <div class="budget-table reveal" style="margin-top:14px;">
+      <table>
+        <thead><tr><th>Year</th><th>Tranche — scenario A</th><th>Tranche — scenario B</th><th>Cumulative contribution A</th><th>Cumulative contribution B</th></tr></thead>
+        <tbody>
+          <tr><td>2027</td><td>6,802,820</td><td>6,802,820</td><td>6,802,820</td><td>6,802,820</td></tr>
+          <tr><td>2028</td><td>55,946,246</td><td>55,946,246</td><td>62,749,066</td><td>62,749,066</td></tr>
+          <tr><td>2029</td><td>30,631,718</td><td>59,811,615</td><td>93,380,784</td><td>122,560,681</td></tr>
+          <tr class="highlight"><td>2030</td><td>99,663,444</td><td>98,421,746</td><td>193,044,228</td><td>220,982,427</td></tr>
+          <tr><td>Total 2027–2030</td><td>193,044,228</td><td>220,982,427</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="kap-note reveal"><b>After 2030 the tranche is zero in both scenarios</b> — from 2031 the company funds growth out of its own cash and the fund contributes nothing further. The tranches sum to the peak requirement. Section <a href="#oferta">12</a> carries the very same schedule as the round plan — round by round, the same four amounts.</div>
+
+    <div class="capalloc-head reveal" style="margin-top:36px;">— Trough of cumulative cash flow · total funding need of both streams</div>
+    <div class="kap-grid2 reveal">
+      <div class="kap-card hero">
+        <div class="kap-card-h">Trough of cumulative cash flow</div>
+        <div class="kap-big">−PLN 2,071,763,351</div>
+        <div class="kap-when">trough: Dec 2030</div>
+        <div class="kap-d">The deepest point of cumulative cash across the whole 2026–2045 window. That much funding must be available in the system in total — <b style="color:var(--ink);">the fund plus the bank together</b>.</div>
+      </div>
+      <div class="kap-card">
+        <div class="kap-card-h ro">Reference case — if there were no bank at all</div>
+        <div class="kap-big">PLN 2,071,763,351</div>
+        <div class="kap-when">peak: Dec 2030</div>
+        <div class="kap-d">Were the fund to finance everything alone, its maximum exposure would equal the cash-flow trough. The gap between that figure and PLN 193m is <b style="color:var(--ink);">the role of the working-capital facility</b>.</div>
+      </div>
+    </div>
+
+    <div class="capalloc-head reveal" style="margin-top:36px;">— Two capital streams · kept apart, never summed</div>
+    <div class="kap-grid2 reveal">
+      <div class="kap-card">
+        <div class="kap-card-h">Growth capital — funded by the fund</div>
+        <div class="kap-d" style="margin-top:0;">Team, product, sales, fixed costs and tax. It <b style="color:var(--ink);">does not come back</b> — this is the proper subject of the round. Its peak is <b style="color:var(--ink);">PLN 158,283,690 in Aug 2030</b>.</div>
+      </div>
+      <div class="kap-card">
+        <div class="kap-card-h ro">Working capital — a bank facility in the end state</div>
+        <div class="kap-d" style="margin-top:0;">Solely the funding of client deployments; it <b style="color:var(--ink);">returns in instalments over 48 months</b>. From 2029 a bank facility at 6% takes it over.</div>
+      </div>
+    </div>
+    <div class="budget-table reveal" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>Position at 31.12, PLN</th><th>Working capital</th><th>Growth capital</th><th>Bank facility — scenario A</th><th>Bank facility — scenario B</th></tr></thead>
+        <tbody>
+          <tr><td>2027</td><td>1,358,825</td><td>5,443,995</td><td>0</td><td>0</td></tr>
+          <tr><td>2028</td><td>31,042,444</td><td>31,706,622</td><td>0</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="kap-note reveal"><b>In 2027–2028 no bank will be available, so the fund finances both streams.</b> The deployment portfolio does not yet have the repayment history a bank requires, which is why the facility columns read zero in both scenarios — the working-capital need of <b>PLN 1,358,825</b> at end-2027 and <b>PLN 31,042,444</b> at end-2028 is covered by the fund alongside growth capital. Only from 2029 does the working-capital stream move to the bank and the fund's tranche stop growing at its pace.</div>
+
+    <div class="kap-warn reveal">
+      <b>Caveats to the capital ask — to be read together with the figures.</b>
+      <ul>
+        <li><b>78.7% of the peak is accumulated tax.</b> CIT paid in cash cumulatively to Aug 2030 is <b>PLN 124,631,524</b> against a growth-capital peak of <b>PLN 158,283,690</b>. Without tax the peak in that same month would be <b>PLN 33,652,166</b>. The capital ask is in large part a request to fund tax paid before the company has accumulated the cash.</li>
+        <li><b>The tax payment convention is an assumption.</b> CIT for year Y is paid in 12 instalments of 1/12 with a one-month lag — in line with Polish monthly-advance practice. It is the more conservative of the two conventions considered; a "whole amount in March of the following year" convention would produce a markedly lower ask.</li>
+        <li><b>The peak is a plateau, not a spike.</b> Three months sit within 10% of the maximum: <b>Jul–Sep 2030</b>. September 2030 gives <b>PLN 190,973,288</b> against <b>PLN 193,044,228</b> in August — a difference of <b>1.1%</b>. That is why we quote the whole July–September window rather than August alone.</li>
+      </ul>
+    </div>
+
+    <div class="kap-warn reveal" style="margin-top:16px;">
+      <b>Three caveats to the projections — they stand next to the figures, not in a footnote.</b>
+      <ul>
+        <li><b>Robotify pricing rule.</b> We do not sell servicing below <b>twice the cost of serving</b> a given country. This is a deliberate commercial policy: we would rather not sign a contract than service it below the point where it pays. In 2029 the market is still early and this rule sets <b>most of Robotify revenue</b>; as the fleet builds out in later years the market sets the price, not the rule.</li>
+        <li><b>Tax assumption.</b> The projections assume a <b>19%</b> rate and the deduction of research spending from the tax base; confirmation from a tax adviser is in progress.</li>
+        <li><b>An owned robot fleet.</b> The projections contain no return from this option — it is upside beyond the figures shown.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ OFERTA INWESTYCYJNA ════════════════════════ -->
+<style>
+#oferta{ --limon:#7CB518; --teal:#1B7C99; --teal-2:#2EBED9; --teal-3:#0F5A73; --lime:#C4E847; --lime-2:#A4C932; --lime-3:#7CB518; --card:#FFFFFF; --paper-2:#F0F4FA; --ink:#0E2244; --muted:#6B7A8F; --muted-2:#8898B5; --rule:#D8E0EC; }
+#oferta .raise{margin-top:8px;background:var(--card);border:1px solid var(--rule);border-radius:20px;padding:34px 36px;box-shadow:0 10px 30px -22px rgba(14,34,68,.4);}
+#oferta .raise-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:22px;}
+#oferta .raise-tag{font-size:11px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal);}
+#oferta .raise-goal{font-size:14px;color:var(--muted);}
+#oferta .raise-goal b{color:var(--ink);font-size:16px;}
+#oferta .bar{height:30px;border-radius:9px;background:var(--paper-2);position:relative;overflow:hidden;border:1px solid var(--rule);}
+#oferta .bar-fill{position:absolute;inset:0 60% 0 0;background:linear-gradient(90deg,#1B7C99,#2EBED9);border-radius:8px 0 0 8px;display:flex;align-items:center;padding-left:16px;color:#fff;font-weight:700;font-size:13px;}
+#oferta .bar-seek{position:absolute;top:0;bottom:0;left:40%;right:0;display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--muted);font-weight:600;}
+#oferta .bar-divider{position:absolute;top:-6px;bottom:-6px;left:40%;width:2px;background:var(--ink);}
+#oferta .raise-foot{display:flex;gap:40px;margin-top:22px;flex-wrap:wrap;}
+#oferta .raise-stat .v{font-weight:800;font-size:26px;letter-spacing:-0.02em;color:var(--ink);}
+#oferta .raise-stat .v.in{color:var(--teal);}
+#oferta .raise-stat .v.seek{color:var(--lime-3);}
+#oferta .raise-stat .l{font-size:12.5px;color:var(--muted);margin-top:2px;}
+#oferta .tl-head{margin-top:56px;margin-bottom:28px;}
+#oferta .tl{position:relative;padding-top:48px;}
+#oferta .tl-axis{position:absolute;top:60px;left:0;right:0;height:3px;background:linear-gradient(90deg,#1B7C99 0%,#2EBED9 28%,#7CB518 70%,#C4E847 100%);border-radius:2px;}
+#oferta .tl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;}
+@media(max-width:880px){#oferta .tl-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){#oferta .tl-grid{grid-template-columns:1fr;}}
+#oferta .node{position:relative;padding-top:42px;}
+#oferta .node::before{content:"";position:absolute;top:6px;left:26px;width:18px;height:18px;border-radius:50%;background:var(--card);border:3px solid var(--teal);z-index:2;}
+#oferta .node.active::before{border-color:var(--teal);background:var(--teal);box-shadow:0 0 0 5px rgba(46,190,217,.18);}
+#oferta .node.b::before{border-color:var(--limon);}
+#oferta .card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 24px 26px;height:100%;}
+#oferta .card.is-active{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal) inset, 0 12px 28px -20px rgba(27,124,153,.6);}
+#oferta .c-when{font-size:15px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink);padding-bottom:10px;margin-bottom:4px;border-bottom:2px solid var(--rule);}
+#oferta .c-name{font-weight:800;font-size:18px;letter-spacing:-0.01em;margin-top:6px;}
+#oferta .c-name.teal{color:var(--teal);}
+#oferta .c-name.limon{color:var(--limon);}
+#oferta .c-amt{font-weight:800;font-size:30px;letter-spacing:-0.022em;margin:10px 0 4px;color:var(--ink);}
+#oferta .c-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.06em;padding:3px 9px;border-radius:6px;background:var(--paper-2);color:var(--muted);margin-bottom:12px;}
+#oferta .c-ms{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:7px;padding:0;}
+#oferta .c-ms li{font-size:12.5px;color:var(--muted);padding-left:16px;position:relative;line-height:1.45;}
+#oferta .c-ms li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--teal-2);}
+#oferta .c-split{display:flex;flex-direction:column;gap:16px;margin-top:10px;}
+#oferta .c-grp-h{font-size:10.5px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:7px;}
+#oferta .c-grp-h.ag{color:var(--teal);}
+#oferta .c-grp-h.ro{color:var(--limon);}
+#oferta .c-grp .c-ms{margin-top:0;}
+#oferta .c-grp.ag .c-ms li::before{background:var(--teal);}
+#oferta .c-grp.ro .c-ms li::before{background:var(--limon);}
+#oferta .exit{margin-top:44px;background:var(--card);border:1px solid var(--rule);border-radius:22px;padding:36px 40px;box-shadow:0 10px 30px -22px rgba(14,34,68,.3);}
+#oferta .exit-lab{font-size:12px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);}
+#oferta .exit-row{display:flex;align-items:stretch;gap:26px;margin-top:22px;flex-wrap:wrap;}
+#oferta .exit-step{flex:1;min-width:200px;background:var(--paper-2);border:1px solid var(--rule);border-radius:16px;padding:24px 26px;}
+#oferta .exit-step.hero{background:linear-gradient(150deg,rgba(46,190,217,.12),rgba(196,232,71,.16));border-color:transparent;}
+#oferta .exit-when{font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+#oferta .exit-big{font-weight:800;font-size:clamp(34px,4vw,52px);letter-spacing:-0.025em;line-height:1.02;margin:8px 0 6px;color:var(--ink);}
+#oferta .exit-hero-big{background:linear-gradient(95deg,#1B7C99,#7CB518);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+#oferta .exit-d{font-size:14px;color:var(--muted);}
+#oferta .exit-arrow{display:flex;align-items:center;color:var(--rule);}
+@media(max-width:680px){#oferta .exit-arrow{transform:rotate(90deg);align-self:center;}}
+#oferta .tl-note{margin-top:14px;font-size:12.5px;color:var(--muted-2);font-style:italic;}
+</style>
+<section id="oferta" style="background:var(--paper-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>12 · Investment offer</div>
+      <h2 class="h2 reveal">Funding-round plan — <em>from pre-seed to Round B</em></h2>
+      <p class="lead reveal">This is <b>the same ask</b> as in section <a href="#kapital">11a</a>, spread over the years — not a second one beside it: <b>PLN 193,044,228</b> (scenario A) or <b>PLN 220,982,427</b> (scenario B), peaking in <b>Aug 2030</b>, with the fund contributing nothing after 2030. The amounts below are <b>equity tranches taken straight from the model</b>. We're closing pre-seed, then round by round, all the way to an IPO in 2031.</p>
+    </div>
+
+    <div class="raise reveal">
+      <div class="raise-top">
+        <span class="raise-tag">Pre-seed · active round · 2027 tranche</span>
+        <span class="raise-goal">2027 tranche per the model: <b>PLN 6,802,820</b></span>
+      </div>
+      <div class="bar">
+        <div class="bar-fill">40% closed</div>
+        <div class="bar-divider"></div>
+        <div class="bar-seek">60% remaining</div>
+      </div>
+      <div class="raise-foot">
+        <div class="raise-stat"><div class="v in">40%</div><div class="l">of the pre-seed round already closed</div></div>
+        <div class="raise-stat"><div class="v seek">60%</div><div class="l">remaining to close</div></div>
+        <div class="raise-stat"><div class="v">12 mo</div><div class="l">runway to the Seed round</div></div>
+      </div>
+    </div>
+
+    <div class="tl-head reveal">
+      <div class="eyebrow"><span class="dot"></span>Round plan</div>
+      <h2 class="h2" style="font-size:clamp(22px,2.4vw,30px);margin-top:10px;">Four rounds — <em>four tranches 2027–2030</em></h2>
+    </div>
+
+    <div class="tl reveal">
+      <div class="tl-axis"></div>
+      <div class="tl-grid">
+        <div class="node active">
+          <div class="card is-active">
+            <div class="c-when">Pre-seed · 2027 tranche</div>
+            <div class="c-name teal">Validation + MVP</div>
+            <div class="c-amt">PLN 6,802,820</div>
+            <span class="c-tag">active round · scenarios A and B identical</span>
+            <div class="c-split">
+              <div class="c-grp ag">
+                <div class="c-grp-h ag">Agentify · MVP1</div>
+                <ul class="c-ms">
+                  <li>MVP1 framework + Client Portal</li>
+                  <li>AI Hours Engine + walidacja billingu</li>
+                  <li>3 active Agentify clients at end-2027 (5 signings during the year)</li>
+                </ul>
+              </div>
+              <div class="c-grp ro">
+                <div class="c-grp-h ro">Robotify</div>
+                <ul class="c-ms">
+                  <li>First RaaS pilots</li>
+                  <li>Agreements with robot makers</li>
+                  <li>RaaS model validation (site assessment)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="node a">
+          <div class="card">
+            <div class="c-when">Seed · 2028 tranche</div>
+            <div class="c-name teal">PL commercialization</div>
+            <div class="c-amt">PLN 55,946,246</div>
+            <span class="c-tag">scenarios A and B identical</span>
+            <div class="c-split">
+              <div class="c-grp ag">
+                <div class="c-grp-h ag">Agentify · MVP2</div>
+                <ul class="c-ms">
+                  <li>Marketplace of 20+ packages</li>
+                  <li>57 active Agentify clients at end-2028 (35 of them in PL)</li>
+                </ul>
+              </div>
+              <div class="c-grp ro">
+                <div class="c-grp-h ro">Robotify</div>
+                <ul class="c-ms">
+                  <li>Fleet of 197 physical Robotify robots at end-2028</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="node a">
+          <div class="card">
+            <div class="c-when">Round A · 2029 tranche</div>
+            <div class="c-name teal">EU expansion</div>
+            <div class="c-amt">PLN 30,631,718</div>
+            <span class="c-tag">scenario A · scenario B: PLN 59,811,615</span>
+            <div class="c-split">
+              <div class="c-grp ag">
+                <div class="c-grp-h ag">Agentify · MVP3</div>
+                <ul class="c-ms">
+                  <li>598 active Agentify clients at end-2029 (351 PL + 111 DACH + 136 UK, FR, IT, ES, NL)</li>
+                  <li>Own orchestrator + EU scaling</li>
+                </ul>
+              </div>
+              <div class="c-grp ro">
+                <div class="c-grp-h ro">Robotify</div>
+                <ul class="c-ms">
+                  <li>2,625 physical robots in the Robotify fleet at end-2029</li>
+                  <li>DACH + Nordics entry</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="node b">
+          <div class="card">
+            <div class="c-when">Round B · 2030 tranche</div>
+            <div class="c-name limon">International scale</div>
+            <div class="c-amt">PLN 99,663,444</div>
+            <span class="c-tag">scenario A · scenario B: PLN 98,421,746</span>
+            <div class="c-split">
+              <div class="c-grp ag">
+                <div class="c-grp-h ag">Agentify</div>
+                <ul class="c-ms">
+                  <li>3,112 active Agentify clients at end-2030 · 12 European markets</li>
+                  <li>Proprietary AI agents — a fully in-house stack, no UiPath dependency</li>
+                </ul>
+              </div>
+              <div class="c-grp ro">
+                <div class="c-grp-h ro">Robotify</div>
+                <ul class="c-ms">
+                  <li>16,408 physical robots under service at end-2030 — <b>the client pays the robot CAPEX</b>, Robotify services it on a subscription</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exit reveal">
+      <div class="exit-lab">Investor exit</div>
+      <div class="exit-row">
+        <div class="exit-step">
+          <div class="exit-when">2030 / 2031</div>
+          <div class="exit-big">Pre-IPO</div>
+          <div class="exit-d">A bridge round before the debut — <b>outside the capital ask</b>. The model does not contain it, it is not part of the PLN 193/221m, and the fund's tranche after 2030 is zero.</div>
+        </div>
+        <div class="exit-arrow"><svg width="40" height="24" viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h32"/><path d="M28 5l8 7-8 7"/></svg></div>
+        <div class="exit-step hero">
+          <div class="exit-when" style="color:var(--limon);">2031</div>
+          <div class="exit-big exit-hero-big">IPO</div>
+          <div class="exit-d">Goal: a public listing — the exit for investors.</div>
+        </div>
+      </div>
+    </div>
+    <p class="tl-note reveal">Active round: pre-seed — lead investor + angels + grants (BGK / NCBR). Pre-IPO and IPO shown without milestones.</p>
+    <p class="tl-note reveal"><b>The projections contain no return from an owned robot fleet.</b> The model assumes <b>the client pays the robot CAPEX</b> and Robotify services it on a subscription. Funding an owned fleet through bank leasing remains an <b>uncosted option</b> — an upside that appears in no figure in this document.</p>
+    <p class="tl-note reveal"><b>Every capital-ask amount is stated in Polish zloty.</b> The model carries no EUR/PLN rate parameter, so none of them is converted into euro — a conversion without a sourced rate would be a figure with no basis. Euro amounts appearing elsewhere in this document (EU AI Act penalties, competitor pricing, EU grants) are market data, not components of the capital ask.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════ TIMING — 3 FALE ════════════════════════ -->
+<section id="timing">
+  <div class="container">
+    <div class="kpi">
+      <div class="eyebrow reveal" style="color:var(--lime);opacity:1;"><span class="dot" style="background:var(--lime);"></span>13 · Timing</div>
+      <h2 class="h2 reveal" style="margin-top:18px;">Why NOW — <em>three waves of convergence</em></h2>
+      <p class="lead reveal" style="margin-top:18px;max-width:64ch;">Three megatrends converge at a single point. <b style="color:var(--ink);">The window to build the hub platform opens once</b> — within the next 24 months.</p>
+
+      <div class="fala-grid reveal">
+        <div class="fala">
+          <div class="fala-n">Fala 01</div>
+          <div class="fala-title">AI democratization</div>
+          <p class="fala-desc">API costs fell <b style="color:var(--ink);">10×</b> in 2 years. Open-source models (Llama, Mistral) remove lock-in. Agentic frameworks (UiPath + n8n) enable building in weeks instead of months. <b style="color:var(--ink);">SMEs can finally afford it.</b></p>
+        </div>
+        <div class="fala">
+          <div class="fala-n">Fala 02</div>
+          <div class="fala-title">Robot commercialization</div>
+          <p class="fala-desc">Tesla, Figure, Apptronik — the humanoid moves from the lab to the factory floor in 2026–2027. Cost falls <b style="color:var(--ink);">40%/yr</b>. The RaaS model opens access for SMEs: the client funds the robot, and its work is billed on subscription. <b style="color:var(--ink);">The integrator market is EMPTY.</b></p>
+        </div>
+        <div class="fala">
+          <div class="fala-n">Fala 03</div>
+          <div class="fala-title">Regulatory + demographic pressure</div>
+          <p class="fala-desc">The EU AI Act forces compliance (fines up to <b style="color:var(--ink);">€35M</b>). The demographic crisis in PL/CE creates real demand. EU grants for SME digitization reach <b style="color:var(--ink);">€2B</b>. These three forces drive purchasing decisions.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;padding:28px 32px;background:rgba(196,232,71,0.08);border:1px solid rgba(196,232,71,0.24);border-radius:14px;text-align:left;" class="reveal">
+        <div style="font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--lime);margin-bottom:10px;">Convergence = the first-mover window</div>
+        <p style="font-size:16px;color:rgba(27,42,71,.85);line-height:1.7;">The technology is ready. Regulation forces change. Demographics create demand. <b style="color:var(--ink);">Whoever builds the hub NOW locks up the market for a decade. Automatify is that hub.</b></p>
+      </div>
+
+      <div style="margin-top:60px;padding-top:48px;border-top:1px solid var(--rule);" class="reveal">
+        <h2 class="h2" style="margin-top:8px;">Join the <em>pre-seed</em> round</h2>
+        <p class="lead" style="margin-top:18px;max-width:64ch;"><b style="color:var(--ink);">PLN 6,802,820 · 12 months runway · round open until Q3 2026</b></p>
+      </div>
+
+      <div style="margin-top:40px;" class="reveal">
+        <a href="#kontakt" class="btn btn-primary" style="background:var(--lime);color:var(--ink);">Let's talk <span class="arr">→</span></a>
+        <div style="margin-top:18px;font-size:13.5px;color:rgba(27,42,71,.55);">Get in touch — book an investor meeting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ KONTAKT / ZESPÓŁ ════════════════════════ -->
+<section id="kontakt">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal"><span class="dot"></span>15 · Team and contact</div>
+      <h2 class="h2 reveal">Let's build the AI agents and robots hub — <em>together</em></h2>
+      <p class="lead reveal">Founders and advisors + an operating team. <b>Get in touch about due diligence, a term sheet, or a meeting.</b></p>
+    </div>
+
+    <h3 class="h3 reveal" style="margin-bottom:18px;">Founders &amp; advisors</h3>
+    <div class="team reveal" style="grid-template-columns:repeat(4,1fr);margin-bottom:32px;">
+      <div class="team-member">
+        <div class="team-init">MS</div>
+        <div class="team-name">Maciej Sieracki</div>
+        <div class="team-role">Founder &amp; CEO</div>
+        <p class="team-bio">15+ years in B2B sales, Naster S.A. (energy, renewables). Bielsko-Biała.</p>
+      </div>
+      <div class="team-member">
+        <img src="logo-subeo.png" alt="Subeo — Business Automation" style="height:24px;width:auto;display:block;margin-bottom:14px;">
+        <div class="team-name">Subeo Sp. z o.o.</div>
+        <div class="team-role">Co-founder · delivery partner (RPA for Agentify)</div>
+        <p class="team-bio"><b>Co-founder of Automatify.</b> 250+ RPA and automation projects for mid-sized and large companies. Business Process Discovery, RPA robots (UiPath), AI agents, intelligent OCR — from process diagnosis to ongoing maintenance. UiPath and Microsoft ecosystem.</p>
+      </div>
+      <div class="team-member">
+        <div class="team-init">MO</div>
+        <div class="team-name">Marcin Olszewski</div>
+        <div class="team-role">Strategic Advisor</div>
+        <p class="team-bio">Ex-CFO Fujitsu (14 years), ex-CEO HP Inc. Poland. Warsaw.</p>
+      </div>
+      <div class="team-member">
+        <div class="team-init">MD</div>
+        <div class="team-name">Maciej Drabek</div>
+        <div class="team-role">Investment Advisor</div>
+        <p class="team-bio">10+ years in investment banking, M&amp;A in energy.</p>
+      </div>
+    </div>
+
+    <h3 class="h3 reveal" style="margin-bottom:18px;">Operating team</h3>
+    <div class="team reveal">
+      <div class="team-member">
+        <div class="team-init">PN</div>
+        <div class="team-name">Patryk Nabożny</div>
+        <div class="team-role">Product Owner</div>
+        <p class="team-bio">Product roadmap, backlog prioritization, voice-of-customer.</p>
+      </div>
+      <div class="team-member">
+        <div class="team-init">AZ</div>
+        <div class="team-name">Anna Zielińska</div>
+        <div class="team-role">Strategy Manager</div>
+        <p class="team-bio">Strategy, GTM, market research, business development.</p>
+      </div>
+      <div class="team-member">
+        <div class="team-init">PW</div>
+        <div class="team-name">Patryk Włoch</div>
+        <div class="team-role">CTO</div>
+        <p class="team-bio">Platform architecture, infrastructure, security, AI stack.</p>
+      </div>
+    </div>
+
+    <div class="contact reveal" style="margin-top:48px;">
+      <div class="eyebrow" style="color:var(--lime);opacity:1;"><span class="dot" style="background:var(--lime);"></span>Contact — Maciej Sieracki, Founder &amp; CEO</div>
+      <h2 class="h2" style="margin-top:24px;">Let's talk <em>due diligence</em></h2>
+      <p class="contact-sub">Bielsko-Biała · Warsaw · Berlin (2028). We reply within 24 hours.</p>
+      <div class="contact-actions">
+        <a href="mailto:investors@automatify.work?subject=Automatify%20investor%20meeting" class="btn btn-primary" style="background:var(--lime);color:var(--ink);">Book an investor meeting <span class="arr">→</span></a>
+        <a href="mailto:investors@automatify.work" class="btn btn-ghost">Write to us</a>
+      </div>
+      <p class="contact-email">— <a href="mailto:investors@automatify.work" style="color:var(--lime);">investors@automatify.work</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════ FOOTER ════════════════════════ -->
+<footer class="bottom">
+  <div class="container">
+    <div class="brand">
+      <img src="logo-automatify-light.png" alt="Automatify" style="height:34px;width:auto;display:block;">
+    </div>
+    <div style="max-width:560px;font-size:11.5px;line-height:1.55;text-align:right;">
+      © 2026 Automatify · AI agents and robots hub for mid-sized companies · <a href="mailto:investors@automatify.work" style="color:var(--accent);">investors@automatify.work</a><br>
+      This document is for information only and does not constitute a public offering within the meaning of applicable law.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="automatify-app.js"></script>
+</body>
+</html>

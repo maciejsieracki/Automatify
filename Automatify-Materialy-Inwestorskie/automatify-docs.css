@@ -1,0 +1,93 @@
+/* ──────────────────────────────────────────────────────────────
+   Automatify · dokumenty towarzyszące (aneks kadrowy, FAQ)
+   Warstwa nawigacji i czytelności. Tokeny marki pochodzą
+   z :root dokumentu — tu nie definiujemy żadnych nowych barw.
+   ────────────────────────────────────────────────────────────── */
+
+/* ── pasek skoków po sekcjach ── */
+.jump{position:sticky;top:var(--tb,56px);z-index:40;background:rgba(248,250,253,.94);backdrop-filter:saturate(150%) blur(10px);-webkit-backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid var(--rule);}
+.jump-in{max-width:1080px;margin:0 auto;padding:10px 32px;display:flex;gap:8px;align-items:center;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
+.jump-in::-webkit-scrollbar{display:none;}
+.jump-l{flex:none;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);padding-right:6px;}
+.jump a{flex:none;font-size:12.5px;font-weight:600;color:var(--muted);text-decoration:none;padding:6px 13px;border:1px solid var(--rule);border-radius:999px;background:var(--card);white-space:nowrap;transition:color .15s,border-color .15s,background .15s;}
+.jump a:hover{color:var(--ink);border-color:var(--teal);}
+.jump a.on{background:var(--ink);border-color:var(--ink);color:var(--lime);}
+.jump a .jn{font-weight:800;color:var(--muted-2);margin-right:7px;}
+.jump a.on .jn{color:rgba(196,232,71,.65);}
+@media(max-width:640px){.jump-l{display:none;}.jump-in{padding-left:20px;padding-right:20px;}}
+
+/* kotwice muszą lądować pod dwoma paskami */
+.sec,.qa{scroll-margin-top:130px;}
+
+/* ── kolumny: ludzie kontra pieniądze ── */
+.tbl.hc th.c-fte,.tbl.hc td.c-fte{background:rgba(27,124,153,.07);}
+.tbl.hc th.c-cost,.tbl.hc td.c-cost{background:rgba(124,181,24,.07);}
+.tbl.hc th.c-fte{color:var(--teal);}
+.tbl.hc th.c-cost{color:var(--limon);}
+.tbl.hc tbody tr:hover td.c-fte{background:rgba(27,124,153,.13);}
+.tbl.hc tbody tr:hover td.c-cost{background:rgba(124,181,24,.13);}
+/* wiersze, gdy osią tabeli jest pozycja, a nie kolumna */
+.tbl.hc tbody tr.r-fte td:not(:first-child){background:rgba(27,124,153,.07);}
+.tbl.hc tbody tr.r-cost td:not(:first-child){background:rgba(124,181,24,.07);}
+.tbl.hc tbody tr.r-fte:hover td:not(:first-child){background:rgba(27,124,153,.13);}
+.tbl.hc tbody tr.r-cost:hover td:not(:first-child){background:rgba(124,181,24,.13);}
+/* kolumny ze wskazaniem komórki źródłowej — oko ma je przeskakiwać */
+.tbl.hc th.c-src,.tbl.hc td.c-src{border-left:1px dashed var(--rule);background:rgba(240,244,250,.5);}
+.tbl.hc th.c-src{color:var(--muted-2);font-weight:700;}
+
+.colkey{display:flex;gap:20px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted);margin:2px 2px 10px;}
+.colkey span{display:inline-flex;align-items:center;gap:8px;}
+.colkey i{width:13px;height:13px;border-radius:3px;display:inline-block;border:1px solid var(--rule);flex:none;}
+.colkey i.k-fte{background:rgba(27,124,153,.22);}
+.colkey i.k-cost{background:rgba(124,181,24,.24);}
+.colkey i.k-src{background:rgba(240,244,250,1);border-left:1px dashed var(--muted-2);}
+.colkey b{color:var(--ink);font-weight:700;}
+
+/* ── powtarzalna nota metodyczna: zwijana, nic nie ginie ── */
+details.cap{margin:6px 0 0;border-top:1px solid var(--rule-2);}
+details.cap>summary{cursor:pointer;list-style:none;font-size:11.5px;font-weight:700;color:var(--teal);padding:10px 0 9px;display:flex;align-items:center;gap:9px;}
+details.cap>summary::-webkit-details-marker{display:none;}
+details.cap>summary::before{content:"+";font-weight:800;color:var(--limon);width:9px;flex:none;font-size:13px;line-height:1;}
+details.cap[open]>summary::before{content:"–";}
+details.cap>summary:hover{color:var(--teal-3);}
+details.cap .tbl-cap{margin-top:0;padding-bottom:4px;}
+
+/* ── FAQ: indeks pytań ── */
+.qindex{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:22px 26px 12px;margin-top:26px;}
+.qindex-h{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
+.qindex-s{font-size:12.5px;color:var(--muted);margin-bottom:12px;}
+.qindex-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;}
+@media(max-width:800px){.qindex-grid{grid-template-columns:1fr;}}
+.qindex-grid a{display:grid;grid-template-columns:20px 1fr;gap:11px;align-items:baseline;padding:8px 0;border-top:1px solid var(--rule-2);font-size:13px;color:var(--ink-2);text-decoration:none;line-height:1.45;}
+.qindex-grid a:hover{color:var(--teal);}
+.qindex-grid a .n{font-weight:800;color:var(--muted-2);font-size:11.5px;font-variant-numeric:tabular-nums;}
+.qindex-grid a.hard .n{color:var(--limon);}
+.qindex-grid a.hard::after{content:"•";color:var(--limon);font-weight:800;margin-left:2px;}
+
+/* ── FAQ: rytm kart pytań ── */
+.qa{transition:border-color .15s;}
+.qa:target{border-color:var(--teal);box-shadow:0 0 0 3px rgba(46,190,217,.12);}
+.qa .q-n{transition:background .15s;}
+
+/* ── aneks: podpis kraju nad tabelą ── */
+.sub-h.ctry{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;color:var(--ink);font-size:15.5px;font-weight:800;margin:26px 0 10px;}
+.sub-h.ctry .cmeta{font-weight:500;font-size:12.5px;color:var(--muted);letter-spacing:0;}
+
+/* ── kolumny liczbowe i tabele dwukolumnowe ── */
+.tbl th.num-col,.tbl td.num-col{width:1%;white-space:nowrap;}
+.tbl.pair{max-width:560px;}
+.tbl.pair th:first-child,.tbl.pair td:first-child{width:auto;}
+
+/* ── powrót do dokumentów nadrzędnych w górnym pasku ── */
+.backs{display:flex;align-items:center;gap:10px;min-width:0;}
+.backs .bsep{color:rgba(255,255,255,.3);font-weight:700;flex:none;}
+.backs .back{white-space:nowrap;}
+@media(max-width:760px){.backs .bsep,.backs .back:last-child{display:none;}}
+
+@media print{
+  .jump{display:none;}
+  details.cap{border-top:1px solid var(--rule-2);}
+  details.cap>summary{display:none;}
+  details.cap>*:not(summary){display:block !important;}
+  .qindex{break-inside:avoid;}
+}

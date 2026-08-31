@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatify — Aneks kadrowy 2027–2028</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="automatify-docs.css">
+<style>
+:root{
+  --paper:#F8FAFD; --paper-2:#F0F4FA; --card:#FFFFFF;
+  --ink:#0E2244; --ink-2:#1A2540; --muted:#6B7A8F; --muted-2:#8898B5;
+  --rule:#D8E0EC; --rule-2:#E6ECF4;
+  --lime:#C4E847; --lime-2:#A4C932; --limon:#7CB518;
+  --teal:#1B7C99; --teal-2:#2EBED9; --teal-3:#0F5A73;
+  --sans:"Manrope",-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+svg{display:block;}
+a{color:var(--teal);}
+.container{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+.topbar{position:sticky;top:0;z-index:50;background:rgba(14,34,68,.92);backdrop-filter:saturate(150%) blur(12px);-webkit-backdrop-filter:saturate(150%) blur(12px);color:#fff;border-bottom:1px solid rgba(255,255,255,.1);}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;}
+.topbar .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:8px;}
+.topbar .back:hover{color:#fff;}
+.topbar .tt{font-size:12.5px;color:rgba(255,255,255,.55);letter-spacing:0.04em;}
+.topbar .actions{display:flex;gap:10px;}
+.tb-btn{font-family:var(--sans);font-weight:700;font-size:12.5px;padding:8px 16px;border-radius:8px;border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;}
+.tb-btn.p{background:var(--lime);color:var(--ink);}
+@media(max-width:640px){.topbar .tt{display:none;}}
+
+.hero{background:var(--ink);color:#fff;padding:clamp(48px,7vw,88px) 0;}
+.hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal-2);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
+.hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);}
+.hero h1{font-weight:800;font-size:clamp(32px,4.6vw,56px);line-height:1.04;letter-spacing:-0.025em;}
+.hero h1 em{font-style:normal;background:linear-gradient(95deg,#2EBED9,#C4E847);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:clamp(15px,1.5vw,18px);color:rgba(248,250,253,.7);max-width:72ch;margin-top:18px;line-height:1.6;}
+.hero p b{color:#fff;}
+.hero .meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:rgba(248,250,253,.6);}
+.hero .meta b{color:#fff;}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:18px;overflow:hidden;margin-top:-40px;position:relative;z-index:2;box-shadow:0 24px 50px -30px rgba(14,34,68,.5);}
+@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr;}}
+.kpi{background:var(--card);padding:26px 24px;}
+.kpi-v{font-weight:800;font-size:clamp(26px,3vw,34px);letter-spacing:-0.02em;background:linear-gradient(95deg,#1B7C99,#7CB518);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.kpi-l{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45;}
+
+.sec{padding:clamp(40px,5vw,64px) 0;border-top:1px solid var(--rule);}
+.sec:first-of-type{border-top:0;}
+.sec-h{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;}
+.sec-n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-weight:800;font-size:14px;margin-top:2px;}
+.sec-t{font-weight:800;font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.018em;line-height:1.16;}
+.sec-lead{font-size:15px;color:var(--muted);max-width:74ch;line-height:1.7;margin:2px 0 26px 48px;}
+@media(max-width:600px){.sec-lead{margin-left:0;}}
+.sub-h{font-weight:700;font-size:16px;color:var(--teal);margin:30px 0 14px;letter-spacing:-0.005em;}
+.sub-h.ro{color:var(--limon);}
+p.body{font-size:14.5px;color:var(--ink-2);line-height:1.75;max-width:76ch;margin-bottom:14px;}
+p.body b{color:var(--ink);}
+ul.pts{list-style:none;margin:6px 0 14px 0;}
+ul.pts li{font-size:14px;color:var(--ink-2);line-height:1.6;padding:7px 0 7px 26px;position:relative;border-top:1px solid var(--rule-2);}
+ul.pts li:first-child{border-top:0;}
+ul.pts li::before{content:"";position:absolute;left:4px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--teal-2);}
+ul.pts li b{color:var(--ink);}
+
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 6px;}
+.tbl thead th{text-align:right;font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);padding:10px 10px;border-bottom:2px solid var(--ink);white-space:normal;text-wrap:balance;}
+.tbl thead th:first-child{text-align:left;}
+.tbl tbody td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--rule-2);font-variant-numeric:tabular-nums;}
+.tbl tbody td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.tbl tbody tr:hover{background:var(--paper-2);}
+.tbl tr.hl{background:rgba(124,181,24,.10);}
+.tbl tr.hl td{font-weight:700;color:var(--ink);}
+.tbl td.neg{color:#C0392B;}
+.tbl td.pos{color:var(--limon);}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;padding:6px 18px;background:var(--card);}
+.tbl-cap{font-size:11.5px;color:var(--muted);line-height:1.55;margin:8px 2px 0;}
+
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:760px){.cards2{grid-template-columns:1fr;}}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 26px;}
+.card-h{font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);padding-bottom:13px;margin-bottom:4px;border-bottom:1px solid var(--rule);}
+.card-h.ro{color:var(--limon);}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:11px 0;border-top:1px solid var(--rule-2);font-size:13.5px;}
+.row:first-of-type{border-top:0;}
+.row .l{color:var(--muted);}
+.row .v{color:var(--ink);font-weight:700;text-align:right;white-space:nowrap;}
+
+.chart{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 26px;margin:8px 0;}
+.chart-t{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.legend{display:flex;gap:18px;font-size:12px;color:var(--muted);margin-bottom:10px;flex-wrap:wrap;}
+.legend span{display:inline-flex;align-items:center;gap:7px;}
+.legend i{width:12px;height:3px;border-radius:2px;display:inline-block;}
+
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px;}
+@media(max-width:760px){.maps{grid-template-columns:1fr;}}
+.mapcard{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:16px 18px;}
+.mapcard .mh{font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;}
+.mapcard img{width:100%;display:block;border-radius:8px;}
+
+.note{margin-top:18px;padding:16px 20px;background:var(--paper-2);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;font-size:13px;color:var(--muted);line-height:1.65;}
+.note b{color:var(--ink);}
+
+footer{background:var(--ink);color:rgba(255,255,255,.5);font-size:12px;padding:30px 0;text-align:center;margin-top:40px;}
+footer b{color:rgba(255,255,255,.8);}
+
+@media print{
+  .topbar{position:static;}
+  .sec{break-inside:avoid;}
+  .tbl-wrap,.chart,.card,.mapcard{break-inside:avoid;}
+}
+</style>
+</head>
+<body data-doc="aneks">
+
+<div class="topbar">
+  <div class="container">
+    <div class="backs"><a class="back" href="Automatify Pitch.html#top">← Pitch deck</a><span class="bsep">·</span><a class="back" href="Suplement budzetowy.html">Suplement do budżetu</a></div>
+    <span class="tt">Aneks kadrowy · obsada 2027–2028</span>
+    <div class="actions" style="display:flex;gap:12px;align-items:center;">
+      <span style="font-size:12px;font-weight:700;display:inline-flex;gap:7px;"><a href="Automatify Aneks Kadrowy.html" style="color:var(--lime);text-decoration:none;">PL</a><a href="Automatify Aneks Kadrowy (EN).html" style="color:rgba(255,255,255,.6);text-decoration:none;">EN</a></span>
+      <button class="tb-btn p" onclick="window.print()">Pobierz / Drukuj PDF</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>Dokument poufny · dla inwestorów</div>
+    <h1>Aneks <em>kadrowy</em><br>2027–2028</h1>
+    <p>Pełne rozbicie obsady dwóch pierwszych lat działania hubu Automatify: <b>koszty stałe centrali</b> osobno i <b>obsada lokalna w krajach</b> osobno, dla Agentify, dla Robotify i&nbsp;łącznie. Każda liczba pochodzi z&nbsp;modelu finansowego hubu. Dokument jest aneksem do suplementu budżetowego — nie zastępuje go i&nbsp;nie zmienia żadnej liczby, którą tamten podaje.</p>
+    <div class="meta"><span>Zakres <b>2027 i 2028</b></span><span>Waluta <b>PLN</b></span><span>Wariant <b>bez ekspansji procesów</b></span><span>Odczyt <b>2026-08-29</b></span></div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="kpis">
+    <div class="kpi"><div class="kpi-v">15</div><div class="kpi-l">Etatów w hubie w 2027 — wyłącznie Agentify</div></div>
+    <div class="kpi"><div class="kpi-v">4,47</div><div class="kpi-l">mln zł kosztów osobowych hubu 2027</div></div>
+    <div class="kpi"><div class="kpi-v">36 + 21</div><div class="kpi-l">Etatów w hubie w 2028 — 36 osób lokalnie + 21 centrali</div></div>
+    <div class="kpi"><div class="kpi-v">26,4</div><div class="kpi-l">mln zł kosztów osobowych hubu 2028</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">1</div><div class="sec-t">Podsumowanie na jednej stronie</div></div>
+    <div class="sec-lead">Cztery liczby, z którymi czytelnik ma wyjść: hub zatrudnia <b>15 etatów</b> w 2027 oraz <b>36 osób lokalnie i 21 etatów centrali</b> w 2028, a koszt osobowy rośnie z <b>4 470 000 zł</b> do <b>26 361 863,48 zł</b>. Robotify nie ma w 2027 ani jednego etatu — cały pierwszy rok hubu to Agentify. Admin w&nbsp;Polsce pracuje po połowie etatu dla każdego filaru i&nbsp;jest wykazany po obu stronach, dlatego obsada lokalna 2028 liczy <b>36 osób</b>.</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Pozycja</th><th>Agentify</th><th>Robotify</th><th>RAZEM</th></tr></thead>
+        <tbody>
+          <tr style="background:var(--paper-2);"><td colspan="4" style="font-weight:800;color:var(--ink);letter-spacing:.06em;">2027</td></tr>
+          <tr class=""><td>Obsada lokalna — etaty</td><td>8</td><td>0</td><td>8</td></tr>
+          <tr class=""><td>Centrala — etaty</td><td>7</td><td>0</td><td>7</td></tr>
+          <tr class="hl"><td>ETATY RAZEM</td><td>15</td><td>0</td><td>15</td></tr>
+          <tr class=""><td>Obsada lokalna — koszt (zł)</td><td>2 100 000</td><td>0</td><td>2 100 000</td></tr>
+          <tr class=""><td>Centrala — koszt (zł)</td><td>2 370 000</td><td>0</td><td>2 370 000</td></tr>
+          <tr class="hl"><td>KOSZT OSOBOWY RAZEM (zł)</td><td>4 470 000</td><td>0</td><td>4 470 000</td></tr>
+          <tr style="background:var(--paper-2);"><td colspan="4" style="font-weight:800;color:var(--ink);letter-spacing:.06em;">2028</td></tr>
+          <tr class=""><td>Obsada lokalna — etaty</td><td>32</td><td>5</td><td>36 osób</td></tr>
+          <tr class=""><td>Centrala — etaty</td><td>11</td><td>10</td><td>21</td></tr>
+          <tr class="hl"><td>ETATY RAZEM</td><td>43</td><td>15</td><td>36 lokalnie + 21 centrali</td></tr>
+          <tr class=""><td>Obsada lokalna — koszt (zł)</td><td>19 757 700</td><td>129 496,82</td><td>19 887 196,82</td></tr>
+          <tr class=""><td>Centrala — koszt (zł)</td><td>3 414 666,67</td><td>3 060 000</td><td>6 474 666,67</td></tr>
+          <tr class="hl"><td>KOSZT OSOBOWY RAZEM (zł)</td><td>23 172 366,67</td><td>3 189 496,82</td><td>26 361 863,48</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">2</div><div class="sec-t">Centrala — koszty stałe</div></div>
+    <div class="sec-lead">Centralę planujemy kosztowo, w&nbsp;<b>czterech koszykach</b> — badania, zarząd, koszty ogólne, marketing i&nbsp;sprzedaż. Poniżej kwoty obu filarów wraz z&nbsp;listą stanowisk, które za nimi stoją; liczba etatów centrali wynika z&nbsp;tych kwot, dlatego bywa ułamkiem.</div>
+    <div class="sub-h">Agentify — centrala</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Koszyk</th><th>2027 (zł)</th><th>2028 (zł)</th><th>Stanowiska z listy imiennej (2028)</th></tr></thead>
+        <tbody>
+          <tr><td>Badania i rozwój (R&D)</td><td>380 000</td><td>814 666,67</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Backend Eng · AI/ML Eng · Integration Eng · DevOps/SRE · Product Manager</td></tr>
+          <tr><td>Zarząd</td><td>550 000</td><td>800 000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">COO · CTO / Head of Engineering</td></tr>
+          <tr><td>Koszty ogólne (G&A)</td><td>680 000</td><td>775 000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Finanse / kontroling · HR / People · Legal i compliance · Procurement · Office i administracja · IT wewnętrzne</td></tr>
+          <tr><td>Marketing i sprzedaż (M&S)</td><td>760 000</td><td>1 025 000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Dyrektor Marketingu (CMO) · Dyrektor Sprzedaży (CSO) · Brand / Content · Performance / Digital · Product marketing · Graphic / Designer · Sales operations · Partnerships / BD</td></tr>
+          <tr class="hl"><td>KOSZT CENTRALI RAZEM</td><td>2 370 000</td><td>3 414 666,67</td><td></td></tr>
+          <tr class="hl"><td>Etaty centrali (wyliczone z kosztu)</td><td>7</td><td>11</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h ro">Robotify — centrala</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Koszyk</th><th>2027 (zł)</th><th>2028 (zł)</th><th>Stanowiska z listy imiennej (2028)</th></tr></thead>
+        <tbody>
+          <tr><td>Badania i rozwój (R&D)</td><td>0</td><td>560 000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Inżynier robotyki · Software dev · Inżynier AI · DevOps · QA</td></tr>
+          <tr><td>Zarząd</td><td>0</td><td>700 000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">COO · CTO Robotify</td></tr>
+          <tr><td>Koszty ogólne (G&A)</td><td>0</td><td>775 000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Finanse / kontroling · HR / People · Legal i compliance · Office i administracja · IT wewnętrzne</td></tr>
+          <tr><td>Marketing i sprzedaż (M&S)</td><td>0</td><td>1 025 000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Dyrektor Marketingu (CMO) · Dyrektor Sprzedaży (CSO) · Brand / Content · Performance / Digital · Product marketing · Graphic / Designer · Sales operations · Partnerships / BD</td></tr>
+          <tr class="hl"><td>KOSZT CENTRALI RAZEM</td><td>0</td><td>3 060 000</td><td></td></tr>
+          <tr class="hl"><td>Etaty centrali (liczba wpisana ręcznie)</td><td>0</td><td>10</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">3</div><div class="sec-t">Kraje — obsada lokalna</div></div>
+    <div class="sec-lead">Agentify wchodzi do Polski w 2027 i dokłada Niemcy, Wielką Brytanię i Francję w 2028. <b>Każdy kraj dostaje tę samą ośmioosobową obsadę</b>: czterech menedżerów, admin, wdrożeniowiec, customer success i ops. Robotify rusza dopiero w 2028 i tylko w Polsce, z pięcioma etatami. Kolumna „udział” pokazuje, gdzie rola jest wspólna z drugim produktem i liczona po połowie.</div>
+    <div class="sub-h" style="color:var(--ink);font-size:18px;border-top:2px solid var(--ink);padding-top:18px;">AGENTIFY · 2027</div>
+    <div class="sub-h">Polska &middot; mnożnik kraju 1,000 &middot; rok wejścia 2027</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Stanowisko</th><th>Etaty</th><th>Stawka roczna po mnożniku (zł)</th><th>Udział</th><th>Koszt (zł)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>1</td><td>380 000</td><td>100%</td><td>380 000</td></tr>
+          <tr><td>Menedżer Sprzedaży</td><td>1</td><td>240 000</td><td>100%</td><td>240 000</td></tr>
+          <tr><td>Menedżer Marketingu</td><td>1</td><td>220 000</td><td>100%</td><td>220 000</td></tr>
+          <tr><td>Menedżer Operacyjny</td><td>1</td><td>340 000</td><td>100%</td><td>340 000</td></tr>
+          <tr><td>Admin lokalny</td><td>1</td><td>120 000</td><td>100%</td><td>120 000</td></tr>
+          <tr><td>Delivery / wdrożeniowiec</td><td>1</td><td>300 000</td><td>100%</td><td>300 000</td></tr>
+          <tr><td>Customer Success</td><td>1</td><td>240 000</td><td>100%</td><td>240 000</td></tr>
+          <tr><td>Ops / Monitoring</td><td>1</td><td>260 000</td><td>100%</td><td>260 000</td></tr>
+          <tr class="hl"><td>RAZEM</td><td>8</td><td></td><td></td><td>2 100 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap"><b>Agentify 2027 — obsada lokalna razem: 8 etatów, 2 100 000 zł.</b></div>
+    <div class="sub-h" style="color:var(--ink);font-size:18px;border-top:2px solid var(--ink);padding-top:18px;">AGENTIFY · 2028</div>
+    <div class="sub-h">Polska &middot; mnożnik kraju 1,000 &middot; rok wejścia 2027</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Stanowisko</th><th>Etaty</th><th>Stawka roczna po mnożniku (zł)</th><th>Udział</th><th>Koszt (zł)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>1</td><td>380 000</td><td>50% &mdash; rola wspólna</td><td>190 000</td></tr>
+          <tr><td>Menedżer Sprzedaży</td><td>1</td><td>240 000</td><td>50% &mdash; rola wspólna</td><td>120 000</td></tr>
+          <tr><td>Menedżer Marketingu</td><td>1</td><td>220 000</td><td>50% &mdash; rola wspólna</td><td>110 000</td></tr>
+          <tr><td>Menedżer Operacyjny</td><td>1</td><td>340 000</td><td>100%</td><td>340 000</td></tr>
+          <tr><td>Admin lokalny</td><td>1</td><td>120 000</td><td>50% &mdash; rola wspólna</td><td>60 000</td></tr>
+          <tr><td>Delivery / wdrożeniowiec</td><td>1</td><td>300 000</td><td>100%</td><td>300 000</td></tr>
+          <tr><td>Customer Success</td><td>1</td><td>240 000</td><td>100%</td><td>240 000</td></tr>
+          <tr><td>Ops / Monitoring</td><td>1</td><td>260 000</td><td>100%</td><td>260 000</td></tr>
+          <tr class="hl"><td>RAZEM</td><td>8</td><td></td><td></td><td>1 620 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h">Niemcy &middot; mnożnik kraju 3,034 &middot; rok wejścia 2028</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Stanowisko</th><th>Etaty</th><th>Stawka roczna po mnożniku (zł)</th><th>Udział</th><th>Koszt (zł)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>1</td><td>1 152 920</td><td>100%</td><td>1 152 920</td></tr>
+          <tr><td>Menedżer Sprzedaży</td><td>1</td><td>728 160</td><td>100%</td><td>728 160</td></tr>
+          <tr><td>Menedżer Marketingu</td><td>1</td><td>667 480</td><td>100%</td><td>667 480</td></tr>
+          <tr><td>Menedżer Operacyjny</td><td>1</td><td>1 031 560</td><td>100%</td><td>1 031 560</td></tr>
+          <tr><td>Admin lokalny</td><td>1</td><td>364 080</td><td>100%</td><td>364 080</td></tr>
+          <tr><td>Delivery / wdrożeniowiec</td><td>1</td><td>910 200</td><td>100%</td><td>910 200</td></tr>
+          <tr><td>Customer Success</td><td>1</td><td>728 160</td><td>100%</td><td>728 160</td></tr>
+          <tr><td>Ops / Monitoring</td><td>1</td><td>788 840</td><td>100%</td><td>788 840</td></tr>
+          <tr class="hl"><td>RAZEM</td><td>8</td><td></td><td></td><td>6 371 400</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h">Wlk. Brytania &middot; mnożnik kraju 2,603 &middot; rok wejścia 2028</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Stanowisko</th><th>Etaty</th><th>Stawka roczna po mnożniku (zł)</th><th>Udział</th><th>Koszt (zł)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>1</td><td>989 140</td><td>100%</td><td>989 140</td></tr>
+          <tr><td>Menedżer Sprzedaży</td><td>1</td><td>624 720</td><td>100%</td><td>624 720</td></tr>
+          <tr><td>Menedżer Marketingu</td><td>1</td><td>572 660</td><td>100%</td><td>572 660</td></tr>
+          <tr><td>Menedżer Operacyjny</td><td>1</td><td>885 020</td><td>100%</td><td>885 020</td></tr>
+          <tr><td>Admin lokalny</td><td>1</td><td>312 360</td><td>100%</td><td>312 360</td></tr>
+          <tr><td>Delivery / wdrożeniowiec</td><td>1</td><td>780 900</td><td>100%</td><td>780 900</td></tr>
+          <tr><td>Customer Success</td><td>1</td><td>624 720</td><td>100%</td><td>624 720</td></tr>
+          <tr><td>Ops / Monitoring</td><td>1</td><td>676 780</td><td>100%</td><td>676 780</td></tr>
+          <tr class="hl"><td>RAZEM</td><td>8</td><td></td><td></td><td>5 466 300</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h">Francja &middot; mnożnik kraju 3,000 &middot; rok wejścia 2028</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Stanowisko</th><th>Etaty</th><th>Stawka roczna po mnożniku (zł)</th><th>Udział</th><th>Koszt (zł)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>1</td><td>1 140 000</td><td>100%</td><td>1 140 000</td></tr>
+          <tr><td>Menedżer Sprzedaży</td><td>1</td><td>720 000</td><td>100%</td><td>720 000</td></tr>
+          <tr><td>Menedżer Marketingu</td><td>1</td><td>660 000</td><td>100%</td><td>660 000</td></tr>
+          <tr><td>Menedżer Operacyjny</td><td>1</td><td>1 020 000</td><td>100%</td><td>1 020 000</td></tr>
+          <tr><td>Admin lokalny</td><td>1</td><td>360 000</td><td>100%</td><td>360 000</td></tr>
+          <tr><td>Delivery / wdrożeniowiec</td><td>1</td><td>900 000</td><td>100%</td><td>900 000</td></tr>
+          <tr><td>Customer Success</td><td>1</td><td>720 000</td><td>100%</td><td>720 000</td></tr>
+          <tr><td>Ops / Monitoring</td><td>1</td><td>780 000</td><td>100%</td><td>780 000</td></tr>
+          <tr class="hl"><td>RAZEM</td><td>8</td><td></td><td></td><td>6 300 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap"><b>Agentify 2028 — obsada lokalna razem: 32 etaty, 19 757 700 zł.</b></div>
+    <div class="sub-h ro" style="font-size:18px;border-top:2px solid var(--limon);padding-top:18px;">ROBOTIFY · 2027</div>
+    <p class="body">Robotify nie ma w 2027 <b>ani jednego etatu w żadnym z 32 krajów</b>. Sprawdzone kraj po kraju: obsada zerowa, koszt lokalny 0 zł.</p>
+    <div class="sub-h ro" style="font-size:18px;border-top:2px solid var(--limon);padding-top:18px;">ROBOTIFY · 2028</div>
+    <div class="sub-h">Polska · mnożnik kraju 1,000 · rok wejścia 2028</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Stanowisko</th><th>Etaty</th><th>Stawka cennikowa (zł)</th><th>Koszt wg modelu (zł)</th></tr></thead>
+        <tbody>
+          <tr><td>Technik serwisowy</td><td>1</td><td>120 000</td><td style="text-align:left;"><span style="color:var(--muted);font-size:12px;">cztery role serwisowe rozliczane jedną kwotą</span></td></tr>
+          <tr><td>Inżynier serwisu</td><td>1</td><td>180 000</td><td style="text-align:left;"></td></tr>
+          <tr><td>Inżynier wdrożeniowy</td><td>1</td><td>200 000</td><td style="text-align:left;"></td></tr>
+          <tr><td>Logistyka / magazyn</td><td>1</td><td>95 000</td><td style="text-align:left;"></td></tr>
+          <tr><td>Admin (CE)</td><td>1</td><td>120 000</td><td>60 000</td></tr>
+          <tr><td>Koszt czterech ról serwisowych — <b>wg modelu</b></td><td>4</td><td></td><td>69 496,82</td></tr>
+          <tr><td>Koszt czterech ról serwisowych — <b>wg cennika</b></td><td>4</td><td></td><td>595 000</td></tr>
+          <tr class="hl"><td>RAZEM wg modelu</td><td>5</td><td></td><td>129 496,82</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">4</div><div class="sec-t">Cennik ról w jednym miejscu</div></div>
+    <div class="sec-lead">Wszystko, czego potrzeba, żeby przeliczyć każdą liczbę z&nbsp;rozdziału 3 samodzielnie. Reguła jest jedna: <b>stawka bazowa × mnożnik kraju × udział</b>. Mnożnik odzwierciedla koszt pracy w&nbsp;kraju wobec Polski.</div>
+    <div class="sub-h">Agentify — stawki bazowe (Polska, zł/rok)</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Stanowisko</th><th>Stawka bazowa (zł/rok)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>380 000</td></tr>
+          <tr><td>Menedżer Sprzedaży</td><td>240 000</td></tr>
+          <tr><td>Menedżer Marketingu</td><td>220 000</td></tr>
+          <tr><td>Menedżer Operacyjny</td><td>340 000</td></tr>
+          <tr><td>Admin lokalny</td><td>120 000</td></tr>
+          <tr><td>Delivery / wdrożeniowiec</td><td>300 000</td></tr>
+          <tr><td>Customer Success</td><td>240 000</td></tr>
+          <tr><td>Ops / Monitoring</td><td>260 000</td></tr>
+          <tr><td>Team Lead</td><td>300 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h ro">Robotify — stawki bazowe (Polska, zł/rok)</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Stanowisko</th><th>Stawka bazowa (zł/rok)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>380 000</td></tr>
+          <tr><td>Menedżer Sprzedaży</td><td>240 000</td></tr>
+          <tr><td>Menedżer Marketingu</td><td>220 000</td></tr>
+          <tr><td>Dyrektor / Menedżer Operacyjny (CE)</td><td>340 000</td></tr>
+          <tr><td>Admin (CE)</td><td>120 000</td></tr>
+          <tr><td>Technik serwisowy</td><td>120 000</td></tr>
+          <tr><td>Inżynier serwisu</td><td>180 000</td></tr>
+          <tr><td>Inżynier wdrożeniowy</td><td>200 000</td></tr>
+          <tr><td>NOC / monitoring</td><td>110 000</td></tr>
+          <tr><td>Logistyka / magazyn</td><td>95 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h">Mnożniki krajów czynnych w 2027–2028</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Kraj</th><th>Mnożnik Agentify</th><th>Mnożnik Robotify</th><th>Rok wejścia Agentify</th><th>Rok wejścia Robotify</th></tr></thead>
+        <tbody>
+          <tr><td>Polska</td><td>1,000</td><td>1,0000</td><td>2027</td><td>2028</td></tr>
+          <tr><td>Niemcy</td><td>3,034</td><td>3,0345</td><td>2028</td><td>2029</td></tr>
+          <tr><td>Wlk. Brytania</td><td>2,603</td><td>2,6034</td><td>2028</td><td>2029</td></tr>
+          <tr><td>Francja</td><td>3,000</td><td>3,0000</td><td>2028</td><td>2029</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap">Mnożnik kraju odzwierciedla koszt pracy w&nbsp;danym kraju wobec Polski. <b>Sprawdzenie na przykładzie:</b> Country Manager w&nbsp;Niemczech w&nbsp;2028 = 380 000 × 3,034 × 100% = 1 152 920 zł, bo 2028 jest pierwszym rokiem Niemiec i&nbsp;udział wspólny jeszcze nie działa. Ten sam Country Manager w&nbsp;Polsce w&nbsp;2028 = 380 000 × 1,000 × 50% = 190 000 zł.</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">5</div><div class="sec-t">Jak to czytać</div></div>
+    <div class="sec-lead">Trzy rzeczy, bez których liczby z&nbsp;poprzednich rozdziałów łatwo zrozumieć opacznie.</div>
+    <div class="sub-h">Kraj wchodzi z&nbsp;pełną ośmioosobową obsadą od pierwszego dnia.</div>
+    <p class="body">Obsada lokalna to zawsze pełni ludzie: czterech menedżerów, admin, wdrożeniowiec, customer success i&nbsp;ops — niezależnie od tego, ile procesów kraj już obsługuje. Dlatego rok 2028 kosztuje prawie sześć razy więcej niż 2027 przy niecałych czterech razach większej obsadzie: różnicę robią nowe kraje, z&nbsp;których każdy startuje z&nbsp;kompletnym zespołem.</p>
+    <div class="sub-h">Kraje planujemy ludźmi, centralę — kosztem.</div>
+    <p class="body">W&nbsp;krajach liczymy stanowiska, więc obsada wychodzi w&nbsp;pełnych osobach. Centralę planujemy czterema kwotami na koszyk — badania, zarząd, koszty ogólne, marketing i&nbsp;sprzedaż — i&nbsp;stąd etat centrali bywa ułamkiem. O&nbsp;konkretne stanowiska centrali pytać należy list imiennych, nie budżetu.</p>
+    <div class="sub-h">Dźwignia operacyjna jest realna, ale w&nbsp;tych dwóch latach jeszcze jej nie widać w&nbsp;liczbach.</div>
+    <p class="body">Ten sam wdrożeniowiec obsłużył w&nbsp;Polsce <b>26 procesów</b> w&nbsp;2027 i&nbsp;<b>260 procesów</b> w&nbsp;2028 — koszt się nie zmienił, więc <b>każda złotówka dodatkowego przychodu w&nbsp;tych latach schodzi na dół w&nbsp;całości</b>. Trzeba jednak powiedzieć drugą połowę: dźwignia mierzona w&nbsp;tych dwóch latach jest przesadzona, bo obsada stoi tam, gdzie pracy jeszcze nie ma. Kiedy wolumen dogoni obsadę — w&nbsp;Polsce dzieje się to w&nbsp;2029, gdzie wdrożeniowców robi się już trzech, a&nbsp;customer success pięcioro — koszt zaczyna rosnąć skokami po pełnym etacie. <b>Właściwy wniosek nie brzmi „obsada nie rośnie”, tylko „obsada nie rośnie jeszcze”.</b></p>
+    <div class="note"><b>Zakres tego dokumentu.</b> Wszystkie liczby pochodzą ze skonsolidowanego modelu finansowego Automatify w&nbsp;wariancie bez ekspansji procesów, stan na 2026-08-29. Kwoty to <b>płace</b>: nie zawierają ESOP, narzutu biurowego, rekrutacji ani kosztu pozyskania klienta, które budżet prowadzi osobno.</div>
+  </div>
+
+</div>
+
+<footer>
+  <b>AUTOMATIFY</b> © 2026 &nbsp;·&nbsp; Aneks kadrowy · obsada 2027–2028 &nbsp;·&nbsp; Dokument poufny — dla inwestorów &nbsp;·&nbsp; Dane w&nbsp;PLN &nbsp;·&nbsp; Źródło: skonsolidowany model finansowy Automatify · stan 2026-08-29
+</footer>
+
+<script src="automatify-docs.js"></script>
+</body>
+</html>

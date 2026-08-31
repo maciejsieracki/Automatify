@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatify — Headcount Annex 2027–2028</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="automatify-docs.css">
+<style>
+:root{
+  --paper:#F8FAFD; --paper-2:#F0F4FA; --card:#FFFFFF;
+  --ink:#0E2244; --ink-2:#1A2540; --muted:#6B7A8F; --muted-2:#8898B5;
+  --rule:#D8E0EC; --rule-2:#E6ECF4;
+  --lime:#C4E847; --lime-2:#A4C932; --limon:#7CB518;
+  --teal:#1B7C99; --teal-2:#2EBED9; --teal-3:#0F5A73;
+  --sans:"Manrope",-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+svg{display:block;}
+a{color:var(--teal);}
+.container{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+.topbar{position:sticky;top:0;z-index:50;background:rgba(14,34,68,.92);backdrop-filter:saturate(150%) blur(12px);-webkit-backdrop-filter:saturate(150%) blur(12px);color:#fff;border-bottom:1px solid rgba(255,255,255,.1);}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;}
+.topbar .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:8px;}
+.topbar .back:hover{color:#fff;}
+.topbar .tt{font-size:12.5px;color:rgba(255,255,255,.55);letter-spacing:0.04em;}
+.topbar .actions{display:flex;gap:10px;}
+.tb-btn{font-family:var(--sans);font-weight:700;font-size:12.5px;padding:8px 16px;border-radius:8px;border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;}
+.tb-btn.p{background:var(--lime);color:var(--ink);}
+@media(max-width:640px){.topbar .tt{display:none;}}
+
+.hero{background:var(--ink);color:#fff;padding:clamp(48px,7vw,88px) 0;}
+.hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal-2);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
+.hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);}
+.hero h1{font-weight:800;font-size:clamp(32px,4.6vw,56px);line-height:1.04;letter-spacing:-0.025em;}
+.hero h1 em{font-style:normal;background:linear-gradient(95deg,#2EBED9,#C4E847);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:clamp(15px,1.5vw,18px);color:rgba(248,250,253,.7);max-width:72ch;margin-top:18px;line-height:1.6;}
+.hero p b{color:#fff;}
+.hero .meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:rgba(248,250,253,.6);}
+.hero .meta b{color:#fff;}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:18px;overflow:hidden;margin-top:-40px;position:relative;z-index:2;box-shadow:0 24px 50px -30px rgba(14,34,68,.5);}
+@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr;}}
+.kpi{background:var(--card);padding:26px 24px;}
+.kpi-v{font-weight:800;font-size:clamp(26px,3vw,34px);letter-spacing:-0.02em;background:linear-gradient(95deg,#1B7C99,#7CB518);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.kpi-l{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45;}
+
+.sec{padding:clamp(40px,5vw,64px) 0;border-top:1px solid var(--rule);}
+.sec:first-of-type{border-top:0;}
+.sec-h{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;}
+.sec-n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-weight:800;font-size:14px;margin-top:2px;}
+.sec-t{font-weight:800;font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.018em;line-height:1.16;}
+.sec-lead{font-size:15px;color:var(--muted);max-width:74ch;line-height:1.7;margin:2px 0 26px 48px;}
+@media(max-width:600px){.sec-lead{margin-left:0;}}
+.sub-h{font-weight:700;font-size:16px;color:var(--teal);margin:30px 0 14px;letter-spacing:-0.005em;}
+.sub-h.ro{color:var(--limon);}
+p.body{font-size:14.5px;color:var(--ink-2);line-height:1.75;max-width:76ch;margin-bottom:14px;}
+p.body b{color:var(--ink);}
+ul.pts{list-style:none;margin:6px 0 14px 0;}
+ul.pts li{font-size:14px;color:var(--ink-2);line-height:1.6;padding:7px 0 7px 26px;position:relative;border-top:1px solid var(--rule-2);}
+ul.pts li:first-child{border-top:0;}
+ul.pts li::before{content:"";position:absolute;left:4px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--teal-2);}
+ul.pts li b{color:var(--ink);}
+
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 6px;}
+.tbl thead th{text-align:right;font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);padding:10px 10px;border-bottom:2px solid var(--ink);white-space:normal;text-wrap:balance;}
+.tbl thead th:first-child{text-align:left;}
+.tbl tbody td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--rule-2);font-variant-numeric:tabular-nums;}
+.tbl tbody td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.tbl tbody tr:hover{background:var(--paper-2);}
+.tbl tr.hl{background:rgba(124,181,24,.10);}
+.tbl tr.hl td{font-weight:700;color:var(--ink);}
+.tbl td.neg{color:#C0392B;}
+.tbl td.pos{color:var(--limon);}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;padding:6px 18px;background:var(--card);}
+.tbl-cap{font-size:11.5px;color:var(--muted);line-height:1.55;margin:8px 2px 0;}
+
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:760px){.cards2{grid-template-columns:1fr;}}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 26px;}
+.card-h{font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);padding-bottom:13px;margin-bottom:4px;border-bottom:1px solid var(--rule);}
+.card-h.ro{color:var(--limon);}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:11px 0;border-top:1px solid var(--rule-2);font-size:13.5px;}
+.row:first-of-type{border-top:0;}
+.row .l{color:var(--muted);}
+.row .v{color:var(--ink);font-weight:700;text-align:right;white-space:nowrap;}
+
+.chart{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 26px;margin:8px 0;}
+.chart-t{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.legend{display:flex;gap:18px;font-size:12px;color:var(--muted);margin-bottom:10px;flex-wrap:wrap;}
+.legend span{display:inline-flex;align-items:center;gap:7px;}
+.legend i{width:12px;height:3px;border-radius:2px;display:inline-block;}
+
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px;}
+@media(max-width:760px){.maps{grid-template-columns:1fr;}}
+.mapcard{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:16px 18px;}
+.mapcard .mh{font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;}
+.mapcard img{width:100%;display:block;border-radius:8px;}
+
+.note{margin-top:18px;padding:16px 20px;background:var(--paper-2);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;font-size:13px;color:var(--muted);line-height:1.65;}
+.note b{color:var(--ink);}
+
+footer{background:var(--ink);color:rgba(255,255,255,.5);font-size:12px;padding:30px 0;text-align:center;margin-top:40px;}
+footer b{color:rgba(255,255,255,.8);}
+
+@media print{
+  .topbar{position:static;}
+  .sec{break-inside:avoid;}
+  .tbl-wrap,.chart,.card,.mapcard{break-inside:avoid;}
+}
+</style>
+</head>
+<body data-doc="aneks">
+
+<div class="topbar">
+  <div class="container">
+    <div class="backs"><a class="back" href="Automatify Pitch (EN).html#top">← Pitch deck</a><span class="bsep">·</span><a class="back" href="Suplement budzetowy (EN).html">Budget supplement</a></div>
+    <span class="tt">Headcount annex · staffing 2027–2028</span>
+    <div class="actions" style="display:flex;gap:12px;align-items:center;">
+      <span style="font-size:12px;font-weight:700;display:inline-flex;gap:7px;"><a href="Automatify Aneks Kadrowy.html" style="color:rgba(255,255,255,.6);text-decoration:none;">PL</a><a href="Automatify Aneks Kadrowy (EN).html" style="color:var(--lime);text-decoration:none;">EN</a></span>
+      <button class="tb-btn p" onclick="window.print()">Download / Print PDF</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>Confidential · for investors</div>
+    <h1>Headcount <em>annex</em><br>2027–2028</h1>
+    <p>Full staffing breakdown for the first two operating years of the Automatify group: <b>central fixed costs</b> and <b>local country staffing</b> shown separately, for Agentify, for Robotify and combined. Every figure comes from the group's financial model. This is an annex to the budget supplement — it does not replace it and does not change any figure it reports.</p>
+    <div class="meta"><span>Scope <b>2027 and 2028</b></span><span>Currency <b>PLN</b></span><span>Variant <b>no process expansion</b></span><span>Read <b>2026-08-29</b></span></div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="kpis">
+    <div class="kpi"><div class="kpi-v">15</div><div class="kpi-l">Group FTE in 2027 — Agentify only</div></div>
+    <div class="kpi"><div class="kpi-v">4.47</div><div class="kpi-l">PLN m group personnel cost 2027</div></div>
+    <div class="kpi"><div class="kpi-v">36 + 21</div><div class="kpi-l">Group FTE in 2028 — 36 local + 21 central</div></div>
+    <div class="kpi"><div class="kpi-v">26.4</div><div class="kpi-l">PLN m group personnel cost 2028</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">1</div><div class="sec-t">Summary on one page</div></div>
+    <div class="sec-lead">Four figures to take away: the group employs <b>15 FTE</b> in 2027 and <b>36 local people plus 21 central FTE</b> in 2028, and personnel cost rises from <b>PLN 4,470,000</b> to <b>PLN 26,361,863.48</b>. Robotify has no headcount at all in 2027 — the group's entire first year is Agentify. The Polish admin works half-time for each pillar and is shown on both sides, which is why local staffing in 2028 counts <b>36 people</b>.</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Item</th><th>Agentify</th><th>Robotify</th><th>TOTAL</th></tr></thead>
+        <tbody>
+          <tr style="background:var(--paper-2);"><td colspan="4" style="font-weight:800;color:var(--ink);letter-spacing:.06em;">2027</td></tr>
+          <tr class=""><td>Local staffing — FTE</td><td>8</td><td>0</td><td>8</td></tr>
+          <tr class=""><td>Central — FTE</td><td>7</td><td>0</td><td>7</td></tr>
+          <tr class="hl"><td>TOTAL FTE</td><td>15</td><td>0</td><td>15</td></tr>
+          <tr class=""><td>Local staffing — cost (PLN)</td><td>2,100,000</td><td>0</td><td>2,100,000</td></tr>
+          <tr class=""><td>Central — cost (PLN)</td><td>2,370,000</td><td>0</td><td>2,370,000</td></tr>
+          <tr class="hl"><td>TOTAL PERSONNEL COST (PLN)</td><td>4,470,000</td><td>0</td><td>4,470,000</td></tr>
+          <tr style="background:var(--paper-2);"><td colspan="4" style="font-weight:800;color:var(--ink);letter-spacing:.06em;">2028</td></tr>
+          <tr class=""><td>Local staffing — FTE</td><td>32</td><td>5</td><td>36 people</td></tr>
+          <tr class=""><td>Central — FTE</td><td>11</td><td>10</td><td>21</td></tr>
+          <tr class="hl"><td>TOTAL FTE</td><td>43</td><td>15</td><td>36 local + 21 central</td></tr>
+          <tr class=""><td>Local staffing — cost (PLN)</td><td>19,757,700</td><td>129,496.82</td><td>19,887,196.82</td></tr>
+          <tr class=""><td>Central — cost (PLN)</td><td>3,414,666.67</td><td>3,060,000</td><td>6,474,666.67</td></tr>
+          <tr class="hl"><td>TOTAL PERSONNEL COST (PLN)</td><td>23,172,366.67</td><td>3,189,496.82</td><td>26,361,863.48</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">2</div><div class="sec-t">Central function — fixed costs</div></div>
+    <div class="sec-lead">We plan the central function by cost, in <b>four buckets</b> — R&amp;D, board, G&amp;A, marketing and sales. Below are the amounts for both pillars together with the positions behind them; central headcount follows from those amounts, which is why it can be fractional.</div>
+    <div class="sub-h">Agentify — central function</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Bucket</th><th>2027 (PLN)</th><th>2028 (PLN)</th><th>Positions from the named list (2028)</th></tr></thead>
+        <tbody>
+          <tr><td>Research & development (R&D)</td><td>380,000</td><td>814,666.67</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Backend Eng · AI/ML Eng · Integration Eng · DevOps/SRE · Product Manager</td></tr>
+          <tr><td>Management board</td><td>550,000</td><td>800,000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">COO · CTO / Head of Engineering</td></tr>
+          <tr><td>General & administrative (G&A)</td><td>680,000</td><td>775,000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Finance / controlling · HR / People · Legal & compliance · Procurement · Office & administration · Internal IT</td></tr>
+          <tr><td>Marketing & sales (M&S)</td><td>760,000</td><td>1,025,000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Marketing Director (CMO) · Sales Director (CSO) · Brand / Content · Performance / Digital · Product marketing · Graphic / Designer · Sales operations · Partnerships / BD</td></tr>
+          <tr class="hl"><td>TOTAL CENTRAL COST</td><td>2,370,000</td><td>3,414,666.67</td><td></td></tr>
+          <tr class="hl"><td>Central FTE (derived from cost)</td><td>7</td><td>11</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h ro">Robotify — central function</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Bucket</th><th>2027 (PLN)</th><th>2028 (PLN)</th><th>Positions from the named list (2028)</th></tr></thead>
+        <tbody>
+          <tr><td>Research & development (R&D)</td><td>0</td><td>560,000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Robotics Engineer · Software dev · AI Engineer · DevOps · QA</td></tr>
+          <tr><td>Management board</td><td>0</td><td>700,000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">COO · CTO Robotify</td></tr>
+          <tr><td>General & administrative (G&A)</td><td>0</td><td>775,000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Finance / controlling · HR / People · Legal & compliance · Office & administration · Internal IT</td></tr>
+          <tr><td>Marketing & sales (M&S)</td><td>0</td><td>1,025,000</td><td style="text-align:left;font-weight:400;color:var(--muted);font-size:12px;">Marketing Director (CMO) · Sales Director (CSO) · Brand / Content · Performance / Digital · Product marketing · Graphic / Designer · Sales operations · Partnerships / BD</td></tr>
+          <tr class="hl"><td>TOTAL CENTRAL COST</td><td>0</td><td>3,060,000</td><td></td></tr>
+          <tr class="hl"><td>Central FTE (hard-coded figure)</td><td>0</td><td>10</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">3</div><div class="sec-t">Countries — local staffing</div></div>
+    <div class="sec-lead">Agentify enters Poland in 2027 and adds Germany, the United Kingdom and France in 2028. <b>Every country gets the same eight-person team</b>: four managers, an admin, a delivery lead, customer success and ops. Robotify starts only in 2028 and only in Poland, with five FTE. The “share” column marks roles shared with the other product and charged at half.</div>
+    <div class="sub-h" style="color:var(--ink);font-size:18px;border-top:2px solid var(--ink);padding-top:18px;">AGENTIFY · 2027</div>
+    <div class="sub-h">Poland &middot; country multiplier 1.000 &middot; entry year 2027</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Position</th><th>FTE</th><th>Annual rate after multiplier (PLN)</th><th>Share</th><th>Cost (PLN)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>1</td><td>380,000</td><td>100%</td><td>380,000</td></tr>
+          <tr><td>Sales Manager</td><td>1</td><td>240,000</td><td>100%</td><td>240,000</td></tr>
+          <tr><td>Marketing Manager</td><td>1</td><td>220,000</td><td>100%</td><td>220,000</td></tr>
+          <tr><td>Operations Manager</td><td>1</td><td>340,000</td><td>100%</td><td>340,000</td></tr>
+          <tr><td>Local Admin</td><td>1</td><td>120,000</td><td>100%</td><td>120,000</td></tr>
+          <tr><td>Delivery / Implementation</td><td>1</td><td>300,000</td><td>100%</td><td>300,000</td></tr>
+          <tr><td>Customer Success</td><td>1</td><td>240,000</td><td>100%</td><td>240,000</td></tr>
+          <tr><td>Ops / Monitoring</td><td>1</td><td>260,000</td><td>100%</td><td>260,000</td></tr>
+          <tr class="hl"><td>TOTAL</td><td>8</td><td></td><td></td><td>2,100,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap"><b>Agentify 2027 — local staffing total: 8 FTE, PLN 2,100,000.</b></div>
+    <div class="sub-h" style="color:var(--ink);font-size:18px;border-top:2px solid var(--ink);padding-top:18px;">AGENTIFY · 2028</div>
+    <div class="sub-h">Poland &middot; country multiplier 1.000 &middot; entry year 2027</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Position</th><th>FTE</th><th>Annual rate after multiplier (PLN)</th><th>Share</th><th>Cost (PLN)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>1</td><td>380,000</td><td>50% &mdash; shared role</td><td>190,000</td></tr>
+          <tr><td>Sales Manager</td><td>1</td><td>240,000</td><td>50% &mdash; shared role</td><td>120,000</td></tr>
+          <tr><td>Marketing Manager</td><td>1</td><td>220,000</td><td>50% &mdash; shared role</td><td>110,000</td></tr>
+          <tr><td>Operations Manager</td><td>1</td><td>340,000</td><td>100%</td><td>340,000</td></tr>
+          <tr><td>Local Admin</td><td>1</td><td>120,000</td><td>50% &mdash; shared role</td><td>60,000</td></tr>
+          <tr><td>Delivery / Implementation</td><td>1</td><td>300,000</td><td>100%</td><td>300,000</td></tr>
+          <tr><td>Customer Success</td><td>1</td><td>240,000</td><td>100%</td><td>240,000</td></tr>
+          <tr><td>Ops / Monitoring</td><td>1</td><td>260,000</td><td>100%</td><td>260,000</td></tr>
+          <tr class="hl"><td>TOTAL</td><td>8</td><td></td><td></td><td>1,620,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h">Germany &middot; country multiplier 3.034 &middot; entry year 2028</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Position</th><th>FTE</th><th>Annual rate after multiplier (PLN)</th><th>Share</th><th>Cost (PLN)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>1</td><td>1,152,920</td><td>100%</td><td>1,152,920</td></tr>
+          <tr><td>Sales Manager</td><td>1</td><td>728,160</td><td>100%</td><td>728,160</td></tr>
+          <tr><td>Marketing Manager</td><td>1</td><td>667,480</td><td>100%</td><td>667,480</td></tr>
+          <tr><td>Operations Manager</td><td>1</td><td>1,031,560</td><td>100%</td><td>1,031,560</td></tr>
+          <tr><td>Local Admin</td><td>1</td><td>364,080</td><td>100%</td><td>364,080</td></tr>
+          <tr><td>Delivery / Implementation</td><td>1</td><td>910,200</td><td>100%</td><td>910,200</td></tr>
+          <tr><td>Customer Success</td><td>1</td><td>728,160</td><td>100%</td><td>728,160</td></tr>
+          <tr><td>Ops / Monitoring</td><td>1</td><td>788,840</td><td>100%</td><td>788,840</td></tr>
+          <tr class="hl"><td>TOTAL</td><td>8</td><td></td><td></td><td>6,371,400</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h">United Kingdom &middot; country multiplier 2.603 &middot; entry year 2028</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Position</th><th>FTE</th><th>Annual rate after multiplier (PLN)</th><th>Share</th><th>Cost (PLN)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>1</td><td>989,140</td><td>100%</td><td>989,140</td></tr>
+          <tr><td>Sales Manager</td><td>1</td><td>624,720</td><td>100%</td><td>624,720</td></tr>
+          <tr><td>Marketing Manager</td><td>1</td><td>572,660</td><td>100%</td><td>572,660</td></tr>
+          <tr><td>Operations Manager</td><td>1</td><td>885,020</td><td>100%</td><td>885,020</td></tr>
+          <tr><td>Local Admin</td><td>1</td><td>312,360</td><td>100%</td><td>312,360</td></tr>
+          <tr><td>Delivery / Implementation</td><td>1</td><td>780,900</td><td>100%</td><td>780,900</td></tr>
+          <tr><td>Customer Success</td><td>1</td><td>624,720</td><td>100%</td><td>624,720</td></tr>
+          <tr><td>Ops / Monitoring</td><td>1</td><td>676,780</td><td>100%</td><td>676,780</td></tr>
+          <tr class="hl"><td>TOTAL</td><td>8</td><td></td><td></td><td>5,466,300</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h">France &middot; country multiplier 3.000 &middot; entry year 2028</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Position</th><th>FTE</th><th>Annual rate after multiplier (PLN)</th><th>Share</th><th>Cost (PLN)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>1</td><td>1,140,000</td><td>100%</td><td>1,140,000</td></tr>
+          <tr><td>Sales Manager</td><td>1</td><td>720,000</td><td>100%</td><td>720,000</td></tr>
+          <tr><td>Marketing Manager</td><td>1</td><td>660,000</td><td>100%</td><td>660,000</td></tr>
+          <tr><td>Operations Manager</td><td>1</td><td>1,020,000</td><td>100%</td><td>1,020,000</td></tr>
+          <tr><td>Local Admin</td><td>1</td><td>360,000</td><td>100%</td><td>360,000</td></tr>
+          <tr><td>Delivery / Implementation</td><td>1</td><td>900,000</td><td>100%</td><td>900,000</td></tr>
+          <tr><td>Customer Success</td><td>1</td><td>720,000</td><td>100%</td><td>720,000</td></tr>
+          <tr><td>Ops / Monitoring</td><td>1</td><td>780,000</td><td>100%</td><td>780,000</td></tr>
+          <tr class="hl"><td>TOTAL</td><td>8</td><td></td><td></td><td>6,300,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap"><b>Agentify 2028 — local staffing total: 32 FTE, PLN 19,757,700.</b></div>
+    <div class="sub-h ro" style="font-size:18px;border-top:2px solid var(--limon);padding-top:18px;">ROBOTIFY · 2027</div>
+    <p class="body">Robotify has <b>no headcount at all in any of the 32 countries</b> in 2027. Checked country by country: zero staffing, PLN 0 of local cost.</p>
+    <div class="sub-h ro" style="font-size:18px;border-top:2px solid var(--limon);padding-top:18px;">ROBOTIFY · 2028</div>
+    <div class="sub-h">Poland · country multiplier 1.000 · entry year 2028</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Position</th><th>FTE</th><th>List rate (PLN)</th><th>Cost per model (PLN)</th></tr></thead>
+        <tbody>
+          <tr><td>Service Technician</td><td>1</td><td>120,000</td><td style="text-align:left;"><span style="color:var(--muted);font-size:12px;">four service roles booked as a single amount</span></td></tr>
+          <tr><td>Service Engineer</td><td>1</td><td>180,000</td><td style="text-align:left;"></td></tr>
+          <tr><td>Implementation Engineer</td><td>1</td><td>200,000</td><td style="text-align:left;"></td></tr>
+          <tr><td>Logistics / warehouse</td><td>1</td><td>95,000</td><td style="text-align:left;"></td></tr>
+          <tr><td>Admin (CE)</td><td>1</td><td>120,000</td><td>60,000</td></tr>
+          <tr><td>Four service roles — <b>per model</b></td><td>4</td><td></td><td>69,496.82</td></tr>
+          <tr><td>Four service roles — <b>per rate card</b></td><td>4</td><td></td><td>595,000</td></tr>
+          <tr class="hl"><td>TOTAL per model</td><td>5</td><td></td><td>129,496.82</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">4</div><div class="sec-t">Rate card in one place</div></div>
+    <div class="sec-lead">Everything needed to recompute every figure in chapter 3 independently. One rule applies: <b>base rate × country multiplier × share</b>. The multiplier reflects the country's labour cost relative to Poland.</div>
+    <div class="sub-h">Agentify — base rates (Poland, EUR/year, PLN in brackets)</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Position</th><th>Base rate (EUR/year, PLN in brackets)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>EUR 87,700 (PLN 380,000)</td></tr>
+          <tr><td>Sales Manager</td><td>EUR 55,400 (PLN 240,000)</td></tr>
+          <tr><td>Marketing Manager</td><td>EUR 50,800 (PLN 220,000)</td></tr>
+          <tr><td>Operations Manager</td><td>EUR 78,500 (PLN 340,000)</td></tr>
+          <tr><td>Local Admin</td><td>EUR 27,700 (PLN 120,000)</td></tr>
+          <tr><td>Delivery / Implementation</td><td>EUR 69,200 (PLN 300,000)</td></tr>
+          <tr><td>Customer Success</td><td>EUR 55,400 (PLN 240,000)</td></tr>
+          <tr><td>Ops / Monitoring</td><td>EUR 60,000 (PLN 260,000)</td></tr>
+          <tr><td>Team Lead</td><td>EUR 69,200 (PLN 300,000)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-h ro">Robotify — base rates (Poland, EUR/year, PLN in brackets)</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Position</th><th>Base rate (EUR/year, PLN in brackets)</th></tr></thead>
+        <tbody>
+          <tr><td>Country Manager</td><td>EUR 87,700 (PLN 380,000)</td></tr>
+          <tr><td>Sales Manager</td><td>EUR 55,400 (PLN 240,000)</td></tr>
+          <tr><td>Marketing Manager</td><td>EUR 50,800 (PLN 220,000)</td></tr>
+          <tr><td>Operations Director (CE)</td><td>EUR 78,500 (PLN 340,000)</td></tr>
+          <tr><td>Admin (CE)</td><td>EUR 27,700 (PLN 120,000)</td></tr>
+          <tr><td>Service Technician</td><td>EUR 27,700 (PLN 120,000)</td></tr>
+          <tr><td>Service Engineer</td><td>EUR 41,500 (PLN 180,000)</td></tr>
+          <tr><td>Implementation Engineer</td><td>EUR 46,200 (PLN 200,000)</td></tr>
+          <tr><td>NOC / monitoring</td><td>EUR 25,400 (PLN 110,000)</td></tr>
+          <tr><td>Logistics / warehouse</td><td>EUR 21,900 (PLN 95,000)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap">Euro amounts are converted at the National Bank of Poland mid-rate of PLN 4.3328 per euro, 28 August 2026; the model itself is kept in zloty.</div>
+    <div class="sub-h">Multipliers for countries active in 2027–2028</div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Country</th><th>Agentify multiplier</th><th>Robotify multiplier</th><th>Agentify entry</th><th>Robotify entry</th></tr></thead>
+        <tbody>
+          <tr><td>Poland</td><td>1.000</td><td>1.0000</td><td>2027</td><td>2028</td></tr>
+          <tr><td>Germany</td><td>3.034</td><td>3.0345</td><td>2028</td><td>2029</td></tr>
+          <tr><td>United Kingdom</td><td>2.603</td><td>2.6034</td><td>2028</td><td>2029</td></tr>
+          <tr><td>France</td><td>3.000</td><td>3.0000</td><td>2028</td><td>2029</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl-cap">A country multiplier reflects that country's labour cost relative to Poland. <b>Worked check:</b> a Country Manager in Germany in 2028 = 380,000 × 3.034 × 100% = PLN 1,152,920, because 2028 is Germany's first year and the shared-cost rule has not yet kicked in. The same Country Manager in Poland in 2028 = 380,000 × 1.000 × 50% = PLN 190,000.</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">5</div><div class="sec-t">How to read this</div></div>
+    <div class="sec-lead">Three things without which the figures above are easy to misread.</div>
+    <div class="sub-h">A country enters with a&nbsp;full eight-person team from day one.</div>
+    <p class="body">Local staffing is always whole people: four managers, an&nbsp;admin, a&nbsp;delivery lead, customer success and ops — regardless of how many processes the country already runs. That is why 2028 costs almost six times 2027 on not quite four times the headcount: the difference is new countries, each starting with a&nbsp;complete team.</p>
+    <div class="sub-h">Countries are planned in people, the central function in cost.</div>
+    <p class="body">In the countries we count positions, so staffing comes out in whole people. The central function is planned as four bucket amounts — R&amp;D, board, G&amp;A, marketing and sales — which is why central headcount can be fractional. For the individual central positions, look to the named lists rather than to the budget.</p>
+    <div class="sub-h">Operating leverage is real, but these two years do not yet show it in the numbers.</div>
+    <p class="body">The same delivery lead handled <b>26 processes</b> in Poland in 2027 and <b>260 processes</b> in 2028 — cost unchanged, so <b>every additional zloty of revenue in those years drops straight to the bottom line</b>. The other half must be said at once: leverage measured over these two years is flattering, because staffing stands where the work is not yet. Once volume catches up with staffing — which in Poland happens in 2029, where delivery leads go to three and customer success to five — cost starts rising in whole-person steps. <b>The right conclusion is not “headcount does not grow” but “headcount does not grow yet”.</b></p>
+    <div class="note"><b>Scope of this document.</b> All figures come from the Automatify consolidated financial model in the no-process-expansion variant, as of 2026-08-29. Amounts are <b>wages</b>: they exclude ESOP, office overhead, recruitment and customer acquisition cost, which the budget carries separately.</div>
+  </div>
+
+</div>
+
+<footer>
+  <b>AUTOMATIFY</b> © 2026 &nbsp;·&nbsp; Headcount annex · staffing 2027–2028 &nbsp;·&nbsp; Confidential — for investors &nbsp;·&nbsp; Figures in PLN &nbsp;·&nbsp; Source: Automatify consolidated financial model · read 2026-08-29
+</footer>
+
+<script src="automatify-docs.js"></script>
+</body>
+</html>

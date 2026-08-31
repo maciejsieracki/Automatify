@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatify — FAQ dla inwestorów · dwadzieścia pytań</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="automatify-docs.css">
+<style>
+:root{
+  --paper:#F8FAFD; --paper-2:#F0F4FA; --card:#FFFFFF;
+  --ink:#0E2244; --ink-2:#1A2540; --muted:#6B7A8F; --muted-2:#8898B5;
+  --rule:#D8E0EC; --rule-2:#E6ECF4;
+  --lime:#C4E847; --lime-2:#A4C932; --limon:#7CB518;
+  --teal:#1B7C99; --teal-2:#2EBED9; --teal-3:#0F5A73;
+  --sans:"Manrope",-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+svg{display:block;}
+a{color:var(--teal);}
+.container{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+.topbar{position:sticky;top:0;z-index:50;background:rgba(14,34,68,.92);backdrop-filter:saturate(150%) blur(12px);-webkit-backdrop-filter:saturate(150%) blur(12px);color:#fff;border-bottom:1px solid rgba(255,255,255,.1);}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;}
+.topbar .back{color:rgba(255,255,255,.8);text-decoration:none;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:8px;}
+.topbar .back:hover{color:#fff;}
+.topbar .tt{font-size:12.5px;color:rgba(255,255,255,.55);letter-spacing:0.04em;}
+.topbar .actions{display:flex;gap:10px;align-items:center;}
+.tb-btn{font-family:var(--sans);font-weight:700;font-size:12.5px;padding:8px 16px;border-radius:8px;border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;}
+.tb-btn.p{background:var(--lime);color:var(--ink);}
+@media(max-width:640px){.topbar .tt{display:none;}}
+
+.hero{background:var(--ink);color:#fff;padding:clamp(48px,7vw,88px) 0;}
+.hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal-2);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;}
+.hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);}
+.hero h1{font-weight:800;font-size:clamp(32px,4.6vw,56px);line-height:1.04;letter-spacing:-0.025em;}
+.hero h1 em{font-style:normal;background:linear-gradient(95deg,#2EBED9,#C4E847);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:clamp(15px,1.5vw,18px);color:rgba(248,250,253,.7);max-width:72ch;margin-top:18px;line-height:1.6;}
+.hero p b{color:#fff;}
+.hero .meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:rgba(248,250,253,.6);}
+.hero .meta b{color:#fff;}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:18px;overflow:hidden;margin-top:-40px;position:relative;z-index:2;box-shadow:0 24px 50px -30px rgba(14,34,68,.5);}
+@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr;}}
+.kpi{background:var(--card);padding:26px 24px;}
+.kpi-v{font-weight:800;font-size:clamp(26px,3vw,34px);letter-spacing:-0.02em;background:linear-gradient(95deg,#1B7C99,#7CB518);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.kpi-l{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.45;}
+
+.sec{padding:clamp(36px,4.4vw,58px) 0;border-top:1px solid var(--rule);}
+.sec:first-of-type{border-top:0;}
+.sec-h{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;}
+.sec-n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-weight:800;font-size:14px;margin-top:2px;}
+.sec-t{font-weight:800;font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.018em;line-height:1.16;}
+.sec-lead{font-size:15px;color:var(--muted);max-width:74ch;line-height:1.7;margin:2px 0 22px 48px;}
+@media(max-width:600px){.sec-lead{margin-left:0;}}
+p.body{font-size:14.5px;color:var(--ink-2);line-height:1.75;max-width:76ch;margin-bottom:14px;}
+p.body b{color:var(--ink);}
+ul.pts{list-style:none;margin:6px 0 14px 0;}
+ul.pts li{font-size:14px;color:var(--ink-2);line-height:1.6;padding:7px 0 7px 26px;position:relative;border-top:1px solid var(--rule-2);}
+ul.pts li:first-child{border-top:0;}
+ul.pts li::before{content:"";position:absolute;left:4px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--teal-2);}
+ul.pts li b{color:var(--ink);}
+
+.qa{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:22px 26px;margin:14px 0;}
+.qa.hard{border-left:3px solid var(--limon);}
+.q{display:flex;gap:12px;align-items:flex-start;}
+.q-n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-weight:800;font-size:12.5px;margin-top:1px;}
+.q-t{font-weight:800;font-size:16.5px;line-height:1.36;letter-spacing:-0.01em;color:var(--ink);}
+.a{font-size:14.5px;color:var(--ink-2);line-height:1.78;margin:12px 0 0 40px;max-width:84ch;}
+.a b{color:var(--ink);}
+.src{margin:11px 0 0 40px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--rule-2);padding-top:9px;line-height:1.6;}
+.src b{color:var(--teal);font-weight:700;}
+.tag{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--limon);border:1px solid rgba(124,181,24,.45);border-radius:999px;padding:3px 9px;margin-left:9px;vertical-align:2px;white-space:nowrap;}
+@media(max-width:600px){.a,.src{margin-left:0;}}
+
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 6px;}
+.tbl thead th{text-align:right;font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);padding:10px 10px;border-bottom:2px solid var(--ink);white-space:normal;text-wrap:balance;}
+.tbl thead th:first-child{text-align:left;}
+.tbl tbody td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--rule-2);font-variant-numeric:tabular-nums;}
+.tbl tbody td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.tbl tbody tr:hover{background:var(--paper-2);}
+.tbl tr.hl{background:rgba(124,181,24,.10);}
+.tbl tr.hl td{font-weight:700;color:var(--ink);}
+.tbl td.neg{color:#C0392B;}
+.tbl td.pos{color:var(--limon);}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;padding:6px 18px;background:var(--card);}
+
+.note{margin-top:18px;padding:16px 20px;background:var(--paper-2);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;font-size:13px;color:var(--muted);line-height:1.65;}
+.note b{color:var(--ink);}
+
+footer{background:var(--ink);color:rgba(255,255,255,.5);font-size:12px;padding:30px 0;text-align:center;margin-top:40px;}
+footer b{color:rgba(255,255,255,.8);}
+
+@media print{
+  .topbar{position:static;}
+  .sec,.qa{break-inside:avoid;}
+  .tbl-wrap{break-inside:avoid;}
+}
+</style>
+</head>
+<body data-doc="faq">
+
+<div class="topbar">
+  <div class="container">
+    <a class="back" href="Automatify Pitch.html#top">← Pitch deck</a>
+    <span class="tt">FAQ dla inwestorów · dwadzieścia pytań</span>
+    <div class="actions">
+      <span style="font-size:12px;font-weight:700;display:inline-flex;gap:7px;"><a href="Automatify FAQ.html" style="color:var(--lime);text-decoration:none;">PL</a><a href="Automatify FAQ (EN).html" style="color:rgba(255,255,255,.6);text-decoration:none;">EN</a></span>
+      <button class="tb-btn p" onclick="window.print()">Pobierz / Drukuj PDF</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow"><span class="dot"></span>Dokument poufny · dla inwestorów</div>
+    <h1>FAQ — dwadzieścia pytań, <em>które zada inwestor</em></h1>
+    <p>Pytania ułożone sekcja po sekcji według spisu treści pitch decku, w ośmiu obszarach. <b>Każda odpowiedź opiera się na liczbie z modelu finansowego</b>. <b>Sześć pytań jest niewygodnych</b> i odpowiadamy na nie wprost, a nie tak, jak brzmiałyby lepiej. Materiał, który sam nazywa swoje słabe punkty, jest mocniejszy niż taki, który je chowa.</p>
+    <div class="meta"><span>Pytań <b>20</b></span><span>Obszarów <b>8</b></span><span>Waluta <b>PLN</b></span><span>Wariant <b>bez ekspansji procesów</b></span><span>Stan na <b>2026-08-29</b></span></div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="kpis">
+    <div class="kpi"><div class="kpi-v">193–221</div><div class="kpi-l">Prośba o kapitał własny (mln PLN) · szczyt VIII&nbsp;2030</div></div>
+    <div class="kpi"><div class="kpi-v">104,4</div><div class="kpi-l">EBITDA hubu 2029 (mln PLN) · pierwszy rok dodatni</div></div>
+    <div class="kpi"><div class="kpi-v">20 / 20</div><div class="kpi-l">Odpowiedzi popartych liczbą z modelu</div></div>
+    <div class="kpi"><div class="kpi-v">6</div><div class="kpi-l">Pytań niewygodnych — zadanych i odpowiedzianych wprost</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 1 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">1</span><h2 class="sec-t">Rynek, problem i moment</h2></div>
+    <p class="sec-lead">Sekcje decku 02–05B oraz 13: problem MŚP, wyzwania AI i robotyki, TAM/SAM/SOM, potencjał rynkowy, timing.</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">1</span><span class="q-t">TAM to 250 tys. firm, SAM 70 tys., SOM 14 274 — a Wy planujecie 3 112 klientów. Skąd wiadomo, że akurat tylu?</span></div>
+      <div class="a">Ta liczba nie jest udziałem w rynku wpisanym z góry — wychodzi z silnika kohortowego, który liczy podpisy kraj po kraju i odejmuje churn 5% rocznie. Na 31.12.2030 model daje <b>16&nbsp;183 aktywnych procesów</b>, co przy 5,2 procesu na klienta ważonego daje <b>3&nbsp;112 klientów aktywnych</b> — czyli <b>1,2% z 250&nbsp;000 firm TAM</b>. Rampa jest jawna i można ją zakwestionować rok po roku: 5 podpisów w 2027, 78,7 w 2028, 773,9 w 2029, 3&nbsp;435,0 w 2030. Nie twierdzimy, że rynek jest łatwy — twierdzimy, że nasz plan zajmuje jego setną część.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">2</span><span class="q-t">Dlaczego teraz, a nie za dwa lata, kiedy roboty i modele językowe będą tańsze?</span></div>
+      <div class="a">Argument „teraz" celowo <b>nie jest wliczony w liczby</b> — i to jest jego najmocniejsza strona. Model nie waloryzuje ani przychodów, ani kosztów, a stawka serwisowa Robotify <b>spada o 5% rocznie</b>, więc scenariusz taniejącej technologii już dziś działa przeciwko naszemu przychodowi, a nie na jego korzyść. Przewagę czasową daje rollout: Polska 2027, potem 34 rynki do 2033, Robotify wchodzi rok po Agentify na każdym z nich. Kto wejdzie do kraju drugi, wchodzi do klienta, który ma już podpisaną 48-miesięczną spłatę wdrożenia u nas.</div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">2</span><h2 class="sec-t">Model biznesowy i rozliczenia</h2></div>
+    <p class="sec-lead">Sekcje decku 07 (hub all-in-one), 07.7 i 07.8 (Pay-as-you-Save), 08.9 i 08.10 (RaaS).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">3</span><span class="q-t">Piszecie „bez opłaty wstępnej za wdrożenie". Kto je w takim razie finansuje i kiedy to wraca?</span></div>
+      <div class="a">Finansujemy je my, w całości i z góry — i to jest największa pozycja gotówkowa w całym modelu. Wdrożenie kosztuje klienta <b>60&nbsp;000 zł na proces</b>, a nas <b>55&nbsp;000 zł</b> płacone firmie wdrożeniowej w miesiącu podpisu; wraca ratą przez 48 miesięcy, a odzysk wynosi <b>97,2%</b>. Sam rok 2030 to wypływ <b>1&nbsp;837&nbsp;964&nbsp;017 zł</b> na wdrożenia przy przychodzie 1&nbsp;509&nbsp;140&nbsp;785 zł — stąd bierze się cała potrzeba kapitału obrotowego. Zaliczka klienta jest dziś ustawiona na <b>zero</b> i jest to najsilniejsza dźwignia, jaką mamy na zapotrzebowanie obrotowe; nie zakładamy jej pobierania, więc każda zaliczka wynegocjowana w praktyce działa na korzyść inwestora.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">4</span><span class="q-t">Ile z Waszego przychodu to abonament, a ile prowizja zależna od tego, czy klient uzna oszczędność?</span></div>
+      <div class="a">Mniej niż połowa jest naprawdę abonamentowa. Przychód Agentify 2030 (1&nbsp;509&nbsp;140&nbsp;785 zł) dzieli się na licencję <b>425&nbsp;488&nbsp;719 zł</b> i maintenance <b>164&nbsp;716&nbsp;549 zł</b> — razem <b>39,1%</b> — ratę wdrożenia 205&nbsp;895&nbsp;687 zł (13,6%) oraz prowizję 10% od oszczędności netto <b>713&nbsp;039&nbsp;830 zł</b>, czyli <b>47,2%</b>. Prowizja jest najlepszym jakościowo przychodem, dopóki oszczędność mierzy licznik czasu pracy agenta, i najbardziej narażonym, jeśli klient tę miarę zakwestionuje. Model <b>nie zawiera</b> żadnej rezerwy na spór o pomiar oszczędności.</div>
+    </div>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">5</span><span class="q-t">Nazywacie Robotify „Robots-as-a-Service", ale CAPEX płaci klient. Gdzie tu jest zwrot z Waszej floty?<span class="tag">pytanie niewygodne</span></span></div>
+      <div class="a">Nigdzie — i mówimy to wprost, zamiast liczyć na to, że nikt nie zapyta. „as-a-Service" dotyczy <b>pracy robota</b>, nie własności maszyny: sprzedajemy serwis rozliczany od roboto-godzin, a maszynę kupuje klient. <b>Projekcje nie zawierają zwrotu z własnej floty robotów</b> — nie ma w nich ani złotówki nakładu na roboty, ani ani złotówki zwrotu z nich. Flota <b>16&nbsp;408</b> maszyn na koniec 2030 to sprzęt klientów, który serwisujemy, a nie aktywo na naszym bilansie; finansowanie własnej floty leasingiem bankowym pozostaje opcją w górę, nieuwzględnioną w żadnej liczbie tego materiału.</div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">3</span><h2 class="sec-t">Produkt i technologia</h2></div>
+    <p class="sec-lead">Sekcje decku 07.1–07.5 (framework, stack, UiPath + Automatify Core, Subeo, marketplace, EU AI Act) i 08.1–08.3 (stack humanoidalny i niehumanoidalny).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">6</span><span class="q-t">Wykonanie robi UiPath. Co się stanie z Waszą marżą, jeśli UiPath zmieni warunki?</span></div>
+      <div class="a">To jest realna ekspozycja i da się ją wycenić co do złotówki. Licencja producenta plus maintenance partnera to <b>cały koszt zmienny Agentify</b> — <b>61&nbsp;867&nbsp;688 zł w 2029</b>, czyli <b>29,0% przychodu</b> tego roku. Model przyjmuje rabat producenta 10/20/30% zależnie od segmentu klienta i <b>nie zakłada jego poprawy w żadnym roku</b>; brak waloryzacji działa tu w obie strony. Podwyżka cennika UiPath o 10% kosztuje nas <b>6,2 mln zł EBITDA w 2029</b>; przejście na własny orkiestrator, które roadmapa przewiduje od 2027, nie jest w liczbach uwzględnione ani jako koszt, ani jako oszczędność.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">7</span><span class="q-t">Marketplace, pakiety „pudełkowe", EU AI Act jako moat — ile z tego jest w prognozie?</span></div>
+      <div class="a">Zero złotych. Przychód w modelu ma dokładnie <b>cztery pozycje</b> — licencja, maintenance, rata wdrożenia i prowizja — i nie ma wśród nich ani sprzedaży pakietów z marketplace'u, ani premii za zgodność z EU AI Act. Koszt wdrożenia wynosi <b>60&nbsp;000 zł na proces</b> niezależnie od tego, czy pakiet jest gotowy, czy budowany od zera, więc model nie zakłada nawet, że wdrożenie „pudełkowe" w 7–14 dni jest tańsze od projektowego. Opisujemy te przewagi jako jakościowe i <b>nieopłacone w liczbach</b> — po to, żeby nikt nie szukał ich w liczbach i nie znajdował pustego miejsca.</div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">4</span><h2 class="sec-t">Konkurencja</h2></div>
+    <p class="sec-lead">Sekcje decku 06 (brak all-in huba), 07.45 (konkurencja Agentify), 08.4 (konkurencja Robotify), 08.5 (krzywa kosztu robota).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">8</span><span class="q-t">Skąd wiecie, że klient zapłaci 30–80 tys. EUR za robota, skoro konkurencja oferuje leasing i RaaS bez nakładu?</span></div>
+      <div class="a">Nie wiemy tego z badania rynku i nie udajemy, że wiemy — to jest <b>nasz świadomy wybór</b>, ostrożny po stronie naszego bilansu. Klient finansuje maszynę z dotacji UE/BGK albo z budżetu inwestycyjnego, a my zdejmujemy z niego to, co drogie inaczej: integrację, serwis 24/7 i ryzyko technologiczne z hot-swapem w 24 h. Gdybyśmy kupowali roboty sami, przy <b>16&nbsp;408</b> maszynach na koniec 2030 mówilibyśmy o rzędzie miliardów złotych nakładu, o który w tej rundzie nie prosimy — prosimy o <b>193&nbsp;044&nbsp;228 zł</b>. Ryzyko sprzedażowe zostaje po naszej stronie i jest realne: gdyby rynek zażądał finansowania sprzętu przez dostawcę, model Robotify wymagałby przebudowy, a nie korekty.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">9</span><span class="q-t">UiPath i Microsoft zejdą do MŚP. Czym wtedy obronicie cenę?</span></div>
+      <div class="a">Nie obronimy jej technologią — obronimy ją tym, <b>czym się rozliczamy</b>. Klient ważony oszczędza <b>2&nbsp;635&nbsp;200 zł rocznie</b> (24,4 zautomatyzowane etaty × 1&nbsp;800 h × 60 zł/h) i płaci nam <b>626&nbsp;612 zł</b>, czyli <b>23,8% własnej oszczędności</b>; licencja per-seat tej proporcji nie odtwarza, bo nie zna bazy kosztowej klienta. Model dodatkowo zakłada, że <b>cena spada</b>: stawka serwisowa Robotify o 5% rocznie, a przychody i koszty nie są waloryzowane w ogóle. Presja cenowa jest więc częściowo już wliczona; czego nie wliczyliśmy, to wejścia gracza gotowego przez kilka lat akceptować ujemną marżę na wdrożeniu.</div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">5</span><h2 class="sec-t">Klienci, sprzedaż i wdrożenia</h2></div>
+    <p class="sec-lead">Sekcje decku 05 (ICP), 07.6 i 08.8 (proces w 7 krokach), 09 (roadmapa), 09.5 (channel partnerów), 10 (trakcja).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">10</span><span class="q-t">Cztery wdrożenia i dwanaście MoU to nie jest trakcja. Na czym stoi 774 podpisy w 2029?</span></div>
+      <div class="a">To nie jest trakcja i tak to nazywamy — to <b>walidacja modelu rozliczeniowego</b>, nie dowód popytu na skalę. Rampa jest jawna: <b>5</b> podpisów w 2027, <b>78,7</b> w 2028, <b>773,9</b> w 2029, <b>3&nbsp;435,0</b> w 2030, a skok 2028→2029 (<b>9,8×</b>) pochodzi z wejścia do DACH i pięciu kolejnych rynków, nie z przyspieszenia w Polsce. Jest to najmocniejsze pojedyncze założenie całego modelu i dlatego przeliczyliśmy, co się dzieje, gdy jest o połowę za wysokie — odpowiedź w pytaniu 13. Jeśli inwestor chce zakwestionować jedną liczbę w tym materiale, to właśnie tę.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">11</span><span class="q-t">ICP mówi 50–249 pracowników, a Wasz klient ważony ma 24,4 zautomatyzowane etaty. Do kogo naprawdę sprzedajecie i kto to wdroży?</span></div>
+      <div class="a">Etykieta w decku jest za wąska i wiemy o tym. Klient ważony to <b>5,2 procesu i 24,4 zautomatyzowane etaty</b>, a w miksie 2-6-2 co piąty klient jest „optymistyczny" — <b>10 procesów × 10 FTE</b>, czyli firma z kilkusetosobowym back-office. Wdrożenia kupujemy na zewnątrz po <b>55&nbsp;000 zł na proces</b> i ten koszt <b>nie spada ze skalą</b> w żadnym roku modelu. Sieć partnerów technologicznych z sekcji 09.5 nie ma w budżecie ani przychodu, ani oszczędności — zdolność wdrożeniowa jest kupowana, nie budowana, więc każda złotówka z channelu byłaby ponad plan.</div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">6</span><h2 class="sec-t">Wyniki, koszty i wrażliwość</h2></div>
+    <p class="sec-lead">Sekcje decku 09 (roadmapa, cele 2030) i 11 (budżet 2027–2035, projekcja per produkt).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">12</span><span class="q-t">Macie 16 183 licencji i 16 408 robotów. To jest ta sama flota policzona dwa razy?</span></div>
+      <div class="a">Nie — to dwie różne rzeczy w dwóch różnych spółkach, o przypadkowo zbliżonej wielkości. <b>16&nbsp;183</b> to aktywne procesy Agentify na 31.12.2030, czyli licencje RPA i agenci AI w pracy; <b>16&nbsp;408</b> to maszyny fizyczne serwisowane przez Robotify na tę samą datę. Klientów też jest dwóch rodzajów: <b>3&nbsp;112</b> aktywnych klientów Agentify i <b>2&nbsp;500</b> klientów Robotify. Tych dwóch szeregów nigdy nie sumujemy i prosimy, żeby ich nie sumować — to dwa różne biznesy, mierzone dwiema różnymi miarami.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">13</span><span class="q-t">Co się stanie, jeśli sprzedaż będzie o połowę wolniejsza?</span></div>
+      <div class="a">Przeliczyliśmy to, zamiast oszacować: napływ klientów Agentify przeskalowany <b>×0,5</b> na całym horyzoncie 2026–2040 i cały model przeliczony od nowa. Przychód 2029 spada z 213&nbsp;542&nbsp;690 do <b>106&nbsp;771&nbsp;345 zł</b>, EBITDA Agentify 2029 z 101&nbsp;952&nbsp;098 do <b>33&nbsp;082&nbsp;593 zł</b> — rok 2029 <b>nadal jest EBITDA-dodatni</b>, a hub (Robotify nietknięty) daje <b>+35&nbsp;536&nbsp;643 zł</b> zamiast +104&nbsp;406&nbsp;149 zł. Prośba o kapitał <b>spada</b> ze 193&nbsp;044&nbsp;228 do <b>141&nbsp;516&nbsp;121 zł</b> (−26,7%), szczyt przesuwa się z VIII na <b>IX 2030</b>, a dno przepływów jest płytsze o połowę: −1&nbsp;088&nbsp;699&nbsp;832 zł zamiast −2&nbsp;071&nbsp;763&nbsp;351 zł. Wolniejsza sprzedaż nie zabija tej spółki — obniża zwrot z niej, bo mniej kapitału pracuje na mniejszy wynik.</div>
+    </div>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">14</span><span class="q-t">Skąd dźwignia operacyjna, skoro pierwszy rok jest niemal w całości kosztem stałym?<span class="tag">pytanie niewygodne</span></span></div>
+      <div class="a">Bo w pierwszym roku dźwigni nie ma — i mówimy to wprost. W 2027 koszty stałe to <b>5&nbsp;355&nbsp;000 zł z 5&nbsp;665&nbsp;966 zł</b> kosztów hubu, czyli <b>94,5%</b>. Powód jest operacyjny, nie księgowy: każdy kraj wchodzi z pełnym zespołem od pierwszego dnia, więc dopóki jedna osoba wystarcza na cały rynek, koszt nie rośnie razem z wolumenem. Udział kosztów stałych spada do <b>27,8% w 2029</b> i <b>2,0% w 2035</b> — dźwignia zaczyna działać dopiero od trzeciego roku. Praktyczny wniosek dla inwestora: strata 2027–2028 (EBITDA hubu <b>−4&nbsp;919&nbsp;254</b> i <b>−16&nbsp;716&nbsp;480 zł</b>) jest w większości zobowiązana niezależnie od tego, ile sprzedamy.</div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">7</span><h2 class="sec-t">Runda, kapitał i wyjście</h2></div>
+    <p class="sec-lead">Sekcje decku 11a (prośba o kapitał, miesiąc szczytu) i 12 (plan rund od pre-seed do Round B).</p>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">15</span><span class="q-t">Dlaczego prosicie o 193 mln, skoro EBITDA 2029 wynosi 104 mln?</span></div>
+      <div class="a">Bo EBITDA nie jest gotówką, a różnicę robi finansowanie wdrożeń u klientów. Płacimy <b>55&nbsp;000 zł za proces w miesiącu podpisu</b>, a odzyskujemy to ratą przez 48 miesięcy — w samym 2030 wypływ wdrożeniowy wynosi <b>1&nbsp;837&nbsp;964&nbsp;017 zł</b> przy przychodzie 1&nbsp;509&nbsp;140&nbsp;785 zł, przez co dno przepływów skumulowanych sięga <b>−2&nbsp;071&nbsp;763&nbsp;351 zł</b> w XII 2030. <b>193&nbsp;044&nbsp;228 zł to nie jest cała dziura — to część pokrywana kapitałem własnym funduszu</b>; kapitał obrotowy od 2029 przejmuje kredyt bankowy na 6%. Po 2030 transza funduszu wynosi <b>zero</b> w obu wariantach, więc prośba zamyka się w czterech latach.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="q-n">16</span><span class="q-t">Dlaczego szczyt zapotrzebowania wypada w sierpniu 2030, a nie wcześniej?</span></div>
+      <div class="a">Bo w połowie 2030 nakładają się na siebie dwa maksima. Napływ klientów jest wtedy największy — <b>3&nbsp;435,0 podpisów w 2030</b> wobec 773,9 w 2029 — więc wypływ wdrożeniowy jest na szczycie; jednocześnie ruszają zaliczki CIT, których w 2030 płacimy kasowo <b>167&nbsp;023&nbsp;796 zł</b>. Szczyt jest płaskowyżem, nie kolcem: VII 2030 <b>178&nbsp;017&nbsp;629</b>, VIII <b>193&nbsp;044&nbsp;228</b>, IX <b>190&nbsp;973&nbsp;288</b>, X <b>167&nbsp;960&nbsp;720 zł</b>. Od IX 2030 strumień rat z kohorty 2029 przewyższa nowy wypływ i zapotrzebowanie już do szczytu nie wraca — dlatego transze po 2030 są zerowe w obu wariantach.</div>
+    </div>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">17</span><span class="q-t">Ile z tych 193 mln to podatek, a ile realny rozwój?<span class="tag">pytanie niewygodne</span></span></div>
+      <div class="a">Podatek jest większą częścią i wolimy powiedzieć to sami. Do miesiąca szczytu (VIII 2030) model płaci kasowo <b>124&nbsp;631&nbsp;524 zł CIT</b>, co stanowi <b>64,6% prośby o 193&nbsp;044&nbsp;228 zł</b> oraz <b>78,7% szczytu kapitału rozwojowego (158&nbsp;283&nbsp;690 zł)</b> — podajemy obie liczby z nazwaną bazą, bo bez niej mylą się nawzajem. Zanim blok podatkowy wpięliśmy w rachunek przepływów, ten sam model pokazywał <b>79&nbsp;917&nbsp;460 zł</b>; różnica <b>113&nbsp;126&nbsp;768 zł</b> to wyłącznie podatek. Reszta prośby, około <b>68,4 mln zł</b>, to koszty stałe centrali i krajów oraz strata operacyjna lat 2027–2028; kapitał obrotowy na wdrożenia jest poza tą kwotą i od 2029 finansuje go bank.</div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">8</span><h2 class="sec-t">Ryzyka i to, co sami wykryliśmy</h2></div>
+    <p class="sec-lead">Trzy pozycje, których nie ma w decku, bo mówimy o nich sami. Każda ma realny wpływ na wynik i każda idzie do inwestora razem z wyjaśnieniem.</p>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">18</span><span class="q-t">Robotify pokazuje +2,45 mln EBITDA w 2029. Ile z tego to sprzedaż, a ile Wasza zasada cenowa?<span class="tag">pytanie niewygodne</span></span></div>
+      <div class="a">W większej części to nasza zasada cenowa i mówimy to wprost. <b>Nie sprzedajemy serwisu poniżej dwukrotności kosztu obsługi</b> w danym kraju — wolimy nie podpisać kontraktu niż obsługiwać go poniżej progu opłacalności. W 2029 rynek robotów jest jeszcze wczesny, floty są małe, a koszt gotowości serwisowej rozkłada się na niewiele maszyn, więc w Niemczech, Wielkiej Brytanii i Francji to właśnie ta zasada wyznacza <b>większość przychodu Robotify</b> (20&nbsp;851&nbsp;385 zł) i stoi za wynikiem <b>+2&nbsp;454&nbsp;050 zł EBITDA</b>. W kolejnych latach, gdy flota rośnie, cenę ustala rynek. Czytać to należy tak: rentowność Robotify w 2029 jest efektem dyscypliny cenowej, a nie skali sprzedaży.</div>
+    </div>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">19</span><span class="q-t">Co, jeśli doradca podatkowy zakwestionuje odliczenie wydatków na badania?<span class="tag">pytanie niewygodne</span></span></div>
+      <div class="a">Wtedy zysk po 2031 spada o dwa miliardy, a prośba o kapitał nie zmienia się o złotówkę. Model liczy podstawę CIT Robotify jako EBITDA minus faktycznie wydane R&amp;D — <b>40% EBITDA od 2031</b>. Bez odliczenia CIT Robotify 2031–2035 rośnie z <b>3&nbsp;023&nbsp;259&nbsp;169</b> do <b>5&nbsp;038&nbsp;765&nbsp;281 zł</b> (<b>+2&nbsp;015&nbsp;506&nbsp;113 zł</b>), a zysk netto skumulowany spada z 12&nbsp;888&nbsp;631&nbsp;193 do 10&nbsp;873&nbsp;125&nbsp;081 zł (−15,6%). Wpływ na szczyt zapotrzebowania na kapitał wynosi <b>0 zł</b>: odliczenie nie działa przed 2031, a szczyt wypada w VIII 2030, więc CIT 2029 i 2030 są w obu wariantach identyczne co do grosza. <b>Potwierdzenie dopuszczalności odliczenia u doradcy podatkowego jest w toku</b> — to najważniejsze otwarte założenie projekcji i nie chowamy go przed inwestorem.</div>
+    </div>
+
+    <div class="qa hard">
+      <div class="q"><span class="q-n">20</span><span class="q-t">Czy 193 mln obejmuje Robotify, czy tylko Agentify?<span class="tag">pytanie niewygodne</span></span></div>
+      <div class="a">Tylko Agentify — i mówimy to wprost. Prośba o kapitał policzona jest na miesięcznym rachunku gotówki Agentify, bo to tam widać co do miesiąca, kiedy gotówka schodzi najniżej. Własne zapotrzebowanie Robotify jest o dwa rzędy wielkości mniejsze i podajemy je jako przedział: dolny koniec to najgłębszy punkt EBITDA skumulowanej, <b>−3&nbsp;951&nbsp;354 zł</b> na 31.12.2028 (<b>2,05%</b> prośby), górny — ten sam punkt przy cenie serwisu ustalanej wyłącznie rynkowo, <b>−9&nbsp;415&nbsp;175 zł</b> (<b>4,9%</b>). Robotify planujemy w ujęciu rocznym, dlatego podajemy przedział zamiast jednej liczby; nawet jego górny koniec mieści się w prośbie z zapasem.</div>
+    </div>
+  </div>
+
+  <!-- zamkniecie -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-n">✓</span><h2 class="sec-t">Jak czytać ten dokument</h2></div>
+    <p class="sec-lead">Zasady, według których powstały odpowiedzi — podane po to, żeby dało się je sprawdzić, a nie tylko przeczytać.</p>
+    <ul class="pts">
+      <li><b>Każda liczba ma źródło.</b> Wszystkie pochodzą ze skonsolidowanego modelu finansowego Automatify. Liczby bez źródła w tym dokumencie nie ma.</li>
+      <li><b>Każda liczba została przeliczona, nie przepisana.</b> Stan na 2026-08-29.</li>
+      <li><b>Każdy procent ma nazwaną bazę.</b> Ta sama kwota podatku to 64,6% prośby o kapitał i 78,7% szczytu kapitału rozwojowego — bez podania bazy obie liczby wprowadzają w błąd.</li>
+      <li><b>Pozycje poniżej 2% wpływu są pominięte świadomie.</b> Budżet jest przybliżeniem; zagadnienie, które nie rusza wyniku o dwa procent, nie jest przedmiotem rozmowy z inwestorem.</li>
+      <li><b>Trzy rzeczy nie są w liczbach i nie udajemy, że są:</b> zwrot z własnej floty robotów, przychód z marketplace'u i premia za zgodność z EU AI Act, oszczędność z sieci partnerów technologicznych. Wszystkie trzy są opcjami w górę.</li>
+      <li><b>Dwie rzeczy pozostają otwarte:</b> wybór wariantu A (193&nbsp;044&nbsp;228 zł) albo B (220&nbsp;982&nbsp;427 zł) prośby o kapitał — zależy od warunków wejścia banku — oraz potwierdzenie odliczenia R&amp;D przez doradcę podatkowego.</li>
+    </ul>
+    <div class="note"><b>Podstawa liczbowa.</b> Skonsolidowany model finansowy Automatify w wariancie <b>bez ekspansji procesów</b>, stan na 2026-08-29. Pełne rozbicie rachunku wyników rok po roku: <a href="Suplement budzetowy.html">Suplement do budżetu 2027–2035</a>.</div>
+  </div>
+
+</div>
+
+<footer>
+  <b>AUTOMATIFY</b> © 2026 &nbsp;·&nbsp; FAQ dla inwestorów · dwadzieścia pytań i odpowiedzi &nbsp;·&nbsp; Dokument poufny — dla inwestorów &nbsp;·&nbsp; Dane w&nbsp;PLN &nbsp;·&nbsp; Źródło: skonsolidowany model finansowy Automatify · stan 2026-08-29
+</footer>
+
+<script src="automatify-docs.js"></script>
+</body>
+</html>
