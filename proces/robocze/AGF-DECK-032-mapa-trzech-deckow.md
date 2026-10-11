@@ -301,7 +301,6 @@ Zasada: liczby przenosimy dosłownie; żadna nowa liczba nie trafia do decku bez
 15. Finanse hubu (najważniejsze) — P40: lead z definicjami EBITDA i zysku netto obu spółek, „dlaczego osobno", kafle, wiersze główne obu tabel, założenia wspólne (rynek i adopcja) i zestawienie jednostek biznesowych, mapy ekspansji, wykorzystanie transzy 2027, odsyłacz do suplementu
 16. Prośba o kapitał — P41 (lead, kafle, (a), (b), „dlaczego nie sumujemy", (c) z rozbiciem na produkty, harmonogram transz, linia kredytowa skrót, zastrzeżenia), P42 (lead z kwotami w miesiącu szczytu, pre-seed, 4 karty rund, wyjście, przypisy)
 17. Dlaczego teraz — P43 (3 fale, konwergencja, CTA), skrót P22 (AI Act jako MOAT)
-18. 08.10: przykład magazynu 3PL (15 500 zł/mies. = AMR 6 500 + cobot 7 000 + integracja 1 500; baseline 360 000; oszczędność 174 000 = 48%; payback 14 mies.; +522 000 zł po 3 latach) — niezgodny z cennikiem budżetu po decyzji 5.
 18. Zespół i kontakt — P44, P19 (Subeo: lead, 250+, 4 kompetencje, logo)
 
 ### Deck A — Agentify
@@ -395,6 +394,7 @@ FAQ i suplement mogą być wskazane jako miejsce szczegółu, ale ich liczby nie
 15. Przykład 07.8: dwa miejsca po przecinku (263 035,30; 223 176,47) — zaokrąglić zgodnie z zasadą jednego miejsca. — **ROZSTRZYGNIĘTE: porządkowo — pełne złote**
 16. Zasięg: TAM obejmuje 32 kraje (budżet Robotify), a ekspansja Agentify „~34 kraje do 2033" (P40, L1160; budżet Agentify: 34 rynki) — opisać różnicę zasięgu produktów. — **ROZSTRZYGNIĘTE: rozstrzygnięte decyzją 6**
 17. 07.7: Pay-as-you-Go (stawka roboto-godziny 20 zł → poniżej 5 zł w 2035, pakiety Starter 1k / Pro 5k / Enterprise 20k rbh, narzut wdrożenia 10%) — budżet Agentify liczy wyłącznie Pay-as-you-Save; wariant nie ma pokrycia w budżecie. — **ROZSTRZYGNIĘTE: opcja rezerwowa bez liczb, poza budżetem (zob. zlecenie, decyzja 12)**
+18. 08.10: przykład magazynu 3PL (15 500 zł/mies. = AMR 6 500 + cobot 7 000 + integracja 1 500; baseline 360 000; oszczędność 174 000 = 48%; payback 14 mies.; +522 000 zł po 3 latach) — niezgodny z cennikiem budżetu po decyzji 5. — **ROZSTRZYGNIĘTE: „a” — rachunek na 1 robota z budżetu (zob. zlecenie, decyzja 13)**
 
 ---
 
