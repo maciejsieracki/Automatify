@@ -82,3 +82,26 @@ transza 2027, Seed = transza 2028) i na ich podstawie zaproponowałem Seed = 62 
 mówi o osobnym pre-seedzie (ok. 1 mln €) usuniętym z teasera — czyli pre-seed to runda sprzed budżetu, a obecnie zbierane
 środki to transza 2027 (7 056 670 zł). Ustalenia decyzji 10 zawieszone do odpowiedzi właściciela (pytanie 10a);
 decyzje 8 (termin) i 9 (pasek usunięty) bez zmian.
+
+## Decyzja 10 (ostateczna) — etapy i kwoty
+
+Właściciel: „jakie kwoty są na poszczególnych etapach?" / „Poza tym na seedzie nie zbieramy środków obrotowych, pokazujemy
+je oddzielnie: podział na środki na rozwój i środki na obrotowe."
+
+Pre-seed — przed 2027, poza budżetem, zebrany i wydany (bez kwoty). Rundy finansują wyłącznie rozwój biznesu (a);
+kapitał obrotowy (b) pokazany osobno, poza rundami.
+
+| Etap | Rozwój (a) | Agentify | Robotify |
+|---|---:|---:|---:|
+| Seed 2027 (aktywny, do końca I kw. 2027) | 5 116 054 | 4 966 054 | 150 000 |
+| Round A 2028 | 21 646 138 | 15 345 788 | 6 300 350 |
+| Round B 2029 (do III 2029) | 17 063 458 | 1 937 041 | 15 126 416 |
+| Razem = szczyt (a) hubu, III 2029 | 43 825 650 | 22 248 884 | 21 576 766 |
+
+Round B: suma składników 17 063 457 — różnica 1 zł z zaokrągleń (17 063 457,50). Źródła: hub „4. Dwie kwoty" (A21, A23,
+A25, tabela miesięczna kol. D i H), Agentify „7. Wyniki" (kapitał rozwojowy 31.12). Warianty A/B dotyczą tylko
+finansowania kapitału obrotowego — kwoty (a) identyczne w obu.
+
+Kapitał obrotowy (tylko Agentify), osobno: 31.12.2027 — 1 940 616; 31.12.2028 — 42 552 283 (najwyżej przed wejściem
+banku); od 2029 linia kredytowa: XII 2029 — 435 137 670 (wariant A) / 392 585 388 (wariant B); ok. 475 tys. zł na
+nowego klienta. Decyzja zastępuje zawieszone ustalenie decyzji 10 i mapowanie rund z decyzji 9.
