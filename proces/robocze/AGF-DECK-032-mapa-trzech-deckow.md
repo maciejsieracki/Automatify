@@ -380,7 +380,7 @@ FAQ i suplement mogą być wskazane jako miejsce szczegółu, ale ich liczby nie
 1. TAM: 250 000 (pitch, Eurostat UE) vs 282 530 (budżet Robotify i teaser, 32 kraje z Wielką Brytanią). — **ROZSTRZYGNIĘTE: wariant A, 282 530 wszędzie** („a poniewaz doszła GB"); SAM/SOM zostają jako analiza rynku z dopiskiem.
 2. Etykieta „4,5% SAM / 1,2% SAM" — to udział w TAM (11 200 / 250 000; 3 074 / 250 000), nie w SAM (E1). — **ROZSTRZYGNIĘTE: „a"** — procenty liczone od TAM 282 530; licznik = klienci z budżetu (zasada nadrzędna, pytanie 3).
 3. Polska: „69 tys. firm MŚP 50–249" (P32) vs „TAM PL 15 200" (P40) i SOM 14 274 (≈ 94% z 15 200) (E2). Budżet Robotify: Polska 17 000 firm 50–249. Pytanie 3 obejmuje cały lejek rynku (SAM/SOM vs klienci z budżetu). — **ROZSTRZYGNIĘTE: „a"** — lejek wyłącznie z budżetu (zob. zlecenie, decyzja 3).
-4. 07.7: struktura przychodu „60–70 / 20–30 / 10–15%" sprzeczna z budżetem (2030: prowizja 47%, abonament 39%, rata 14%).
+4. 07.7: struktura przychodu „60–70 / 20–30 / 10–15%" sprzeczna z budżetem (2030: prowizja 47%, abonament 39%, rata 14%). — **ROZSTRZYGNIĘTE: „a"** — liczby budżetu 2035 (zob. zlecenie, decyzja 4).
 5. 08.9: stawki Robotify 35–55 zł/h vs budżet (stawka serwisowa PL 4,07 zł/h, DE 12,36 zł/h, najwyższa w Szwajcarii); „≈ 30–50% kosztu operatora" vs przykład cobota 60–93% (E6).
 6. Roadmapa i karta rundy 2029: DACH 2029 (budżet: Niemcy 2028); „DACH + Skandynawia" Robotify 2029 (budżet: Skandynawia 2031–2033) — w P37 i P42 (E8).
 7. Partnerstwa z producentami humanoidów: „od 2027" (P16) vs „2029" (roadmapa) (E3).
@@ -393,6 +393,7 @@ FAQ i suplement mogą być wskazane jako miejsce szczegółu, ale ich liczby nie
 14. FAQ Q13 — scenariusz wolniejszej sprzedaży (osobny temat, nie blokuje budowy decków).
 15. Przykład 07.8: dwa miejsca po przecinku (263 035,30; 223 176,47) — zaokrąglić zgodnie z zasadą jednego miejsca.
 16. Zasięg: TAM obejmuje 32 kraje (budżet Robotify), a ekspansja Agentify „~34 kraje do 2033" (P40, L1160; budżet Agentify: 34 rynki) — opisać różnicę zasięgu produktów.
+17. 07.7: Pay-as-you-Go (stawka roboto-godziny 20 zł → poniżej 5 zł w 2035, pakiety Starter 1k / Pro 5k / Enterprise 20k rbh, narzut wdrożenia 10%) — budżet Agentify liczy wyłącznie Pay-as-you-Save; wariant nie ma pokrycia w budżecie.
 
 ---
 
