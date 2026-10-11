@@ -290,16 +290,16 @@ Zasada: liczby przenosimy dosłownie; żadna nowa liczba nie trafia do decku bez
 4. Rozwiązanie — hub all-in-one — P12 (lead, 4 odpowiedzi, insight)
 5. **Jak Agentify i Robotify się uzupełniają** (NOWA — część 3)
 6. Architektura i Automatify Core jako wspólne IP — P16, P17 (Core), P18 (lead, 5 elementów, 3 moaty, bottom line), P29 (integracja ROS 2 ↔ Core)
-7. Agentify w skrócie — P03 (karta), P13, P09 skrót (~$70 mld), odsyłacz do decku A — **ROZSTRZYGNIĘTE: decyzja 7 — usunięte „od 2027”, termin jak roadmapa**
-8. Robotify w skrócie — P03 (karta), P26, P10 skrót ($41,3 mld), P27 (wspólny billing), odsyłacz do decku R — **ROZSTRZYGNIĘTE: porządkowo — „20+ pakietów w 2028”**
-9. Rynek i klient — P08 (lead, ICP pełny, TAM/SAM/SOM z definicjami, podział SOM) — **ROZSTRZYGNIĘTE: porządkowo — „$10–15k” (krzywa kosztu)**
+7. Agentify w skrócie — P03 (karta), P13, P09 skrót (~$70 mld), odsyłacz do decku A
+8. Robotify w skrócie — P03 (karta), P26, P10 skrót ($41,3 mld), P27 (wspólny billing), odsyłacz do decku R
+9. Rynek i klient — P08 (lead, ICP pełny, TAM/SAM/SOM z definicjami, podział SOM)
 10. Konkurencja — brak all-in huba — P11
 11. Trakcja — P39 (lead, 4 case'y, kafle)
 12. Roadmapa obu produktów i sekwencja wejścia — P37 (lead, kamienie A i R, cele 2030, kafle), P38 skrót
 13. **Dlaczego warto prowadzić oba** (NOWA — część 3)
 14. **Ryzyka projektu i jak je ograniczamy** (NOWA — część 3; P19 „co to znaczy dla inwestora", P41 zastrzeżenia, P42 przypisy)
-15. Finanse hubu (najważniejsze) — P40: lead z definicjami EBITDA i zysku netto obu spółek, „dlaczego osobno", kafle, wiersze główne obu tabel, założenia wspólne (rynek i adopcja) i zestawienie jednostek biznesowych, mapy ekspansji, wykorzystanie transzy 2027, odsyłacz do suplementu — **ROZSTRZYGNIĘTE: porządkowo — pełne złote**
-16. Prośba o kapitał — P41 (lead, kafle, (a), (b), „dlaczego nie sumujemy", (c) z rozbiciem na produkty, harmonogram transz, linia kredytowa skrót, zastrzeżenia), P42 (lead z kwotami w miesiącu szczytu, pre-seed, 4 karty rund, wyjście, przypisy) — **ROZSTRZYGNIĘTE: rozstrzygnięte decyzją 6**
+15. Finanse hubu (najważniejsze) — P40: lead z definicjami EBITDA i zysku netto obu spółek, „dlaczego osobno", kafle, wiersze główne obu tabel, założenia wspólne (rynek i adopcja) i zestawienie jednostek biznesowych, mapy ekspansji, wykorzystanie transzy 2027, odsyłacz do suplementu
+16. Prośba o kapitał — P41 (lead, kafle, (a), (b), „dlaczego nie sumujemy", (c) z rozbiciem na produkty, harmonogram transz, linia kredytowa skrót, zastrzeżenia), P42 (lead z kwotami w miesiącu szczytu, pre-seed, 4 karty rund, wyjście, przypisy)
 17. Dlaczego teraz — P43 (3 fale, konwergencja, CTA), skrót P22 (AI Act jako MOAT)
 18. 08.10: przykład magazynu 3PL (15 500 zł/mies. = AMR 6 500 + cobot 7 000 + integracja 1 500; baseline 360 000; oszczędność 174 000 = 48%; payback 14 mies.; +522 000 zł po 3 latach) — niezgodny z cennikiem budżetu po decyzji 5.
 18. Zespół i kontakt — P44, P19 (Subeo: lead, 250+, 4 kompetencje, logo)
@@ -384,16 +384,16 @@ FAQ i suplement mogą być wskazane jako miejsce szczegółu, ale ich liczby nie
 4. 07.7: struktura przychodu „60–70 / 20–30 / 10–15%" sprzeczna z budżetem (2030: prowizja 47%, abonament 39%, rata 14%). — **ROZSTRZYGNIĘTE: „a"** — liczby budżetu 2035 (zob. zlecenie, decyzja 4).
 5. 08.9: stawki Robotify 35–55 zł/h vs budżet (stawka serwisowa PL 4,07 zł/h, DE 12,36 zł/h, najwyższa w Szwajcarii); „≈ 30–50% kosztu operatora" vs przykład cobota 60–93% (E6). — **ROZSTRZYGNIĘTE: „a"** — cennik z budżetu (zob. zlecenie, decyzja 5).
 6. Roadmapa i karta rundy 2029: DACH 2029 (budżet: Niemcy 2028); „DACH + Skandynawia" Robotify 2029 (budżet: Skandynawia 2031–2033) — w P37 i P42 (E8). — **ROZSTRZYGNIĘTE: „a"** — kraje i lata z budżetu (zob. zlecenie, decyzja 6).
-7. Partnerstwa z producentami humanoidów: „od 2027" (P16) vs „2029" (roadmapa) (E3).
-8. Marketplace: „50+ pakietów do końca 2027" (P03, P13, P21) vs „20+ pakietów" w 2028 (P37, P42) (E4).
-9. Cena humanoida w 2030: „~20 tys. USD" (P27) vs „$10–15k" (P31) (E5).
+7. Partnerstwa z producentami humanoidów: „od 2027" (P16) vs „2029" (roadmapa) (E3). — **ROZSTRZYGNIĘTE: decyzja 7 — usunięte „od 2027”, termin jak roadmapa**
+8. Marketplace: „50+ pakietów do końca 2027" (P03, P13, P21) vs „20+ pakietów" w 2028 (P37, P42) (E4). — **ROZSTRZYGNIĘTE: porządkowo — „20+ pakietów w 2028”**
+9. Cena humanoida w 2030: „~20 tys. USD" (P27) vs „$10–15k" (P31) (E5). — **ROZSTRZYGNIĘTE: porządkowo — „$10–15k” (krzywa kosztu)**
 10. „Runda otwarta do Q3 2026" — termin minął; okładka i CTA w P43 (E7); pasek „domknięte 40% / 60%".
 11. Podział transzy 2027 na cele (70/12/5/5/4/4%) nie wynika z budżetu.
 12. Nazwa kwoty (a): „na funkcjonowanie biznesu" vs „na rozwój biznesu".
 13. Wersje EN: trzy decki EN od razu czy po akceptacji PL.
 14. FAQ Q13 — scenariusz wolniejszej sprzedaży (osobny temat, nie blokuje budowy decków).
-15. Przykład 07.8: dwa miejsca po przecinku (263 035,30; 223 176,47) — zaokrąglić zgodnie z zasadą jednego miejsca.
-16. Zasięg: TAM obejmuje 32 kraje (budżet Robotify), a ekspansja Agentify „~34 kraje do 2033" (P40, L1160; budżet Agentify: 34 rynki) — opisać różnicę zasięgu produktów.
+15. Przykład 07.8: dwa miejsca po przecinku (263 035,30; 223 176,47) — zaokrąglić zgodnie z zasadą jednego miejsca. — **ROZSTRZYGNIĘTE: porządkowo — pełne złote**
+16. Zasięg: TAM obejmuje 32 kraje (budżet Robotify), a ekspansja Agentify „~34 kraje do 2033" (P40, L1160; budżet Agentify: 34 rynki) — opisać różnicę zasięgu produktów. — **ROZSTRZYGNIĘTE: rozstrzygnięte decyzją 6**
 17. 07.7: Pay-as-you-Go (stawka roboto-godziny 20 zł → poniżej 5 zł w 2035, pakiety Starter 1k / Pro 5k / Enterprise 20k rbh, narzut wdrożenia 10%) — budżet Agentify liczy wyłącznie Pay-as-you-Save; wariant nie ma pokrycia w budżecie.
 
 ---
