@@ -383,7 +383,7 @@ FAQ i suplement mogą być wskazane jako miejsce szczegółu, ale ich liczby nie
 3. Polska: „69 tys. firm MŚP 50–249" (P32) vs „TAM PL 15 200" (P40) i SOM 14 274 (≈ 94% z 15 200) (E2). Budżet Robotify: Polska 17 000 firm 50–249. Pytanie 3 obejmuje cały lejek rynku (SAM/SOM vs klienci z budżetu). — **ROZSTRZYGNIĘTE: „a"** — lejek wyłącznie z budżetu (zob. zlecenie, decyzja 3).
 4. 07.7: struktura przychodu „60–70 / 20–30 / 10–15%" sprzeczna z budżetem (2030: prowizja 47%, abonament 39%, rata 14%). — **ROZSTRZYGNIĘTE: „a"** — liczby budżetu 2035 (zob. zlecenie, decyzja 4).
 5. 08.9: stawki Robotify 35–55 zł/h vs budżet (stawka serwisowa PL 4,07 zł/h, DE 12,36 zł/h, najwyższa w Szwajcarii); „≈ 30–50% kosztu operatora" vs przykład cobota 60–93% (E6). — **ROZSTRZYGNIĘTE: „a"** — cennik z budżetu (zob. zlecenie, decyzja 5).
-6. Roadmapa i karta rundy 2029: DACH 2029 (budżet: Niemcy 2028); „DACH + Skandynawia" Robotify 2029 (budżet: Skandynawia 2031–2033) — w P37 i P42 (E8).
+6. Roadmapa i karta rundy 2029: DACH 2029 (budżet: Niemcy 2028); „DACH + Skandynawia" Robotify 2029 (budżet: Skandynawia 2031–2033) — w P37 i P42 (E8). — **ROZSTRZYGNIĘTE: „a"** — kraje i lata z budżetu (zob. zlecenie, decyzja 6).
 7. Partnerstwa z producentami humanoidów: „od 2027" (P16) vs „2029" (roadmapa) (E3).
 8. Marketplace: „50+ pakietów do końca 2027" (P03, P13, P21) vs „20+ pakietów" w 2028 (P37, P42) (E4).
 9. Cena humanoida w 2030: „~20 tys. USD" (P27) vs „$10–15k" (P31) (E5).
