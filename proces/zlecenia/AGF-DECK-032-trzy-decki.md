@@ -180,3 +180,10 @@ rozdzielona (Agentify 12 rat z lagiem, Robotify w roku naliczenia); „od 2031�
 w sekcjach wspólnych H; numeracja banerów; bez d3; teza produktowa w A i R; AI Act jako MOAT i Fast Onboarding/biblioteka
 w H. E9 (źródło finansowania kapitału obrotowego 2027–2028, kwota (c)) — pytanie do właściciela. E13 — zgłoszone
 właścicielowi (jedno miejsce po przecinku w przykładzie 07.8).
+
+## Decyzja 16 — źródło kapitału obrotowego 2027–2028 (E9)
+
+Odpowiedź: „a". Przy kapitale obrotowym: „finansowanie dłużne obrotowe (np. instrumenty PFR i ARP) — rozmowy
+w przygotowaniu”; w ryzykach plan awaryjny: gdyby finansowanie obrotowe nie było dostępne, łączna potrzeba w szczycie
+69 314 475 zł (XII 2028; H) / Agentify 62 864 125 zł (XII 2028; A). Źródło: hub „4. Dwie kwoty”, sekcja (c), wariant A.
+Rundy (rozwój biznesu) bez zmian.
