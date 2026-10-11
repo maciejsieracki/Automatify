@@ -187,3 +187,13 @@ Odpowiedź: „a". Przy kapitale obrotowym: „finansowanie dłużne obrotowe (n
 w przygotowaniu”; w ryzykach plan awaryjny: gdyby finansowanie obrotowe nie było dostępne, łączna potrzeba w szczycie
 69 314 475 zł (XII 2028; H) / Agentify 62 864 125 zł (XII 2028; A). Źródło: hub „4. Dwie kwoty”, sekcja (c), wariant A.
 Rundy (rozwój biznesu) bez zmian.
+
+## Runda 2 — Ewaluator: PASS Z UWAGAMI (R1–R7, drobne) → poprawione; Final Control: PASS
+
+R1 kolejność listy w banerze R; R2 bez etykiety „UA”; R3 mnożniki Agentify 0,4–4,1 · Robotify 0,7–4,1; R4 przypis
+o Malcie i Liechtensteinie; R6 plan awaryjny z nazwą wariantu A; R7 szyk zdania o źródle kapitału obrotowego;
+R5 (1 937 042) — w zestawieniu do akceptacji. Final Control (orkiestrator, www-v3 i pakiet inwestora): 0 błędów JS,
+0 martwych kotwic, 0 „PLN”, 0 zakazanych wartości, EBITDA z etykietą; pakiet inwestora: 3 samootwieralne pliki,
+treść identyczna z wersją WWW (długość tekstu 1:1), mapy z poprawionymi SVG. Zestawienie dla właściciela:
+`proces/robocze/AGF-DECK-032-bylo-jest.md`. Status: do akceptacji właściciela. DEPLOY/PUSH: NIE WYKONANO (strona,
+inwestor) — paczki przekazane właścicielowi.
