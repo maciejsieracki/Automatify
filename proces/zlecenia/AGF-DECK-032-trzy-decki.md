@@ -154,3 +154,14 @@ nie zwiększając kosztów; scenariusz liczbowy — na życzenie inwestora. Usun
 
 Wszystkie sprawy z części 5 mapy rozstrzygnięte (1–18). Następny krok: budowa trzech decków PL (Operator → Ewaluator →
 Final Control); EN po akceptacji PL.
+
+## Runda 1 — Operator (orkiestrator), 2026-10-11
+
+Budowa: kawałki pitcha v3 (WWW) → poprawki wspólne (43 edycje, decyzje 1–15) → sekcje przepisane w całości (Prośba
+o kapitał, Plan rund — wersje H/A/R; model i przykład Robotify) → nowe sekcje H („Jak Agentify i Robotify się
+uzupełniają”, „Dlaczego warto prowadzić oba”, „Ryzyka projektu”) i ryzyka A/R → składanie decków wg mapy (część 2),
+numeracja i spis treści generowane automatycznie. Wynik: „Automatify Pitch.html” (18 sekcji numerowanych + 2 skróty
+produktów), „Agentify Pitch.html” (26 + baner), „Robotify Pitch.html” (24 + baner). Kontrola renderu (Chromium, offline):
+0 błędów JS, 0 martwych kotwic; poziome przewijanie na 390 px występuje także w pitchu v3 (nie regresja).
+Porządkowe 15: kwoty przykładu 07.8 z jednym miejscem po przecinku (263 035,3; 223 176,5), żeby suma 626 612 się zgadzała.
+Status: przekazane Ewaluatorowi (runda 1).
