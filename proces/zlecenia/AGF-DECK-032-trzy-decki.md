@@ -129,3 +129,11 @@ Ustalenie: slajd 07.7 / deck A — „Budżet liczy w 100% model Pay-as-you-Save
 (Polska: 60 zł/h)." Pay-as-you-Go — opcja dodatkowa dla wybranych klientów, „do rozpoznania w przyszłości, nie wliczona
 w budżet"; bez liczb (usunięte: 20 zł → poniżej 5 zł, pakiety 1k/5k/20k, narzut 10%). Relacja „10× koszt agenta" —
 wypowiedź właściciela, poza deckami (brak źródła w budżecie). Źródło 60 zł/h: Agentify „1. Panel" (stawka bazowa Polska).
+
+## Decyzja 13 — przykład Robotify (sprawa 18)
+
+Odpowiedź: „a". Przykład 3PL (15 500 zł/mies., 48%, payback 14 mies., +522 000 zł) zastąpiony rachunkiem na 1 robota
+w Polsce z budżetu: 7 000 h/rok ≈ 3,5 etatu; te godziny w pracy ludzi: 406 000 zł/rok (7 000 h × 58 zł/h); opłata
+serwisowa Robotify: 28 490 zł/rok (7 000 h × 4,07 zł/h) ≈ 7% kosztu pracy; zakup robota po stronie klienta, poza
+przykładem. Źródła: Robotify „08. Wolumen i automatyzacja" (7 000 h, 3,5 FTE), „07. Klienci per kraj" (Polska 58 zł/h),
+„28. Stawka serwisowa wg krajów" (4,07 zł/h; 28 490 000 zł / 1 000 robotów).
