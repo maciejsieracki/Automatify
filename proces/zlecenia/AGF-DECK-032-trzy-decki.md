@@ -43,6 +43,7 @@ C1–C10, E1–E8) → runda 2 (orkiestrator, wszystkie pozycje wprowadzone) →
 | 4 | Struktura przychodu Agentify (07.7) | „a" | Linia „Trzy warstwy przychodu…" zastąpiona liczbami budżetu 2035: prowizja od oszczędności 49,4%, abonament (licencja + utrzymanie) 38,9%, rata wdrożenia 11,7%; marża po kosztach zmiennych 73,3%. Ekspansja usunięta z linii; zostaje zdanie „dokładanie procesów u klientów — potencjał ponad plan, nie wliczony w budżet". Źródło: Agentify „7. Wyniki" (przychód i składniki, koszt zmienny 2035). |
 | 5 | Cennik Robotify (08.9) | „a" | Cennik z budżetu: stawka serwisowa ≈ 7% kosztu pracy w kraju — Polska 4,07 zł/h, Niemcy 12,36 zł/h (najwyższa Liechtenstein 16,64 zł/h); robot do 7 000 h/rok (≈ 3,5 etatu); przychód z robota: Polska 28 490 zł/rok, Niemcy 86 520 zł/rok; CAPEX robota po stronie klienta; marża brutto na obsłudze 87,5%. Usunięte: 35–55 zł/h, ~25 zł do 2030, „30–50% kosztu operatora", pakiety miesięczne (cobot/AMR/humanoid), break-even 6–14 mies. Bez zmian: umowa 36 mies., SLA 99%, hot-swap 24 h, minimum 200 h, migracja bez kary. Źródło: Robotify „28. Stawka serwisowa wg krajów", „08. Wolumen i automatyzacja". |
 | 6 | Kraje i lata wejścia (roadmapa, karty rund) | „a" | Konkretne kraje i lata z budżetu zamiast „DACH"/„Skandynawia". Fale (Agentify / Robotify): 1 — 2027/2028 Polska; 2 — 2028/2029 Niemcy, Wielka Brytania, Francja; 3 — 2029/2030 Włochy, Hiszpania, Holandia; 4 — 2030/2031 Szwecja, Czechy, Rumunia, Belgia, Austria; 5 — 2031/2032 Szwajcaria, Portugalia, Dania, Węgry, Finlandia; 6 — 2032/2033 Grecja, Irlandia, Norwegia, Bułgaria, Słowacja, Chorwacja (+ Turcja, Serbia tylko Agentify); 7 — 2033/2034 Litwa, Słowenia, Łotwa, Estonia, Luksemburg, Cypr, Malta, Islandia, Liechtenstein. Agentify 2028: „Polska + wejście do Niemiec, Wielkiej Brytanii i Francji"; 2029: „111 w Niemczech"; 2030: „1 113 w Niemczech i Austrii"; Robotify 2029: „wejście do Niemiec, Wielkiej Brytanii i Francji". Tabela fal — deck H; kolumny lat — decki A i R. Źródło: Agentify „2. Kraje" (rok wejścia), Robotify „06. Rollout krajów". |
+| 7 | Partnerstwa z producentami humanoidów: „od 2027" vs 2029 | „Robotify startuje w 28 roku i na początku będzie montował [coboty], zanim przejdzie do robotów humanoidalnych, ale to jest nieistotne w tym momencie." | Ze slajdu o architekturze usunięte „od 2027". Robotify: start komercyjny 2028 od cobotów i AMR, humanoidy później — termin humanoidów jak w roadmapie. Bez zmian w liczbach. |
 
 ## Proces
 
@@ -60,3 +61,13 @@ konwencji: Polska 2029 = 500 − 452,5 × 0,33 = 351, jak w pitchu). Różnica 1
 (lejek wyłącznie z budżetu) bez zmian; poprawione liczby Agentify. Robotify (30 678, 665, Polska 2 111) — seria
 przychodowa, bez zmian.
 
+
+
+## Sprawy porządkowe bez pytania (po uwadze właściciela „to jest nieistotne w tym momencie")
+
+Niefinansowe rozbieżności opisowe ujednolicam bez osobnych pytań; każda zmiana będzie widoczna w zestawieniu „było → jest"
+do akceptacji właściciela:
+- 8 — marketplace: wszędzie „20+ pakietów w 2028" (jak roadmapa i karta rundy; usunięte „50+ do końca 2027");
+- 9 — cena humanoida 2030: wartość ze slajdu krzywej kosztu („$10–15k"); lead 08 bez osobnej liczby;
+- 15 — przykład 07.8: kwoty zaokrąglone do pełnych złotych (zasada: najwyżej jedno miejsce po przecinku);
+- 16 — zasięg: rozstrzygnięty decyzją 6 (Agentify 34 rynki, Robotify 32 kraje; 282 530 firm = 32 kraje).

@@ -290,16 +290,16 @@ Zasada: liczby przenosimy dosłownie; żadna nowa liczba nie trafia do decku bez
 4. Rozwiązanie — hub all-in-one — P12 (lead, 4 odpowiedzi, insight)
 5. **Jak Agentify i Robotify się uzupełniają** (NOWA — część 3)
 6. Architektura i Automatify Core jako wspólne IP — P16, P17 (Core), P18 (lead, 5 elementów, 3 moaty, bottom line), P29 (integracja ROS 2 ↔ Core)
-7. Agentify w skrócie — P03 (karta), P13, P09 skrót (~$70 mld), odsyłacz do decku A
-8. Robotify w skrócie — P03 (karta), P26, P10 skrót ($41,3 mld), P27 (wspólny billing), odsyłacz do decku R
-9. Rynek i klient — P08 (lead, ICP pełny, TAM/SAM/SOM z definicjami, podział SOM)
+7. Agentify w skrócie — P03 (karta), P13, P09 skrót (~$70 mld), odsyłacz do decku A — **ROZSTRZYGNIĘTE: decyzja 7 — usunięte „od 2027”, termin jak roadmapa**
+8. Robotify w skrócie — P03 (karta), P26, P10 skrót ($41,3 mld), P27 (wspólny billing), odsyłacz do decku R — **ROZSTRZYGNIĘTE: porządkowo — „20+ pakietów w 2028”**
+9. Rynek i klient — P08 (lead, ICP pełny, TAM/SAM/SOM z definicjami, podział SOM) — **ROZSTRZYGNIĘTE: porządkowo — „$10–15k” (krzywa kosztu)**
 10. Konkurencja — brak all-in huba — P11
 11. Trakcja — P39 (lead, 4 case'y, kafle)
 12. Roadmapa obu produktów i sekwencja wejścia — P37 (lead, kamienie A i R, cele 2030, kafle), P38 skrót
 13. **Dlaczego warto prowadzić oba** (NOWA — część 3)
 14. **Ryzyka projektu i jak je ograniczamy** (NOWA — część 3; P19 „co to znaczy dla inwestora", P41 zastrzeżenia, P42 przypisy)
-15. Finanse hubu (najważniejsze) — P40: lead z definicjami EBITDA i zysku netto obu spółek, „dlaczego osobno", kafle, wiersze główne obu tabel, założenia wspólne (rynek i adopcja) i zestawienie jednostek biznesowych, mapy ekspansji, wykorzystanie transzy 2027, odsyłacz do suplementu
-16. Prośba o kapitał — P41 (lead, kafle, (a), (b), „dlaczego nie sumujemy", (c) z rozbiciem na produkty, harmonogram transz, linia kredytowa skrót, zastrzeżenia), P42 (lead z kwotami w miesiącu szczytu, pre-seed, 4 karty rund, wyjście, przypisy)
+15. Finanse hubu (najważniejsze) — P40: lead z definicjami EBITDA i zysku netto obu spółek, „dlaczego osobno", kafle, wiersze główne obu tabel, założenia wspólne (rynek i adopcja) i zestawienie jednostek biznesowych, mapy ekspansji, wykorzystanie transzy 2027, odsyłacz do suplementu — **ROZSTRZYGNIĘTE: porządkowo — pełne złote**
+16. Prośba o kapitał — P41 (lead, kafle, (a), (b), „dlaczego nie sumujemy", (c) z rozbiciem na produkty, harmonogram transz, linia kredytowa skrót, zastrzeżenia), P42 (lead z kwotami w miesiącu szczytu, pre-seed, 4 karty rund, wyjście, przypisy) — **ROZSTRZYGNIĘTE: rozstrzygnięte decyzją 6**
 17. Dlaczego teraz — P43 (3 fale, konwergencja, CTA), skrót P22 (AI Act jako MOAT)
 18. 08.10: przykład magazynu 3PL (15 500 zł/mies. = AMR 6 500 + cobot 7 000 + integracja 1 500; baseline 360 000; oszczędność 174 000 = 48%; payback 14 mies.; +522 000 zł po 3 latach) — niezgodny z cennikiem budżetu po decyzji 5.
 18. Zespół i kontakt — P44, P19 (Subeo: lead, 250+, 4 kompetencje, logo)
