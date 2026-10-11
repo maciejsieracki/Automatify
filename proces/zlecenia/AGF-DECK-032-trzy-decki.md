@@ -39,6 +39,7 @@ C1–C10, E1–E8) → runda 2 (orkiestrator, wszystkie pozycje wprowadzone) →
 |---|---|---|---|
 | 1 | TAM: 250 000 vs 282 530 | „a poniewaz doszła GB" | Wariant A: wszędzie 282 530 firm — „średnie firmy (50–249 pracowników) w 32 krajach rolloutu, w tym Wielka Brytania" (źródło: budżet Robotify, uniwersum MŚP). SAM 70 000 i SOM 14 274 zostają jako analiza rynku (Polska + CE), z dopiskiem, że to inne zawężenie niż budżet. (Część o SAM/SOM wraca w pytaniu 3 — zasada nadrzędna.) |
 | 2 | Etykieta „% SAM" przy udziale produktów | „a" | Baza procentów = TAM 282 530 firm (nie SAM). Wskazane w pytaniu liczby 11 200 / 3 074 pochodzą z analizy SOM w pitchu, nie z budżetu — wg zasady nadrzędnej licznikiem będą liczby klientów z budżetu (pytanie 3). |
+| 3 | Polska i lejek rynku (SAM/SOM) vs klienci z budżetu | „a" | Lejek wyłącznie z budżetu: rynek 282 530 firm 50–249 w 32 krajach → sufit 20% = 56 506 klientów (2039) → plan 2035: Agentify 35 394 klientów (12,5%; w 34 krajach, z Turcją i Serbią), Robotify 30 678 (10,9%); 2030: Agentify 4 246, Robotify 665. Polska: 17 000 firm; 2035 Agentify 3 400 (20,0%), Robotify 2 111 (12,4%). Usunięte z decków: 69 tys., TAM PL 15 200, SAM 70 000, SOM 14 274, 11 200, 3 074. Źródła: Robotify „05. Nasi klienci (SOM)", „06. Rollout krajów", „07. Klienci per kraj"; Agentify „5. Koszty" (klienci od podpisu), „2. Kraje". Uchyla dopisek o SAM/SOM z decyzji 1. |
 
 ## Proces
 
