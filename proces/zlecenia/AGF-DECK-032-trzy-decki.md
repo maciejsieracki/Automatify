@@ -117,3 +117,15 @@ Agentify — ludzie 4 470 000 zł; biuro, narzędzia i pozostałe koszty stałe 
 Zdanie: „Seed 5 116 054 zł finansuje te koszty w części niepokrytej wpływami od pierwszych klientów."
 Źródła: Agentify „5. Koszty" (koszty stałe 2027: ludzie, overhead, CAC), Robotify „P&L szczegółowy" / „Overhead"
 (usługi profesjonalne 2027).
+
+## Decyzja 12 — Pay-as-you-Go (sprawa 17)
+
+Właściciel: „Zostawiamy to jako rezerwowy, ponieważ mamy taki model w planach dla niektórych klientów. Stawka jest
+dziesięciokrotnie wyższa niż koszt samego agenta, zatrudnienia, wynajęcia robota. To opcja dodatkowa, na razie bez
+wdrożenia w budżecie. Możemy powiedzieć, że 100 % wyliczamy dla pay as you save, ale w nastawce godzinowej, a pay as you
+go zostawiamy sobie do rozpoznania na przyszłość."
+
+Ustalenie: slajd 07.7 / deck A — „Budżet liczy w 100% model Pay-as-you-Save, na podstawie wartości godziny pracy
+(Polska: 60 zł/h)." Pay-as-you-Go — opcja dodatkowa dla wybranych klientów, „do rozpoznania w przyszłości, nie wliczona
+w budżet"; bez liczb (usunięte: 20 zł → poniżej 5 zł, pakiety 1k/5k/20k, narzut 10%). Relacja „10× koszt agenta" —
+wypowiedź właściciela, poza deckami (brak źródła w budżecie). Źródło 60 zł/h: Agentify „1. Panel" (stawka bazowa Polska).
