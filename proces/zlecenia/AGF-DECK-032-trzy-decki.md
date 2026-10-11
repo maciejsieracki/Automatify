@@ -165,3 +165,18 @@ produktów), „Agentify Pitch.html” (26 + baner), „Robotify Pitch.html” (
 0 błędów JS, 0 martwych kotwic; poziome przewijanie na 390 px występuje także w pitchu v3 (nie regresja).
 Porządkowe 15: kwoty przykładu 07.8 z jednym miejscem po przecinku (263 035,3; 223 176,5), żeby suma 626 612 się zgadzała.
 Status: przekazane Ewaluatorowi (runda 1).
+
+## Runda 1 — Ewaluator: FAIL (E1–E26); runda 2 — Operator
+
+Ewaluator niezależny (raport: scratchpad AGF-DECK-032/ewaluator-decki/RAPORT-runda1.md): liczby z budżetu zgodne
+(rundy, kapitał obrotowy, lejek, struktura przychodu, cennik, koszty 2027, P&L); blokujące E1 (resztki Pay-as-you-Go:
+narzut 10%, pakiety rbh, „zbliżone wartości”) i E2 (Robotify „abonament 5 tys. PLN/mies.”). Runda 2 wprowadza E1–E8,
+E10–E12, E14–E26: Pay-as-you-Go jako opcja dodatkowa bez liczb; opłata serwisowa zamiast abonamentu/flat fee/wynajmu;
+koszt pracy z budżetu (etat biurowy 108 tys. zł/rok = 60 zł/h × 1 800 h; operator 116 tys. zł/rok = 58 zł/h × 2 000 h;
+pracownik PL 58 zł/h) — wg zasady nadrzędnej; ICP Robotify: Polska 2028, 32 kraje do 2034; mapy: Ukraina bez koloru
+wejścia, z podpowiedzi usunięte nieaktualne liczby klientów; „PLN” → „zł”; etykiety EBITDA; usunięte zdanie o braku
+kursu EUR/PLN; Round B Agentify 1 937 042 zł (zaokrąglenie zachowujące sumy 17 063 458 i 22 248 884); konwencja CIT
+rozdzielona (Agentify 12 rat z lagiem, Robotify w roku naliczenia); „od 2031” przy alokacji 40/60; prefiks Automatify
+w sekcjach wspólnych H; numeracja banerów; bez d3; teza produktowa w A i R; AI Act jako MOAT i Fast Onboarding/biblioteka
+w H. E9 (źródło finansowania kapitału obrotowego 2027–2028, kwota (c)) — pytanie do właściciela. E13 — zgłoszone
+właścicielowi (jedno miejsce po przecinku w przykładzie 07.8).
