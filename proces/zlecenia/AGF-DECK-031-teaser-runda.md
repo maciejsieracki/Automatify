@@ -57,3 +57,11 @@ orkiestrator podał też kapitał obrotowy 2027 jako „1 940 617 zł" — popra
 ### Runda 1 — Operator
 
 28 edycji (pitch PL/EN 9+9, teaser PL/EN 5+5), apply_edits: błędów 0. Raport: `scratchpad/AGF-DECK-031/operator/RUNDA-raport.md`.
+
+### Runda 1 — Ewaluator: FAIL (P1: opis (b) bez należności; liczby wszystkie OK)
+### Runda 2 — Operator: P1 wprowadzone; Ewaluator: PASS
+
+Final Control (orkiestrator): AGF-DECK-030 + 031 naniesione na stronę, repo i pliki inwestorskie bez błędów; tekst pitcha
+w trzech wersjach identyczny poza key visualem; teaser = podgląd zatwierdzony przez Ewaluatora; 10/10 plików inwestorskich
+otwiera się offline bez błędów. Wydano właścicielowi wersję 3 (paczka WWW, paczka inwestorska, paczka wewnętrzna).
+Status: do akceptacji; FAQ Q13 nadal blokuje wysyłkę. DEPLOY/PUSH materiałów: NIE WYKONANO.
