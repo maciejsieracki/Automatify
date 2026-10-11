@@ -390,7 +390,7 @@ FAQ i suplement mogą być wskazane jako miejsce szczegółu, ale ich liczby nie
 10. „Runda otwarta do Q3 2026" — termin minął; okładka i CTA w P43 (E7); pasek „domknięte 40% / 60%". — **TERMIN ROZSTRZYGNIĘTY: „b" — do końca I kwartału 2027 r.; pasek 40% / 60% — „a" (usunięty); pre-seed zamknięty, trwa Seed (decyzja 9)**
 11. Podział transzy 2027 na cele (70/12/5/5/4/4%) nie wynika z budżetu. — **ROZSTRZYGNIĘTE: „a” — koszty 2027 z budżetu (zob. zlecenie, decyzja 11)**
 12. Nazwa kwoty (a): „na funkcjonowanie biznesu" vs „na rozwój biznesu". — **ROZSTRZYGNIĘTE decyzją 10: „rozwój biznesu (a)” / „kapitał obrotowy (b)”**
-13. Wersje EN: trzy decki EN od razu czy po akceptacji PL.
+13. Wersje EN: trzy decki EN od razu czy po akceptacji PL. — **ROZSTRZYGNIĘTE: „a” — EN po akceptacji PL**
 14. FAQ Q13 — scenariusz wolniejszej sprzedaży (osobny temat, nie blokuje budowy decków).
 15. Przykład 07.8: dwa miejsca po przecinku (263 035,30; 223 176,47) — zaokrąglić zgodnie z zasadą jednego miejsca. — **ROZSTRZYGNIĘTE: porządkowo — pełne złote**
 16. Zasięg: TAM obejmuje 32 kraje (budżet Robotify), a ekspansja Agentify „~34 kraje do 2033" (P40, L1160; budżet Agentify: 34 rynki) — opisać różnicę zasięgu produktów. — **ROZSTRZYGNIĘTE: rozstrzygnięte decyzją 6**

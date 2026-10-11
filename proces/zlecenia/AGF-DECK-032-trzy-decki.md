@@ -137,3 +137,7 @@ w Polsce z budżetu: 7 000 h/rok ≈ 3,5 etatu; te godziny w pracy ludzi: 406 00
 serwisowa Robotify: 28 490 zł/rok (7 000 h × 4,07 zł/h) ≈ 7% kosztu pracy; zakup robota po stronie klienta, poza
 przykładem. Źródła: Robotify „08. Wolumen i automatyzacja" (7 000 h, 3,5 FTE), „07. Klienci per kraj" (Polska 58 zł/h),
 „28. Stawka serwisowa wg krajów" (4,07 zł/h; 28 490 000 zł / 1 000 robotów).
+
+## Decyzja 14 — wersje EN
+
+Odpowiedź: „a". Najpierw trzy decki PL; wersje EN po akceptacji PL przez właściciela.
