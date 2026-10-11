@@ -50,3 +50,20 @@ Granice nienaruszalne 1–6 obowiązują. Nic nie wychodzi na zewnątrz bez pole
 ## Rundy
 
 (dopisywane)
+
+### Runda 1–3 (2026-10-11) — wynik
+
+| Grupa | Zmian | Rundy | Werdykt Ewaluatora |
+|---|---:|---|---|
+| PITCH (PL/EN) | 86 | 1 | PASS |
+| SUPLEMENT (PL/EN) | 196 | 2 (334,4 → 334,3; legenda wykresu) | PASS |
+| FAQ (PL/EN) | 62 | 2 (etykieta EBITDA Q18, baza 13,8%) | PASS |
+| RESZTA — aneks, teaser inwestorski, index (PL/EN) | 76 | 3 (etykieta EBITDA, cennik D1, etaty Agentify 2028 = 41 jak budżet v6 i suplement) | PASS |
+
+Final Control (orkiestrator): 420 zmian naniesionych bez błędów na repo, stronę i pliki inwestorskie (tryb DOM);
+tekst trzech wersji identyczny poza znanymi różnicami (key visual strony, ramka rundy teasera); 10 plików inwestorskich
+otwiera się offline bez błędów; stare liczby pozostały wyłącznie w FAQ Q13 (DO DECYZJI). Tabela „było → jest",
+instrukcja dla designera i lista spraw do decyzji: `proces/robocze/`.
+
+Status: **gotowe do akceptacji właściciela, NIE do wysyłki** — blokują: ramka „Aktywna runda" w teaserze, FAQ Q13.
+DEPLOY/PUSH materiałów: NIE WYKONANO.
