@@ -82,8 +82,8 @@ Zasada: liczby przenosimy dosłownie; żadna nowa liczba nie trafia do decku bez
 |---|---|---|
 | Lead: sweet spot 50–249 prac., dużo back-office lub linia produkcyjna, ograniczony budżet IT; decyzja COO, CFO, dyr. operacyjny; trigger: płace, brak rąk, presja marży | H · A · R | ★ H: ten sam klient dla obu produktów |
 | ICP: wielkość 50–249; przychód 20–200 mln PLN; branże: usługi B2B, e-com, logistyka, produkcja; geografia: PL (start), CE (2027), UE (2028+); decyzja COO/CFO/dyr. operacyjny; trigger | H (pełny) · A (back-office: usługi B2B, e-com) · R (logistyka, produkcja) | — |
-| TAM 250 000 (wszystkie średnie firmy UE, Eurostat) · SAM 70 000 (Polska + DACH + Czechy + Słowacja + Węgry) · SOM 14 274 (Polska, 3 lata) — z definicjami | H | ⚠ 250 000 vs 282 530 (pytanie 1); SOM vs TAM PL (E2) |
-| SOM: Agentify 11 200 („4,5% SAM") · Robotify 3 074 („1,2% SAM") + uzasadnienie (cyfrowi pracownicy 2–4 tyg. vs roboty 12–20 tyg.: site assessment, BHP, integracja) | H · A (11 200) · R (3 074) | ⚠ etykieta „% SAM" błędna — to udział w TAM (E1) |
+| TAM — **wg decyzji 1: 282 530** „średnie firmy (50–249 pracowników) w 32 krajach rolloutu, w tym Wielka Brytania" (dziś w źródle: 250 000, UE, Eurostat) · SAM 70 000 (Polska + DACH + Czechy + Słowacja + Węgry) · SOM 14 274 (Polska, 3 lata) — z definicjami; przy SAM/SOM dopisek: „SAM i SOM to analiza rynku Polski i Europy Środkowej — inne zawężenie niż zasięg budżetu (32 kraje)" | H | SOM vs TAM PL (E2); 32 kraje TAM vs ~34 kraje ekspansji Agentify (pkt 16 części 5) |
+| SOM: Agentify 11 200 · Robotify 3 074 + uzasadnienie (cyfrowi pracownicy 2–4 tyg. vs roboty 12–20 tyg.: site assessment, BHP, integracja); procenty „4,5% / 1,2% SAM" — wg pytania 2 | H · A (11 200) · R (3 074) | ⚠ pytanie 2 (etykieta i baza procentów) |
 
 ### P09 · 05A Potencjał rynkowy AI (L173–195)
 | Lead: rynek AI 37% CAGR, 78% wdrażających to korporacje · $184 mld rynek AI 2025 (37,3% CAGR do 2030) · 78% korporacji vs 15% MŚP · 300 mln stanowisk do 2035 · chatboty AI $47,6 mld 2030 (od $5,4 mld 2023, CAGR 24%) · RPA $13,7 mld 2030 (od $2,7 mld, CAGR 26%; warstwa wykonawcza Agentify — UiPath) · OCR/IDP $8,4 mld 2030 (CAGR 22%) · pozycja Agentify: ~$70 mld TAM use-case'ów, penetracja AI < 15% · źródła (Grand View Research, Mordor Intelligence, Goldman Sachs, Precedence Research) | A · H: skrót (~$70 mld) |
@@ -218,7 +218,7 @@ Zasada: liczby przenosimy dosłownie; żadna nowa liczba nie trafia do decku bez
 | Lead: 2 wdrożenia Agentify + 2 Robotify, każde zamknięte subskrypcją lub rozszerzeniem; 700+ tys. PLN oszczędności | H |
 | Usługi B2B · ekstrakcja z dokumentów (OCR + AI, 5× szybciej, 98%) — 100–120 tys. PLN · E-commerce · chatbot BOK (−50% call-center, 85% auto) — 120–150 tys. PLN | H · A |
 | Przemysł lekki · cobot pakujący (5 cobotów, 24/7, zastępuje 10 operatorów na 2 zmianach) — 350 tys. PLN · Logistyka · AMR pick & pack (5 AMR, 10 operatorów) — 150 tys. PLN | H · R |
-| Kafle: 700+ tys. · 4 wdrożenia · 12 MoU · partnerstwa enterprise (dostawcy automatyzacji + producenci humanoidów) | H (A i R: swoje wdrożenia + MoU) |
+| Kafle: 700+ tys. · 4 wdrożenia · 12 MoU · partnerstwa enterprise (dostawcy automatyzacji + producenci humanoidów) | H (A i R: swoje 2 wdrożenia; MoU wyłącznie jako „12 MoU (hub)" — źródło nie dzieli ich na produkty) |
 
 ### P40 · 11 Budżet (L1136–1253)
 | Podpunkt | Dokąd | Akcent |
@@ -226,7 +226,7 @@ Zasada: liczby przenosimy dosłownie; żadna nowa liczba nie trafia do decku bez
 | Lead: EBITDA przed programem motywacyjnym dodatnia A od 2029, R od 2030; alokacja zysku R 40% R&D / 60% zatrzymany; CIT 19% po obu stronach; koszt wdrożeń A przez 4 lata; definicja zysku netto | H · A · R (każdy swoje) | — |
 | „Dlaczego pokazujemy każdy produkt osobno" (dwie spółki, centrala po połowie) | H ★ | — |
 | Kafle: 1 509 mln (A 2030) · 158 mln (R 2030) · 2030 pierwszy rok dodatni w obu (A od 2029) | H · A · R | — |
-| Założenia — rynek i adopcja: TAM UE 250 000 · TAM PL 15 200 · penetracja 2035 EU 23% / PL 76% · koszt pracy PL 60 PLN/h, mnożniki 0,38–4,09 · churn 5% · CAC PL 5,0 tys., reszta 4,5–9,7 tys. | H (pełne) · A/R (swoje) · S | ⚠ TAM (pytanie 1) |
+| Założenia — rynek i adopcja: TAM (wg decyzji 1: 282 530, 32 kraje z Wielką Brytanią; w źródle „TAM UE 250 000") · TAM PL 15 200 · penetracja 2035 EU 23% / PL 76% · koszt pracy PL 60 PLN/h, mnożniki 0,38–4,09 · churn 5% · CAC PL 5,0 tys., reszta 4,5–9,7 tys. | H (pełne) · A/R (swoje) · S | E2 (TAM PL) |
 | Założenia — jednostki biznesowe: A Pay-as-you-Save SaaS, marża ~70%, break-even 2029 · R RaaS, marża ~79%, break-even 2030 · alokacja 40/60 · ekspansja PL 2027 → ~34 kraje do 2033 | H (zestawienie) · A · R | — |
 | Tabela Agentify 2028/2029/2030/2031/2035: przychód, EBITDA, zysk netto („po amortyzacji wdrożeń, odsetkach, programie motywacyjnym i CIT 19%"), klienci, procesy | A (pełna) · H (przychód, EBITDA, zysk) | — |
 | Tabela Robotify 2028/2029/2030/2031/2035: przychód, EBITDA, zysk netto („po programie motywacyjnym, R&D, zakupie sprzętu i CIT 19%"), klienci, roboty | R (pełna) · H (przychód, EBITDA, zysk) | — |
@@ -243,7 +243,7 @@ Zasada: liczby przenosimy dosłownie; żadna nowa liczba nie trafia do decku bez
 | (b) kapitał obrotowy 42 552 283 zł (XII 2028); wdrożenia, licencje z góry, należności; fundusz 2027–2028, od 2029 kredyt 5%; Robotify bez kapitału obrotowego | H · A · R (zdanie „brak kapitału obrotowego — robota kupuje klient") | — |
 | „Dlaczego (a) i (b) nie sumujemy" | H | — |
 | (c) wariant A 69 314 475 zł (XII 2028): Agentify 62 864 125 + Robotify 6 450 350 · wariant B 86 824 076 zł (IV 2029): Agentify 65 247 310 + Robotify 21 576 766 · różnica wariantów | H · A/R (swój udział) | — |
-| Harmonogram transz: wykres (kolumny 2027, 2028, 2029, 2030, 2031+; skala do 70 mln zł) + tabela 2027–2030 (transze A/B, skumulowane) + akapit „od 2030 zero" | H · S | A i R: udział produktu (A: 6 906 670 / 55 957 455 / B 2 383 185; R: 150 000 / 6 300 350 / 15 126 416) |
+| Harmonogram transz: wykres (kolumny 2027, 2028, 2029, 2030, 2031+; skala do 70 mln zł) + tabela 2027–2030 (transze A/B, skumulowane) + akapit „od 2030 zero" | H · S | A i R: udział produktu — składniki dosłownie z P42 (L1397–1423): A — 2027 (a) 4 966 054 + (b) 1 940 616; 2028 (a) 15 345 788 + (b) 40 611 667; 2029 (wariant B) (a) 1 888 918 + odsetki 494 267; R — 2027 150 000; 2028 6 300 350; 2029 (wariant B) 15 126 416. Sumy produktowe nie są dziś w decku — pokazać je wymaga akceptacji |
 | Linia kredytowa XII 2029: A 435,1 / B 392,6 mln zł · VIII 2030: A 1 434,7 / B 1 392,2 mln zł · odsetki w wyniku i w (c) | A · H: skrót | — |
 | Kapitał obrotowy na nowego klienta ok. 475 tys. zł = wdrożenia 286 tys. + licencja 143 tys. + należności 46 tys.; szczyt w 2. miesiącu od podpisu; potem maleje (rata 48 mies.) | A | — |
 | Tabela „Stan na 31.12" 2027–2029 (obrotowy, rozwojowy, kredyt A/B) + akapit (bank niedostępny 2027–2028; ujemny kapitał rozwojowy 2029 = Agentify oddaje gotówkę) | A · S | — |
@@ -317,7 +317,7 @@ Zasada: liczby przenosimy dosłownie; żadna nowa liczba nie trafia do decku bez
 11. Proces obsługi 7 kroków — P23
 12. Model rozliczeniowy — P24
 13. Przykład rozliczenia — P25
-14. Trakcja Agentify — P39 (2 case'y Agentify, MoU)
+14. Trakcja Agentify — P39 (2 case'y Agentify, „12 MoU (hub)")
 15. Roadmapa Agentify i partner channel — P37 (ścieżka A, cel 2030, kafle), P38 (całość)
 16. Finanse Agentify — P40 (lead A, kafle, założenia A, jednostka A, tabela Agentify pełna, mapa A, odsyłacz do suplementu)
 17. Kapitał Agentify i plan rund — P41 ((a) Agentify, (b), udział w (c), udział w transzach, linia kredytowa, 475 tys. na klienta ze składnikami, stan na 31.12 z akapitem), P42 (karty rund — kamienie i kwoty A, wyjście, przypisy)
@@ -332,18 +332,18 @@ Zasada: liczby przenosimy dosłownie; żadna nowa liczba nie trafia do decku bez
 4. Polska — demografia — P32
 5. Roboty fizyczne: humanoidy i wyspecjalizowane — P27
 6. Technologie humanoidalne — P28
-7. Technologie niehumanoidalne, stack i Automatify Core — P29, P16 (warstwa UR · MiR, partnerstwa OEM, przewaga), P17/P18 skrót (AI Hours Engine i billing roboto-godzin)
+7. Technologie niehumanoidalne, stack i Automatify Core — P29, P16 (lead „Cztery warstwy, jeden produkt", warstwa UR · MiR, partnerstwa OEM, przewaga), P17/P18 skrót (AI Hours Engine i billing roboto-godzin)
 8. Krzywa kosztu robota — P31
 9. Konkurencja Robotify — P30
 10. Zastosowania wg branży — P33
 11. Proces wdrożenia 7 kroków — P34
 12. Model rozliczeniowy RaaS — P35
 13. Przykład rozliczenia (3PL) — P36
-14. Trakcja Robotify — P39 (2 case'y Robotify, partnerstwa z producentami humanoidów)
+14. Trakcja Robotify — P39 (2 case'y Robotify, „12 MoU (hub)", partnerstwa z producentami humanoidów)
 15. Roadmapa Robotify — P37 (ścieżka R, cel 2030, kafle)
 16. Finanse Robotify — P40 (lead R z alokacją 40/60 i CIT 19%, kafle, założenia R, jednostka R, tabela Robotify pełna, mapa R, odsyłacz do suplementu)
 17. Kapitał Robotify i plan rund — P41 ((a) Robotify 21 576 766 zł, brak kapitału obrotowego, udział w (c), udział w transzach), P42 (karty rund — kamienie i kwoty R, wyjście, przypisy)
-18. Ryzyka Robotify — P41 (strata 2029, założenie podatkowe, spółki osobno, należności pominięte, własna flota jako opcja w górę)
+18. Ryzyka Robotify — P41 (strata 2029, założenie podatkowe, konwencja płatności podatku — CIT w 12 ratach z lagiem 1 m-ca, spółki osobno, należności pominięte, własna flota jako opcja w górę)
 19. Dlaczego teraz — P43 (fala 02, fala 03: demografia i dotacje, CTA z kwotą R)
 20. Zespół i kontakt, manifest, odsyłacz do decku H — P44, P04
 
@@ -392,6 +392,7 @@ FAQ i suplement mogą być wskazane jako miejsce szczegółu, ale ich liczby nie
 13. Wersje EN: trzy decki EN od razu czy po akceptacji PL.
 14. FAQ Q13 — scenariusz wolniejszej sprzedaży (osobny temat, nie blokuje budowy decków).
 15. Przykład 07.8: dwa miejsca po przecinku (263 035,30; 223 176,47) — zaokrąglić zgodnie z zasadą jednego miejsca.
+16. Zasięg: TAM obejmuje 32 kraje (budżet Robotify), a ekspansja Agentify „~34 kraje do 2033" (P40, L1160; budżet Agentify: 34 rynki) — opisać różnicę zasięgu produktów.
 
 ---
 
