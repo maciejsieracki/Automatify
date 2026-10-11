@@ -105,3 +105,15 @@ Skrypt `edits033r3.py` + przebudowa pakietów:
 - Do decyzji właściciela: E7 (grosze), E15 (1 937 042 zł; 07.8), biogramy doradców, brzmienie hasła marki,
   strona główna w pakiecie WWW przed publikacją.
 Render: 0 błędów JS, 0 martwych linków w obu pakietach. Status: do Final Control.
+
+## Final Control: PASS Z UWAGAMI + poprawki po Final Control
+
+Final Control: wszystkie ustalenia rund 2 należące do Operatora zamknięte; diff r2 → r3 zgodny z opisem; liczby zgodne
+z budżetem; Teaser 2 strony A4; render 0 / 0 / 0. Ustalenia: FC-1 (opis 154,1 mln — to gałęzie z pracą fizyczną, 67%
+z 230 mln, nie cała gospodarka), FC-2 (Q19 — 40% EBITDA dotyczy tylko R&D), FC-3 (źródła decków bez E5 — przebudowa
+cofnęłaby zmianę), FC-4 (zapis kwot w USD), FC-5 (Q1 — 11,2% bez zastrzeżenia 34 krajów).
+Poprawione skryptem `edits033fc.py` (13 zmian): FC-1, FC-2, FC-5; FC-4 — jeden zapis „$47,6 mld” jak w deckach
+(deck A, deck R „$41,3 mld”, Teaser „$60 bln”); FC-3 — `base-v4/43-budzet.html` i `edits/common.json`; przebudowa decków
+ze źródeł daje pliki identyczne bajt w bajt z `www-v4`. Pakiety przebudowane: render 0 błędów, Teaser 2 strony A4.
+Zestawienie dla właściciela: `proces/robocze/AGF-DECK-033-bylo-jest.md`. Paczki: AGF-DECK-033-PAKIET-1-Inwestor.zip,
+AGF-DECK-033-PAKIET-2-Strona-WWW.zip (zastępują paczki AGF-DECK-032). Status: do akceptacji właściciela.
