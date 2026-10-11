@@ -76,3 +76,32 @@ Skrypt `edits033r2.py` (54 zmiany, każda dokładnie 1 wystąpienie w każdym pl
   E13 (przewijanie poziome na telefonie) — przy wersji mobilnej.
 Pakiety przebudowane; render: 0 błędów JS, 0 martwych linków, teaser mieści się na 2 stronach A4.
 Status: przekazane Ewaluatorowi (runda 2).
+
+## Runda 2 — Ewaluator niezależny (dwie perspektywy): PASS Z UWAGAMI
+
+A (poprawki vs budżet): wszystkie 12 pozycji wprowadzone i prawdziwe (przeliczone z budżetów); ISTOTNE: FAQ Q14 — dopisek
+E5 w środku wywodu czyta się jak sprzeczność; strona główna (index) w pakiecie WWW ma starą treść (PLN, pakiety, 20%)
+— poza zakresem (decyzja 17), do decyzji przed publikacją. B (regresje i spójność): diff r1 → r2 zawiera tylko opisane
+zmiany, 0 uszkodzeń HTML, 0 błędów renderu; drobne: samotne „PL” po usunięciu przełącznika, przepełnienie str. 2 Teasera
+o 3 px, nazwy w tabeli rynku, etykiety EBITDA, mapy EN, „TAM” i „$…B” w decku A, „DOCX” przy Suplemencie, hasło marki.
+
+## Runda 3 — Operator (orkiestrator) — ostatnia runda
+
+Skrypt `edits033r3.py` + przebudowa pakietów:
+- FAQ Q14: uzgodnienie kosztów 2027 przeniesione na koniec odpowiedzi („Uwaga do liczb…”, 40 308 zł w 2027).
+- FAQ Q6: rozbicie 61 867 688 zł (licencja 41,1 + maintenance partnera 20,8 mln zł), zdanie o UiPath i orkiestratorze
+  rozdzielone; FAQ sek. 8 przeredagowane; FAQ Q19 — pełna podstawa CIT Robotify (R&D i zakup sprzętu).
+- Suplement: stawki bazowe w zł/h z krzywą 95% / −5%; „Sufit planu”; Agentify 11,2% z zastrzeżeniem 34 krajów; zdanie
+  kontekstowe 154,1 / 104,0 / 19,4 mln (bez etykiety TAM); różnica 40 308 zł rozpisana; etykiety EBITDA w kartach,
+  tabeli i słowniku; nota grupy — „amortyzacja i odpisy kosztu wdrożeń”.
+- „usługi profesjonalne Robotify” w deckach, FAQ i Suplemencie; decki H i A — „łączna potrzeba … wyniosłaby”;
+  deck A — „łączny rynek naszych use-case'ów: ok. 70 mld $”, kwoty „mld $”; decki — „(do wydruku jako PDF)”.
+- Teaser: krótszy nagłówek kosztów („koszty stałe 2027: 5 395 308 zł”, baza w wierszach), „2029 — pierwszy rok
+  na plusie”, wariant A z opisem, hasło marki w nagłówku (brzmienie z decków); zmniejszone odstępy w nagłówku —
+  obie strony A4 bez przepełnienia (pomiar: str. 1 do 1054 px z 1122, str. 2 do 1113 px).
+- FAQ, Suplement, Aneks: usunięty przełącznik języka z jedną opcją; pakiet WWW bez map EN; pakiet inwestora —
+  deck H: „↑ Początek”, bez martwego linku na ekranie hasła.
+- Źródła decków (edits/common.py, nowe/*, base-v4/*) zaktualizowane tak samo jak wynik.
+- Do decyzji właściciela: E7 (grosze), E15 (1 937 042 zł; 07.8), biogramy doradców, brzmienie hasła marki,
+  strona główna w pakiecie WWW przed publikacją.
+Render: 0 błędów JS, 0 martwych linków w obu pakietach. Status: do Final Control.
