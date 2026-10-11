@@ -19,17 +19,26 @@ Zlecenie utworzone 2026-10-11 przed budową. Rundy, ewaluacje i decyzje dopisuje
 >
 > „Zadaj pytanie po pytaniu, nie wszystkie naraz. Na zasadzie A, B, C, czyli opis, co jest problemem, propozycje A, B i C
 > oraz rekomendacja."
+>
+> „Pamiętaj, że budżet mamy już zamknięty i nie będziemy go ponownie przeliczać, więc po prostu dostosujmy to, co jest
+> w budżecie, do tego, co jest na rynku, a nie na odwrót." / „Czyli liczby klientów, które pokazuje budżet, musimy
+> przełożyć na procenty, i tak dalej."
+
+**Zasada nadrzędna (od 2026-10-11):** budżety z 2026-10-11 są zamknięte. Opis rynku w deckach dopasowujemy do budżetu:
+liczby klientów z budżetu wyrażamy jako procent rynku (liczby firm). Liczby rynkowe w pitchu, których nie ma
+w budżecie, nie są podstawą do zmiany budżetu.
 
 ## Mapa
 
 `proces/robocze/AGF-DECK-032-mapa-trzech-deckow.md` — runda 1 (orkiestrator) → ewaluacja: NIEKOMPLETNA (A1–A14, B1–B35,
-C1–C10, E1–E8) → runda 2 (orkiestrator, wszystkie pozycje wprowadzone) → ewaluacja rundy 2: w toku.
+C1–C10, E1–E8) → runda 2 (orkiestrator, wszystkie pozycje wprowadzone) → ewaluacja rundy 2: KOMPLETNA (poprawki R2-1..R2-5 wprowadzone).
 
 ## Decyzje właściciela
 
 | # | Sprawa | Odpowiedź (dosłownie) | Ustalenie |
 |---|---|---|---|
-| 1 | TAM: 250 000 vs 282 530 | „a poniewaz doszła GB" | Wariant A: wszędzie 282 530 firm — „średnie firmy (50–249 pracowników) w 32 krajach rolloutu, w tym Wielka Brytania" (źródło: budżet Robotify, uniwersum MŚP). SAM 70 000 i SOM 14 274 zostają jako analiza rynku (Polska + CE), z dopiskiem, że to inne zawężenie niż budżet. |
+| 1 | TAM: 250 000 vs 282 530 | „a poniewaz doszła GB" | Wariant A: wszędzie 282 530 firm — „średnie firmy (50–249 pracowników) w 32 krajach rolloutu, w tym Wielka Brytania" (źródło: budżet Robotify, uniwersum MŚP). SAM 70 000 i SOM 14 274 zostają jako analiza rynku (Polska + CE), z dopiskiem, że to inne zawężenie niż budżet. (Część o SAM/SOM wraca w pytaniu 3 — zasada nadrzędna.) |
+| 2 | Etykieta „% SAM" przy udziale produktów | „a" | Baza procentów = TAM 282 530 firm (nie SAM). Wskazane w pytaniu liczby 11 200 / 3 074 pochodzą z analizy SOM w pitchu, nie z budżetu — wg zasady nadrzędnej licznikiem będą liczby klientów z budżetu (pytanie 3). |
 
 ## Proces
 
