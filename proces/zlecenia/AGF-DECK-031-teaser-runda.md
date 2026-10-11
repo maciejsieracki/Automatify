@@ -47,3 +47,13 @@ Operator → Ewaluator (niezależnie) → Final Control. Najwyżej 3 rundy. Gran
 ## Rundy
 
 (dopisywane)
+
+### BŁĄD ORKIESTRATORA (2026-10-11)
+
+Wartość kontrolna „rozwój 5 116 054,34" w tym zleceniu jest błędna — poprawnie 5 116 054,02 zł
+(4 966 054,02 + 150 000 = 7 056 670,32 − 1 940 616,30). Wykrył Operator rundy 1. W wiadomości do właściciela
+orkiestrator podał też kapitał obrotowy 2027 jako „1 940 617 zł" — poprawnie 1 940 616 zł (1 940 616,30). Sprostowane w rozmowie.
+
+### Runda 1 — Operator
+
+28 edycji (pitch PL/EN 9+9, teaser PL/EN 5+5), apply_edits: błędów 0. Raport: `scratchpad/AGF-DECK-031/operator/RUNDA-raport.md`.
