@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatify — agenci AI i roboty dla średnich firm (wersja testowa)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E2244; --navy-2:#081835; --ink:#13243a; --muted:#5b6b85; --muted-2:#8898B5;
+  --paper:#F5F8FC; --card:#ffffff; --rule:#e3e8f0;
+  --teal:#1B7C99; --teal-2:#2EBED9; --lime:#C4E847; --lime-3:#7CB518;
+  --r:18px; --shadow:0 18px 40px -26px rgba(14,34,68,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+svg text{font-family:Manrope,system-ui,sans-serif}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+@media(max-width:600px){.wrap{padding:0 16px}}
+section{padding:clamp(64px,8vw,112px) 0;position:relative}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.eyebrow.lime{color:var(--lime-3)}
+h1,h2,h3{letter-spacing:-.025em;line-height:1.08}
+h2{font-size:clamp(30px,4.2vw,50px);font-weight:800;margin:14px 0 14px}
+h2 em,h1 em{font-style:normal;background:linear-gradient(95deg,var(--teal-2),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(16px,1.6vw,19px);color:var(--muted);max-width:62ch}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:14px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn-lime{background:var(--lime);color:var(--navy);box-shadow:0 12px 30px -14px rgba(196,232,71,.9)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.btn-dark{background:var(--navy);color:#fff}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ── NAV ── */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--teal-2),var(--lime));z-index:60}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .25s,box-shadow .25s}
+nav.solid{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--rule)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:70px}
+nav .logo img{height:26px;display:block}
+nav .logo .dark{display:none} nav.solid .logo .light{display:none} nav.solid .logo .dark{display:block}
+nav .links{display:flex;gap:22px;margin-left:auto;font-size:14px;font-weight:600}
+nav .links a{text-decoration:none;color:rgba(255,255,255,.82)} nav.solid .links a{color:var(--muted)}
+nav .links a:hover{color:var(--lime)} nav.solid .links a:hover{color:var(--teal)}
+nav .cta{padding:10px 16px;font-size:13.5px}
+@media(max-width:920px){nav .links{display:none}}
+
+/* ── HERO ── */
+.hero{background:radial-gradient(1200px 600px at 75% 10%,#14336a 0%,var(--navy) 45%,var(--navy-2) 100%);color:#fff;padding:140px 0 70px;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(180deg,#000 0%,transparent 85%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:40px;align-items:center;position:relative;z-index:1}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}}
+.hero .eyebrow{color:var(--lime)}
+.hero h1{font-size:clamp(40px,6vw,76px);font-weight:800;margin:18px 0 20px}
+.hero .lead{color:rgba(255,255,255,.72)}
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+@media(max-width:520px){.doors{grid-template-columns:1fr}}
+.door{display:block;text-decoration:none;padding:20px 20px 18px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);transition:transform .2s,background .2s,border-color .2s}
+.door:hover{transform:translateY(-4px);background:rgba(255,255,255,.1)}
+.door.ag:hover{border-color:var(--teal-2)} .door.ro:hover{border-color:var(--lime)}
+.door .k{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.door.ag .k{color:var(--teal-2)} .door.ro .k{color:var(--lime)}
+.door .t{font-size:19px;font-weight:800;margin:6px 0 4px}
+.door .d{font-size:13.5px;color:rgba(255,255,255,.65)}
+.door .go{margin-top:10px;font-size:13px;font-weight:700;color:#fff;opacity:.85}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;font-size:13.5px;color:rgba(255,255,255,.62)}
+.hero-meta b{color:#fff}
+.scene{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 60px rgba(0,0,0,.35))}
+.scene .lbl{font:700 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.dash{stroke-dasharray:6 7;animation:dash 1.6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-26}}
+.pulse{transform-origin:300px 190px;animation:pulse 2.6s ease-out infinite}
+.pulse.p2{animation-delay:1.3s}
+@keyframes pulse{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.9);opacity:0}}
+.blink{animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+
+/* ── STATS ── */
+.stats{background:var(--navy-2);color:#fff;padding:54px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:860px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat .v{font-size:clamp(34px,4vw,48px);font-weight:800;letter-spacing:-.03em;background:linear-gradient(95deg,#fff,var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .l{font-size:14px;color:rgba(255,255,255,.66);max-width:26ch}
+.stats .src{margin-top:22px;font-size:11.5px;color:rgba(255,255,255,.4)}
+
+/* ── PRODUCT BANNER + PRB ── */
+.pbanner{border-radius:28px;padding:clamp(28px,4vw,48px);color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.pbanner.ag{background:linear-gradient(135deg,#0E2244 0%,#0f4a63 60%,#1B7C99 100%)}
+.pbanner.ro{background:linear-gradient(135deg,#0E2244 0%,#2c4a1a 65%,#5c8c12 100%)}
+.pbanner-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+@media(max-width:900px){.pbanner-grid{grid-template-columns:1fr}}
+.pbanner .tag{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.pbanner h2{color:#fff}
+.pbanner p{color:rgba(255,255,255,.75);max-width:52ch}
+.prb{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch;margin-top:34px}
+@media(max-width:900px){.prb{grid-template-columns:1fr}.prb .arrow{transform:rotate(90deg);justify-self:center}}
+.prb .col{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:24px 22px;box-shadow:var(--shadow)}
+.prb .col h3{font-size:20px;margin:10px 0 10px}
+.prb .col ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14.5px;color:var(--muted)}
+.prb .col li{padding-left:22px;position:relative}
+.prb .col li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:3px}
+.prb .p li::before{background:#e5674f}.prb .r li::before{background:var(--teal-2)}.prb .k li::before{background:var(--lime-3)}
+.ro-scope .prb .r li::before{background:var(--lime-3)}
+.prb .badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.prb .p .badge{background:#fde9e4;color:#c2412a}.prb .r .badge{background:#dff4f9;color:var(--teal)}.prb .k .badge{background:#eef8d6;color:#4f7a0c}
+.ro-scope .prb .r .badge{background:#eef8d6;color:#4f7a0c}
+.arrow{align-self:center;width:42px;height:42px;border-radius:50%;background:var(--navy);display:grid;place-items:center;color:#fff;position:relative;overflow:hidden}
+.arrow::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(196,232,71,.6),transparent);transform:translateX(-100%);animation:sweep 2s ease-in-out infinite}
+@keyframes sweep{to{transform:translateX(100%)}}
+
+/* ── FLOW (Agentify) ── */
+.flow{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:22px}
+.flow svg{width:100%;height:auto;display:block}
+
+/* ── USE CASES ── */
+.uc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-top:60px}
+.uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+@media(max-width:900px){.uc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.uc-grid{grid-template-columns:1fr}}
+.uc{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:22px;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.uc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--teal-2)}
+.ro-scope .uc:hover{border-color:var(--lime-3)}
+.uc .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:#e6f6fa;color:var(--teal);font-size:22px}
+.ro-scope .uc .ic{background:#eef8d6;color:#4f7a0c}
+.uc h4{font-size:18px;margin:14px 0 6px;letter-spacing:-.01em}
+.uc .row{font-size:13.5px;color:var(--muted);margin-top:6px}
+.uc .row b{color:var(--ink)}
+.uc .more{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.uc.open .more{max-height:260px}
+.uc .tog{margin-top:12px;font-size:12.5px;font-weight:700;color:var(--teal)}
+.ro-scope .uc .tog{color:#4f7a0c}
+.uc .tag2{position:absolute;top:18px;right:18px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+
+/* ── EXAMPLE + CALC ── */
+.calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:60px}
+@media(max-width:960px){.calc-wrap{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+.panel.dark{background:var(--navy);color:#fff;border-color:transparent;display:flex;flex-direction:column}
+.ex-cta{margin-top:auto;padding-top:26px;display:flex;align-items:center;gap:16px;justify-content:space-between}
+.ex-cta>div{border-top:1px solid rgba(255,255,255,.12);padding-top:18px;flex:1}
+.ex-cta b{display:block;font-size:17px;letter-spacing:-.01em}
+.ex-cta span{display:block;font-size:13px;color:rgba(255,255,255,.55);margin-top:4px}
+.ex-go{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:var(--navy);font-weight:800;font-size:20px;text-decoration:none;margin-top:18px;transition:transform .2s}
+.ex-go:hover{transform:translateX(4px)}
+.panel h3{font-size:22px;margin:8px 0 6px}
+.panel .sub{font-size:14px;color:var(--muted)}
+.panel.dark .sub{color:rgba(255,255,255,.6)}
+.big{font-size:clamp(34px,4vw,46px);font-weight:800;letter-spacing:-.03em}
+.split{height:18px;border-radius:9px;background:rgba(255,255,255,.12);display:flex;overflow:hidden;margin:16px 0 10px}
+.split i{display:block;height:100%;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.kv{display:grid;grid-template-columns:1fr auto;gap:8px 16px;font-size:14px;margin-top:16px}
+.kv .k{color:var(--muted)} .panel.dark .kv .k{color:rgba(255,255,255,.62)}
+.kv .v{font-weight:700;text-align:right}
+.kv .sep{grid-column:1/-1;height:1px;background:var(--rule);margin:4px 0} .panel.dark .kv .sep{background:rgba(255,255,255,.14)}
+.ctrl{margin-top:18px}
+.ctrl label{display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:6px}
+.ctrl label output{font-weight:800;color:var(--teal)}
+.ro-scope .ctrl label output{color:#4f7a0c}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.ro-scope input[type=range]{accent-color:var(--lime-3)}
+select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--rule);font:600 14px Manrope,sans-serif;background:#fff}
+.result{margin-top:22px;padding:20px;border-radius:16px;background:var(--paper);border:1px solid var(--rule)}
+.result .big{color:var(--teal)} .ro-scope .result .big{color:#4f7a0c}
+.bars{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.bar{display:grid;grid-template-columns:150px 1fr auto;gap:10px;align-items:center;font-size:13px}
+@media(max-width:520px){.bar{grid-template-columns:1fr auto}.bar .track{grid-column:1/-1}}
+.track{height:12px;border-radius:6px;background:#e9eef5;overflow:hidden}
+.track i{display:block;height:100%;border-radius:6px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.note{font-size:12px;color:var(--muted-2);margin-top:12px;line-height:1.5}
+.panel.dark .note{color:rgba(255,255,255,.45)}
+
+/* ── ROBOT SCENE ── */
+.robo{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:16px}
+.robo svg{width:100%;height:auto;display:block}
+.belt{animation:belt 1s linear infinite}
+@keyframes belt{to{stroke-dashoffset:-24}}
+
+/* ── HUB / PORTAL ── */
+.hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:960px){.hub-grid{grid-template-columns:1fr}}
+.orbit{position:relative;width:min(440px,calc(100vw - 110px));aspect-ratio:1;margin:0 auto}
+.orbit .ring{position:absolute;inset:0;border:1.5px dashed #c9d5e6;border-radius:50%}
+.orbit .ring.r2{inset:17%}
+.orbit .spin{position:absolute;inset:0;animation:spin 26s linear infinite}
+.orbit .spin.s2{inset:17%;animation-duration:18s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orbit .sat{position:absolute;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:24px;box-shadow:var(--shadow);background:#fff}
+.orbit .sat span{display:inline-block;animation:spin 26s linear infinite reverse}
+.orbit .s2 .sat span{animation-duration:18s;animation-direction:normal}
+.orbit .core{position:absolute;inset:35%;border-radius:50%;background:radial-gradient(circle at 30% 30%,#1d4a8a,var(--navy));display:grid;place-items:center;color:#fff;text-align:center;box-shadow:0 0 0 10px rgba(46,190,217,.12),0 0 0 22px rgba(196,232,71,.08)}
+.orbit .core b{display:block;font-size:20px;letter-spacing:-.02em;background:linear-gradient(95deg,var(--teal-2),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
+.orbit .core small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.portal{background:#0b1a33;border-radius:22px;padding:18px;color:#fff;box-shadow:0 40px 80px -40px rgba(8,24,53,.8);border:1px solid rgba(255,255,255,.08)}
+.portal .top{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.55);margin-bottom:14px}
+.portal .top i{width:10px;height:10px;border-radius:50%;background:#ff5f57;display:inline-block}.portal .top i:nth-child(2){background:#febc2e}.portal .top i:nth-child(3){background:#28c840}
+.portal .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.portal .tile{background:rgba(255,255,255,.06);border-radius:12px;padding:12px}
+.portal .tile .l{font-size:11px;color:rgba(255,255,255,.55)}
+.portal .tile .v{font-size:20px;font-weight:800;margin-top:2px}
+.portal .chart{display:flex;align-items:flex-end;gap:6px;height:110px;margin-top:14px;padding:10px;background:rgba(255,255,255,.04);border-radius:12px}
+.portal .chart i{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--teal-2),var(--teal));transition:height .8s ease}
+.portal .chart i.r{background:linear-gradient(180deg,var(--lime),var(--lime-3))}
+.portal .rows{margin-top:12px;display:flex;flex-direction:column;gap:7px;font-size:12.5px}
+.portal .rows div{display:flex;justify-content:space-between;padding:8px 10px;background:rgba(255,255,255,.04);border-radius:8px}
+.portal .ok{color:var(--lime)}
+.portal .cap{font-size:11px;color:rgba(255,255,255,.38);margin-top:10px}
+
+/* ── TIMELINE ── */
+.tl-tabs{display:flex;gap:10px;margin-top:26px}
+.tl-tabs button{padding:10px 16px;border-radius:999px;border:1px solid var(--rule);background:#fff;font:700 14px Manrope,sans-serif;cursor:pointer;color:var(--muted)}
+.tl-tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tl{position:relative;margin-top:30px;display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+@media(max-width:960px){.tl{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.tl{grid-template-columns:1fr}}
+.tl .line{position:absolute;top:22px;left:4%;right:4%;height:3px;background:#e2e8f1;border-radius:2px;overflow:hidden}
+@media(max-width:960px){.tl .line{display:none}}
+.tl .line i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal-2),var(--lime));transition:width 1.8s ease}
+.step{position:relative;z-index:1;opacity:.35;transition:opacity .5s}
+.step.on{opacity:1}
+.step .n{width:46px;height:46px;border-radius:50%;background:#fff;border:3px solid var(--teal-2);display:grid;place-items:center;font-weight:800;color:var(--navy)}
+.step h4{font-size:16px;margin:12px 0 6px}
+.step p{font-size:13px;color:var(--muted)}
+.tl-foot{margin-top:24px;font-size:14px;color:var(--muted)}
+
+/* ── TRUST ── */
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+@media(max-width:900px){.trust-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.trust-grid{grid-template-columns:1fr}}
+.trust{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:22px}
+.trust .ic{font-size:26px}
+.trust h4{font-size:17px;margin:10px 0 6px}
+.trust p{font-size:14px;color:var(--muted)}
+
+/* ── FAQ ── */
+.faq{max-width:860px;margin:30px auto 0}
+.faq details{background:#fff;border:1px solid var(--rule);border-radius:14px;padding:18px 22px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";font-size:22px;color:var(--teal);line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:10px;color:var(--muted);font-size:15px}
+
+/* ── CTA ── */
+.cta-box{background:radial-gradient(900px 400px at 20% 0%,#1d4a8a 0%,var(--navy) 55%,var(--navy-2) 100%);border-radius:30px;padding:clamp(34px,5vw,64px);color:#fff;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;overflow:hidden;position:relative}
+@media(max-width:900px){.cta-box{grid-template-columns:1fr}}
+.cta-box h2{color:#fff}
+.cta-box p{color:rgba(255,255,255,.72)}
+.cta-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.cta-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:rgba(255,255,255,.85)}
+.cta-list li b{color:var(--lime);font-size:20px;line-height:1}
+.glow{animation:glow 2.4s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 10px rgba(196,232,71,.15),0 12px 30px -14px rgba(196,232,71,.9)}}
+footer{padding:40px 0 60px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.testband{background:#fff6d6;color:#6b5400;font-size:12.5px;text-align:center;padding:8px 16px;font-weight:600}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><img class="light" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWIAAABLCAYAAABKiI0wAAAQAElEQVR4AexdB1wVRxOfpRcRBMWuoKixIxYsqBhLAjasYC+xx5aYRBM1lphm+5IQa4wxlgh2jRExgNgCNsRubFgSO0gVpN03c3Lv3T3eo/loZvmxb3dnd2f3/nc3OztbzgD4H0eAI8AR4AgUKwJcEBcr/LxyjgBHgCMAwAUxfwo4AhyB/wYCJfgquSAuwTeHN40jwBH4byDABfF/4z7zq+QIcARKMAJcEJfgm8ObxhEofQjwFhcEAS6IC4IaL8MR4AhwBPSIABfEegSTs+IIcAQ4AgVBgAvigqDGy3AEihcBXvsbhgAXxG/YDeWXwxHgCJQ+BLggLn33jLeYI8AReMMQ4IL4Dbuh/HL0hwDnxBEoKgS4IC4qpHk9HAGOAEdABwJcEOsAhpM5AhwBjkBRIcAFcVEhzevRjgCncgQ4AvzQH/4McAQ4AhyB4kaAa8TFfQd4/RwBjsB/HgEuiP8TjwC/SI4AR6AkI1DiBLGrq2vZBmMnCNV+XCOU37lfsNt7SLDb+YdQdcVaoT7SCwJm03c9f3FY9C3y+0OouNFfqDt+klAQPrwMR4AjwBEoDARKlCB26eV19oHP8LjH3b0guWYtEExMAQwYgIkJpNRwhCe9+kG1lesE527vLMorGM3bt3dJatx0ZEKTZsjPBNLL2UKcazuoP3gYF8Z5BZHn4whwBAoVgRIjiEkIP+38jsuL2nUADA11XnRy9ZrwyGfE7BZvv+2hM5MsIcPCcmJaeXsAxkD6y7ApBxnW1lJUXz7nwxHgCHAECoRAiRDEbdq0sY13aemS7FAL5AITBAFYZiaQD7K/tAoV4ElXzwMyku5gWupJw6REYMhLymTwIgkMkpOlKPc5AhwBjkCxIlAiBHFivQbRSSiEBQN1c1h6Gpg8fQIWUbdEn6WlKYBKatgEnHv0yFUYR4aErDO/dhlMHv4LBikpYIBC2fLqJTC7FzVWwZBHOAIcAY5AMSGglnzF1IDWnTq5JtWqA6m2dqoWsIwMsI44A9W2rO91b/okVmOtr3WZKxeBpaeDOhOD+Jbt8mSeuLzNj1XYtnlG+f27wX6nH1QKOWRBAlrFiwc4AhwBjkAxIlDsgjjR0Sn8haPSJGH24B+wiTwbejok5HfC5uTJk/G2x0K+NEqIV5gpEho2ghbu7u6UJzd3Pjh4+dVf17PL2/1ZWFgYt0vkBhhP5whwBIoMgWIVxK27dh2ZhJNzaTh5Jl0xmSCsUPs9+/veThKN/IjAwDlmUbcBUFumOLlME1OIb9biMIW54whwBDgCpRUB7YK4iK4msWatX16gbVhenfn9u2B+JypITpPCZS9EgMHLl1IUaGIvoZEz4GSfOfA/jgBHgCNQShEoNkHc2sNjdpJTXUgvq15GZvAyBayuXoaI/fu6asPzws7tzPTxI8UKiDS0LcfWrf9CW35O4whwBIoegS5durh369atZ9HXXHprLDZBnFTDcVGSQ201coIAFnejwOLeHX81MXvI+vxZgHTZCgpDQ0hwbp49Yxalmbt7l8YePQ436tNPaOTVN7WJp+fO5m6dXLOSuVeICPTs2fPAsGHDhJEjR6pcIVbHWesJgT59+kQPHzFCdc+8vb2FvLDu3Llzk4ULFwpDhw49PGTIkH1fffWV0K9f/zyVJf4kwAcO9BZGjhotjBk7TnSjR78nDB8+Qhg0aLAwcMBAwauX11kPD4/ZlF9PrkSwKRZB3KpHj58S6rwFGZaWKhAMk5PB8vo1OHNgv4+KqCVQ9uolC6PYWFWKwBi8rFYdGnv1VWjFJGwbDh4qxLbv9OcT78Huj4aPgUfD3jN+2senb2y7duENB3gLLu3bN1Ex4gG9IoAakceECRM8fvjhB1ixYoXofH19oVevXsf1WhFnplcEBg8eLEydNs3WV3bfPvnkE6BONbeKGjZqdH7OnDkwYsQIGD58OEyePBnL9citmJg+bNhwAQX+4YULF8CKH31h1coVoluJvq/vD7B06RL4fN7nMP3D6S4jR45cNBzziwXfkB+D4riOpOoOY17UdFBXjdqw5Z1bqA1H+aqJ2kO04sHqwjmFeSLTyJi0YpWduGnnrh/GtnYNf9J7AMS3agvpdhVAMDIStzinVqoMsW4d4VnPPhDfrOV5F/fO3tprKn4qCjNvT0/P+e+8886Y5s2bGxd/i/Legho1ahyoU6cO2NjYgIWFhcoxxqzyzoXnLGoE6tWrB3XxvpUtW1Z1z8zMzMDAwKBqbm0xwncsOSUFMjMzRZeBvoDvdm7l+vbtJ4wfPw5GjRoFVD89L8SLnImJCVhZWUHlypWhYcOG0LFjR/Dy8gJHR0d4k/6KXBC79ujpl1CvPmSYmatwNKJNFjevw5mAgKkqYg6Bspcip7KkJHUOfABoa7TzOx7foluZ0Lrdslg3d8hEAaDOpAyll7ODuLYdIL5xEz+XDh3qK1OLL0bDwlmzZgnLli0TUDvxQ81iHg7zfho6bFjqZ599Jvj4+OR5qFd8VwFghC+QgaHurerF2TZet24ESPAZFvC+XbpyZeqBAwfgyJEjcPToUQgMDIS//goTK8vpp0OHDlC/fn2Q15uRkQG3b9+G8PBwOH78OPL5C06dOgUXLlyAqKgoSEGBnxPP0pZmUNQNTqrp6P2ihro3Y9hj0u45i3tRM/PalrNBQb6WN68pspPQjWvd7pPYdh0mxrm2Bbyr6nSsg7ZKk5Nvl85E00hisxaQUqXaFXXm4gsNGjRIGDNmjC3a2eDDDz8Uh3g4XAO0s8L0adNg3rx5MHXqVBg/fnypEMbakESNuKw2OqeVfgQOBQT4Dujfn7399tusU6dOzMfbm/3001qW25U51XESR07yfDdu3IAVK1ZC27ZtGQpq5ubmxlARqbRw4Rci/datW/LspT5cpILYtZfXgbj6jUEwVo+yDePjoMytG3AqMHBxftC0OXv6sXynnWBsAvEuLSABBSsta5N4MZzYM3n0AMpcjATLyxfA5MkjAOxtpfS0CvaQUrMWOLfv1E6iFYdPZoj33nsPunbtCsYyfORtMUEts1WrViSIYeDAgaVWGMuviYf/2wi84+GxqEyZMmT6UABBmvXy5csUQjw4OPjxzp07GNqM2Q70FQVKeaRIBXFiTUePZJxYU2GWmQGWUbfA7O7tfipaHgORe3ZVMvv3vjo3w3tmoBwKG6SmglnUbbANOQR35sxkdz/7mFkfCwXjZ0/V5TBEk32ZZS2+xWCx/eOMs1/Lli11CmGpYYY4bCTbK06eSKQ8+zibLbz//vvClClThMnofFADz3NhzNivXz+xLJUnPsRP03bdo0cPP9LYGzRoABbmavMTFhf/mzVr5kB1Ew9yxAfL/CQm5vBDecaMHSt8/PHHwueffy4sWLBAWIgz9OQoPHfuXOGjjz4S0M4ovPvuux/mwCrXJHd3d4f+/fvT6ESYNn268PEnnwiffvqpQCYjHKkIY7EduU06kgmJrpPKUdtwEkvkMR35EW7Y8Xrk2hBZBmoTjZhwAkxsB46ORAy++OILQXILs/CYP3++QPXNmDFDxIPmGWSstAa9+vR5RPejdu3aQB2+PBMJShcXlyaULjm6NnkeCqPtNkpKJ5/aSjhQmi5nZmrqrU3x+Pfff3UV0UofOmQoPptThalTXrkhGNeaUQfxvdHvqcoSj5EjRgo6shYKucgEsagNN2wCAgoS6UpMYp9Dmds34XRQ0C6Jlh/f+ky4zuy0Jtni+lUod+wwXPb7DaX0q6zlrl+1s8Q6RTPFKxKk2ZWHDIsyxaYR42ScbZcuXcASTSVZTYL4+Hig4dmTJ09Ac8KD8qFAA7InS/lz8ydOnEgCBGgGfObMmYBChVYw5FZMlY6aertOb78NVJYc8UGe0L59+1RVJgy4NG/uPen992Gwjw9UqFABKep/nPCBCRMmiHUTD3Io5ACvZYw6lzI0evRoYcmSJQLaysegEAMUMKKJBoUxoIATHYVR+MDs2bNhGppwUNAt+/bbb4VBgwfn6WUi/JG/gPyExYsXC2iTj0JhC9M/+ABQkMLnc+cC1UGO6kBhDNiudmTHR7ORqg4Urt44fBZ8fX0Fus6Zs2aJbUWhKfpUnvihkAK0/x/AuEACX3nFyhi17YMPPqD5gijiSbhjO1XtITwkR3RyVB/yBmyLiAdez7yFKLDRV7VVWQsADv8rfoLPBdYH1hpHxNJEGXauqntP942enx49eyt2tbq1b+9AaZLDTjPXZ4wx7ZO3aWmyJaqajdWIDxs2XJgwaSJ8MvMTlevbry906+YxUSOrzuio0aNUZYnP5CmTwdvbRydeOhkVMKHIBHFCLSeP5MpV1M1MTweLO1Fgcfe27kXA6txaQ5mmpoBSKluaQUoylLlyCWyOHzlxcfdOlRCmjGFhYTFGMdHAktWr3TLLWEGabGMJ5StKV7du3ehq1aqhWfuVRh8dHQ1bt26FNWvWwMaNG0WBLG8PPryikGvRsqWtnJ5T2LV1axJ4UKNGDahatSpUrVIFypUrl1MRRRrWWa0svqBiWSxPfEiDr4+arzwjzXhXrFgR7OzswAgnUeVpFLa3txfrlvhUwdlwKkNpcodCzePrr78mDV60lw8YMAAaYl00m49tEWfl0/EZokkdmqUnGq3QaNq0KaDAAdSORRPOZ7Nn5/gyUQfTt2/f6Pex8yDhQsID7fT4EncT67PHzoTaR1qiKT5vhNlbb70FvXv3BuoYSDhiWeooaCLVj4QQxsXZ/SqVKqkwoE6IVh/Q9ZN5iZZ4ocYK2GkAabrya5eHcRIrmuqgjgGFJVSvXh2oPcSPOmi6drkjGpUnLdPW1hYIDxT6QHWNHTcOsPPUiodV2bJA94LwJd7EQ3LEi+6pdM9EH58fYxMjdykP+aQ5i2n4fEg+tYHSdDkc4VWke6eZrtkGzXR5vGHDBtCubVuoJqu3PD5/xsYGjeX5cgqT0iC1mXwc6UGjxo1yKqLXNAO9ctPBzNWrb3hcE2dAQ5AqhykKwzI3r0N4SEiEipiPQIPxk4ToDl1Abg8G+sOJOWPUtMv+dWzD+T9+dyOSpjPEdCPUOCU6rUVOs68Izjj+k2hF6bdp0wboIZbqpBlnfPkYalwMBQPbvn27lKTybWxswNnZWRXPLUBCER/63LLlK534GWoI27t37kBwUBCcPHkSEhISFPxISISEhMAff/whuv3790NAQADcvXtXkY8iOEI4QAIRh8T42Lx6TEnoUt6DBw+Cn5+f6KjDonDgoUPw4MEDNP9nUHGxTMcOHeD9SZNIKGsVPpQRO4zjZJsn4UgCjmjkXrx4AZcvX4Z9+/aJ9VAd5A4cOCC2lzoBEhY4mSQuu8L7RQIVSJDRdR8+fFgsR+0jR/cQlQBIRXMZ8SdHedEkBT179gTURG2JpulQEAMJweTkZPjnn38gIiIC0FYKe/fuhR07dsC2bdvA399f5Xbt3i2uWnj46JHYWUn8yExEwooEv7b5hb///hv24325ePEi7bhwTAAAEABJREFUUF1SOfJjY2MhKDgY9v7+O+zFeyb5SQkJQyldctoEqpSmzceJZ6G7pydUxg5LM506ne+++05cPYTvgcL3QLuyPL+5FhOYPL2gYVOckylo2fyWe/WE57dUPvPH133LNaVCRVUplpYKlvfugNmD+5VUxHwE6k2eJjzt/C5kYC+uvRjTTs6iGsfGbDHCScKsqOiRIBbMLEaIkSL8Qc3Pu1GjRkDaElVL2g0JGgpL7tSpUydIS5bi5JOG5ujgAMNHjBAonhdHgjAv+V4nz6pVq9jy5ctNdu7cCZptpvp/+eUXWLp0qSO5H3/80W7lypV2q1evVtww1P4EFBZQvnx5VVNIMJJwX7duHXz//fdjUetlaBYQHYW//+67GT///DOcP39eIeyqoOZGghZtzH4qZrkESPCEhoaKIxK0ezLiL7n//e9/TakNVM/LrHNPSHuizpTu4ZUrV2Dz5s3g6+sbQ2WkNqKtlOG1QhB2UoSD1ATqgBs3bgw4IoqWaHKfBORuFK6bNm0Cuj7igdcfQO1CjBhq0ww1XpXr368fw/SY9evXA014yQU/dcZku38bTUzyOii8dPFitnrVKmvqKKkjIZrkHj1+DD/jfft2xQq7b/GeSf6hQ4e2SHnINzTIuzhBYTrbA4Uw2vTBAZ9jKi93ffv2Fc0qZAaSu2loeqpSrfpsed7CCue3Y3mdduQduQLW0qpPvyuxDZsqSpvg0LvMjWtwMjj4sSIhl0jrDh3q150xU4jp1BUydfWCjKGZoSwkvdVgpC52FnGxYw3jYhWbQlLL20OGmdkQXWUKi+7crJkfDYtIu6I67t2/TxqXHYUlh1qZ2xnUhKS45JOm1NzFRYrm6CskXY45Xz/x7NmzaSQ4qVPR5JaYmHgHhZzoAgMDY8jJ87i7uzu4ublBzZo1VWQSXCSQ1qMwWLRoEcMy61SJWQHsvJajXZSRkKSJHiqTlQRkSujo7u4txXPzyS6PdZAwzQYbaqMXqA0kHJ8+fZqN1e+oNaJpgmG64h5SRhTQbMuWLfAYBRvFJYdaOdSqVUuKKnzs1BgKKzZ+/Hg2f/58hsKYYR2eikwaEap7zuzZbPWaNVuOnzihSCX771v160OXd9/tq0jACI5O4kkblmOHZMhIz4DkxMQLYXi/5I7S5I6xbHDJkxVhrCMZHVoWtesRUpo2P1PIVPDSFcnMhHRdaSWNXuiCOK5B4/qpaKuSLtwQh2ZlUBs+99vmvN81LNyyc+chz9p2vBLTtgPQ8ZdIevWPpgjaHs1kxn3BzBxeOtYGl45v93yVSfmLQ8RkYxLEKcmqhEyrsqhhWxurCEUUcHV1VUyOnMAXB4VAjGb1ZK7QpNHQtkHDhoDD+CLZkJKvG6bZ2DzG0QZ71s3NTZE7Ds1IYWjq+HndulybQBo5Dd81F/x7ovalYJoVYSw7SzKB5DZZdPv2bYiLi8viovbIfKCOZQ+htr3g5s2bigQyieB1K2j6iPyxf/9QFMqQkqW5E0/GGJDdtkbVqjspXlyOOk4y35DJRhtmAYGBQFo9daxyR7Qnjx4pNHFt10DiXWBC3mf8tDEpQlqhCuKW/Qe+iGugNHibRD8Dq2uX83WJLt27b45x67Q5tmVrcZuyvLDJ82iwORIM5veiVGQBh0iptnaQ7OS0T0XUCNCEnaHMhkmrOVIr2ENRnj+BtsHD9erWVZgljh/XfhTDlcuXHz9+8kRxFTTUrI6TfHXr1SsRG1IUjStgpHyFCrY0ESgv/gjtnVdxyC+n5RQmE4bm8LqOkxN0fffdkTmVy09aGk4UZmbS656fUgBoWz4Z8/y5ohDdRzI1KYh6iuAIK4Lwk7MjcwjiLCcVS3gJmkPQvp12H0eBmg2g+QOcI2Djxo1TOBoZUAejmV9bHLtYrhETMM+bNDOXr0YwfJkClnej4Ox2f8SIcuTuXLz63ohp23EITfYJGsZz04cPwPbwn3B9xffM6twZxQqKjDJW8KKWE6DGqTZOy6ozio2JMEpUTialVqwEmaamWrVoWVG9BV2aN3e3QzsoY6/guHvvHtyMiuqnrYLkFy8anDl7NltSpcqVwdnZORu9tBJoVQAJJnn7Y1FwodaUZzPWzVu3kjU1Ypr5d6pd+xc5XwrT0Jf8/DociGGR/Ati1LbTSIhjYcW/gaGhIq6vSHpq6u80iSnnR0LfqkwZOanYwpmCkG30R41h9PMfcoWmEbcc4CPE12uggFLUhq9cuKAg5hBxHuAtPHPr6JT4VkPUhE0VOc3v3Abb4INwecN68Z6Z/XPPh84qljLRIT+pFStDUg3HRxJN7htHJ3gb4pAXjVQqcqp9JcgwNSsyQdyiRQsoZ2Ojqj8sPByCDh7cpSLIAmSuOHH8BDZX+fLTC0Vadffu3VfKsucpqI9MIvj6YJTFo6K9fVZI7SUmJcH9e/eqqyk5h3bv2mWhzbRAy5tyLpmPVH1eeFZHnFvttLICJ+dojbJAKw5ow8TEieL6cGHw0KFC3379BDTBzJfzQQ38arxs5EdpxkZGuW4conz5dYwVDBTlE53fWt+M/IUmiKNbuEKG7NAdsuNa3r4FZ3bvUs7c6cCx6aChQrSbO7yoXQeFsIkiV5lrV8AONeFL/ltVdz4iONjf8mKkIl+6jQ28qFNXQZMiEWGhNw1jnwPtvpNo6dbWkGFl7SrFC9Mf6OMjODo6Aq1NpXoycWbhr7/+oqBOd/3630DLkuQZaJKvKpon0Fac58Xr8vIlKUyCxlJDUyONlVYn0ARgftpKZaisvIwNPg/y+GuFi1B6fPTRR8KGDRtoTXX0+5Mn01pgcY00LZlDQSzGUSgDbRSZNm3avD179wrbtm0TfvvtNwGH9n5klpFfKzXdgBXCq18gQcyMVS+xrJGMaaPKMrxhwUK4GwAtBg0REp3qqKHCcZwp2nKtL0dmm+1WZ1KHGg8fJUR36AQvajiAYCSbP0M+Zc9HgN2R4KDzu3Zku1MWt26cMIqLVTGiSb2XlatCY48eih1AUgbjmGdgIDdPYF2p9hWhTZs2Wtd0SuX04dNqhwpolpB4kVkiKirnQ/Hj4+LcTp9BE4xUKMundZgNcdIuK1qqPRNT5ciHhCnN2uf3omj4T2Xl5cx0rbSRZyph4Tlz5wq0/A41YejRowfQWuAmTZqIK0FotQ1qvOJ67STUeg1QeNGGkWbOzrQuGWgTjJeXF9AyxyK5LKw///UIRtrKaN47bXlyojHGAJWUqlBK/gpFED91dYMME/ULZZiSDGVu/A2n9u8fmxsujcaMF6Lbu0NyFcQQh1BSfjqlzeZ0OJQ7FrpY16eUDJMSRtK2ZqkMbfZIK18BUpzquKtosoBJTHSMYVKijAKQinbil6YWWj/VpMiY14iOfLR2VK6hnTx1CoSM9HE6sovkP//880RYWFg28wQtaHeq7QT9BwwgZUfMW1J/UPP/V1fbUIsty1i2/hWzF+CysNPGgop/QwM9Pu7amqmo7fUjA7y9hW7dukFdnNAluy5jryqltco//vgjLF68mJbYwerVq2Ht2rWi7+vrC0uXLoVvvvkGvvrqK6B1x9euXXv9xpRgDvhMZWudoYEh7WrM0+i2c+fOWnf3ZWNaiAQ9PpmvWtl82CghqabDqwj94pDbNPoZWF84P4miOblGEycL0W07oDCsDIBASnnplLVyfx0F6xPHRkUEBsyU6Jp+RGjoTctrV4HhpKCUlmlhCS+r14BmXbpMkWiSbxgT28soUSmI0ypVxgk7o45SnsLwR44eLdDKAHq5iD89SDTTT+s4KZ6Tu33rFtzVmGVmjEFNh5pQGrTiTAD1mkGNC0UzTTxhoUHG/pRpknKNozaULQ9pj9mIJZhQr149qFmzJsivhdZn0446NEGIOy9/+eUXtnXrVtp9Kfrr169nKIzZ119/zebNm8cOHjy4ACc6tVxlATo3LVxKAgk78GzNMDU1AVRQnLIlaCGYm1tuNiykyVIt1WklGWilvgbxcbv2aE5QjzYMU1KgLNp0ww8FrNLF1rVz54r1p3wgPGvdDlLtygNtOZby0rkRtscOg114eKeIkD83SHRdvkn0k6EWd6JUybSU7SWaG1KqO/ygImYFIo8dPkF2YpaqPrcmrZwtpFtaTczKUigeDR3JnCBn7tW7N21bFfbs2ZOjGzd2LJSRHQ4k8bCvUEEcrkrx0ug/e/YsgQSNvO2MMTA2MZGT8hSmTo4xpsiryVuRmN+IkN8C+c9fqWJF0FxfTEu9Ll26lGdm2Plc1da5ASixgVL8p209N8010EaZvFxW5cqVuphqmMTyUk6fefQqiJuPGCUkyw72YTg8NI1+CrZXLrjpanTrLl3cY51bPIpp1QbSytkBdv+qrIYJ8WgPDgG7iFN1wkODQlUJ2QJqAk7abbG8chEANXGJmmFdDlJqOoBLmzbZekgjbJ9BcpKUFehcY1pP3LyQPk3UqVs3V9rpRTucpEoZY6Ltz8PDA3DWO0fn7u4OtloO6yHBQ7uzho/I+5Znqf7X8fNry8NnQt1La1RME3JxsbEKKmNMXGdNuCkScoggRk60XI0xpsiFgl4RL+mRMlZWYG5mpmjmg4cPITkl5XcFsYREGNOfOGFMee9yukTa4YgdjiIL2c9pMlxB1BFxdm6qOOtFR7ZCJesPOWxmTGNnAANDDL36N0hOBpuLkXAMbZuvKMrf1t08Jsa0anc4tnkrSLe2AZCBb4zmDJyUg3JnT9qFockB8vFn9ujBLrOHalOkgLbml5WqwMtqNW5oskE7MRgmqQUxpdMEX4aVVTsK69vVr1MnvEb16qqT1ugsAPocDO3xDw0NhcOHD4Pky8MSjfIdO3YM7ty5k61p9ODVe+utbHQipGdkgKbQNDA0hDx3OIaG9kaYn3hJjh5+clJcH/5DFDSafGgDgr2tbbgmXVe8WvXqN7RpOHe0HC6ki0dJoFNnYqiB+UscYeKNzPOa6qK8DgMDVpTVqeoijVhzrTTNvzRzdob+/fsLqoxaAoMHDxbatWv3ZgnipKo11JeKGqlpbAyUiTyLaq6aLIVaves5/2k7t5WxTZtBulVZkAth00cPwe5oCFicOWmCk1MxkM8/k+hnkyz+vqoolVbeHrVi9SeapETU2PsZvXghRUU/rYI9ZBoY1Rcjev5p3LgxVK6MNvAsvlevXoVff/0VVq1adQcnVu7IfXlYSsuiiaeCaQpW0pRpTTFOPnTJYq/ykvEaNYUmmTOsrKxwVlSVTWfA1MiobznZVnXKSJsmkjQ6MaLn5Bhjxjml0zkRmiYEO6zXwcEhp2KKNBpxmGuskCCely9ezL+NQ8G5aCPaxFqWYLYq0pbkUcDivS3SZkmVoSD2OaOxmoiUBlQyxJPxxo4bp1UYz5o1i5YEAh2GX1xtl64hPxqxVEanL183zIRMMIqLBW2CtGX3Xpufdnx7XkKDxpCBk2lyhub370H5IyFwef1PjIaq8rS8hnHi67H5vTtg9FwtwzPRzhoTYY0AAA99SURBVJhSpRo07t5DoVlFHD68i9HZxNhxSPwzzS0ADAwqSnF9+R6ent/S1zVQ+KlYYlsBtVu7PXv2OObVbdu2jUVGRorHPqoYYYBeUqfataG2k9OfGFX80/ZoOtBFTqS8VapWjZLTdIXR3ubeuJFyu/rz57EQ/eyZ1iJkl9TsKGjSycTUNMeRRuzz5/5XsHOSM61UqRI4OztDXv/atm0LpEXL80ecOwcFfZ7kfFRhpgoVWoBGS5qdp62dHW3GKLRVPXTfyMkvysTYGF8Hg2pymrZwRnq6gkzCzcBQPUJWJOYS0Xx2csp+6NAh/z///BNuRykfZTqLxR1NebNmzqSPkArBwcEC5hVwVCmcPn1aFMK0qep4WBjQtvP81JlTewqSpldBTF/FkBohMANIL4vmBomQ5bfs3fv4k87dhiTUrQ8ZZuZZ1Fee5e2bKISD4cLmDa/9mBs9i+5lcfP6K8b0yxikVakKL2s4KJa00MFAmWSHw3TKRo6lpYKBkKFUkynhNR1qap/QFl4SSMQqMTFR/Cot7ZqjeH7c06dP/c+hcNEsQ3ZiWu6kSb9+4ybExsUpyJaWluJmAPpumCJBI+Ll5RU1eMgQ8VxceRKZEXQN90lT1ra7jbZ0y3lohvfv3+8TFByMo2+1EkPHS7Zp0wbmL1igJmoWzIovWbZMoGNFaVifRRJ57dq1S4qWGj82NhYIR3mDqfPETrHQ1rkn4cgpVXaAFtVNIxJDI6Nc60zA55nyS44xBhak1EiEfPiM5U8ErF69mq1auVI8BlUSqIxh/RYWQO8EfcSAzjju2LEjfVUG6JxrsiMfCAiAjb9uBM0jW/PRVL1k1asgtnz4QN0oAwN4Wb4C1J2zQKBVEZTQ3HuQ8KirZ7skx9ogoIZKNNGh9myFpoTyocHxkf6/5e8OiAyy/0QcCfnd/PYNYPhgSamZqH0nNmoKDbEdRHNx7+wd27rtvpeVsbPHm0Y0csYx0cDS0y9SWJ+OlpfJt9nSelDNA1nyWh8JLDp7IgNtv/IypAmS1t2jZ0/FgUdbNm1kf/99XXHoN2MMWrVsCUsWL569detWYfbs2eI3zshuNmr0aIE2E9DurAULFjiQHY00bqkueukuXr4Ev23ZovV+PX78eCyZA6T8kt/atbUU1OmfOX0awk+dUqUzxoBwGzlyJPhv2ya8P3myID9xjibypk2fLuzcuVMYMmgQkOBgTN2sI0ePwtEjR0xUDEtJAEdKQCMZeXNpNDUCcfAZNCjXTonKValSxY+G3hTOi3vy9Ckk0NZ/WWYbGxugA+plJK3Buxo2eMYYVLCvABMnTcpTW7UyzQdx6dKltGwPFi5cCHSqG316n94vUkBI6aGO7d69e3AUnwcU3ECfnfpp7drlW7dsZvQeMaZ+ZgDrFYQiaTbWBKBXQVzuwjmRqfSTgcI21tkF/vEZ8aj6ip+EB9294EW1mkCTZ1IeRACsLl8E29CgoIjdO6wluj58k2dP1lncU09q0bK4l2ieeNa9N1RZuU54OGSEX2KLVpCJmqGqPgTf/NYNOHfkSICKpocAaZW1a9UCue3y1OnTgA+IXUHZ04NPxzHKyzPGgNaf4sRdtjMz/Py2wrW//wZ66KQytNqCPkHUq1cvmDZtGnzxxRdAmwEWoT91yhTo1bs3kIZpIbO50rpNOq7zj/37b0p8NH3U8tdRXZoanVfvXoAar0CCnwTnHwcOZHvad+7YwTai3Zy+kCHxpU6gerVq0KN7d5gzezbZ1K9cunRJILd2xYrwWbNmwbseHqLWLo04qCwdibl61aoczRJF+cJRm7I5fOa0teHSxYsNSJgk0wRdViG6Nuo8abPG4dBQAQWOsGHDBuHnn38Wfl6/Xti0aRPSdggHEFc0ewnYiYKDg0NWabUnQDbYxcT7d+/a/fPvv4pnhOqcMH48HDx4UPDz8xPQhCasWr06G4NbN28+plUdIqOsH4eaNWHq1Kmwe88eYceOHcKy5cvpPIxlWcl69/z9/dn8+fPpXGrPOXPmBNDW7/HjxsE4dJMmTYKPP/74zrJlyxasX7/e5IcffmCI0wxqhKFBdlGYmKT3QTFVpdVlr11rtrwRz/28lpnfl332BoVChqkZpFSsBMnVa0KqjS2AzGbE0tPAGoW3/dEQnbvl8laz9lyRBw+Otbh6CQzIBixlMTKCdGxHarUaQLvoRPMItlNKNrt7G8zv39G55lnKl18fzRL4TNbEOUkmFn0eGws0UYcCS23IFlPy/oNa5+LIyPPZCmBF4OSUbaUe+Pv5MdqNhQJQPEtXevnpRaMzcWmoRt/rIvMJalJAcUsc2lE6VUK2Q9Io1qxdCzgMPLF3z546RNfl9qA54OLFiyA3UZB25Yaz1CT4PVBwtnZVWIpUrFB4ssXffit+Cog+pEoJ1A5qJ9mMScsjLY0chStVrIjDYHOgPJT3+fPngC+buLuMXk6iaXPpaWlAmpJm2qu7pElVx3Wl66KrS2YPvUxNzWaCoFxBQUFXt2zZcnMn4hgdo35MqPOke9wWzTW03LFf//4wcOBAGDhgAPTp0wc8PT2AvsJBk1V0L+VmGuz44WR4ONlMk6kOTUfP4969e+HqtWtA91tKpwlmd3d36bNO8Fa9elKSyt+ze3cl7AgUX0ihttII7Z1u3YDudxOcrDa3sPhQKvQiJWUO2cKluL58tAUH0AH6+KwzmlOhZwA7LYadiCMK3/ny+YLuPXpslmMkteHJk8dSsNB9vQpiam3Vg/sCTGKfU1DtUNCRNgqyp5SOxLSOOAO2Rw4PPRVwYKY6s35DaJ7oWvYsDnNR6Ks4q9ojaxAmGsc8A5sTRyAyMHASRvX6H5eQIA6JUKMQv2WGGgzciYpa8DqVBBw4MDMw8KD4oVGJL/l0GDjZb9GuqjTCY2V+W7cyFFB2dFgMfZ2Y2kETHaR50VCYlgHRcI78W7dukSYJ+ECDr68vfPzRRzB9+vT4aVOnMvpqCLLL8X87arZff/llEA0Vt27dCnTWMtm1SdPFyRLAlwLoA6m6mGzctIlhevMpkyeLmjrxoKV+UTgp8+xZNMTHJ6CLh2c4YXjj5k2R/8aNG2He55/DpIkTYd26dRb0IuriT/QdO3cyNM0AlSPsyOFLDNjJUbJOFx8X50O4UX65I9x1FsIEnDAKOnXqlPgMUDkUtOL25KA/g05icrb/vdjZ/bZ5s/UH06eLQ+4tv/0mXueNGzfE66aVK5loniKhSY6EWlJSEuAcAtAB9FQX3T/aAv054kIa4o8//uhGJ9RlqyyLQJ0gadJfffU1kG2dDqOKjIwE6lRx8l3sHPfuU1i+skoCbN+2zYSG/Cj44Oy5c3AJR2BX0F28fJlGQhAcEgIvkpKyRr4AhwICfP38/eleqZ7jrX5+8PDhIxXPwg7UrVNnCHXw8npIefj71q3WclphhvUuiE/u2+dZY/tvAWWibgLOkmhtuzHaoGxPHAX7YyF1Tgcf2qI1k56I50JDg6xOho2yOX4UDPAB1coWh4ZmUbfB7o+9cNlPfaKb1rwFJK5asYKNHDmSDRo0SHQo1GhYNL+A7FTFUJAytOmKPCXe5H/z9dcMXxqdWg8KNbboyy8ZHb791Vdf1cEhW69J48dPGjN69MzRo0d/Sf4UHMt99tlnvb7//vtKOLxky//3P/oEkOolUjUih8C+/fu70qeFqI3z5s1rjiaEXp9++mkvFM7NiYb8lb2hBq+QkJAIEsgoRMTrnDt3bqf3J0yYNGLE8C+HDRu6btiwYesQ1wUorMcS/xEjRrCFX3zB8OXWef0aVcDiJUsYlSPcyGFnw1ALzbFdKKz9Z8yYkQ13Euya/DXji7/5RlVu6NCh7NNZs7Bj26vzpaet75uwU8LrY0OHDKGhd9MpU6b4vPfeezPw+hcMGTLEX3LDhw8X8Rg7duwMvGc+iJfbihUr7OhAdTQ7sV9//ZVhB3JCs02a8R3bt7O5c+cwfDZMcKjvhvfNE+cQPPFeOhJW3+GzoFmG4mfPnk3D54UtWbLE5LNZszyxA+n34Ycf9sNw15XYDnou6Xoor+RI8GN7xftL+A/Gd2TXzuyHekn59e13RE2fRmpyvhdwJHf40KGTclphhvUuiKmxJ/ft8ayydY9d9Z1+YHPxPJhGPwPj+DiwQLNFhdBgqO63KfTa/5awsNBQlNZUonBdZGjIBvu/jlhU3LYJrP86CiYP/gHDhHgwwnZZXDoPFXZvgwp7/Mde3uaX48tXuK0sPu6heB9QsPwecOjQqoDAwMX4oswRfYwTHbW4x/poHQlV4keOwgXhicP1ULGdAQFzcMJyLDkaagYGBq4rKM+CtKM4y+D9uIAY+qPNdjldO2LgI3NjiUZplIeELmITU9D2kmAlHsgLYT8UgM+KetIlB6ZUjsrQ+drksM1Br9OOHKp6rSRUCASyuWtuAKJR5WsxzmfhQhHE1IawsMCYyF/Xs1uffcQejBzEHg3pz+5PGsOuLfuGnf59TyfKU5SOtMNLu3ay219/wWqsX21dZa2vY6U1P1Sz37HV5Nov61hkSMi6omwPr4sjUEQIvPHV9BswQEDBL6xes4bOXxbc3d2zz05qoODl5RW14ddfhXE4CVkR5xcYU+tgoUePwpeLFqkJGmULI1pogrgwGqsvnjibHB8ZGnrnfFjYv3gD0/TFl/PhCHAEih4B2nBSv359cRfdd999B6jNRuH8hhAeHi4cCAgQtm3fLmzaskXw8/cXAgIOChcuXBTWr1/vgCYQoN2l0gQvtfz0mTOwfOnSUAoXpftPCuKiBJjXxRHgCBQuAg8fPHDEeQSaBBSXh5K919HREWgTB63W6Ne3Lwz28YEB/ftD125doVGjhkCn2tFKCcZeKb4xMTGwas0amDl7dmuc3CzyETsXxIX7jHDu/xEE+GUWHwJkt54wfjwbOHCg2wcffAA//fQToF0baHUOrWKJj48HWl1C28VpGzZt9X/y5Im4q3XHjh2Ak8fg4+PjNmnCBHa4CCfo5IhxQSxHg4c5AhyBUosACt8TaJpg48aNY++88w5r0qQJq1atGkPtl1laWjKckBMdhdEuzJo2bcoGDBjAvvnmmzytJClMYLggLkx0OW+OAEeAI5AHBLggzgNIPEsJQYA3gyPwhiLABfEbemP5ZXEEOAKlBwEuiEvPveIt5QhwBN5QBLggfkNvbMEvi5fkCHAEihoBLoiLGnFeH0eAI8AR0ECAC2INQHiUI8AR4AgUNQJcEBc14q/q478cAY4AR0CFABfEKih4gCPAEeAIFA8CXBAXD+68Vo4AR4AjoELg/wAAAP//xGS0UwAAAAZJREFUAwAOyzq0IuLMEAAAAABJRU5ErkJggg==" alt="Automatify"><img class="dark" src="data:image/png;base64,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" alt="Automatify"></a>
+    <div class="links">
+      <a href="#agentify">Biuro · Agentify</a>
+      <a href="#robotify">Hala · Robotify</a>
+      <a href="#kalkulator-ag">Kalkulatory</a>
+      <a href="#jak">Jak działamy</a>
+      <a href="#bezpieczenstwo">Bezpieczeństwo</a>
+    </div>
+    <a class="btn btn-lime cta" href="#kontakt">Umów discovery</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Agenci AI i roboty dla średnich firm</div>
+      <h1>Mniej rąk do pracy.<br><em>Więcej pracy do zrobienia.</em></h1>
+      <p class="lead">Automatify przejmuje powtarzalną pracę — w&nbsp;biurze robią ją agenci AI i&nbsp;roboty RPA (<b style="color:#fff">Agentify</b>), na hali roboty fizyczne (<b style="color:#fff">Robotify</b>). Jeden partner, pełne wdrożenie, rozliczenie od efektu.</p>
+      <div class="doors">
+        <a class="door ag" href="#agentify"><div class="k">Agentify · biuro</div><div class="t">Toniemy w&nbsp;dokumentach</div><div class="d">faktury, raporty, BOK, wprowadzanie danych</div><div class="go">Zobacz rozwiązanie →</div></a>
+        <a class="door ro" href="#robotify"><div class="k">Robotify · hala</div><div class="t">Brakuje nam ludzi</div><div class="d">magazyn, pakowanie, produkcja, transport</div><div class="go">Zobacz rozwiązanie →</div></a>
+      </div>
+      <div class="hero-meta"><span><b>Bez opłaty wstępnej</b> za wdrożenie Agentify</span><span><b>Discovery 4–8 h</b> · ROI w&nbsp;2 tygodnie</span><span><b>SLA 99%</b> · hot-swap robota w&nbsp;24 h</span></div>
+    </div>
+
+    <!-- scena: dwa światy -->
+    <svg class="scene" viewBox="0 0 600 400" role="img" aria-label="Animacja: dokumenty płyną do agenta AI, robot przekłada paczki, w środku HUB Automatify">
+      <defs>
+        <linearGradient id="gT" x1="0" x2="1"><stop offset="0" stop-color="#2EBED9"/><stop offset="1" stop-color="#1B7C99"/></linearGradient>
+        <linearGradient id="gL" x1="0" x2="1"><stop offset="0" stop-color="#C4E847"/><stop offset="1" stop-color="#7CB518"/></linearGradient>
+        <path id="docPath" d="M30 120 C 90 120, 110 190, 175 190"/>
+        <path id="docOut" d="M215 190 C 235 260, 160 300, 70 300"/>
+        <path id="amrPath" d="M330 352 L 560 352 L 330 352"/>
+      </defs>
+      <rect x="6" y="20" width="270" height="360" rx="26" fill="rgba(46,190,217,.07)" stroke="rgba(46,190,217,.35)"/>
+      <rect x="324" y="20" width="270" height="360" rx="26" fill="rgba(196,232,71,.06)" stroke="rgba(196,232,71,.32)"/>
+      <text class="lbl" x="26" y="48" fill="#2EBED9">Świat cyfrowy · Agentify</text>
+      <text class="lbl" x="344" y="48" fill="#C4E847">Świat fizyczny · Robotify</text>
+
+      <!-- inbox -->
+      <rect x="22" y="92" width="58" height="56" rx="10" fill="#0b1a33" stroke="rgba(255,255,255,.2)"/>
+      <text x="51" y="126" text-anchor="middle" fill="#fff" font-size="20">✉</text>
+      <!-- agent -->
+      <circle cx="195" cy="190" r="30" fill="url(#gT)"/>
+      <text x="195" y="198" text-anchor="middle" fill="#0E2244" font-weight="800" font-size="20" font-family="Manrope">AI</text>
+      <circle cx="195" cy="190" r="38" fill="none" stroke="#2EBED9" stroke-opacity=".5" class="dash"/>
+      <!-- ERP -->
+      <rect x="24" y="272" width="80" height="56" rx="10" fill="#0b1a33" stroke="rgba(46,190,217,.6)"/>
+      <text x="64" y="305" text-anchor="middle" fill="#2EBED9" font-weight="800" font-size="13" font-family="Manrope">ERP ✓</text>
+      <use href="#docPath" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2" class="dash"/>
+      <use href="#docOut" fill="none" stroke="rgba(46,190,217,.35)" stroke-width="2" class="dash"/>
+      <!-- dokumenty w ruchu -->
+      <g><rect x="-11" y="-14" width="22" height="28" rx="3" fill="#fff"/><rect x="-6" y="-7" width="12" height="2" fill="#9fb0c8"/><rect x="-6" y="-2" width="12" height="2" fill="#9fb0c8"/><rect x="-6" y="3" width="8" height="2" fill="#9fb0c8"/>
+        <animateMotion dur="3.2s" repeatCount="indefinite" rotate="0"><mpath href="#docPath"/></animateMotion></g>
+      <g><rect x="-11" y="-14" width="22" height="28" rx="3" fill="#fff"/><rect x="-6" y="-7" width="12" height="2" fill="#9fb0c8"/><rect x="-6" y="-2" width="12" height="2" fill="#9fb0c8"/>
+        <animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite"><mpath href="#docPath"/></animateMotion></g>
+      <g><rect x="-11" y="-14" width="22" height="28" rx="3" fill="#2EBED9"/><path d="M-5 0 l4 4 l7 -8" stroke="#0E2244" stroke-width="2.4" fill="none"/>
+        <animateMotion dur="3.2s" begin=".8s" repeatCount="indefinite"><mpath href="#docOut"/></animateMotion></g>
+      <g><rect x="-11" y="-14" width="22" height="28" rx="3" fill="#2EBED9"/><path d="M-5 0 l4 4 l7 -8" stroke="#0E2244" stroke-width="2.4" fill="none"/>
+        <animateMotion dur="3.2s" begin="2.4s" repeatCount="indefinite"><mpath href="#docOut"/></animateMotion></g>
+
+      <!-- HUB -->
+      <line x1="233" y1="190" x2="270" y2="190" stroke="#2EBED9" stroke-width="2" class="dash"/>
+      <line x1="330" y1="190" x2="372" y2="190" stroke="#C4E847" stroke-width="2" class="dash"/>
+      <circle cx="300" cy="190" r="34" fill="none" stroke="#C4E847" stroke-opacity=".6" class="pulse"/>
+      <circle cx="300" cy="190" r="34" fill="none" stroke="#2EBED9" stroke-opacity=".6" class="pulse p2"/>
+      <circle cx="300" cy="190" r="32" fill="#0E2244" stroke="url(#gL)" stroke-width="3"/>
+      <text x="300" y="187" text-anchor="middle" fill="#fff" font-weight="800" font-size="14" font-family="Manrope">HUB</text>
+      <text x="300" y="203" text-anchor="middle" fill="rgba(255,255,255,.6)" font-size="6.5" font-family="Manrope" letter-spacing=".8">AUTOMATIFY</text>
+
+      <!-- robot ramię -->
+      <rect x="430" y="300" width="120" height="14" rx="7" fill="#1c2f4f"/>
+      <line x1="436" y1="307" x2="544" y2="307" stroke="#7CB518" stroke-width="3" stroke-dasharray="8 4" class="belt"/>
+      <rect x="380" y="250" width="44" height="64" rx="8" fill="#1c2f4f"/>
+      <g transform="translate(402 250) scale(-1 1)">
+        <g><animateTransform attributeName="transform" type="rotate" values="-35;25;25;-35;-35" keyTimes="0;.35;.5;.85;1" dur="3.4s" repeatCount="indefinite"/>
+          <rect x="-7" y="-84" width="14" height="84" rx="7" fill="url(#gL)"/>
+          <g transform="translate(0 -84)">
+            <circle r="9" fill="#C4E847"/>
+            <g><animateTransform attributeName="transform" type="rotate" values="70;100;100;70;70" keyTimes="0;.35;.5;.85;1" dur="3.4s" repeatCount="indefinite"/>
+              <rect x="-6" y="-2" width="12" height="62" rx="6" fill="#e6f6b3"/>
+              <rect x="-11" y="58" width="22" height="7" rx="3" fill="#C4E847"/>
+              <rect x="-9" y="65" width="18" height="15" rx="2" fill="#d79a52"><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.3;.85;.9;1" dur="3.4s" repeatCount="indefinite"/></rect>
+            </g>
+          </g>
+        </g>
+      </g>
+      <circle cx="402" cy="250" r="10" fill="#C4E847"/>
+      <!-- paczki na taśmie -->
+      <rect x="0" y="0" width="18" height="15" rx="2" fill="#d79a52"><animateMotion dur="3.4s" repeatCount="indefinite" path="M545 285 L 445 285"/></rect>
+      <rect x="0" y="0" width="18" height="15" rx="2" fill="#c98a43"><animateMotion dur="3.4s" begin="1.7s" repeatCount="indefinite" path="M545 285 L 445 285"/></rect>
+      <!-- AMR -->
+      <line x1="330" y1="368" x2="580" y2="368" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
+      <g><animateMotion dur="7s" repeatCount="indefinite"><mpath href="#amrPath"/></animateMotion>
+        <rect x="-26" y="-14" width="52" height="22" rx="8" fill="#0b1a33" stroke="#C4E847"/>
+        <rect x="-16" y="-30" width="22" height="16" rx="2" fill="#d79a52"/>
+        <circle cx="18" cy="-3" r="3" fill="#C4E847" class="blink"/>
+        <circle cx="-15" cy="10" r="5" fill="#2a3d5f"/><circle cx="15" cy="10" r="5" fill="#2a3d5f"/>
+      </g>
+      <!-- licznik godzin -->
+      <rect x="458" y="70" width="120" height="44" rx="10" fill="#0b1a33" stroke="rgba(196,232,71,.4)"/>
+      <text x="470" y="88" fill="rgba(255,255,255,.55)" font-size="8.5" font-family="Manrope" letter-spacing="1">ROBOTO-GODZINY</text>
+      <text x="470" y="106" fill="#C4E847" font-weight="800" font-size="15" font-family="Manrope" id="hrsCounter">24/7</text>
+    </svg>
+  </div>
+</header>
+
+<!-- ═══════════ STATS ═══════════ -->
+<section class="stats" aria-label="Znasz to?">
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat reveal"><div class="v" data-count="97" data-suf="%">0%</div><div class="l">średnich firm nie ma jeszcze ani jednego robota</div></div>
+      <div class="stat reveal"><div class="v" data-count="4" data-suf=" mln">0</div><div class="l">mniej osób w&nbsp;wieku produkcyjnym w&nbsp;Polsce do 2040</div></div>
+      <div class="stat reveal"><div class="v" data-count="62" data-suf="%">0%</div><div class="l">firm zgłasza trudności z&nbsp;rekrutacją pracowników fizycznych</div></div>
+      <div class="stat reveal"><div class="v" data-count="15" data-suf="%">0%</div><div class="l">MŚP używa AI — wśród dużych firm to 78%</div></div>
+    </div>
+    <div class="src">Źródła: GUS Prognoza Demograficzna, PARP 2024, IFR World Robotics 2025, Goldman Sachs.</div>
+  </div>
+</section>
+
+<!-- ═══════════ AGENTIFY ═══════════ -->
+<section id="agentify" class="ag-scope">
+  <div class="wrap">
+    <div class="pbanner ag reveal">
+      <div class="pbanner-grid">
+        <div>
+          <div class="tag">Agentify · cyfrowi pracownicy</div>
+          <h2>Biuro, które pracuje 24/7 — <em>bez dokładania etatów</em></h2>
+          <p>Agenci AI i&nbsp;roboty RPA przejmują faktury, raporty, obsługę klienta i&nbsp;przepisywanie danych między systemami. Twój zespół zajmuje się klientami i&nbsp;decyzjami, a&nbsp;nie kopiowaniem.</p>
+        </div>
+        <div class="flow" aria-label="Animacja: faktura przechodzi przez OCR, agenta AI i walidację do ERP">
+          <svg viewBox="0 0 520 170">
+            <defs><path id="pipe" d="M20 85 L 500 85"/></defs>
+            <line x1="20" y1="85" x2="500" y2="85" stroke="rgba(255,255,255,.18)" stroke-width="3" class="dash"/>
+            <g font-family="Manrope" font-weight="800" font-size="11" text-anchor="middle">
+              <g transform="translate(60 85)"><rect x="-42" y="-30" width="84" height="60" rx="14" fill="#0b1a33" stroke="rgba(255,255,255,.25)"/><text y="-4" fill="#fff">Faktura</text><text y="12" fill="rgba(255,255,255,.55)" font-weight="600">PDF / e-mail</text></g>
+              <g transform="translate(190 85)"><rect x="-42" y="-30" width="84" height="60" rx="14" fill="#0b1a33" stroke="#2EBED9"/><text y="-4" fill="#2EBED9">OCR + AI</text><text y="12" fill="rgba(255,255,255,.55)" font-weight="600">odczyt danych</text></g>
+              <g transform="translate(320 85)"><rect x="-42" y="-30" width="84" height="60" rx="14" fill="#0b1a33" stroke="#2EBED9"/><text y="-4" fill="#2EBED9">Walidacja</text><text y="12" fill="rgba(255,255,255,.55)" font-weight="600">człowiek w pętli</text></g>
+              <g transform="translate(455 85)"><rect x="-42" y="-30" width="84" height="60" rx="14" fill="#2EBED9"/><text y="-4" fill="#0E2244">ERP</text><text y="12" fill="#0E2244" font-weight="600">zaksięgowane</text></g>
+            </g>
+            <g><circle r="7" fill="#C4E847"/><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#pipe"/></animateMotion></g>
+            <g><circle r="7" fill="#fff"/><animateMotion dur="2.8s" begin="1.4s" repeatCount="indefinite"><mpath href="#pipe"/></animateMotion></g>
+            <g font-family="Manrope" font-size="10.5" fill="rgba(255,255,255,.6)" text-anchor="middle"><text x="125" y="140">sekundy, nie godziny</text><text x="255" y="140">kontrola jakości</text><text x="388" y="140">bez przepisywania</text></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="prb">
+      <div class="col p reveal"><span class="badge">Problem</span><h3>Ręczna praca zjada marżę</h3>
+        <ul><li>Faktury, zamówienia i&nbsp;raporty przepisywane ręcznie między systemami</li><li>Klasyczne wdrożenia AI/RPA: 100–500 tys. zł z&nbsp;góry — za drogo i&nbsp;za ryzykownie</li><li>Brak zespołu AI i&nbsp;mapy procesów — nie wiadomo, od czego zacząć</li><li>1 etat biurowy ≈ 108 tys. zł rocznie (60 zł/h × 1&nbsp;800 h)</li></ul></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="col r reveal"><span class="badge">Rozwiązanie</span><h3>Agenci AI + roboty RPA pod klucz</h3>
+        <ul><li>Discovery 4–8 h: mapa procesów i&nbsp;kalkulator ROI w&nbsp;2 tygodnie</li><li>Gotowy pakiet uruchomiony w&nbsp;2–4 tygodnie, pakiet boxed średnio 4–6 tygodni od startu</li><li>Wdrożenie bez opłaty wstępnej — spłacane ratą przez 48 miesięcy</li><li>Client Portal: widzisz godziny pracy agentów i&nbsp;oszczędności</li></ul></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="col k reveal"><span class="badge">Korzyść</span><h3>Płacisz od efektu</h3>
+        <ul><li>Praca 24/7, bez urlopów i&nbsp;zaległości</li><li>Mniej błędów ręcznych — każda decyzja agenta zapisana</li><li>Prowizja to 10% oszczędności netto — gdy nie oszczędzasz, nie płacisz prowizji</li><li>Zespół przechodzi do pracy, której nie da się zautomatyzować</li></ul></div>
+    </div>
+
+    <div class="uc-head reveal"><div><div class="eyebrow">Przypadki użycia · Agentify</div><h2 style="font-size:clamp(26px,3vw,36px)">Od czego zaczynają nasi klienci</h2></div><p class="lead" style="max-width:44ch">Kliknij kartę — zobaczysz problem, rozwiązanie i&nbsp;korzyść dla każdego procesu.</p></div>
+    <div class="uc-grid" id="ucAg"></div>
+
+    <div class="calc-wrap" id="kalkulator-ag">
+      <div class="panel dark reveal">
+        <div class="eyebrow" style="color:var(--teal-2)">Przykład z&nbsp;modelu</div>
+        <h3>Przeciętny klient Agentify</h3>
+        <p class="sub">5,2 procesu · 24,4 zautomatyzowane etaty × 1&nbsp;800 h × 60 zł/h</p>
+        <div class="big" style="margin-top:16px">2&nbsp;635&nbsp;200 zł <span style="font-size:15px;font-weight:600;opacity:.6">oszczędności rocznie</span></div>
+        <div class="split"><i id="spKeep" style="width:0;background:linear-gradient(90deg,var(--lime),var(--lime-3))"></i><i id="spFee" style="width:0;background:linear-gradient(90deg,var(--teal-2),var(--teal))"></i></div>
+        <div class="legend"><span><i style="background:var(--lime)"></i>zostaje u&nbsp;klienta: <b>&nbsp;2&nbsp;008&nbsp;588 zł/rok</b></span><span><i style="background:var(--teal-2)"></i>płaci Automatify: <b>&nbsp;626&nbsp;612 zł/rok</b></span></div>
+        <div class="kv">
+          <div class="k">Licencja (agenci + RPA)</div><div class="v">263&nbsp;035,3 zł</div>
+          <div class="k">Utrzymanie</div><div class="v">62&nbsp;400 zł</div>
+          <div class="k">Rata wdrożenia (4 lata)</div><div class="v">78&nbsp;000 zł</div>
+          <div class="k">Prowizja 10% od oszczędności netto</div><div class="v">223&nbsp;176,5 zł</div>
+          <div class="sep"></div>
+          <div class="k">Wdrożenie (60&nbsp;000 zł × 5,2 procesu)</div><div class="v">312&nbsp;000 zł · 0 zł z&nbsp;góry</div>
+        </div>
+        <p class="note">Po 4 latach rata wdrożenia się kończy. Wartości dla przeciętnego klienta z&nbsp;naszego modelu; Twój rachunek zależy od procesów.</p>
+        <div class="ex-cta"><div><b>Policzymy to na Twoich procesach</b><span>Discovery 4–8 h, rachunek ROI do 2 tygodni, bez zobowiązań.</span></div><a class="ex-go" style="background:var(--teal-2)" href="#kontakt" aria-label="Umów discovery">→</a></div>
+      </div>
+      <div class="panel reveal">
+        <div class="eyebrow">Kalkulator · Agentify</div>
+        <h3>Policz swoją oszczędność</h3>
+        <p class="sub">Przesuń suwaki. Liczymy na parametrach modelu przeciętnego klienta.</p>
+        <div class="ctrl"><label>Etaty przy powtarzalnych procesach <output id="oFte">35</output></label><input id="iFte" type="range" min="2" max="120" value="35"></div>
+        <div class="ctrl"><label>Część pracy do automatyzacji <output id="oAuto">70%</output></label><input id="iAuto" type="range" min="30" max="90" step="5" value="70"></div>
+        <div class="ctrl"><label>Koszt godziny pracy <output id="oRate">60 zł</output></label><input id="iRate" type="range" min="40" max="150" step="5" value="60"></div>
+        <div class="result">
+          <div class="sub">Zostaje u&nbsp;Ciebie rocznie (po wszystkich opłatach)</div>
+          <div class="big" id="rKeep">—</div>
+          <div class="bars">
+            <div class="bar"><span>Oszczędność brutto</span><div class="track"><i id="bSav" style="background:var(--teal-2)"></i></div><b id="rSav">—</b></div>
+            <div class="bar"><span>Opłaty dla Automatify</span><div class="track"><i id="bFee" style="background:var(--navy)"></i></div><b id="rFee">—</b></div>
+            <div class="bar"><span>Zostaje u&nbsp;Ciebie</span><div class="track"><i id="bKeep" style="background:var(--lime-3)"></i></div><b id="rKeep2">—</b></div>
+          </div>
+          <p class="note" id="rNote">—</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ROBOTIFY ═══════════ -->
+<section id="robotify" class="ro-scope" style="background:#fff">
+  <div class="wrap">
+    <div class="pbanner ro reveal">
+      <div class="pbanner-grid">
+        <div>
+          <div class="tag" style="color:var(--lime)">Robotify · roboty fizyczne</div>
+          <h2>Robot na zmianę, której <em>nie ma kto obsadzić</em></h2>
+          <p>Coboty i&nbsp;roboty mobilne (AMR) przejmują pakowanie, paletyzację, transport i&nbsp;kontrolę jakości. Robota kupujesz Ty — z&nbsp;dotacją UE / BGK albo z&nbsp;budżetu inwestycyjnego. My dobieramy, integrujemy i&nbsp;serwisujemy go w&nbsp;abonamencie.</p>
+        </div>
+        <div class="robo" aria-label="Animacja: cobot przy taśmie i robot mobilny w magazynie">
+          <svg viewBox="0 0 520 220">
+            <defs><path id="amr2" d="M30 190 L 490 190 L 30 190"/></defs>
+            <rect x="200" y="132" width="290" height="16" rx="8" fill="#1c2f4f"/>
+            <line x1="208" y1="140" x2="482" y2="140" stroke="#C4E847" stroke-width="3" stroke-dasharray="10 5" class="belt"/>
+            <rect x="0" y="0" width="22" height="18" rx="2" fill="#d79a52"><animateMotion dur="4s" repeatCount="indefinite" path="M470 112 L 230 112"/></rect>
+            <rect x="0" y="0" width="22" height="18" rx="2" fill="#c98a43"><animateMotion dur="4s" begin="2s" repeatCount="indefinite" path="M470 112 L 230 112"/></rect>
+            <rect x="96" y="96" width="60" height="58" rx="10" fill="#1c2f4f"/>
+            <rect x="60" y="150" width="70" height="40" rx="6" fill="#0b1a33" stroke="rgba(196,232,71,.4)"/>
+            <text x="95" y="175" text-anchor="middle" fill="#C4E847" font-family="Manrope" font-weight="800" font-size="11">PALETA</text>
+            <g transform="translate(126 96)">
+              <g><animateTransform attributeName="transform" type="rotate" values="-40;30;30;-40;-40" keyTimes="0;.4;.55;.9;1" dur="4s" repeatCount="indefinite"/>
+                <rect x="-8" y="-70" width="16" height="70" rx="8" fill="url(#gL2)"/>
+                <g transform="translate(0 -70)"><circle r="10" fill="#C4E847"/>
+                  <g><animateTransform attributeName="transform" type="rotate" values="80;95;95;80;80" keyTimes="0;.4;.55;.9;1" dur="4s" repeatCount="indefinite"/>
+                    <rect x="-6" y="-2" width="12" height="56" rx="6" fill="#e6f6b3"/>
+                    <rect x="-12" y="52" width="24" height="7" rx="3" fill="#C4E847"/>
+                    <rect x="-10" y="59" width="20" height="16" rx="2" fill="#d79a52"><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.38;.88;.92;1" dur="4s" repeatCount="indefinite"/></rect>
+                  </g></g></g>
+            </g>
+            <defs><linearGradient id="gL2" x1="0" x2="1"><stop offset="0" stop-color="#C4E847"/><stop offset="1" stop-color="#7CB518"/></linearGradient></defs>
+            <line x1="10" y1="205" x2="510" y2="205" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
+            <g><animateMotion dur="8s" repeatCount="indefinite"><mpath href="#amr2"/></animateMotion>
+              <rect x="-28" y="-12" width="56" height="22" rx="8" fill="#0b1a33" stroke="#C4E847"/><rect x="-18" y="-28" width="24" height="16" rx="2" fill="#d79a52"/>
+              <circle cx="20" cy="-1" r="3" fill="#C4E847" class="blink"/><circle cx="-16" cy="12" r="5" fill="#2a3d5f"/><circle cx="16" cy="12" r="5" fill="#2a3d5f"/></g>
+            <rect x="360" y="16" width="146" height="50" rx="12" fill="#0b1a33" stroke="rgba(196,232,71,.4)"/>
+            <text x="374" y="36" fill="rgba(255,255,255,.55)" font-family="Manrope" font-size="9.5" letter-spacing="1">CZAS PRACY ROBOTA</text>
+            <text x="374" y="57" fill="#C4E847" font-family="Manrope" font-weight="800" font-size="16">20 h / dobę</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="prb">
+      <div class="col p reveal"><span class="badge">Problem</span><h3>Nie ma kto pracować</h3>
+        <ul><li>Demografia i&nbsp;emigracja — 62% firm nie znajduje pracowników fizycznych</li><li>Robot to wydatek inwestycyjny i&nbsp;ryzyko technologiczne</li><li>Brak integratora, który obsłuży średnią firmę: dobór, BHP, integracja, serwis</li><li>1 operator ≈ 116 tys. zł rocznie (58 zł/h × 2&nbsp;000 h)</li></ul></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="col r reveal"><span class="badge">Rozwiązanie</span><h3>Robot + serwis w&nbsp;abonamencie</h3>
+        <ul><li>Site assessment, pomiary i&nbsp;audyt BHP u&nbsp;Ciebie</li><li>Pilot 30 dni: robot u&nbsp;Ciebie, test jednego procesu</li><li>Integracja, szkolenie operatorów, monitoring 24/7 z&nbsp;predykcją awarii</li><li>Opłata serwisowa za godziny pracy robota — ok. 7% kosztu pracy w&nbsp;kraju</li></ul></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="col k reveal"><span class="badge">Korzyść</span><h3>Zmiana zawsze obsadzona</h3>
+        <ul><li>Robot pracuje do 7&nbsp;000 h rocznie — tyle co ok. 3,5 etatu</li><li>Hot-swap w&nbsp;24 h: gdy robot zawiedzie, dostajesz zamiennik</li><li>SLA 99%, umowa 36 miesięcy — przewidywalny koszt</li><li>Ryzyko technologiczne po naszej stronie, nie Twojej</li></ul></div>
+    </div>
+
+    <div class="uc-head reveal"><div><div class="eyebrow lime">Przypadki użycia · Robotify</div><h2 style="font-size:clamp(26px,3vw,36px)">Gdzie robot zarabia najszybciej</h2></div><p class="lead" style="max-width:44ch">Wybór robota wynika z&nbsp;procesu, nie z&nbsp;mody: najczęściej coboty i&nbsp;AMR, humanoidy tam, gdzie zadanie wymaga ludzkiej formy.</p></div>
+    <div class="uc-grid" id="ucRo"></div>
+
+    <div class="calc-wrap" id="kalkulator-ro">
+      <div class="panel dark reveal">
+        <div class="eyebrow" style="color:var(--lime)">Przykład z&nbsp;modelu</div>
+        <h3>Jeden robot w&nbsp;Polsce</h3>
+        <p class="sub">7&nbsp;000 h pracy rocznie (20 h na dobę, 350 dni) ≈ 3,5 etatu</p>
+        <div class="bars" style="margin-top:22px">
+          <div class="bar"><span style="color:rgba(255,255,255,.75)">Te godziny w&nbsp;pracy ludzi</span><div class="track" style="background:rgba(255,255,255,.1)"><i id="exHum" style="width:0;background:#e5674f"></i></div><b>406&nbsp;000 zł</b></div>
+          <div class="bar"><span style="color:rgba(255,255,255,.75)">Opłata serwisowa</span><div class="track" style="background:rgba(255,255,255,.1)"><i id="exSrv" style="width:0;background:var(--lime)"></i></div><b>28&nbsp;490 zł</b></div>
+        </div>
+        <div class="kv">
+          <div class="k">Koszt pracy w&nbsp;Polsce</div><div class="v">58 zł/h</div>
+          <div class="k">Stawka serwisowa (bazowa)</div><div class="v">4,07 zł/h</div>
+          <div class="k">W&nbsp;cenie serwisu</div><div class="v">software · integracja · serwis · AI Hours</div>
+          <div class="sep"></div>
+          <div class="k">Zakup robota</div><div class="v">po Twojej stronie (dotacja UE / BGK)</div>
+        </div>
+        <p class="note">W&nbsp;roku startu płacisz 95% stawki bazowej, potem stawka spada o&nbsp;5% rocznie. Cena robota nie wchodzi w&nbsp;ten rachunek.</p>
+        <div class="ex-cta"><div><b>Sprawdź, ile godzin przejmie robot u&nbsp;Ciebie</b><span>Discovery 4–8 h, rachunek ROI do 2 tygodni, bez zobowiązań.</span></div><a class="ex-go" style="background:var(--lime)" href="#kontakt" aria-label="Umów discovery">→</a></div>
+      </div>
+      <div class="panel reveal">
+        <div class="eyebrow lime">Kalkulator · Robotify</div>
+        <h3>Policz godziny i&nbsp;koszt</h3>
+        <p class="sub">Porównanie kosztu tych samych godzin pracy ludzi z&nbsp;opłatą serwisową robota.</p>
+        <div class="ctrl"><label>Liczba robotów <output id="oRob">2</output></label><input id="iRob" type="range" min="1" max="30" value="2"></div>
+        <div class="ctrl"><label>Godziny pracy robota w&nbsp;roku <output id="oHrs">7 000 h</output></label><input id="iHrs" type="range" min="2000" max="7000" step="500" value="7000"></div>
+        <div class="ctrl"><label>Kraj</label><select id="iCty">
+          <option value="58|4.07">Polska — 58 zł/h, stawka 4,07 zł/h</option>
+          <option value="71|4.99">Czechy — 71 zł/h, stawka 4,99 zł/h</option>
+          <option value="176|12.36">Niemcy — 176 zł/h, stawka 12,36 zł/h</option>
+          <option value="151|10.60">Wielka Brytania — 151 zł/h, stawka 10,60 zł/h</option>
+          <option value="174|12.22">Francja — 174 zł/h, stawka 12,22 zł/h</option>
+          <option value="181|12.71">Holandia — 181 zł/h, stawka 12,71 zł/h</option>
+        </select></div>
+        <div class="result">
+          <div class="sub">Te same godziny w&nbsp;pracy ludzi kosztowałyby rocznie</div>
+          <div class="big" id="rHum">—</div>
+          <div class="bars">
+            <div class="bar"><span>Praca ludzi</span><div class="track"><i id="bHum" style="background:#e5674f"></i></div><b id="rHum2">—</b></div>
+            <div class="bar"><span>Serwis — 1. rok (95%)</span><div class="track"><i id="bSrv" style="background:var(--lime-3)"></i></div><b id="rSrv">—</b></div>
+          </div>
+          <p class="note" id="rNoteRo">—</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HUB ═══════════ -->
+<section id="hub">
+  <div class="wrap hub-grid">
+    <div>
+      <div class="eyebrow">Jeden partner</div>
+      <h2>Biuro i&nbsp;hala w&nbsp;jednym kontrakcie — <em>i&nbsp;jednym widoku</em></h2>
+      <p class="lead">Nie składasz sam stosu narzędzi i&nbsp;dostawców. Agenci AI, roboty RPA, coboty i&nbsp;AMR — jedna umowa, jedna faktura, jeden Client Portal. Kupujesz wynik biznesowy, nie licencje.</p>
+      <div class="orbit reveal" style="margin-top:30px" aria-hidden="true">
+        <div class="ring"></div><div class="ring r2"></div>
+        <div class="spin">
+          <div class="sat" style="top:-28px;left:calc(50% - 28px)"><span>🤖</span></div>
+          <div class="sat" style="bottom:-28px;left:calc(50% - 28px)"><span>📦</span></div>
+          <div class="sat" style="left:-28px;top:calc(50% - 28px)"><span>🦾</span></div>
+          <div class="sat" style="right:-28px;top:calc(50% - 28px)"><span>🚚</span></div>
+        </div>
+        <div class="spin s2">
+          <div class="sat" style="top:-28px;left:calc(50% - 28px)"><span>🧾</span></div>
+          <div class="sat" style="bottom:-28px;left:calc(50% - 28px)"><span>💬</span></div>
+          <div class="sat" style="right:-28px;top:calc(50% - 28px)"><span>📊</span></div>
+        </div>
+        <div class="core"><div><small>Automatify</small><b>HUB</b><small>1 kontrakt</small></div></div>
+      </div>
+    </div>
+    <div class="portal reveal" aria-label="Przykładowy widok Client Portal">
+      <div class="top"><i></i><i></i><i></i><span style="margin-left:8px">Client Portal · Twoja firma</span></div>
+      <div class="tiles">
+        <div class="tile"><div class="l">Godziny agentów (miesiąc)</div><div class="v" id="pHrs">0</div></div>
+        <div class="tile"><div class="l">Godziny robotów (miesiąc)</div><div class="v" id="pRob" style="color:var(--lime)">0</div></div>
+        <div class="tile"><div class="l">Oszczędność narastająco</div><div class="v" id="pSav">0 zł</div></div>
+      </div>
+      <div class="chart" id="pChart"></div>
+      <div class="rows">
+        <div><span>Faktury → ERP</span><span class="ok">● działa</span></div>
+        <div><span>BOK 24/7</span><span class="ok">● działa</span></div>
+        <div><span>Cobot · paletyzacja</span><span class="ok">● SLA dotrzymane</span></div>
+      </div>
+      <div class="cap">Przykładowy widok — liczby ilustracyjne.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ JAK DZIAŁAMY ═══════════ -->
+<section id="jak" style="background:#fff">
+  <div class="wrap">
+    <div class="eyebrow">Jak działamy</div>
+    <h2>Siedem kroków — <em>od rozmowy do efektu</em></h2>
+    <div class="tl-tabs" role="tablist"><button class="on" data-tl="ag">Agentify · biuro</button><button data-tl="ro">Robotify · hala</button></div>
+    <div class="tl" id="tl"><div class="line"><i id="tlLine"></i></div></div>
+    <p class="tl-foot" id="tlFoot"></p>
+  </div>
+</section>
+
+<!-- ═══════════ BEZPIECZEŃSTWO ═══════════ -->
+<section id="bezpieczenstwo">
+  <div class="wrap">
+    <div class="eyebrow">Bezpieczeństwo</div>
+    <h2>Ryzyko bierzemy <em>na siebie</em></h2>
+    <div class="trust-grid">
+      <div class="trust reveal"><div class="ic">💸</div><h4>Bez opłaty wstępnej</h4><p>Wdrożenie Agentify finansujemy my — spłacasz je ratą przez 48 miesięcy, a&nbsp;prowizję płacisz od realnej oszczędności.</p></div>
+      <div class="trust reveal"><div class="ic">🔁</div><h4>Hot-swap w&nbsp;24 h</h4><p>Jeśli robot zawiedzie, dostajesz zamiennik. Wymianę gwarantuje SLA 99% w&nbsp;umowie na 36 miesięcy.</p></div>
+      <div class="trust reveal"><div class="ic">🇪🇺</div><h4>EU AI Act w&nbsp;pakiecie</h4><p>Zgodność z&nbsp;EU AI Act w&nbsp;cenie subskrypcji. Systemy wysokiego ryzyka (HR, scoring) z&nbsp;automatyczną eskalacją do człowieka.</p></div>
+      <div class="trust reveal"><div class="ic">🔒</div><h4>Dane zostają w&nbsp;UE</h4><p>Hosting wyłącznie w&nbsp;UE, bez transferu danych do USA. Każda decyzja agenta zapisana — pełny audit trail.</p></div>
+      <div class="trust reveal"><div class="ic">🧑‍💼</div><h4>Człowiek w&nbsp;pętli</h4><p>Żaden proces nie jest automatyzowany bez zgody jego właściciela. Decyzje wysokiego ryzyka zatwierdza człowiek.</p></div>
+      <div class="trust reveal"><div class="ic">🤝</div><h4>Doświadczony zespół wdrożeń</h4><p>Partner wdrożeniowy Subeo: ponad 250 projektów RPA i&nbsp;automatyzacji, ekosystem UiPath i&nbsp;Microsoft.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section id="faq" style="background:#fff">
+  <div class="wrap">
+    <div class="eyebrow">Pytania klientów</div>
+    <h2>Co warto wiedzieć <em>od razu</em></h2>
+    <div class="faq">
+      <details><summary>Ile kosztuje wdrożenie i&nbsp;czy płacę z&nbsp;góry?</summary><p>W&nbsp;Agentify nie płacisz z&nbsp;góry. Wdrożenie to 60&nbsp;000 zł na proces — finansujemy je my, a&nbsp;Ty spłacasz je ratą przez 48 miesięcy. Do tego licencja i&nbsp;utrzymanie oraz prowizja 10% od oszczędności netto. W&nbsp;Robotify robota kupujesz Ty (często z&nbsp;dotacją UE / BGK), a&nbsp;my rozliczamy jego pracę opłatą serwisową za godziny.</p></details>
+      <details><summary>Co, jeśli zespół boi się zmiany?</summary><p>Automatify nie zwalnia ludzi — przejmuje powtarzalną pracę, której i&nbsp;tak nikt nie chce robić. Szkolimy zespół z&nbsp;obsługi Client Portal, a&nbsp;żaden proces nie jest automatyzowany bez zgody jego właściciela.</p></details>
+      <details><summary>Jak to się ma do EU AI Act i&nbsp;RODO?</summary><p>Infrastruktura działa wyłącznie w&nbsp;UE, bez transferu danych do USA. Każda decyzja agenta jest logowana. Zgodność z&nbsp;EU AI Act jest w&nbsp;pakiecie subskrypcji, a&nbsp;systemy wysokiego ryzyka eskalują decyzje do człowieka.</p></details>
+      <details><summary>Co się dzieje, gdy robot się zepsuje?</summary><p>Monitoring 24/7 z&nbsp;predykcją awarii wyłapuje problemy wcześniej. Jeśli robot jednak zawiedzie, w&nbsp;ciągu 24 h dostajesz zamiennik — tak stanowi SLA.</p></details>
+      <details><summary>Jak szybko zobaczę efekt?</summary><p>Discovery workshop trwa 4–8 h, mapę procesów i&nbsp;kalkulator ROI dostajesz do 2 tygodni. Gotowy pakiet Agentify uruchamiamy w&nbsp;2–4 tygodnie; pierwsze pomiary oszczędności — po 30 dniach. W&nbsp;Robotify zaczynamy od 30-dniowego pilota u&nbsp;Ciebie.</p></details>
+      <details><summary>Czy muszę mieć gotową listę procesów?</summary><p>Nie. Od tego jest discovery: razem z&nbsp;Tobą mapujemy procesy, wskazujemy kandydatów do automatyzacji i&nbsp;liczymy ROI. Jeśli nie znajdziemy potencjału — kończymy, bez zobowiązań.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section id="kontakt">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div>
+        <div class="eyebrow" style="color:var(--lime)">Pierwszy krok</div>
+        <h2>Umów bezpłatny <em>discovery workshop</em></h2>
+        <p>4–8 godzin z&nbsp;naszym zespołem. Wychodzisz z&nbsp;mapą procesów, które warto zautomatyzować, i&nbsp;policzonym ROI. Bez zobowiązań.</p>
+        <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-lime glow" href="mailto:kontakt@automatify.work?subject=Discovery%20workshop">Umów discovery →</a>
+          <a class="btn btn-ghost" href="#kalkulator-ag">Najpierw policzę sam</a>
+        </div>
+      </div>
+      <ul class="cta-list">
+        <li><b>1</b>Rozmowa: Twoje procesy w&nbsp;biurze i&nbsp;na hali</li>
+        <li><b>2</b>Workshop 4–8 h u&nbsp;Ciebie lub online</li>
+        <li><b>3</b>Mapa procesów i&nbsp;kalkulator ROI do 2 tygodni</li>
+        <li><b>4</b>Decyzja — bez opłaty wstępnej za wdrożenie Agentify</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="data:image/png;base64,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" alt="Automatify" style="height:22px">
+    <span>© 2026 Automatify · Agentify — agenci AI i&nbsp;RPA · Robotify — roboty fizyczne</span>
+  </div>
+</footer>
+<div class="testband">Wersja testowa strony dla klienta — do oceny. Wyliczenia orientacyjne, na parametrach modelu przeciętnego klienta.</div>
+
+<script>
+const etat = x => { const t = x.toLocaleString('pl-PL', {maximumFractionDigits: 1}); if (!Number.isInteger(Math.round(x * 10) / 10)) return t + ' etatu'; const n = Math.round(x), d = n % 10, h = n % 100; return t + (n === 1 ? ' etat' : (d >= 2 && d <= 4 && (h < 12 || h > 14)) ? ' etaty' : ' etatów'); };
+(() => {
+  const fmt = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
+  const zl = n => fmt(n) + ' zł';
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* nav + pasek postępu */
+  const nav = document.getElementById('nav'), prog = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    nav.classList.toggle('solid', scrollY > 40);
+    prog.style.width = (scrollY / (document.documentElement.scrollHeight - innerHeight) * 100) + '%';
+  }, {passive: true});
+
+  /* przypadki użycia */
+  const AG = [
+    ['🧾', 'Faktury → ERP', 'Księgowość', 'Ręczne przepisywanie setek faktur miesięcznie, błędy i opóźnienia w zamknięciu miesiąca.', 'OCR + AI odczytuje dane, robot RPA wprowadza je do ERP, wyjątki trafiają do człowieka.', 'Faktury w systemie w minuty, a nie dni; zespół zajmuje się wyjątkami.'],
+    ['💬', 'BOK 24/7', 'Obsługa klienta', 'Klienci czekają na odpowiedź poza godzinami pracy; zespół odpowiada wciąż na te same pytania.', 'Chatbot AI z dostępem do CRM i eskalacją do człowieka przy trudnych sprawach.', 'Odpowiedź o każdej porze; ludzie obsługują sprawy, które wymagają rozmowy.'],
+    ['🎯', 'Leady → CRM', 'Sprzedaż', 'Zapytania z formularzy giną w skrzynce, handlowcy tracą czas na kwalifikację.', 'Agent przenosi zapytania do CRM, ocenia je (scoring AI) i nadaje priorytet.', 'Handlowcy dzwonią najpierw do najlepszych leadów.'],
+    ['📊', 'Raporty zarządcze', 'Finanse i kontroling', 'Raporty składane ręcznie z kilku systemów, gotowe po tygodniu.', 'Robot RPA zbiera dane, agent przygotowuje raport i komentarz.', 'Raport codziennie rano, bez ręcznego klejenia arkuszy.'],
+    ['🏦', 'Reconciliacja bank ↔ ERP', 'Finanse', 'Uzgadnianie wyciągów z księgami zajmuje dni w zamknięciu miesiąca.', 'Automatyczne dopasowanie transakcji, rozbieżności do weryfikacji.', 'Szybsze zamknięcie miesiąca i mniej błędów ręcznych.'],
+    ['👋', 'Onboarding HR', 'Kadry', 'Nowy pracownik czeka na konta, dokumenty i dostępy.', 'Agent przeprowadza checklistę: dokumenty, konta, szkolenia, przypomnienia.', 'Pierwszy dzień pracy z gotowymi dostępami.']
+  ];
+  const RO = [
+    ['📦', 'Pick & pack', 'Logistyka · AMR + cobot', 'Szczyty sezonowe i brak ludzi do kompletacji zamówień.', 'AMR dowozi towar, cobot kompletuje i pakuje; integracja z systemem magazynowym.', 'Krótszy czas cyklu pakowania (60–80% wg branżowych wdrożeń), stała wydajność na każdej zmianie.'],
+    ['🧱', 'Paletyzacja', 'Produkcja · cobot', 'Ciężka, powtarzalna praca na końcu linii, rotacja pracowników.', 'Cobot układa kartony na palecie według wzoru, bezpiecznie obok ludzi.', 'Zmiana zawsze obsadzona, mniej urazów przy dźwiganiu.'],
+    ['🔍', 'Kontrola jakości', 'Produkcja · cobot + vision AI', 'Wady wychodzą u klienta, kontrola ręczna jest wyrywkowa.', 'Kamera z AI sprawdza każdy produkt, cobot odkłada wadliwe.', 'Redukcja braków o 30–50% wg branżowych wdrożeń.'],
+    ['🚚', 'Transport wewnętrzny', 'Magazyn i produkcja · AMR', 'Pracownicy chodzą z wózkami między strefami zamiast pracować przy procesie.', 'AMR przewozi materiały między strefami, sam omija przeszkody.', 'Ludzie zostają przy pracy, która wymaga ich umiejętności.'],
+    ['🏨', 'Hotel i recepcja', 'Hospitality · AMR / humanoid', 'Nocna zmiana trudna do obsadzenia, rutynowe dostawy do pokoi.', 'Robot serwisowy dowozi zamówienia i ręczniki; humanoidy — w kolejnym etapie.', 'Ciągłość obsługi gości mimo braku rąk do pracy.'],
+    ['🏥', 'Szpital i opieka', 'Healthcare · roboty transportowe', 'Pielęgniarki tracą czas na transport leków i próbek.', 'Robot transportowy przewozi leki i próbki na oddziale.', 'Odciążenie personelu o 2–3 h na zmianę wg branżowych wdrożeń.']
+  ];
+  const cards = (el, list) => {
+    el.innerHTML = list.map(([ic, t, tag, p, r, k]) => `<div class="uc reveal" tabindex="0"><span class="tag2">${tag}</span><div class="ic">${ic}</div><h4>${t}</h4>
+      <div class="row"><b>Problem:</b> ${p}</div><div class="more"><div class="row"><b>Rozwiązanie:</b> ${r}</div><div class="row"><b>Korzyść:</b> ${k}</div></div><div class="tog">Zobacz rozwiązanie i korzyść +</div></div>`).join('');
+    el.querySelectorAll('.uc').forEach(c => {
+      const t = () => { c.classList.toggle('open'); c.querySelector('.tog').textContent = c.classList.contains('open') ? 'Zwiń –' : 'Zobacz rozwiązanie i korzyść +'; };
+      c.addEventListener('click', t); c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } });
+    });
+  };
+  cards(document.getElementById('ucAg'), AG);
+  cards(document.getElementById('ucRo'), RO);
+
+  /* kalkulator Agentify — parametry modelu przeciętnego klienta */
+  const LIC = 50583.71, MAINT = 12000, RATA = 15000, FTE_PER_PROC = 4.6923077, HOURS = 1800;
+  const $ = id => document.getElementById(id);
+  function calcAg() {
+    const fte = +$('iFte').value, auto = +$('iAuto').value, rate = +$('iRate').value;
+    $('oFte').textContent = fte; $('oAuto').textContent = auto + '%'; $('oRate').textContent = rate + ' zł';
+    const afte = fte * auto / 100, sav = afte * HOURS * rate, proc = afte / FTE_PER_PROC;
+    const fixed = proc * (LIC + MAINT + RATA), net = Math.max(0, sav - fixed), prov = 0.1 * net;
+    const fee = fixed + prov, keep = sav - fee;
+    $('rKeep').textContent = zl(keep); $('rKeep2').textContent = zl(keep); $('rSav').textContent = zl(sav); $('rFee').textContent = zl(fee);
+    const mx = Math.max(sav, 1);
+    $('bSav').style.width = '100%'; $('bFee').style.width = (fee / mx * 100) + '%'; $('bKeep').style.width = (Math.max(0, keep) / mx * 100) + '%';
+    $('rNote').textContent = `${etat(afte)} do automatyzacji ≈ ${proc.toLocaleString('pl-PL', {maximumFractionDigits: 1})} procesu. Wdrożenie: ${zl(proc * 60000)} — 0 zł z góry, spłata ratą przez 48 miesięcy (wliczona). Wynik orientacyjny; dokładny rachunek dostajesz po discovery.`;
+  }
+  ['iFte', 'iAuto', 'iRate'].forEach(i => $(i).addEventListener('input', calcAg)); calcAg();
+
+  /* kalkulator Robotify — stawki krajowe z modelu, 1. rok = 95% stawki bazowej */
+  function calcRo() {
+    const n = +$('iRob').value, h = +$('iHrs').value, [lab, st] = $('iCty').value.split('|').map(Number);
+    $('oRob').textContent = n; $('oHrs').textContent = fmt(h) + ' h';
+    const hum = n * h * lab, srv = n * h * st * 0.95;
+    $('rHum').textContent = zl(hum); $('rHum2').textContent = zl(hum); $('rSrv').textContent = zl(srv);
+    $('bHum').style.width = '100%'; $('bSrv').style.width = Math.max(1, srv / hum * 100) + '%';
+    $('rNoteRo').textContent = `${fmt(n * h)} godzin pracy robotów ≈ ${etat(n * h / 2000)}. Opłata serwisowa w 1. roku to ok. ${(st * 0.95 / lab * 100).toLocaleString('pl-PL', {maximumFractionDigits: 1})}% kosztu tych godzin; potem stawka spada o 5% rocznie. Zakup robota po Twojej stronie — nie wchodzi w ten rachunek.`;
+  }
+  ['iRob', 'iHrs', 'iCty'].forEach(i => $(i).addEventListener('input', calcRo)); calcRo();
+
+  /* oś kroków */
+  const TL = {
+    ag: {steps: [['Lead', 'Polecenie, partner lub kontakt z hubu'], ['Discovery', 'Workshop 4–8 h, mapa procesów, kalkulator ROI'], ['Oferta', 'Pakiet boxed lub rozwiązanie custom'], ['Wdrożenie', 'Design, build, testy i go-live'], ['Onboarding', 'Dashboard, szkolenie, alerty i SLA'], ['Rozliczenie', 'Pay-as-you-Save — po 30 dniach pomiar oszczędności'], ['Skalowanie', 'Kolejne procesy, opieka opiekuna klienta']],
+         foot: 'Gotowy pakiet: uruchomienie w 2–4 tygodnie, pakiet boxed średnio 4–6 tygodni od startu.'},
+    ro: {steps: [['Lead', 'Proces, budżet, harmonogram'], ['Site assessment', 'Wizyta inżynierów, pomiary, audyt BHP'], ['Pilot 30 dni', 'Robot u Ciebie, test jednego procesu'], ['Kontrakt', 'RaaS 36 miesięcy, SLA i serwis'], ['Deployment', 'Dostawa, integracja, szkolenie operatorów'], ['Rozliczenie', 'Opłata serwisowa za godziny pracy robota'], ['Monitoring 24/7', 'Telemetria, predykcja awarii, hot-swap']],
+         foot: 'Pełny cykl wdrożenia robota: 12–20 tygodni, z assessmentem bezpieczeństwa i serwisem 24/7.'}
+  };
+  const tl = $('tl');
+  function drawTl(k) {
+    tl.querySelectorAll('.step').forEach(s => s.remove());
+    TL[k].steps.forEach(([t, d], i) => { const s = document.createElement('div'); s.className = 'step'; s.innerHTML = `<div class="n" style="border-color:${k === 'ro' ? '#7CB518' : '#2EBED9'}">${i + 1}</div><h4>${t}</h4><p>${d}</p>`; tl.appendChild(s); });
+    $('tlFoot').textContent = TL[k].foot; $('tlLine').style.width = '0';
+    requestAnimationFrame(() => setTimeout(() => { $('tlLine').style.width = '100%'; tl.querySelectorAll('.step').forEach((s, i) => setTimeout(() => s.classList.add('on'), reduce ? 0 : i * 220)); }, 60));
+  }
+  document.querySelectorAll('.tl-tabs button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tl-tabs button').forEach(x => x.classList.remove('on')); b.classList.add('on'); drawTl(b.dataset.tl);
+  }));
+
+  /* portal — ilustracyjny ruch liczników i wykresu */
+  const chart = $('pChart'); chart.innerHTML = Array.from({length: 12}, (_, i) => `<i class="${i % 3 === 2 ? 'r' : ''}" style="height:8%"></i>`).join('');
+  let ph = 0, pr = 0, ps = 0, portalOn = false;
+  function tickPortal() {
+    if (!portalOn) return;
+    ph += 3 + Math.random() * 4; pr += 2 + Math.random() * 3; ps += 900 + Math.random() * 700;
+    $('pHrs').textContent = fmt(1840 + ph); $('pRob').textContent = fmt(1210 + pr); $('pSav').textContent = zl(186000 + ps);
+    if (!reduce) setTimeout(tickPortal, 900);
+  }
+
+  /* reveal + liczniki + start animacji po wejściu w widok */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target; el.classList.add('in'); io.unobserve(el);
+    el.querySelectorAll?.('[data-count]').forEach(countUp);
+    if (el.matches('[data-count]')) countUp(el);
+  }), {threshold: .15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  function countUp(el) {
+    const to = +el.dataset.count, suf = el.dataset.suf || '', t0 = performance.now(), d = reduce ? 0 : 1400;
+    const step = t => { const p = d ? Math.min(1, (t - t0) / d) : 1; el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  const once = (sel, fn) => { const o = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { fn(); o.disconnect(); } }), {threshold: .3}); o.observe(document.querySelector(sel)); };
+  once('#kalkulator-ag', () => { $('spKeep').style.width = (2008588 / 2635200 * 100) + '%'; $('spFee').style.width = (626612 / 2635200 * 100) + '%'; });
+  once('#kalkulator-ro', () => { $('exHum').style.width = '100%'; $('exSrv').style.width = (28490 / 406000 * 100) + '%'; });
+  once('#jak', () => drawTl('ag'));
+  once('.portal', () => { portalOn = true; chart.querySelectorAll('i').forEach((b, i) => setTimeout(() => b.style.height = (25 + i * 5 + Math.random() * 12) + '%', i * 90)); tickPortal(); });
+})();
+</script>
+</body>
+</html>
