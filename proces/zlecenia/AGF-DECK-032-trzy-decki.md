@@ -108,3 +108,12 @@ nowego klienta. Decyzja zastępuje zawieszone ustalenie decyzji 10 i mapowanie r
 
 Potwierdzenie właściciela: „Czyli pokazujemy, że preseed jest zamknięty. Teraz idziemy na seeda." — okładka i CTA
 wszystkich decków: „Runda Seed", „Dołącz do rundy Seed", 5 116 054 zł na rozwój; pre-seed: „zamknięty".
+
+## Decyzja 11 — na co idzie Seed
+
+Odpowiedź: „a". Blok „Wykorzystanie transzy 2027" (70/12/5/5/4/4%) zastąpiony kosztami 2027 z budżetu:
+Agentify — ludzie 4 470 000 zł; biuro, narzędzia i pozostałe koszty stałe 750 308 zł; pozyskanie klientów 25 000 zł
+(razem koszty stałe 5 245 308 zł; ludzie = 85,2%); Robotify — usługi profesjonalne przed startem w 2028: 150 000 zł.
+Zdanie: „Seed 5 116 054 zł finansuje te koszty w części niepokrytej wpływami od pierwszych klientów."
+Źródła: Agentify „5. Koszty" (koszty stałe 2027: ludzie, overhead, CAC), Robotify „P&L szczegółowy" / „Overhead"
+(usługi profesjonalne 2027).
