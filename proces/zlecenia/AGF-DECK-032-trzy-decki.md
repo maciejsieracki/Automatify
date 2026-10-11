@@ -105,3 +105,6 @@ finansowania kapitału obrotowego — kwoty (a) identyczne w obu.
 Kapitał obrotowy (tylko Agentify), osobno: 31.12.2027 — 1 940 616; 31.12.2028 — 42 552 283 (najwyżej przed wejściem
 banku); od 2029 linia kredytowa: XII 2029 — 435 137 670 (wariant A) / 392 585 388 (wariant B); ok. 475 tys. zł na
 nowego klienta. Decyzja zastępuje zawieszone ustalenie decyzji 10 i mapowanie rund z decyzji 9.
+
+Potwierdzenie właściciela: „Czyli pokazujemy, że preseed jest zamknięty. Teraz idziemy na seeda." — okładka i CTA
+wszystkich decków: „Runda Seed", „Dołącz do rundy Seed", 5 116 054 zł na rozwój; pre-seed: „zamknięty".
