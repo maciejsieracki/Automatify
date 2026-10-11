@@ -74,3 +74,11 @@ do akceptacji właściciela:
 - 9 — cena humanoida 2030: wartość ze slajdu krzywej kosztu („$10–15k"); lead 08 bez osobnej liczby;
 - 15 — przykład 07.8: kwoty zaokrąglone do pełnych złotych (zasada: najwyżej jedno miejsce po przecinku);
 - 16 — zasięg: rozstrzygnięty decyzją 6 (Agentify 34 rynki, Robotify 32 kraje; 282 530 firm = 32 kraje).
+
+## BŁĄD ORKIESTRATORA (decyzje 9–10, mapowanie rund)
+
+Uwaga właściciela: „Wydaje mi się, że preseed jest pomylony z seedem." Przyjąłem etykiety rund z pitcha (pre-seed =
+transza 2027, Seed = transza 2028) i na ich podstawie zaproponowałem Seed = 62 257 805 zł. Handoff budżetu (decyzja 088)
+mówi o osobnym pre-seedzie (ok. 1 mln €) usuniętym z teasera — czyli pre-seed to runda sprzed budżetu, a obecnie zbierane
+środki to transza 2027 (7 056 670 zł). Ustalenia decyzji 10 zawieszone do odpowiedzi właściciela (pytanie 10a);
+decyzje 8 (termin) i 9 (pasek usunięty) bez zmian.
