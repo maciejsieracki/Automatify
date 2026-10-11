@@ -391,7 +391,7 @@ FAQ i suplement mogą być wskazane jako miejsce szczegółu, ale ich liczby nie
 11. Podział transzy 2027 na cele (70/12/5/5/4/4%) nie wynika z budżetu. — **ROZSTRZYGNIĘTE: „a” — koszty 2027 z budżetu (zob. zlecenie, decyzja 11)**
 12. Nazwa kwoty (a): „na funkcjonowanie biznesu" vs „na rozwój biznesu". — **ROZSTRZYGNIĘTE decyzją 10: „rozwój biznesu (a)” / „kapitał obrotowy (b)”**
 13. Wersje EN: trzy decki EN od razu czy po akceptacji PL. — **ROZSTRZYGNIĘTE: „a” — EN po akceptacji PL**
-14. FAQ Q13 — scenariusz wolniejszej sprzedaży (osobny temat, nie blokuje budowy decków).
+14. FAQ Q13 — scenariusz wolniejszej sprzedaży (osobny temat, nie blokuje budowy decków). — **ROZSTRZYGNIĘTE: „b” — odpowiedź bez wyliczeń, z budżetu (zob. zlecenie, decyzja 15)**
 15. Przykład 07.8: dwa miejsca po przecinku (263 035,30; 223 176,47) — zaokrąglić zgodnie z zasadą jednego miejsca. — **ROZSTRZYGNIĘTE: porządkowo — pełne złote**
 16. Zasięg: TAM obejmuje 32 kraje (budżet Robotify), a ekspansja Agentify „~34 kraje do 2033" (P40, L1160; budżet Agentify: 34 rynki) — opisać różnicę zasięgu produktów. — **ROZSTRZYGNIĘTE: rozstrzygnięte decyzją 6**
 17. 07.7: Pay-as-you-Go (stawka roboto-godziny 20 zł → poniżej 5 zł w 2035, pakiety Starter 1k / Pro 5k / Enterprise 20k rbh, narzut wdrożenia 10%) — budżet Agentify liczy wyłącznie Pay-as-you-Save; wariant nie ma pokrycia w budżecie. — **ROZSTRZYGNIĘTE: opcja rezerwowa bez liczb, poza budżetem (zob. zlecenie, decyzja 12)**

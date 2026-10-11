@@ -141,3 +141,16 @@ przykładem. Źródła: Robotify „08. Wolumen i automatyzacja" (7 000 h, 3,5 F
 ## Decyzja 14 — wersje EN
 
 Odpowiedź: „a". Najpierw trzy decki PL; wersje EN po akceptacji PL przez właściciela.
+
+## Decyzja 15 — FAQ, pytanie 13 (sprawa 14)
+
+Odpowiedź: „b". Pytanie 13 zostaje; odpowiedź bez wyliczeń, wyłącznie z budżetu: kapitał obrotowy rośnie z liczbą
+klientów (ok. 475 tys. zł na nowego klienta Agentify), więc wolniejsza sprzedaż proporcjonalnie zmniejsza potrzebę środków
+obrotowych; koszty zespołu w pierwszych latach są w większości stałe, więc wolniejsza sprzedaż wydłuża dojście do zysku,
+nie zwiększając kosztów; scenariusz liczbowy — na życzenie inwestora. Usunięte liczby sierpniowe (193 044 228,
+141 516 121 itd.). Do wykonania przy aktualizacji FAQ (poza trzema deckami).
+
+## Status
+
+Wszystkie sprawy z części 5 mapy rozstrzygnięte (1–18). Następny krok: budowa trzech decków PL (Operator → Ewaluator →
+Final Control); EN po akceptacji PL.
