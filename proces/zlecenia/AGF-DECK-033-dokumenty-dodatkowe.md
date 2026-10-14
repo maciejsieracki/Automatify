@@ -224,3 +224,14 @@ serwis (Polska od 2028, 7 000 h) 27 066 / 25 712 / 24 427 / 23 205 zł; pełny k
 640 972 zł / 963 421 zł / 1,29 mln zł; widełki: 30 tys. EUR → 1,39 mln zł, 80 tys. EUR → 1,18 mln zł (16,15 zł/h).
 Przypis: pełne wykorzystanie 7 000 h/rok (20 h/dobę), bez energii i bez dotacji (dotacja obniża koszt zakupu).
 Zakres: decki (sekcja Korzyść i przykład rozliczenia Robotify) i strona; nie dotyczy budżetu.
+
+## Format liczb — wykonanie (decyzje 23–25)
+
+Inwentaryzacja (`tools/num_inventory.py`): 895 kandydatów w 7 dokumentach. Operatorzy per dokument (listy zmian
+`AGF-DECK-033/liczby/edits-{H,A,R,T,F,S,K}.json`, każda pozycja z uzasadnieniem: arytmetyka albo komórka budżetu) i kontroler
+spójności (`SPOJNOSC.md`): te same wielkości identyczne we wszystkich dokumentach i zgodne z budżetem (np. Seed 5,12 / Round A
+21,65 / Round B 17,06 / razem 43,83 mln zł; kapitał obrotowy 42,55 mln zł; plan awaryjny 69,31 mln zł; flota 20 / 338 / 4 323 /
+18 228 / 319 051 robotów). Zastosowane: 499 zmian (decki 187, FAQ 40, Suplement 101, Aneks 29, Teaser 18) w obu wersjach.
+Decki: nowy skrypt `AGF-DECK-032/build_all.py` = build_decks.py + listy zmian (przebudowa powtarzalna). Dane zewnętrzne o robotach
+(Amazon, prognoza dla Polski) zostają jak w źródle (decyzja 24). Do akceptacji: „½” etatu (role wspólne, Aneks), ICP
+„20,00–200,00 mln zł”. Niezależna ewaluacja formatu — razem z nowym modelem (perspektywa B).
