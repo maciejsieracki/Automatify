@@ -168,3 +168,13 @@ Właściciel: „Tak naprawdę przy dużych kwotach trzeba je podać po prostu w
   24,4.” — także średnie i wskaźniki ilościowe (24,4 etatu, 5,2 procesu, 3,5 etatu, 4,7 etatu na proces) jako liczby
   całkowite („ok. 24 etaty”, „ok. 5 procesów”); tam, gdzie zaokrąglenie psułoby rachunek, pokazujemy całkowitą wielkość,
   która go zachowuje (np. 43 920 h zamiast 24,4 × 1 800 h). Procenty, stawki zł/h i mnożniki płac — bez zmian.
+
+## Decyzja 26 — pakiet inwestora bez haseł
+
+Właściciel: „Wersje standalone, nie te na stronę, tylko te do otwierania dla inwestora, mają być w pełni otwarte, bez
+żadnych haseł. Na stronie hasła zostają.”
+Wprowadzone w `tools/build_investor_decks.py`: decki pakietu inwestora budowane bez ekranu hasła (`<body>` bez
+`data-locked`, usunięty blok i skrypt bramki); FAQ, Suplement, Aneks i Teaser nie miały hasła. Sprawdzenie w czystej
+sesji (`tools/open_check.py`): 7/7 plików pakietu inwestora otwiera się od razu, 0 błędów; 3 decki pakietu WWW nadal
+z hasłem. Uwaga: hasło strony WWW jest zapisane w kodzie strony (skrypt przeglądarki), więc chroni tylko przed
+przypadkowym wejściem — nie jest zabezpieczeniem poufności.
