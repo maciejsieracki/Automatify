@@ -143,3 +143,19 @@ Pay-as-you-Save — jeśli występuje).
   poziomego przy 390 / 1024 / 1440; `prefers-reduced-motion` respektowane; kontrast tekstu ≥ 4,5:1 dla treści.
 - Kontrola: `python3 -I $S/tools/page_check.py <plik> <katalog> 1440 1024 390` oraz `HASH=en python3 -I … <katalog-en> …` (strona MUSI otwierać wersję EN pod `#en`) — obejrzyj zrzuty WSZYSTKICH sekcji w obu
   językach (przełącz język np. przez `#en` lub skrypt Playwright).
+
+## 7. DECYZJA WŁAŚCICIELA: dopracowujemy tylko kierunek B, w dwóch wariantach
+
+> „Wiesz, zmieniłem zdanie. Dopracujmy tylko i wyłącznie wersję B, ale w dwóch typach: jedna bez tej kratki, a druga z kratką.”
+
+- Kierunek B („Rysunek techniczny / izometria”) dopracowany zgodnie z sekcjami 0–6 i uwagami jury (`kandydat-B/JURY-UWAGI.md`,
+  łącznie z listą „do naprawy” dyrektora kreatywnego). Pomysły z A/C/D — tylko gdy pasują do charakteru B (np. aparat raportu z A:
+  podpisy „Rys.” z jednozdaniowym wnioskiem, przypisy; taśma dnia z D jako mały rysunek robotogodzin; lemniskata w nawigacji z C).
+- **Dwa warianty z jednego źródła** (te same treści, kalkulatory, EN — różni się tylko tło/siatka):
+  1. `automatify-klient-B-kratka.html` — z siatką milimetrową (jak dziś; jury: osłabić siatkę pod tabelami i długim tekstem,
+     podnieść kontrast tekstu).
+  2. `automatify-klient-B-bez-kratki.html` — **bez żadnej siatki/kratki** (także w ciemnych blokach i pod scenami). Ma wyglądać
+     na zaprojektowany, nie „z wyłączoną siatką”: czyste tło papieru, rytm i struktura z linii, ramek arkuszy, tabliczek i linii
+     wymiarowych; sprawdź, czy bez kratki nic nie traci czytelności (sceny izometryczne, tabliczki ARK., kalkulatory).
+- Przełącznik wariantu w kodzie: jeden atrybut/klasa (np. `<html data-grid="on|off">`) ustawiany przy budowie; oba pliki budowane
+  jednym poleceniem. Rozmiar każdego < 3 MB.
