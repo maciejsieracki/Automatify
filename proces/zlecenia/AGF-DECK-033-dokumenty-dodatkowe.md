@@ -178,3 +178,13 @@ Wprowadzone w `tools/build_investor_decks.py`: decki pakietu inwestora budowane 
 sesji (`tools/open_check.py`): 7/7 plików pakietu inwestora otwiera się od razu, 0 błędów; 3 decki pakietu WWW nadal
 z hasłem. Uwaga: hasło strony WWW jest zapisane w kodzie strony (skrypt przeglądarki), więc chroni tylko przed
 przypadkowym wejściem — nie jest zabezpieczeniem poufności.
+
+## Decyzja 27 — schemat problem → rozwiązanie → korzyść także w deckach, od strony klienta
+
+Właściciel zapytał, czy decki i strona są według schematu problem, rozwiązanie, korzyść, i doprecyzował: „Oczywiście,
+problem, rozwiązanie i korzyść mówimy od strony klienta.”
+Stan: strona testowa i 4 nowe projekty — tak (osobno Agentify i Robotify). Decki H / A / R — „Problem” i „Rozwiązanie”
+są pisane od strony klienta (MŚP), brak sekcji „Korzyść”. Do zrobienia (po formacie liczb, decyzje 23–25): w każdym
+decku sekcja „Korzyść” zaraz po „Rozwiązaniu” — korzyści klienta z liczbami z modelu (Agentify: co zostaje u klienta,
+0 zł z góry; Robotify: koszt godzin pracy ludzi vs opłata serwisowa, ryzyko po naszej stronie). Przy okazji: lead
+„Rozwiązania” w decku R mówi o czterech odpowiedziach, a pokazuje trzy karty — do ujednolicenia.
