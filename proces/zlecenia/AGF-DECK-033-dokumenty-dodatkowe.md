@@ -211,3 +211,16 @@ Rozbieżność do decyzji: HANDOFF podaje dla klienta realistycznego 18,15 → 1
 Zakres: decki H / A / R (Problem, Rozwiązanie, nowa sekcja Korzyść, model rozliczeniowy i przykład Agentify) i strona.
 - **Decyzja 29 — stawka za robotogodzinę Agentify:** A — z obecnego budżetu: klient realistyczny 19,60 zł/h (lata 1–4)
   → 16,03 zł/h (od 5. roku); klient ważony 14,27 → 12,67 zł/h. Wartości z HANDOFF (18,15 → 14,96) nie są używane.
+
+## Decyzja 30 — use case Robotify z kosztem zakupu robota (CAPEX klienta na 4 lata)
+
+Właściciel: „Zysk dla klienta trzeba policzyć z kosztem robota rozbitego na CAPEX na cztery lata, ponieważ ponosi go klient,
+i trzeba go porównać realnie z kosztem zakupu robota oraz naszym serwisem, o ile jest to taniej niż roboczogodzina
+człowieka. Tych informacji nie potrzeba do budżetu, ale w pitch decku jest to use case, więc tutaj warto byłoby to pokazać.”
+Wybór właściciela: **A — cobot 55 tys. EUR (środek przedziału 30–80 tys. EUR z tabeli konkurencji decku R — Universal
+Robots u integratorów) + widełki.** Kurs 4,30 zł/EUR (budżet Robotify „07.” A6). Robot 236 500 zł ÷ 4 = 59 125 zł/rok;
+serwis (Polska od 2028, 7 000 h) 27 066 / 25 712 / 24 427 / 23 205 zł; pełny koszt 86 191 / 84 837 / 83 552 / 82 330 zł
+(12,31 / 12,12 / 11,94 / 11,76 zł/h) vs praca ludzi 406 000 zł/rok (58 zł/h); zostaje u klienta narastająco 319 810 zł /
+640 972 zł / 963 421 zł / 1,29 mln zł; widełki: 30 tys. EUR → 1,39 mln zł, 80 tys. EUR → 1,18 mln zł (16,15 zł/h).
+Przypis: pełne wykorzystanie 7 000 h/rok (20 h/dobę), bez energii i bez dotacji (dotacja obniża koszt zakupu).
+Zakres: decki (sekcja Korzyść i przykład rozliczenia Robotify) i strona; nie dotyczy budżetu.
