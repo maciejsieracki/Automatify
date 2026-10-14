@@ -188,3 +188,24 @@ są pisane od strony klienta (MŚP), brak sekcji „Korzyść”. Do zrobienia (
 decku sekcja „Korzyść” zaraz po „Rozwiązaniu” — korzyści klienta z liczbami z modelu (Agentify: co zostaje u klienta,
 0 zł z góry; Robotify: koszt godzin pracy ludzi vs opłata serwisowa, ryzyko po naszej stronie). Przy okazji: lead
 „Rozwiązania” w decku R mówi o czterech odpowiedziach, a pokazuje trzy karty — do ujednolicenia.
+
+## Decyzja 28 — nowy model biznesowy w opisie problem → rozwiązanie → korzyść (decki i strona)
+
+Właściciel: „ten opis problemu, rozwiązania i korzyści jest sprzed zmiany modelu biznesowego. Trzeba uwzględnić nowy model
+biznesowy, że klient płaci tylko za roboczogodzinę, zmienioną na robotogodzinę. (…) trzeba to uwzględnić w pitch decku
+i na stronie.” oraz „Można też podać konkretny use case naszego budżetu, gdzie mamy konkretnego klienta, i wyliczyć, ile on
+zaoszczędza rocznie oraz na dwa, trzy i cztery lata z nami.”
+Model wg budżetu (HANDOFF 2026-10-11, rozdz. 1): Agentify — klient nie płaci za wdrożenie, płaci tylko stawkę za
+robotogodzinę (godzinę pracy agenta zamiast godziny pracy człowieka, 60 zł/h); w latach 1–4 stawka zawiera spłatę
+wdrożenia, od 5. roku spada. Robotify — robota kupuje klient, wdrożenie i serwis rozliczane stawką za robotogodzinę
+(Polska 4,07 zł/h; 95% w roku wejścia kraju, potem −5% rocznie).
+Stawka za robotogodzinę = roczna opłata klienta („12. Dwie kwoty i klient” w.82–83) ÷ godziny pracy przejęte od ludzi
+(zaut. etaty × 1 800 h). Use case — klient realistyczny z budżetu (5 procesów, 18 900 h rocznie): koszt tych godzin
+w pracy ludzi 1,13 mln zł/rok; stawka 19,60 zł/h w latach 1–4 (370 485 zł/rok), 16,03 zł/h od 5. roku (302 985 zł/rok);
+oszczędność netto 763 515 zł/rok; narastająco: 2 lata 1,53 mln zł, 3 lata 2,29 mln zł, 4 lata 3,05 mln zł; 0 zł z góry.
+Klient ważony: 14,27 → 12,67 zł/h; 2,01 mln zł/rok; 4 lata 8,03 mln zł. Robotify, 1 robot w Polsce od 2028 (bez ceny
+zakupu robota): 7 000 h × 58 zł/h = 406 000 zł/rok pracy ludzi; opłata 27 066 / 25 712 / 24 427 / 23 205 zł;
+narastająco 378 935 zł / 759 222 zł / 1,14 mln zł / 1,52 mln zł.
+Rozbieżność do decyzji: HANDOFF podaje dla klienta realistycznego 18,15 → 14,96 zł/h (plik właściciela
+„Agentify-Budzet-NOWY-MODEL.xlsx”, arkusz N1 — brak w repozytorium); obecny budżet daje 19,60 → 16,03 zł/h.
+Zakres: decki H / A / R (Problem, Rozwiązanie, nowa sekcja Korzyść, model rozliczeniowy i przykład Agentify) i strona.
