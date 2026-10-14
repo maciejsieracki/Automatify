@@ -244,3 +244,12 @@ podajemy osobno, a dopiero potem razem: rocznie zakup 59 125 zł (8,45 zł/h) + 
 (3,87 / 3,67 / 3,49 / 3,32 zł/h); za 4 lata: zakup 236 500 zł + serwis 100 410 zł = 336 910 zł wobec 1,62 mln zł pracy ludzi
 → zostaje 1,29 mln zł. Widełki: zakup 129 000 zł (30 tys. EUR, 4,61 zł/h) – 344 000 zł (80 tys. EUR, 12,29 zł/h).
 Uwaga do rachunku: w roku 4 składniki po zaokrągleniu dają 8,45 + 3,32 = 11,77 zł/h przy pełnym koszcie 11,76 zł/h.
+
+## Decyzja 32 — zysk klienta narastająco w obu use case'ach
+
+Właściciel: „Trzeba też obliczyć zysk narastająco. Dla klienta.”
+W tabelach use case'ów (decki — sekcja Korzyść i przykłady; strona — przykłady i kalkulatory) dwa jawne wiersze:
+„Zysk klienta w roku” i „Zysk klienta narastająco” (zysk = koszt tych godzin w pracy ludzi − wszystkie koszty klienta).
+Agentify, klient realistyczny: w roku 763 515 zł (lata 1–4), 831 015 zł od 5. roku; narastająco 763 515 zł / 1,53 mln zł /
+2,29 mln zł / 3,05 mln zł (5 lat: 3,89 mln zł). Robotify, cobot 55 tys. EUR: w roku 319 810 / 321 163 / 322 448 / 323 670 zł;
+narastająco 319 810 zł / 640 972 zł / 963 421 zł / 1,29 mln zł.
