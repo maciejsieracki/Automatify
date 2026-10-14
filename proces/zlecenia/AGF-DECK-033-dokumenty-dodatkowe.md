@@ -117,3 +117,25 @@ Poprawione skryptem `edits033fc.py` (13 zmian): FC-1, FC-2, FC-5; FC-4 — jeden
 ze źródeł daje pliki identyczne bajt w bajt z `www-v4`. Pakiety przebudowane: render 0 błędów, Teaser 2 strony A4.
 Zestawienie dla właściciela: `proces/robocze/AGF-DECK-033-bylo-jest.md`. Paczki: AGF-DECK-033-PAKIET-1-Inwestor.zip,
 AGF-DECK-033-PAKIET-2-Strona-WWW.zip (zastępują paczki AGF-DECK-032). Status: do akceptacji właściciela.
+
+## Decyzja 18 — strona główna w pakiecie WWW
+
+Pytanie: obecny index.html ma starą treść (PLN, pakiety 1k / 5k / 20k, abonament 20%), decki do niego linkują.
+Odpowiedź właściciela: **A — publikacja pakietu WWW dopiero z nową stroną dla klienta**, która zastąpi obecną stronę
+główną. Teraz bez zmian w index.html.
+
+## Decyzja 19 — brzmienie hasła marki
+
+Odpowiedź właściciela: **B — „Automatyzujemy to, co powtarzalne, aby ludzie zajęli się tym, co niepowtarzalne.”**
+Wprowadzone: manifest marki w 3 deckach (wynik i źródło `base-v4/07-manifest.html`), Teaser (nagłówek), brief nowej
+strony dla klienta. Obecny index.html bez zmian (decyzja 18). Przebudowa decków ze źródeł = wynik bajt w bajt;
+Teaser — 2 strony A4.
+
+## Nowe polecenia właściciela (2026-10-14)
+
+> „Jak skończysz wersję polską, to potem przygotuj to samo, ale w wersji angielskiej.”
+> „Stronę www przygotuj, żeby była dwujęzyczna.”
+
+Ustalenia: (1) wersje EN wszystkich dokumentów PL z obu pakietów (3 decki, FAQ, Suplement, Aneks, Teaser) — osobne
+zadanie po zamknięciu decyzji PL, ten sam proces (Operator → Ewaluator → Final Control); (2) nowa strona dla klienta —
+dwujęzyczna PL / EN z przełącznikiem języka.
