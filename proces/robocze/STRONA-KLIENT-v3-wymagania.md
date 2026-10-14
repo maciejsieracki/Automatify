@@ -26,7 +26,7 @@ a nie tylko opisana. Także w przypadkach użycia: po 6 dla każdego produktu, k
 systemami, sklejają raporty, odpowiadają na te same pytania; klasyczne wdrożenie AI/RPA to 100 000–500 000 zł z góry; brak zespołu
 AI i mapy procesów; wielu dostawców, nikt nie odpowiada za wynik.
 **Agentify — Rozwiązanie:** agenci AI + roboty RPA pod klucz; discovery 4–8 h, mapa procesów i kalkulator ROI w 2 tygodnie; gotowy
-pakiet w 2–4 tygodnie; **0 zł z góry — klient nie płaci za wdrożenie; płaci tylko za robotogodziny** (godzinę pracy agenta
+pakiet w 4–6 tygodni; **0 zł z góry — klient nie płaci za wdrożenie; płaci tylko za robotogodziny** (godzinę pracy agenta
 zamiast godziny pracy człowieka); przez pierwsze 4 lata stawka zawiera spłatę wdrożenia, **od 5. roku stawka spada**;
 człowiek w pętli przy decyzjach wysokiego ryzyka, każda decyzja agenta zapisana; Client Portal (godziny, oszczędności).
 NIE pokazujemy klientowi rozbicia na licencję / utrzymanie / ratę / prowizję ani „success fee” — jedna stawka za robotogodzinę.
@@ -159,3 +159,12 @@ Pay-as-you-Save — jeśli występuje).
      wymiarowych; sprawdź, czy bez kratki nic nie traci czytelności (sceny izometryczne, tabliczki ARK., kalkulatory).
 - Przełącznik wariantu w kodzie: jeden atrybut/klasa (np. `<html data-grid="on|off">`) ustawiany przy budowie; oba pliki budowane
   jednym poleceniem. Rozmiar każdego < 3 MB.
+
+## 8. Decyzje właściciela 33–35 (dopisane w trakcie — obowiązują)
+
+- **33 — pilotaż Robotify:** „Pilot 30 dni” odbywa się na **robocie demonstracyjnym partnera** (producent / dystrybutor);
+  klient płaci w tym czasie **tylko robotogodziny**, a robota kupuje dopiero po udanym pilotażu. Opisz to tak wszędzie, gdzie jest pilot.
+- **34 — bez opcji „Pay-per-robot-hour”:** jedna oferta Robotify (robot klienta + nasz serwis w stawce za robotogodzinę);
+  nie pokazuj opcji sezonowej / pay-as-you-go.
+- **35 — czas uruchomienia pakietu Agentify: wszędzie 4–6 tygodni** (zero „2–4 tygodnie”, „7–14 dni”, „30 dni”). Discovery i mapa
+  procesów z kalkulatorem ROI w 2 tygodnie — bez zmian.

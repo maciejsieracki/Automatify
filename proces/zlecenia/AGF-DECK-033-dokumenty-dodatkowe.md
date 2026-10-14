@@ -274,3 +274,13 @@ narastająco 319 810 zł / 640 972 zł / 963 421 zł / 1,29 mln zł.
 - **Do decyzji właściciela:** pilot 30 dni Robotify (czyj robot, kto płaci); karta „Pay-per-robot-hour”; jeden czas uruchomienia
   pakietu Agentify (2–4 tygodnie / 7–14 dni MVP2 / 30 dni). Konwencje przyjęte (do ewentualnej zmiany): ujemne w tabelach decków
   w nawiasach, przypisy o różnicach z zaokrągleń, „ponad 10 etatów” / „ponad 3 etaty”, „robotogodzina”.
+
+## Decyzje 33–35
+
+- **33 — pilotaż Robotify (A):** pilot 30 dni na robocie demonstracyjnym partnera (producent / dystrybutor); klient płaci w tym
+  czasie tylko robotogodziny, robota kupuje po udanym pilotażu. Wprowadzone w R (Wyzwania, Rozwiązanie, Model, Korzyść).
+- **34 — karta „Pay-per-robot-hour” (A):** usunięta; jedna oferta Robotify.
+- **35 — czas uruchomienia pakietu Agentify (C):** wszędzie 4–6 tygodni (było 2–4 tygodnie / 7–14 dni MVP2 / 30 dni) — decki H i A,
+  FAQ (obie wersje).
+Skrypt `model/patch_dec33.py` (łańcuch: patch_src → patch_docs → patch_fc → patch_dec33 → build_all). Przebudowa powtarzalna,
+14/14 plików bez błędów, pakiet inwestora bez hasła, paczki odświeżone. Te same decyzje dopisane do wymagań strony (§8).
