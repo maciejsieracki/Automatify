@@ -139,3 +139,32 @@ Teaser — 2 strony A4.
 Ustalenia: (1) wersje EN wszystkich dokumentów PL z obu pakietów (3 decki, FAQ, Suplement, Aneks, Teaser) — osobne
 zadanie po zamknięciu decyzji PL, ten sam proces (Operator → Ewaluator → Final Control); (2) nowa strona dla klienta —
 dwujęzyczna PL / EN z przełącznikiem języka.
+
+## Decyzje 20–22
+
+- **Decyzja 20 — doradcy (E11):** A — biogramy połączone, wszędzie (decki H / A / R, Teaser, później EN):
+  Marcin Olszewski, Strategic Advisor — „24 lata jako CFO i CEO: 14 lat regionalny CFO i CEO ds. rynków wschodzących
+  w Fujitsu, 3 lata CEO HP Inc. Polska.”; Maciej Drabek, Investment Advisor — „10+ lat w bankowości inwestycyjnej
+  i private equity; transakcje M&A (m.in. w energetyce), nadzór nad spółkami portfelowymi.”
+- **Decyzja 21 — grosze (E7):** A — kwoty w Suplemencie i Aneksie w pełnych złotych (zaokrąglenie połówkowe w górę;
+  skrypt `grosze.py`: Suplement 45 kwot, Aneks 7). Wyjątki: mnożniki płac (3,034 itd.), stawki zł/h, parametr overheadu
+  2,05%. Dodatkowo 4,69 → 4,7 etatu na proces; Aneks — KPI 4,47 → 4,5 mln zł. Sumy w tabelach i rundy zgodne
+  (43 825 650 zł jak w deckach). Round B Agentify 1 937 042 zł = 1 937 041,50 po tym samym zaokrągleniu (E15 zamknięte).
+- **Decyzja 22 — przykład 07.8 (deck A):** A — pełne złote: licencja 263 035 zł, prowizja 223 177 zł; suma 626 612 zł
+  i 2 008 588 zł u klienta bez zmian.
+Źródła decków zaktualizowane; przebudowa = wynik bajt w bajt. Pakiety przebudowane.
+
+## Decyzje 23–24 — format liczb (zastępują zasadę „najwyżej 1 miejsce po przecinku” dla kwot)
+
+Właściciel: „Tak naprawdę przy dużych kwotach trzeba je podać po prostu w milionach, ale do dwóch zer po przecinku.”
+„Oczywiście, w milionach podajemy kwoty pieniężne, liczbę ludzi i tak dalej; wszystko jest w sztukach.”
+- **Decyzja 23 (A):** każda kwota pieniężna ≥ 1 mln zł jako „X,XX mln zł” — w deckach, FAQ, Suplemencie, Aneksie,
+  Teaserze, tabelach i na stronie dla klienta; kwoty dziś w mln z jednym miejscem (np. 87,1) przeliczone z budżetu na dwa
+  miejsca (nie dopisanie zera); kwoty < 1 mln zł — pełne złote; stawki zł/h bez zmian.
+- **Decyzja 24 (A):** ilości (ludzie, klienci, roboty, procesy, podpisy, etaty) — pełne sztuki bez skrótów „tys.”/„mln”,
+  zaokrąglone do całości (19,5 → 20 robotów); wskaźniki na jednostkę zostają z przecinkiem (5,2 procesu na klienta,
+  3,5 etatu na robota); dane rynkowe z zewnętrznych źródeł — jak w źródle (4 mln osób).
+- **Decyzja 25 (doprecyzowanie właściciela):** „Ale wszystkie sztuki w liczbach bez przecinka, żeby nie było na przykład
+  24,4.” — także średnie i wskaźniki ilościowe (24,4 etatu, 5,2 procesu, 3,5 etatu, 4,7 etatu na proces) jako liczby
+  całkowite („ok. 24 etaty”, „ok. 5 procesów”); tam, gdzie zaokrąglenie psułoby rachunek, pokazujemy całkowitą wielkość,
+  która go zachowuje (np. 43 920 h zamiast 24,4 × 1 800 h). Procenty, stawki zł/h i mnożniki płac — bez zmian.
