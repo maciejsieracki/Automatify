@@ -235,3 +235,12 @@ spójności (`SPOJNOSC.md`): te same wielkości identyczne we wszystkich dokumen
 Decki: nowy skrypt `AGF-DECK-032/build_all.py` = build_decks.py + listy zmian (przebudowa powtarzalna). Dane zewnętrzne o robotach
 (Amazon, prognoza dla Polski) zostają jak w źródle (decyzja 24). Do akceptacji: „½” etatu (role wspólne, Aneks), ICP
 „20,00–200,00 mln zł”. Niezależna ewaluacja formatu — razem z nowym modelem (perspektywa B).
+
+## Decyzja 31 — w use case Robotify osobno zakup i serwis
+
+Właściciel: „Jedynie rozbij kwoty za serwis i kwoty za zakup.”
+Wszędzie, gdzie pokazujemy koszt robota po stronie klienta (tabela, koszt za godzinę, sumy za 4 lata), zakup i serwis
+podajemy osobno, a dopiero potem razem: rocznie zakup 59 125 zł (8,45 zł/h) + serwis 27 066 / 25 712 / 24 427 / 23 205 zł
+(3,87 / 3,67 / 3,49 / 3,32 zł/h); za 4 lata: zakup 236 500 zł + serwis 100 410 zł = 336 910 zł wobec 1,62 mln zł pracy ludzi
+→ zostaje 1,29 mln zł. Widełki: zakup 129 000 zł (30 tys. EUR, 4,61 zł/h) – 344 000 zł (80 tys. EUR, 12,29 zł/h).
+Uwaga do rachunku: w roku 4 składniki po zaokrągleniu dają 8,45 + 3,32 = 11,77 zł/h przy pełnym koszcie 11,76 zł/h.
