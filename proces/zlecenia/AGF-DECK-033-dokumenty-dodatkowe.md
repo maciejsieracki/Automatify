@@ -253,3 +253,24 @@ W tabelach use case'ów (decki — sekcja Korzyść i przykłady; strona — prz
 Agentify, klient realistyczny: w roku 763 515 zł (lata 1–4), 831 015 zł od 5. roku; narastająco 763 515 zł / 1,53 mln zł /
 2,29 mln zł / 3,05 mln zł (5 lat: 3,89 mln zł). Robotify, cobot 55 tys. EUR: w roku 319 810 / 321 163 / 322 448 / 323 670 zł;
 narastająco 319 810 zł / 640 972 zł / 963 421 zł / 1,29 mln zł.
+
+## Dispatch „model robotogodziny” (wyzwalacz: decyzje 27–32) — rundy 1–3, Final Control, poprawki po FC
+
+- **Operator:** decki H / A / R — Problem (od strony przedsiębiorcy), Rozwiązanie (0 zł za wdrożenie, płatność tylko za
+  robotogodziny; Robotify — robot klienta, serwis w stawce), nowa sekcja **04 · Korzyść** w każdym decku (A: klient realistyczny
+  19,60 → 16,03 zł/h, zysk 763 515 zł/rok, narastająco 1,53 / 2,29 / 3,05 mln zł; R: cobot 55 tys. EUR — zakup 59 125 zł/rok i serwis
+  osobno, 12,31 zł/h vs 58 zł/h, zysk narastająco do 1,29 mln zł, widełki, przypis; H: oba obok siebie), model i przykład Agentify
+  jako składniki jednej stawki; Teaser, FAQ, Suplement (obie wersje). Pisownia „robotogodzina”. Skrypty: `model/patch_src.py`,
+  `model/patch_docs.py` (od kopii r5), `model/patch_fc.py`; budowa `AGF-DECK-032/build_all.py`.
+- **Ewaluator A (treść, rachunki) i B (format liczb, regresje, render), rundy 1–3:** r1 PASS Z UWAGAMI (A: 6 istotnych — resztki
+  starego modelu, karta Pay-per-robot-hour, FAQ Q4, Teaser), r2 i r3 — zamknięte do drobnych; r3: 0 istotnych, 9 drobnych.
+- **Final Control:** PASS Z UWAGAMI — treść, liczby i budowa gotowe; wszystkie wartości use case'ów zgodne z budżetem
+  i decyzjami 29–32; przebudowa ×2 bajt w bajt.
+- **Poprawki po FC (`patch_fc.py`):** A3-01 (230 977 zł — suma 556 412 zł), A3-02 (Teaser: „= 86 191 zł, czyli 12,31 zł/h”), A3-03
+  („stawka za robotogodzinę” zamiast „stawka serwisowa”), A3-04 („roboty klientów w serwisie Robotify”), A3-05 (lead R = tytuły
+  problemów), A3-06 (przypis: rok 4 po przedłużeniu umowy serwisowej na 36 mies.), A3-07 (usunięte „bez gwarancji efektu”),
+  A3-09 („u klienta realistycznego z budżetu”). Pakiety przebudowane: render 14/14 bez błędów, pakiet inwestora 7/7 bez hasła,
+  Teaser 2 strony A4. Paczki: `wyniki/AGF-DECK-033-PAKIET-1-Inwestor.zip`, `…-PAKIET-2-Strona-WWW.zip`.
+- **Do decyzji właściciela:** pilot 30 dni Robotify (czyj robot, kto płaci); karta „Pay-per-robot-hour”; jeden czas uruchomienia
+  pakietu Agentify (2–4 tygodnie / 7–14 dni MVP2 / 30 dni). Konwencje przyjęte (do ewentualnej zmiany): ujemne w tabelach decków
+  w nawiasach, przypisy o różnicach z zaokrągleń, „ponad 10 etatów” / „ponad 3 etaty”, „robotogodzina”.
