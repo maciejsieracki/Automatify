@@ -209,3 +209,5 @@ narastająco 378 935 zł / 759 222 zł / 1,14 mln zł / 1,52 mln zł.
 Rozbieżność do decyzji: HANDOFF podaje dla klienta realistycznego 18,15 → 14,96 zł/h (plik właściciela
 „Agentify-Budzet-NOWY-MODEL.xlsx”, arkusz N1 — brak w repozytorium); obecny budżet daje 19,60 → 16,03 zł/h.
 Zakres: decki H / A / R (Problem, Rozwiązanie, nowa sekcja Korzyść, model rozliczeniowy i przykład Agentify) i strona.
+- **Decyzja 29 — stawka za robotogodzinę Agentify:** A — z obecnego budżetu: klient realistyczny 19,60 zł/h (lata 1–4)
+  → 16,03 zł/h (od 5. roku); klient ważony 14,27 → 12,67 zł/h. Wartości z HANDOFF (18,15 → 14,96) nie są używane.
