@@ -387,3 +387,14 @@ Właściciel: „zostajemy już tylko przy nowej wersji C […] tekst tam jest z
 Czyli minimalnie to, co jest wymagane, skondensowana wiedza i dobrze widoczna, a resztę zobacz więcej i przekierowanie do podstrony. To nie może być
 one-pager.” Czcionka: **Manrope** (A, krój marki Automatify). Kierunek B porzucony. Obowiązują też decyzje 38–46 (Robotify i humanoidy pierwsze,
 wynajem przez leasing, humanoid-first, europejski nadzór i dane). Na razie PL.
+
+## Decyzja 48 — strona C v4: sprawy otwarte (2026-10-15)
+
+Właściciel: „1 tak, możesz dodać; 2 ok; 3 pomyśl sam; 4 tak, ale jako kierunek i sposób docelowego działania; 5 usunąć”.
+1. **Zakup robota jako wariant obok wynajmu** (np. z dotacją UE / BGK) — dodać na stronie (Robotify, FAQ, kalkulator: ta sama kwota = rata albo cena ÷ 4 lata).
+2. „4 mln mniej osób w wieku produkcyjnym do 2040” — zostaje (z przypisem; na liście do potwierdzenia w GUS).
+3. **Rozliczenie humanoidów (propozycja orkiestratora, zgodna z budżetem i decyzją 45):** jak cobot — rata za robota przez partnera leasingowego
+   (albo zakup) + robotogodziny za dobór, wdrożenie, nadzór i serwis; start od pilotażu, w którym klient płaci tylko robotogodziny; stawka po analizie
+   zadania, przed pilotażem.
+4. Architektura europejskiego nadzoru i danych — opisywana jako kierunek i docelowy sposób działania (nie jako stan obecny).
+5. Wideo key visualu (Agentify po lewej) — usunięte ze strony.
