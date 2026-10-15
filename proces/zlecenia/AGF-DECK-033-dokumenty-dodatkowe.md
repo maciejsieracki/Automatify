@@ -355,3 +355,14 @@ kafle „w skrócie” w decku H (liczby w jednej linii), decyzja 35 w 4 pomini�
   muszą być europejskie. Ze względów bezpieczeństwa dane powinny być składowane w Europie, a nie lecieć do Chin.”
   Do researchu dołożony wątek: bezpieczeństwo i przepływ danych robotów z USA i Chin, otwartość oprogramowania (praca lokalna,
   własny nadzór), europejska warstwa oprogramowania i chmury, RODO / Data Act / NIS2 / Cyber Resilience Act.
+- **42 — akcent nie zmienia planu (2026-10-15).** Właściciel: „musimy eksponować najbardziej Robotify i roboty humanoidalne, bo to przyciągnie
+  inwestorów, ale […] to, że akcenty są na roboty humanoidalne, nie oznacza, że nie pracujemy zgodnie z wytycznymi i budżetem, czyli
+  najpierw Agentify, a potem Robotify.” → kolejność prezentacji: Robotify i humanoidy pierwsze (decyzja 40); plan, harmonogram i liczby —
+  bez zmian, z budżetu (Agentify od 2027, Robotify od 2028).
+- **43 — rok 2027 we wszystkich wynikach.** „Brakuje mi […] roku 27 w wynikach. Z reguły wszystko zaczyna się od 28. Trzeba pokazać straty,
+  które będą w 27, że to jest start.” Źródło: budżet połączony („1. Hub”, rok 2027: przychód 746 712 zł, EBITDA przed programem motywacyjnym
+  −4,90 mln zł, w tym Agentify −4,75 mln zł i Robotify −150 000 zł; zysk netto −5,47 mln zł; 15 etatów).
+- **44 — potrzeby kapitałowe rok po roku, osobno dla spółek.** „pokazać przy miejscu dla inwestorów, ile zarówno Agentify, jak i Robotify
+  potrzebuje środków na rozwój biznesu w każdym roku, a ile na środki obrotowe.” Źródło: budżety produktowe (Agentify „8. Finansowanie”,
+  Robotify P&L / finansowanie).
+- **Wykonanie decyzji 38–44 we wszystkich dokumentach (PL, potem EN):** po raporcie z researchu o humanoidach.
