@@ -315,3 +315,20 @@ Właściciel: „zrób mi spis treści na 5 stron, takie kompendium czym jest Au
 - **Rozstrzygnięte bez pytania (do ewentualnej zmiany przez właściciela):** linia „Operacyjnie: CTO / Product Owner / Strategy
   Manager” z decku H; tabela projekcji bez wiersza „Procesy zautomatyzowane” (krój min. 9 pt); liczby rynkowe jak w Teaserze.
 - Wersja EN — razem z pozostałymi materiałami EN.
+
+## EN-033 — wersje angielskie (zapis zlecenia; wyzwalacz: „Jak skończysz wersję polską, to potem przygotuj to samo, ale w wersji angielskiej.”)
+
+- **Zakres:** 3 decki, FAQ, Budget Supplement, Headcount Annex, Teaser, Compendium (HTML + PDF) — pakiet inwestora EN bez haseł
+  (decyzja 26) i pakiet WWW z przełącznikiem PL | EN w każdym dokumencie (strona główna `index.html` tylko PL — decyzja 18).
+- **Proces:** glosariusz (EN-033/GLOSARIUSZ.md) → tłumaczenie 9 porcji + porcja 10 (sekcja 04 decku H, decyzja 36) → budowa
+  (`EN-033/build_en.sh`) → r1 recenzje (język decków / język dokumentów / parytet) → poprawki → r2 recenzje → poprawki r3 →
+  **Final Control: PASS Z UWAGAMI** (EN-033/FINAL-CONTROL.md): parytet liczb 14/14, 0 polskich słów, 0 błędów JS, 8/8 bez hasła,
+  Teaser 2 strony A4, Compendium 5 stron A4, przełączniki 12/12, budowa powtarzalna bajt w bajt.
+- **Paczki:** `wyniki/AGF-DECK-033-PAKIET-1-Investor-EN.zip`, `wyniki/AGF-DECK-033-PAKIET-2-Strona-WWW-PL-EN.zip`.
+
+## Łańcuch PL — pełny (stan po decyzjach 36–37 i poprawkach „PL przed EN”)
+
+`model/patch_src.py → patch_docs.py → patch_fc.py → patch_dec33.py → patch_dec36.py → AGF-DECK-032/build_all.py www-v4` →
+pakiety: decki inwestora `tools/build_investor_decks.py`, dokumenty inwestora `tools/build_investor_docs.py` (FAQ, Suplement —
+z poprawionymi mapami, Aneks, Teaser), Kompendium `KOMP/build.sh`. `patch_dec36.py`: mapy i nazwa Aneksu w Suplemencie inwestora,
+kafle „w skrócie” w decku H (liczby w jednej linii), decyzja 35 w 4 pominiętych miejscach (4–6 tygodni).
