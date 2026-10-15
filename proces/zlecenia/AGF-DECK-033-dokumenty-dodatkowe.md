@@ -398,3 +398,16 @@ Właściciel: „1 tak, możesz dodać; 2 ok; 3 pomyśl sam; 4 tak, ale jako kie
    zadania, przed pilotażem.
 4. Architektura europejskiego nadzoru i danych — opisywana jako kierunek i docelowy sposób działania (nie jako stan obecny).
 5. Wideo key visualu (Agentify po lewej) — usunięte ze strony.
+
+## Dispatch AKT-38-46 — wykonanie decyzji 38–46 w materiałach PL (2026-10-15): GOTOWE (4 drobne)
+
+- **Zakres:** decki H, R, A, FAQ, Suplement, Aneks, Teaser (2 strony), Kompendium (5 stron) — Robotify i humanoidy pierwsze (skala, paleta zastosowań,
+  fazy humanoid-first z bramkami, dostęp do producentów USA/Chiny/Europa, europejski nadzór i dane, wynajem cobotów przez leasing), plan i budżet bez
+  zmian, rok 2027 w wynikach, rozwój vs środki obrotowe per spółka per rok; usunięte twierdzenia bez źródła wskazane w raporcie.
+- **Łańcuch:** … → patch_dec37.py → **patch_dec38.py → patch_dec38_docs.py** → build_all; pakiety: `pakiety_pl.sh` (scratchpad AKT-38-46).
+- **Proces:** plan i dane z budżetu → kontrola (budżet, narracja VC) → wdrożenie (decki, dokumenty, Kompendium) → recenzje r1 (liczby: 3 istotne;
+  narracja: 5 istotnych; technika) → poprawki → weryfikacja **GOTOWE** (V-01 „Moat” w nadtytułach i FAQ, V-02 data ceny NEURA, V-03 ramka kwoty
+  w druku Teasera, V-04 „82,8%” przy 390 px w pakiecie WWW — drobne, do domknięcia z EN).
+- **Liczby zewnętrzne o humanoidach:** lista do potwierdzenia u źródła przed wysyłką (`AKT-38-46/DO-POTWIERDZENIA.md`, przekazana właścicielowi).
+- **Uwaga:** `index.html` pakietu WWW nie był aktualizowany — paczka WWW oznaczona „NIE-PUBLIKOWAC” do czasu aktualizacji.
+- **Strona C v4 (decyzja 47–48):** 8 stron, Manrope, zakup obok wynajmu, rozliczenie humanoidów jak cobota, architektura danych jako kierunek, bez wideo.
