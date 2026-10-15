@@ -168,3 +168,19 @@ Pay-as-you-Save — jeśli występuje).
   nie pokazuj opcji sezonowej / pay-as-you-go.
 - **35 — czas uruchomienia pakietu Agentify: wszędzie 4–6 tygodni** (zero „2–4 tygodnie”, „7–14 dni”, „30 dni”). Discovery i mapa
   procesów z kalkulatorem ROI w 2 tygodnie — bez zmian.
+
+## §9. Wersja C z treścią i układem B (polecenie właściciela 2026-10-15)
+
+Właściciel: „Jeżeli chodzi o treści i wszystkie elementy graficzne, spróbuj przenieść wszystko w takiej wersji, jak w B, do wersji C
+i zrób to zgodnie z brandbookiem C. Jedna tylko uwaga: nie wykorzystujesz żadnych elementów z C, które wcześniej tam były stworzone.
+Wszystko generujesz od nowa. Ewentualnie elementy ruchome z B możesz użyć. Chcę zobaczyć obie treści i układ identyczny, ale w dwóch
+stylach graficznych.” oraz „Na razie tylko wersję polską.”
+- Treść, kolejność sekcji, układ, rysunki, tabele, kalkulatory i liczby — 1:1 jak w B (jedno źródło: generator B, motyw „c”;
+  każda zmiana treści B przechodzi automatycznie do C).
+- Styl wg brandbooka C (kandydat-C/KONCEPCJA.md): paleta (granat prawie czarny #050B16 → #0B172A, linie 1 px, turkus #2EBED9 = Agentify,
+  limonka #C4E847 = Robotify, kość słoniowa #F0E8D6 = ludzie, bursztyn #E9A23B tylko Problem i wyjątki), typografia (Instrument Sans,
+  IBM Plex Mono dla liczb i odczytów, Instrument Serif kursywa tylko dla akcentów „ludzkich”), metafora „powtarzalne” mono /
+  „niepowtarzalne” szeryf; bez gradientowych tekstów, blobów, poświat i kart z cieniem.
+- Żadnych elementów, kodu ani grafik z dawnego pliku C — wszystko rysowane od nowa; wolno użyć elementów ruchomych z B.
+- Uwagi jury do C obowiązują: kontrast tekstu ≥ 4,5:1, brak drobnego szarego tekstu, brak „neonowego AI-startupu”.
+- Tylko PL (bez przełącznika języka). Wyniki B (z kratką / bez kratki) bez zmian.
