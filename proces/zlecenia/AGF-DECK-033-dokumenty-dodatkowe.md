@@ -332,3 +332,20 @@ Właściciel: „zrób mi spis treści na 5 stron, takie kompendium czym jest Au
 pakiety: decki inwestora `tools/build_investor_decks.py`, dokumenty inwestora `tools/build_investor_docs.py` (FAQ, Suplement —
 z poprawionymi mapami, Aneks, Teaser), Kompendium `KOMP/build.sh`. `patch_dec36.py`: mapy i nazwa Aneksu w Suplemencie inwestora,
 kafle „w skrócie” w decku H (liczby w jednej linii), decyzja 35 w 4 pominiętych miejscach (4–6 tygodni).
+
+## Decyzje 38–40 — roboty humanoidalne na pierwszym planie, Robotify przed Agentify (2026-10-15)
+
+- **38 — humanoidy wyeksponowane, coboty przejściowe.** Właściciel: „w Automatifyu w tematach robotów powinny być wyeksponowane
+  roboty humanoidalne. Kuboty są tylko przejściowe; gdy roboty humanoidalne będą zdolne do realnej pracy w fabrykach, przewidujemy,
+  że nastąpi to za dwa lata. W tym czasie chcemy wynajmować kuboty. W okresie przejściowym, przez kolejne dwa, czyli cztery lata,
+  kuboty będą współpracować z robotami humanoidalnymi, a później będą używane wyłącznie roboty humanoidalne. […] Obecnie brakuje
+  informacji o robotach humanoidalnych, a jest to najważniejszy element przyciągający inwestorów.”
+  Fazy: ok. 2026–2028 wynajem cobotów → ok. 2028–2030 coboty + humanoidy → od ok. 2030 wyłącznie humanoidy.
+  **Uwaga:** „wynajmować coboty” zmienia model z decyzji 28/30/31 (robota kupuje klient, serwis w stawce) — wymaga decyzji właściciela
+  co do budżetu Robotify (flota, finansowanie) przed zmianą liczb w materiałach.
+- **39 — szeroka paleta zastosowań humanoidów.** Właściciel: „opisać bardzo szeroką paletę rozwiązań, możliwości przyszłości wdrażania
+  robotów humanoidalnych […] w różnych gałęziach gospodarki: turystyce, magazynowaniu, fabrykach, na lotniskach – praktycznie wszystko.
+  Każda praca fizyczna docelowo może być zastąpiona. Skala i potencjał są gigantyczne i to musi się najpierw [przebijać].”
+- **40 — kolejność: najpierw Robotify, potem Agentify** — „w każdym dokumencie najpierw trzeba pokazywać robotify, a później agentify”.
+- **Wykonanie:** najpierw research (roboty humanoidalne: producenci, wdrożenia i gotowość, modele wynajmu, bezpieczeństwo i regulacje UE,
+  metodyka wdrażania, Polska/CEE, inwestorzy, zastosowania w sektorach) → raport dla właściciela → propozycja zmian w materiałach.
