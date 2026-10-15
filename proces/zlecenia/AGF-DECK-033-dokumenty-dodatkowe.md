@@ -366,3 +366,10 @@ kafle „w skrócie” w decku H (liczby w jednej linii), decyzja 35 w 4 pomini�
   potrzebuje środków na rozwój biznesu w każdym roku, a ile na środki obrotowe.” Źródło: budżety produktowe (Agentify „8. Finansowanie”,
   Robotify P&L / finansowanie).
 - **Wykonanie decyzji 38–44 we wszystkich dokumentach (PL, potem EN):** po raporcie z researchu o humanoidach.
+- **45 — wynajem cobotów przez partnera leasingowego (B, rekomendacja; 2026-10-15).** Klient „wynajmuje” robota bez wkładu własnego przez
+  partnera leasingowego (rata miesięczna), a Robotify płaci robotogodziny za dobór, wdrożenie i serwis. Budżet Robotify bez zmian (robot nie
+  jest na bilansie Robotify); liczby use case'u zostają (rata ≈ cena ÷ 4 lata, z dopiskiem, że nie obejmuje kosztu finansowania).
+- **46 — „humanoid-first” z bramkami (A, rekomendacja; 2026-10-15).** Jako strategia Robotify, nie prognoza rynku: od ok. 2030 nowe wdrożenia
+  opieramy na humanoidach, gdy spełnią kryteria (koszt godziny poniżej pracy człowieka, niezawodność, certyfikat); coboty tylko tam, gdzie są
+  wyraźnie tańsze. Faza mieszana cobot + humanoid od ok. 2028. Teza „po 2030 wyłącznie humanoidy” nie pada.
+- Raport z researchu: `reports/Roboty humanoidalne w Robotify.md` (+ PDF), notatki `research_notes/Roboty humanoidalne w Robotify/`.
