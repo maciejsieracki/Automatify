@@ -328,7 +328,7 @@ Właściciel: „zrób mi spis treści na 5 stron, takie kompendium czym jest Au
 
 ## Łańcuch PL — pełny (stan po decyzjach 36–37 i poprawkach „PL przed EN”)
 
-`model/patch_src.py → patch_docs.py → patch_fc.py → patch_dec33.py → patch_dec36.py → AGF-DECK-032/build_all.py www-v4` →
+`model/patch_src.py → patch_docs.py → patch_fc.py → patch_dec33.py → patch_dec36.py → patch_dec37.py → AGF-DECK-032/build_all.py www-v4` →
 pakiety: decki inwestora `tools/build_investor_decks.py`, dokumenty inwestora `tools/build_investor_docs.py` (FAQ, Suplement —
 z poprawionymi mapami, Aneks, Teaser), Kompendium `KOMP/build.sh`. `patch_dec36.py`: mapy i nazwa Aneksu w Suplemencie inwestora,
 kafle „w skrócie” w decku H (liczby w jednej linii), decyzja 35 w 4 pominiętych miejscach (4–6 tygodni).
@@ -373,3 +373,17 @@ kafle „w skrócie” w decku H (liczby w jednej linii), decyzja 35 w 4 pomini�
   opieramy na humanoidach, gdy spełnią kryteria (koszt godziny poniżej pracy człowieka, niezawodność, certyfikat); coboty tylko tam, gdzie są
   wyraźnie tańsze. Faza mieszana cobot + humanoid od ok. 2028. Teza „po 2030 wyłącznie humanoidy” nie pada.
 - Raport z researchu: `reports/Roboty humanoidalne w Robotify.md` (+ PDF), notatki `research_notes/Roboty humanoidalne w Robotify/`.
+
+## Porządki po Final Control EN-033 (2026-10-15) — `patch_dec37.py`: PASS Z UWAGAMI
+
+FAQ PL: „w 2027 koszty stałe to 94,8% kosztów hubu”, „Wartość wdrożenia wynosi 60 000 zł na proces”; trakcja H/A/R: „zamknięty umową cykliczną”;
+karta budżetu 900–1100 px; kolejność kafli „w skrócie” jak w H_AG/H_RO; aria-label Kompendium; tytuły powłoki plików inwestora; index.html
+„4–6 tygodni”; strażnik blokady w `build_en.sh`. EN: `EN-033/build/segment_rekey.py` (jednorazowo przed `build_en.sh`). Paczki PL i EN odświeżone.
+
+## Decyzja 47 — strona dla klienta: tylko wersja C, Manrope, czytelniej, strona główna + podstrony (2026-10-15)
+
+Właściciel: „zostajemy już tylko przy nowej wersji C […] tekst tam jest za mały i wszystko jest zbyt nadziubdziane. Użyć czcionki […] i sprawić,
+żeby wygląd wszystkich elementów był wyraźniejszy […]. Zawsze trzeba wyeksponować najważniejsze rzeczy, a te mniej istotne mogą być na podstronie.
+Czyli minimalnie to, co jest wymagane, skondensowana wiedza i dobrze widoczna, a resztę zobacz więcej i przekierowanie do podstrony. To nie może być
+one-pager.” Czcionka: **Manrope** (A, krój marki Automatify). Kierunek B porzucony. Obowiązują też decyzje 38–46 (Robotify i humanoidy pierwsze,
+wynajem przez leasing, humanoid-first, europejski nadzór i dane). Na razie PL.
