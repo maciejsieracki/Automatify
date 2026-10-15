@@ -349,3 +349,9 @@ kafle „w skrócie” w decku H (liczby w jednej linii), decyzja 35 w 4 pomini�
 - **40 — kolejność: najpierw Robotify, potem Agentify** — „w każdym dokumencie najpierw trzeba pokazywać robotify, a później agentify”.
 - **Wykonanie:** najpierw research (roboty humanoidalne: producenci, wdrożenia i gotowość, modele wynajmu, bezpieczeństwo i regulacje UE,
   metodyka wdrażania, Polska/CEE, inwestorzy, zastosowania w sektorach) → raport dla właściciela → propozycja zmian w materiałach.
+- **41 — Robotify jako integrator niezależny od producenta; europejski nadzór i dane (2026-10-15).** Właściciel: „mówimy też o użyciu
+  docelowo amerykańskich i chińskich rozwiązań, jeżeli chodzi o roboty humanoidalne. To nie muszą być europejskie. My jesteśmy
+  integratorem i dostawcą. […] korzystać ze wszystkich dostępnych rozwiązań na rynku, z zastrzeżeniem, że oprogramowanie i nadzór
+  muszą być europejskie. Ze względów bezpieczeństwa dane powinny być składowane w Europie, a nie lecieć do Chin.”
+  Do researchu dołożony wątek: bezpieczeństwo i przepływ danych robotów z USA i Chin, otwartość oprogramowania (praca lokalna,
+  własny nadzór), europejska warstwa oprogramowania i chmury, RODO / Data Act / NIS2 / Cyber Resilience Act.
