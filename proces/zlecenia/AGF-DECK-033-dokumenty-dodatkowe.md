@@ -284,3 +284,34 @@ narastająco 319 810 zł / 640 972 zł / 963 421 zł / 1,29 mln zł.
   FAQ (obie wersje).
 Skrypt `model/patch_dec33.py` (łańcuch: patch_src → patch_docs → patch_fc → patch_dec33 → build_all). Przebudowa powtarzalna,
 14/14 plików bez błędów, pakiet inwestora bez hasła, paczki odświeżone. Te same decyzje dopisane do wymagań strony (§8).
+
+## Decyzja 36 — use case'y w decku Automatify: osobno, jeden pod drugim, zaakcentowane (2026-10-14)
+
+Właściciel: „Use case Automatify trzeba bardziej […] podkreślić i ładniej opracować, bo teraz są nadziobdziane i malutkie […].
+Nie dawałbym tego po prostu w jedną sklejkę, Agentify i Robotify razem, tylko być może jedno pod drugim […]. Model biznesowy
+i use case są najważniejsze w pitch decku, czyli czy to jest odpowiedź na rynek, jakie problemy rozwiązuje, jakie daje
+rozwiązania i jakie korzyści.”
+- **Wykonanie:** sekcja 04 decku H („Use case i model biznesowy”, `nowe/korzysc-H.section.html`, także `model/src/nowe/`) —
+  dwa bloki jeden pod drugim (#uc-agentify, #uc-robotify): pas produktu → triada Problem klienta → Rozwiązanie i model →
+  Korzyść klienta z dużymi liczbami (60 → 19,60 zł/h → 3,05 mln zł; 58 → 12,31 zł/h = 8,45 zakup + 3,87 serwis → 1,29 mln zł)
+  → pasek „Model biznesowy” (klient płaci / przychód z klienta / marża dla inwestora — tylko liczby z decków A i R) →
+  rachunek klienta (godzina człowieka vs robotogodzina, rachunek roczny, zysk narastająco), przypis „Skąd liczby”.
+- **Proces:** 3 niezależne projekty → jury (inwestor VC / dyrektor kreatywny / wymagania właściciela; wygrał projekt 3 —
+  85,7 pkt) → finalizacja z przeszczepami → recenzje (liczby, wygląd, technika) → poprawki → weryfikacja: GOTOWE (3 drobne,
+  2 wdrożone: „zł/h” przy różnicy stawek, wyrównane łamanie nagłówków na telefonie).
+- **Przebudowa:** łańcuch patch_src → patch_docs → patch_fc → patch_dec33 → build_all — zmieniły się wyłącznie
+  `korzysc-H.section.html` i `Automatify Pitch.html`; decki A i R bez zmian. Pakiety i paczki PL odświeżone (inwestor bez hasła).
+
+## Decyzja 37 — kompendium Automatify na 5 stron (2026-10-14)
+
+Właściciel: „zrób mi spis treści na 5 stron, takie kompendium czym jest Automatify, najważniejsze rzeczy, taki mini pitch deck”.
+- **Format (rozstrzygnięty przez orkiestratora):** 5 stron A4 pionowo w rodzinie Teasera; s. 1 ze spisem treści; plik samodzielny
+  bez hasła „PL - Kompendium.html” + „PL - Kompendium.pdf” (dokładnie 5 stron) w pakiecie inwestora.
+- **Treść:** 1) Automatify w skrócie, 2) odpowiedź na rynek (P→R→K od strony klienta, rynek, przewaga), 3) Agentify — model
+  biznesowy i use case, 4) Robotify — model biznesowy i use case, 5) plan i finanse (projekcje, rundy, Seed, ryzyka, zespół,
+  kontakt). 161 liczb — każda ze źródła (decki H/A/R, Teaser, FAQ, Suplement, Aneks, decyzje 19–35).
+- **Proces:** scenariusz → kontrola liczb i narracji → projekt → recenzje (liczby / inwestor / wygląd i druk) → poprawki →
+  weryfikacja: GOTOWE (4 drobne; poprawiona jednostka „zł/h” w przypisach).
+- **Rozstrzygnięte bez pytania (do ewentualnej zmiany przez właściciela):** linia „Operacyjnie: CTO / Product Owner / Strategy
+  Manager” z decku H; tabela projekcji bez wiersza „Procesy zautomatyzowane” (krój min. 9 pt); liczby rynkowe jak w Teaserze.
+- Wersja EN — razem z pozostałymi materiałami EN.
