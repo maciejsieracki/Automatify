@@ -462,3 +462,43 @@ podstrony (wynik 2027, potrzeby kapitałowe rok po roku z zastrzeżeniami decku 
   przy 900–930 px, Suplement przy 900 px przewija się w poziomie o ok. 95 px), ścieżka scratchpadu na stałe w skryptach PL.
 - **Paczki:** `wyniki/AGF-DECK-033-PAKIET-1-Inwestor.zip`, `…-PAKIET-1-Investor-EN.zip`, `…-PAKIET-2-Strona-WWW.zip`,
   `…-PAKIET-2-Strona-WWW-PL-EN.zip`. Nic nie opublikowano.
+
+## Fakty i budżet — jedna lista pytań A/B/C (2026-10-16)
+
+Polecenie właściciela: pytania zbierać naraz, w formacie A/B/C z rekomendacją; **budżet jest źródłem prawdy**. Przed pytaniami: potwierdzenie
+liczb u źródła (decki, dokumenty, Kompendium, strona C v4) i odpowiedzi z budżetu — rozstrzygnięte bez pytania: liczby z budżetu zostają
+(m.in. 2 684,19 mln zł opisane jako stan na 31.12.2030, nie szczyt; 104,0 mln pracowników fizycznych = szacunek modelu, nie Eurostat;
+„ponad 3 etaty” → „3,5 etatu”; „klient realistyczny” → przykład z 5 procesami); 58 faktów z poprawką u źródła (np. AI Act po „Digital
+Omnibus”, WEF 39%, Clio zamiast Thomson Reuters, rynek Agentify ok. 66 mld USD z trzech prognoz Grand View Research); kursy NBP z 13.10.2026.
+Pytań: 10 (plik dla właściciela: `PYTANIA-ABC-2026-10-16.md`).
+
+## Decyzje 52–61 — odpowiedzi na pytania A/B/C (2026-10-16)
+
+Właściciel: **„1a, 2a, 3a, 4a, 5a, 6a […], 7b, 8b, 9b, 10”**.
+
+- **52 (1A) — odsetki w rundach:** Round B **18,22 mln zł** (było 17,06), w tym **1,16 mln zł** odsetek od kredytu obrotowego Agentify do
+  IV 2029 („odsetki płaci fundusz” — budżet); rundy razem **44,98 mln zł** (szczyt IV 2029); rozwój biznesu (a) **43,83 mln zł** (szczyt
+  III 2029) zostaje jako potrzeba rozwojowa. Agentify w rundach 23,40 mln zł (22,25 rozwoju + 1,16 odsetek), Robotify 21,58 mln zł.
+  Budżet: połączony „4. Dwie kwoty” K120 / M116 / B25, Agentify E120 / D116.
+- **53 (2A) — robot zamienny w 24 h:** z puli serwisowej dystrybutora lub producenta, jako warunek umów z dostawcami — bez zmian.
+- **54 (3A) — kamienie Robotify:** 2027 opisowo (producenci, leasing, procedura CE); 2028: 5 klientów, 20 robotów, 136 500 robotogodzin,
+  527 777 zł przychodu, 24 etaty; 2029: 65 klientów, 338 robotów, 12,77 mln zł, 72 etaty (budżet Robotify).
+- **55 (4A) — program partnerski Agentify:** bez daty — „rola Partnerships / BD od 2028; sprzedaż bezpośrednia i krzyżowa klientom
+  Agentify”; usunięte „Round B (MVP3)” przy kanale partnerskim (w budżecie nie ma kanału ani prowizji).
+- **56 (5A) — kwoty trakcji:** „netto, po kosztach robotów i usługi”.
+- **57 (6A) — „100 000–500 000 zł z góry” zastąpione kontrastem z budżetu:** 60 000 zł na proces; 1 / 5 / 10 procesów → 60 000 / 300 000 /
+  600 000 zł z góry w modelu klasycznym; w Agentify 0 zł z góry, spłata w stawce przez 4 lata. **Miks klientów 2-6-2** (na 10 klientów:
+  2 z 1 procesem, 6 z 5, 2 z 10; klient ważony 5,2 procesu) — sprawdzony w budżecie (Agentify „1. Panel” B45 = 5,2; liczba klientów =
+  procesy aktywne ÷ 5,2) i opisany w materiałach; „klient realistyczny” = przykład z 5 procesami, typ środkowy miksu.
+- **58 (7B) — manifest:** mocniej, zgodnie z tezą zastępowania pracy — „zastępuje” zostaje, akapit manifestu: „Wierzymy, że każdą
+  powtarzalną pracę docelowo może zastąpić maszyna. Robot i agent AI przejmują zmiany, na które brakuje ludzi, a ludzie zajmują się tym,
+  czego maszyna nie zrobi.”; Teaser („replace workers with…”) bez zmian.
+- **59 (8B) — hasło EN:** „We automate the repeatable, so people can focus on the unrepeatable.” (zastępuje „We automate what's
+  repeatable — so people can do what's unrepeatable.”; decki, Teaser, Compendium).
+- **60 (9B) — nazwy plików:** bez numerów.
+- **61 (10) — fakty bez potwierdzenia:** „Poszukać najbardziej obiektywnych danych, a jeżeli nie znajdziesz, zostaw te, które są
+  w Dokumentach.” — zamienniki ze źródłem tam, gdzie są (np. GUS 22,2 → 13,3–16,6 mln osób w wieku produkcyjnym w 2060 r.; ManpowerGroup
+  57% / 61%; PIE: najwyżej 4% MŚP z robotami; ponad 20 000 humanoidów w 2025 r., ok. 10% w realnych zastosowaniach — Interact Analysis;
+  Walker S2 30–50% wydajności człowieka — UBTech dla Financial Times); bez zamiennika tekst zostaje (status w `AKT-38-46/DO-POTWIERDZENIA.md`).
+- Przy okazji: dopisek decyzji 50 („zrealizowane przez zespół założycielski w Naster S.A.”) we wszystkich miejscach trakcji; etykiety
+  budżetu (104,0 mln = szacunek modelu; 3,5 etatu; 2 684,19 mln zł = stan na 31.12.2030).
