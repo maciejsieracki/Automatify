@@ -520,3 +520,15 @@ Właściciel: **„1a, 2a, 3a, 4a, 5a, 6a […], 7b, 8b, 9b, 10”**.
 - **Paczki:** `wyniki/AGF-DECK-033-PAKIET-1-Inwestor.zip`, `…-PAKIET-1-Investor-EN.zip`, `…-PAKIET-2-Strona-WWW-NIE-PUBLIKOWAC.zip`,
   `…-PAKIET-2-Strona-WWW-PL-EN-NIE-PUBLIKOWAC.zip`; dla właściciela jeden plik `Automatify-materialy-2026-10-16-runda-4.zip` z raportem
   rundy. Nic nie opublikowano (decyzja 49).
+
+## Decyzje 62–63 — po raporcie rundy 4 (2026-10-16)
+
+Właściciel: **„1 zostaw, 2 zdejmij”**.
+
+- **62:** 4 pozycje niepotwierdzone u źródła zostają w materiałach do kolejnego przeglądu (KSC / NIS2 od 3.04.2026, lista dostawców
+  wysokiego ryzyka — stan VIII 2026, lista FCC — VII 2026, lista platform Stretch, MiR / AutoStore, UR / Doosan, Locus).
+- **63:** zdjęte oznaczenie „NIE-PUBLIKOWAC” z paczek WWW (PL i PL-EN; decyzja 49 przestaje obowiązywać): `pakiety_pl.sh` domyślnie
+  `PUBLIKACJA_WWW=1`, paczki `wyniki/AGF-DECK-033-PAKIET-2-Strona-WWW.zip` i `…-PAKIET-2-Strona-WWW-PL-EN.zip` bez README-NIE-PUBLIKOWAC.
+  Stopka strony C v4 (9 stron) zgodna z publikacją: „Wyliczenia orientacyjne na parametrach modelu Automatify; źródła danych rynkowych
+  podajemy przy wskaźnikach.” (było: „Wersja testowa … źródła … zostaną dołączone przed publikacją”; źródła są przy kaflach) —
+  `AKT-38-46/tools/r4_src.py` D63. Publikacji na serwerze nie wykonano (brak dostępu do hostingu) — paczki są gotowe do wgrania.
