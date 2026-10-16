@@ -425,6 +425,29 @@ Właściciel: „1 tak, możesz dodać; 2 ok; 3 pomyśl sam; 4 tak, ale jako kie
   narracji strony nie recenzował nikt niezależny. Nic nie opublikowano.
 - **Strona C v4 (decyzja 47–48):** 8 stron, Manrope, zakup obok wynajmu, rozliczenie humanoidów jak cobota, architektura danych jako kierunek, bez wideo.
 
+
+## Decyzja 49 — strona główna pakietu WWW: nowa treść zostaje, bez publikacji (2026-10-16)
+
+Pytanie (FC-d38, sprawa 1): `index.html` przebudowany wg decyzji 38–46, wbrew zapisowi decyzji 18 („Teraz bez zmian w index.html”); treści
+nikt niezależnie nie zrecenzował. Właściciel: **„A: nowa + nie publikować (Rekomendacja)”** — nowa strona zostaje, paczki WWW (PL i PL-EN)
+z dopiskiem „-NIE-PUBLIKOWAC” i plikiem README do czasu (1) recenzji treści strony głównej i (2) nowej strony dla klienta (C v4). Zdjęcie
+oznaczenia wyłącznie decyzją właściciela (`PUBLIKACJA_WWW=1` w `pakiety_pl.sh`). Wykonanie: oznaczenie w `pakiety_pl.sh` i `pakiety_en.sh`;
+recenzja treści `index.html` (narracja, liczby, decyzje, język, wygląd — z niezależną weryfikacją uwag).
+
+## Decyzja 50 — wdrożenia referencyjne: zespół założycielski w Naster S.A. (2026-10-16)
+
+Pytanie (FC-d38, sprawa 2): kto zrealizował 4 wdrożenia referencyjne z trakcji (2 robotów fizycznych, 2 agentów AI / RPA; 700 000+ zł
+oszczędności klientów). Właściciel: **„A: zespół w Naster S.A.”** — w deckach H, R, A i w FAQ dopisek „zrealizowane przez zespół założycielski
+w Naster S.A.”; reszta zapisu (przed startem spółek, poza liczbami budżetu, umowy cykliczne) bez zmian. Otwarte: podstawa kwot trakcji
+(np. „5 cobotów → 10 operatorów → 350 000 zł” — netto po kosztach robotów?).
+
+## Decyzja 51 — pakiet WWW: stroną główną zostaje strona C v4 (2026-10-16)
+
+Po recenzji treści `index.html` (5 soczewek z weryfikacją; 11 uwag blokujących, m.in. czas teraźniejszy przy ofercie od 2028 r., niewypełniona
+klauzula RODO, strona ok. 26 ekranów, treści dla klienta i inwestora razem). Właściciel: **„A: zastąpić stroną C v4 (Rekomendacja)”** — pakiet
+WWW = strona C v4 (8 stron dla klienta) + decki i dokumenty dla inwestorów (hasło, decyzja 26); w menu C v4 link „Dla inwestorów” do krótkiej
+podstrony (wynik 2027, potrzeby kapitałowe rok po roku z zastrzeżeniami decku H 17, linki do decków). Dotychczasowy `index.html` — archiwum
+(`model/src/index38/`, `patch_dec38_index.py`). Uwagi recenzji do treści z decku H wchodzą do decków.
 ## EN-038 — wersje EN po decyzjach 38–46 (2026-10-16): PASS Z UWAGAMI → FC-1 poprawione
 
 - **Wyzwalacz:** „Daj mi też wersje angielskie, jak będą gotowe.” oraz decyzja 42–44 („zaktualizuj wszystkie dokumenty”, PL, potem EN).
