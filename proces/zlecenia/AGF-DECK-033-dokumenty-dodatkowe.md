@@ -502,3 +502,21 @@ Właściciel: **„1a, 2a, 3a, 4a, 5a, 6a […], 7b, 8b, 9b, 10”**.
   Walker S2 30–50% wydajności człowieka — UBTech dla Financial Times); bez zamiennika tekst zostaje (status w `AKT-38-46/DO-POTWIERDZENIA.md`).
 - Przy okazji: dopisek decyzji 50 („zrealizowane przez zespół założycielski w Naster S.A.”) we wszystkich miejscach trakcji; etykiety
   budżetu (104,0 mln = szacunek modelu; 3,5 etatu; 2 684,19 mln zł = stan na 31.12.2030).
+
+## Runda 4 PL (AKT-38-46) i runda 6 EN — wykonanie decyzji 52–61 (2026-10-16): GOTOWE
+
+- **PL:** źródła — `AKT-38-46/tools/r4_src.py`, po budowie decków `AGF-DECK-033/model/patch_dec52.py --decks`; łańcuch
+  `AKT-38-46/tools/chain_pl.sh` (… → patch_dec38_docs → patch_dec52 → build_all → patch_dec52 --decks) i `tools/pakiety_pl.sh`:
+  KONTROLE OK (frazy wycofane rundy 4: 0 w 18 plikach, strona C v4 RUN: ALL OK, decki 390/768/1280 px bez usterek, PAKIET-1 bez hasła 9/9,
+  PAKIET-2 z hasłem 3/3, linki 282 + 607 bez błędów, Teaser 2 strony, Kompendium 5 stron).
+- **FIT Teasera:** nowa kontrola (pomiar stron `teaser_pages.py`) wykazała, że strona 1 Teasera PL wychodziła o 28,5 px poza A4 (ucięta karta
+  „Aktywna runda”; dotychczasowa kontrola liczyła tylko strony PDF). Krótsze brzmienia (kwota rund w jednym wierszu, karta „Brak rąk do
+  pracy”, źródła Skali bez nazwy raportu) i nieco mniejsze odstępy; pomiar jest teraz częścią `pakiety_pl.sh` (przepełnienie = FAIL).
+- **EN:** 276 + 3 nowe segmenty (porcje 23–29), hasło 8B w poprawkach pamięci, glosariusz §14; Compendium EN skrócone pod 5 stron A4 bez
+  utraty faktów; niezależna recenzja tłumaczeń rundy 6 (5 recenzentów + weryfikacja): 34 uwagi, 22 potwierdzone i wprowadzone, 12 odrzuconych.
+  `build_en.sh` i `pakiety_en.sh`: 0 problemów (check_en, terms_en, linki, polszczyzna w EN, parytet, 0 błędów JS).
+- **Fakty:** 58 korekt wdrożonych; z 28 niepotwierdzonych 24 zastąpione albo usunięte, 4 bez zmian (decyzja 61; do potwierdzenia:
+  KSC / NIS2 od 3.04.2026, lista dostawców wysokiego ryzyka, lista FCC, lista platform AMR / cobotów).
+- **Paczki:** `wyniki/AGF-DECK-033-PAKIET-1-Inwestor.zip`, `…-PAKIET-1-Investor-EN.zip`, `…-PAKIET-2-Strona-WWW-NIE-PUBLIKOWAC.zip`,
+  `…-PAKIET-2-Strona-WWW-PL-EN-NIE-PUBLIKOWAC.zip`; dla właściciela jeden plik `Automatify-materialy-2026-10-16-runda-4.zip` z raportem
+  rundy. Nic nie opublikowano (decyzja 49).
