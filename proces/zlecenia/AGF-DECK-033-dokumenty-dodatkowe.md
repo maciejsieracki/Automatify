@@ -328,6 +328,9 @@ Właściciel: „zrób mi spis treści na 5 stron, takie kompendium czym jest Au
 
 ## Łańcuch PL — pełny (stan po decyzjach 36–37 i poprawkach „PL przed EN”)
 
+_Stan po decyzjach 38–46: łańcuch dłuższy o `patch_dec38.py → patch_dec38_docs.py`, strona główna pakietu WWW z `patch_dec38_index.py`
+— zob. „Dispatch AKT-38-46”._
+
 `model/patch_src.py → patch_docs.py → patch_fc.py → patch_dec33.py → patch_dec36.py → patch_dec37.py → AGF-DECK-032/build_all.py www-v4` →
 pakiety: decki inwestora `tools/build_investor_decks.py`, dokumenty inwestora `tools/build_investor_docs.py` (FAQ, Suplement —
 z poprawionymi mapami, Aneks, Teaser), Kompendium `KOMP/build.sh`. `patch_dec36.py`: mapy i nazwa Aneksu w Suplemencie inwestora,
@@ -367,8 +370,9 @@ kafle „w skrócie” w decku H (liczby w jednej linii), decyzja 35 w 4 pomini�
   Robotify P&L / finansowanie).
 - **Wykonanie decyzji 38–44 we wszystkich dokumentach (PL, potem EN):** po raporcie z researchu o humanoidach.
 - **45 — wynajem cobotów przez partnera leasingowego (B, rekomendacja; 2026-10-15).** Klient „wynajmuje” robota bez wkładu własnego przez
-  partnera leasingowego (rata miesięczna), a Robotify płaci robotogodziny za dobór, wdrożenie i serwis. Budżet Robotify bez zmian (robot nie
-  jest na bilansie Robotify); liczby use case'u zostają (rata ≈ cena ÷ 4 lata, z dopiskiem, że nie obejmuje kosztu finansowania).
+  partnera leasingowego (rata miesięczna), a Robotify pobiera od klienta robotogodziny za dobór, wdrożenie i serwis (zapis poprawiony
+  2026-10-16 — brzmienie przyjętej opcji B: „a nam płaci robotogodziny”; wcześniej omyłkowo „Robotify płaci”). Budżet Robotify bez zmian
+  (robot nie jest na bilansie Robotify); liczby use case'u zostają (rata ≈ cena ÷ 4 lata, z dopiskiem, że nie obejmuje kosztu finansowania).
 - **46 — „humanoid-first” z bramkami (A, rekomendacja; 2026-10-15).** Jako strategia Robotify, nie prognoza rynku: od ok. 2030 nowe wdrożenia
   opieramy na humanoidach, gdy spełnią kryteria (koszt godziny poniżej pracy człowieka, niezawodność, certyfikat); coboty tylko tam, gdzie są
   wyraźnie tańsze. Faza mieszana cobot + humanoid od ok. 2028. Teza „po 2030 wyłącznie humanoidy” nie pada.
@@ -399,15 +403,39 @@ Właściciel: „1 tak, możesz dodać; 2 ok; 3 pomyśl sam; 4 tak, ale jako kie
 4. Architektura europejskiego nadzoru i danych — opisywana jako kierunek i docelowy sposób działania (nie jako stan obecny).
 5. Wideo key visualu (Agentify po lewej) — usunięte ze strony.
 
-## Dispatch AKT-38-46 — wykonanie decyzji 38–46 w materiałach PL (2026-10-15): GOTOWE (4 drobne)
+## Dispatch AKT-38-46 — wykonanie decyzji 38–46 w materiałach PL (2026-10-15; runda 3 i FC-1 — 2026-10-16): GOTOWE
 
 - **Zakres:** decki H, R, A, FAQ, Suplement, Aneks, Teaser (2 strony), Kompendium (5 stron) — Robotify i humanoidy pierwsze (skala, paleta zastosowań,
   fazy humanoid-first z bramkami, dostęp do producentów USA/Chiny/Europa, europejski nadzór i dane, wynajem cobotów przez leasing), plan i budżet bez
   zmian, rok 2027 w wynikach, rozwój vs środki obrotowe per spółka per rok; usunięte twierdzenia bez źródła wskazane w raporcie.
-- **Łańcuch:** … → patch_dec37.py → **patch_dec38.py → patch_dec38_docs.py** → build_all; pakiety: `pakiety_pl.sh` (scratchpad AKT-38-46).
+- **Łańcuch:** … → patch_dec37.py → **patch_dec38.py → patch_dec38_docs.py** → build_all (`AKT-38-46/tools/chain_pl.sh`); pakiety:
+  `AKT-38-46/tools/pakiety_pl.sh` — decki i dokumenty inwestora, Kompendium, strona główna pakietu WWW (`model/patch_dec38_index.py`, ze źródła
+  `model/src/index38/`), paczki i kontrole (od FC-1 kod wyjścia ≠ 0, gdy kontrola nie przejdzie). Zapisy zmian w źródłach: `r2_src.py`,
+  `r3_src.py`, `fc1_src.py`.
 - **Proces:** plan i dane z budżetu → kontrola (budżet, narracja VC) → wdrożenie (decki, dokumenty, Kompendium) → recenzje r1 (liczby: 3 istotne;
   narracja: 5 istotnych; technika) → poprawki → weryfikacja **GOTOWE** (V-01 „Moat” w nadtytułach i FAQ, V-02 data ceny NEURA, V-03 ramka kwoty
-  w druku Teasera, V-04 „82,8%” przy 390 px w pakiecie WWW — drobne, do domknięcia z EN).
+  w druku Teasera, V-04 „82,8%” przy 390 px w pakiecie WWW) → **runda 3:** V-01…V-04 domknięte, strona główna pakietu WWW przebudowana
+  → Final Control FC-d38 (PL i EN) **PASS Z UWAGAMI** → **FC-1** (2026-10-16): „Dlaczego teraz”, Fala 03 w H, R, A — „Te cztery siły”
+  (było „trzy” przy czterech wymienionych), „35 mln EUR”, „w Polsce i Europie Środkowej” (było „PL/CE”). Łańcuch od zera: 143/143 plików
+  identycznych bajt w bajt.
 - **Liczby zewnętrzne o humanoidach:** lista do potwierdzenia u źródła przed wysyłką (`AKT-38-46/DO-POTWIERDZENIA.md`, przekazana właścicielowi).
-- **Uwaga:** `index.html` pakietu WWW nie był aktualizowany — paczka WWW oznaczona „NIE-PUBLIKOWAC” do czasu aktualizacji.
+- **Strona główna pakietu WWW (`index.html`, runda 3):** przebudowana wg decyzji 38–46 (Robotify pierwsze, hasło marki, 135 liczb — każda
+  w deckach lub dokumentach, 0 fraz wycofanych, 0 błędów JS, 390 px bez przewijania w poziomie); paczka WWW bez dopisku „NIE-PUBLIKOWAC”
+  (dopisek tylko, gdy kontrola strony nie przejdzie). **Do decyzji właściciela (FC-2):** zapis decyzji 18 mówił „Teraz bez zmian w index.html”;
+  narracji strony nie recenzował nikt niezależny. Nic nie opublikowano.
 - **Strona C v4 (decyzja 47–48):** 8 stron, Manrope, zakup obok wynajmu, rozliczenie humanoidów jak cobota, architektura danych jako kierunek, bez wideo.
+
+## EN-038 — wersje EN po decyzjach 38–46 (2026-10-16): PASS Z UWAGAMI → FC-1 poprawione
+
+- **Wyzwalacz:** „Daj mi też wersje angielskie, jak będą gotowe.” oraz decyzja 42–44 („zaktualizuj wszystkie dokumenty”, PL, potem EN).
+  Start po weryfikacji PL (AKT-38-46 VERIFY-r1: GOTOWE).
+- **Proces:** delta PL → EN (3256 segmentów, w tym 1167 nowych, porcje 12–22; zmiany brzmienia PL bez nowego tłumaczenia — `rekey-r4.json`)
+  → budowa (`EN-033/build_en.sh`) → recenzje: język (REV-jezyk-d38) i parytet (REV-parytet-d38) → poprawki rundy 5 → **Final Control
+  FC-d38: PASS Z UWAGAMI** (PL i EN: Robotify przed Agentify 16/16, liczby z budżetu zgodne, parytet 14/14, 0 polskich słów w EN, 0 błędów
+  JS, pakiety inwestora bez hasła 9/9, Teaser 2 strony A4, Kompendium / Compendium 5 stron A4, przełączniki 24/24, budowa odtwarzalna).
+- **FC-1 (2026-10-16):** „These four forces” / „Te cztery siły”, „Poland and Central Europe” / „w Polsce i Europie Środkowej”, „35 mln EUR”
+  — PL i EN przebudowane, kontrole OK. **FC-3:** ten zapis. **FC-4:** `pakiety_pl.sh` zwraca kod ≠ 0 przy nieudanej kontroli.
+- **Otwarte (drobne):** FC-5 (słownik EN w `automatify-docs.js` pakietu PL — budowa EN łata osobno), P-04 / P-05 (pasek nawigacji decku H
+  przy 900–930 px, Suplement przy 900 px przewija się w poziomie o ok. 95 px), ścieżka scratchpadu na stałe w skryptach PL.
+- **Paczki:** `wyniki/AGF-DECK-033-PAKIET-1-Inwestor.zip`, `…-PAKIET-1-Investor-EN.zip`, `…-PAKIET-2-Strona-WWW.zip`,
+  `…-PAKIET-2-Strona-WWW-PL-EN.zip`. Nic nie opublikowano.
