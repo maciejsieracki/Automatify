@@ -532,3 +532,25 @@ Właściciel: **„1 zostaw, 2 zdejmij”**.
   Stopka strony C v4 (9 stron) zgodna z publikacją: „Wyliczenia orientacyjne na parametrach modelu Automatify; źródła danych rynkowych
   podajemy przy wskaźnikach.” (było: „Wersja testowa … źródła … zostaną dołączone przed publikacją”; źródła są przy kaflach) —
   `AKT-38-46/tools/r4_src.py` D63. Publikacji na serwerze nie wykonano (brak dostępu do hostingu) — paczki są gotowe do wgrania.
+
+## Decyzja 64 — strona C v4 po angielsku (2026-10-18)
+
+Właściciel: **„b”** — cała strona C v4 (9 stron) po angielsku, z przełącznikiem PL | EN.
+
+- **Zakres:** tylko paczka PL-EN (`…-PAKIET-2-Strona-WWW-PL-EN.zip`, folder `en/`); zastępuje decyzję 18 dla tej paczki. Paczka WWW PL
+  (`…-PAKIET-2-Strona-WWW.zip`) bez zmian: tylko PL, bez przełącznika.
+- **Wykonanie:** `EN-033/build/build_c4_en.py` (segmenty z generatora PL, pamięć `EN-033/c4/`: 819 segmentów, 20 poprawek recenzji),
+  kalkulatory `STRONA-KLIENT-v2/kandydat-C-v4/gen/theme/site.en.js` (te same obliczenia, formaty EN), przełącznik w nagłówku stron PL i EN,
+  „← Homepage” decków EN w paczce WWW → `en/index.html`. Niezależna recenzja (4 recenzentów + 4 weryfikatorów): 26 uwag, 16 potwierdzonych
+  i wprowadzonych. Kontrole: strony, linki, czytelność, nagłówek, kalkulatory EN = PL, 0 polskich słów — ALL OK (`EN-033/BUDOWA.md`, runda 7).
+- **NAV-1 (rozstrzygnięte samodzielnie, układ):** przy 1200–1365 px logo w nagłówku strony C v4 było ściśnięte albo niewidoczne — pełne menu
+  od 1366 px, niżej przycisk „Menu”; obie paczki WWW. Kontrola `kandydat-C-v4/tools/nav_fit.py` (15 szerokości).
+
+## Decyzja 62 — przegląd 4 pozycji (2026-10-18)
+
+- **F-108** KSC / NIS2 od 3.04.2026 — potwierdzone (Dz.U. 2026 poz. 252); **F-109** lista dostawców wysokiego ryzyka — potwierdzone (komunikat
+  MC z 6.08.2026: listy nie ma); **F-112** lista FCC — potwierdzone (Public Notice DA 26-786 z 28.07.2026). Teksty bez zmian.
+- **F-157** — poprawione: AutoStore to system magazynowy, nie AMR. Deck R: „Boston Dynamics Stretch, MiR / Locus AMR, AutoStore, UR / Doosan
+  cobots”; decki H i A: „Coboty (Universal Robots), AMR (MiR) i magazyny AutoStore od 2028” (PL i EN).
+- **Paczki:** `wyniki/AGF-DECK-033-PAKIET-1-Inwestor.zip`, `…-PAKIET-2-Strona-WWW.zip`, `…-PAKIET-1-Investor-EN.zip`,
+  `…-PAKIET-2-Strona-WWW-PL-EN.zip`; dla właściciela `Automatify-komplet-2026-10-18.zip`. Publikacji nie wykonano (brak dostępu do hostingu).
