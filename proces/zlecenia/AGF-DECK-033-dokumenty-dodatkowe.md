@@ -554,3 +554,8 @@ Właściciel: **„b”** — cała strona C v4 (9 stron) po angielsku, z przeł
   cobots”; decki H i A: „Coboty (Universal Robots), AMR (MiR) i magazyny AutoStore od 2028” (PL i EN).
 - **Paczki:** `wyniki/AGF-DECK-033-PAKIET-1-Inwestor.zip`, `…-PAKIET-2-Strona-WWW.zip`, `…-PAKIET-1-Investor-EN.zip`,
   `…-PAKIET-2-Strona-WWW-PL-EN.zip`; dla właściciela `Automatify-komplet-2026-10-18.zip`. Publikacji nie wykonano (brak dostępu do hostingu).
+- **VIS-1 (rozstrzygnięte samodzielnie, układ):** niezależny przegląd zrzutów stron EN (3 recenzentów + 3 weryfikatorów): 25 uwag, 20 potwierdzonych
+  i poprawionych (teksty EN, typografia, style EN). Nowa kontrola `kandydat-C-v4/tools/text_fit.py` (tekst poza pudełkiem / tekst na tekście,
+  10 szerokości 320–1920 px) wykryła też usterki strony PL sprzed rundy — poprawione w obu paczkach WWW: wskaźniki Robotify (podpisy ściśnięte
+  i ucięte przy ≥ 1200 px, liczba na podpisie na telefonie), nawigacja „Dalej” przy 360 px, kraje kalkulatora i karty lat przy 320–360 px.
+  Pełna przebudowa PL i EN od zera: wszystkie kontrole OK.
